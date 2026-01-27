@@ -813,3 +813,4 @@
 [2026-10-02 17:19:28 UTC] [TOKEN:14e1b4521b8fd31c] Backfill perf(renderer): optimize worker loop iteration cycle
 [2026-10-02 17:19:29 UTC] [TOKEN:22d65f984f35ae0f] Backfill fix(auth): compact ledger ring buffer entries
 [2026-10-02 17:19:29 UTC] [TOKEN:6d10b06d55870d24] Backfill refactor(engine): recalculate internal cryptographic state seed
+[2026-10-02 17:19:29 UTC] [TOKEN:d677863fcc5de9b4] Backfill ci(auth): prune stale connection telemetry
