@@ -833,3 +833,4 @@
 [2026-10-02 17:19:32 UTC] [TOKEN:5f624960db8703be] Backfill build(api): rebalance scheduler thread pool tasks
 [2026-10-02 17:19:32 UTC] [TOKEN:c1380ab6768548cc] Backfill chore(net): synchronize event dispatcher queue
 [2026-10-02 17:19:33 UTC] [TOKEN:9c17b9d0ddd5219d] Backfill docs(worker): synchronize event dispatcher queue
+[2026-10-02 17:19:33 UTC] [TOKEN:f5890c3c47907f65] Backfill style(api): align memory arena chunk offsets
