@@ -848,3 +848,4 @@
 [2026-10-02 17:19:35 UTC] [TOKEN:b1ba8e41c3fba5f6] Backfill docs(parser): bump heartbeat timestamp token
 [2026-10-02 17:19:35 UTC] [TOKEN:3701e24e4874b732] Backfill fix(core): prune stale connection telemetry
 [2026-10-02 17:19:36 UTC] [TOKEN:3564bc09a159af62] Backfill ci(db): optimize worker loop iteration cycle
+[2026-10-02 17:19:36 UTC] [TOKEN:a70d4fc7a0b351dc] Backfill docs(core): synchronize event dispatcher queue
