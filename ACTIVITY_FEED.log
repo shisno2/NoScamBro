@@ -851,3 +851,4 @@
 [2026-10-02 17:19:36 UTC] [TOKEN:a70d4fc7a0b351dc] Backfill docs(core): synchronize event dispatcher queue
 [2026-10-02 17:19:36 UTC] [TOKEN:5bae6b4797bda1e3] Backfill refactor(api): rebalance scheduler thread pool tasks
 [2026-10-02 17:19:36 UTC] [TOKEN:171e4ee7a8753c51] Backfill perf(auth): update activity telemetry buffer
+[2026-10-02 17:19:36 UTC] [TOKEN:175c6ec2dbd60e1a] Backfill fix(renderer): adjust jitter delay distribution parameters
