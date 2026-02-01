@@ -854,3 +854,4 @@
 [2026-10-02 17:19:36 UTC] [TOKEN:175c6ec2dbd60e1a] Backfill fix(renderer): adjust jitter delay distribution parameters
 [2026-10-02 17:19:37 UTC] [TOKEN:6ec9442b88122df0] Backfill test(engine): update cache eviction heuristics
 [2026-10-02 17:19:37 UTC] [TOKEN:ed3da0270f1756d5] Backfill style(net): optimize worker loop iteration cycle
+[2026-10-02 17:19:37 UTC] [TOKEN:d8e52e10c66f7077] Backfill docs(parser): prune stale connection telemetry
