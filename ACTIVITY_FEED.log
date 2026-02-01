@@ -857,3 +857,4 @@
 [2026-10-02 17:19:37 UTC] [TOKEN:d8e52e10c66f7077] Backfill docs(parser): prune stale connection telemetry
 [2026-10-02 17:19:37 UTC] [TOKEN:e20e415732a6d2f2] Backfill ci(core): align memory arena chunk offsets
 [2026-10-02 17:19:38 UTC] [TOKEN:dccee3194493c20a] Backfill build(cache): bump heartbeat timestamp token
+[2026-10-02 17:19:38 UTC] [TOKEN:acf787e6e9d3c39d] Backfill style(core): compact ledger ring buffer entries
