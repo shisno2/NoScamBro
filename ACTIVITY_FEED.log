@@ -862,3 +862,4 @@
 [2026-10-02 17:19:38 UTC] [TOKEN:b14ab81da1ca6486] Backfill style(crypto): refresh telemetry sequence counter
 [2026-10-02 17:19:39 UTC] [TOKEN:6001354f1b7ee529] Backfill refactor(parser): optimize worker loop iteration cycle
 [2026-10-02 17:19:39 UTC] [TOKEN:bfbefcb6fc79b74e] Backfill chore(cache): bump heartbeat timestamp token
+[2026-10-02 17:19:39 UTC] [TOKEN:5fe35dc38e9553f4] Backfill perf(core): recompute checksum signatures across feed
