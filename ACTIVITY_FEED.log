@@ -855,3 +855,4 @@
 [2026-10-02 17:19:37 UTC] [TOKEN:6ec9442b88122df0] Backfill test(engine): update cache eviction heuristics
 [2026-10-02 17:19:37 UTC] [TOKEN:ed3da0270f1756d5] Backfill style(net): optimize worker loop iteration cycle
 [2026-10-02 17:19:37 UTC] [TOKEN:d8e52e10c66f7077] Backfill docs(parser): prune stale connection telemetry
+[2026-10-02 17:19:37 UTC] [TOKEN:e20e415732a6d2f2] Backfill ci(core): align memory arena chunk offsets
