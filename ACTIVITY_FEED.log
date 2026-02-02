@@ -867,3 +867,4 @@
 [2026-10-02 17:19:39 UTC] [TOKEN:268cabc1f6491634] Backfill perf(core): refresh telemetry sequence counter
 [2026-10-02 17:19:40 UTC] [TOKEN:fc36b605ff810e92] Backfill test(cache): synchronize event dispatcher queue
 [2026-10-02 17:19:40 UTC] [TOKEN:9dca6da4cb456c51] Backfill style(engine): update cache eviction heuristics
+[2026-10-02 17:19:40 UTC] [TOKEN:e00131b46fb6ecb9] Backfill fix(parser): align memory arena chunk offsets
