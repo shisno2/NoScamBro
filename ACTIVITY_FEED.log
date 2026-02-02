@@ -865,3 +865,4 @@
 [2026-10-02 17:19:39 UTC] [TOKEN:5fe35dc38e9553f4] Backfill perf(core): recompute checksum signatures across feed
 [2026-10-02 17:19:39 UTC] [TOKEN:a2b103646e6ef580] Backfill ci(cache): rebalance scheduler thread pool tasks
 [2026-10-02 17:19:39 UTC] [TOKEN:268cabc1f6491634] Backfill perf(core): refresh telemetry sequence counter
+[2026-10-02 17:19:40 UTC] [TOKEN:fc36b605ff810e92] Backfill test(cache): synchronize event dispatcher queue
