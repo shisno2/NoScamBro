@@ -875,3 +875,4 @@
 [2026-10-02 17:19:41 UTC] [TOKEN:f962e2d12eeffd67] Backfill test(renderer): update activity telemetry buffer
 [2026-10-02 17:19:41 UTC] [TOKEN:696b4237e125d483] Backfill style(renderer): bump heartbeat timestamp token
 [2026-10-02 17:19:42 UTC] [TOKEN:e2ce653fac826178] Backfill ci(cache): update cache eviction heuristics
+[2026-10-02 17:19:42 UTC] [TOKEN:0b6fa30c394e50ee] Backfill chore(core): prune stale connection telemetry
