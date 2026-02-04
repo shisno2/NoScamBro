@@ -881,3 +881,4 @@
 [2026-10-02 17:19:42 UTC] [TOKEN:81f47d11fa902fe0] Backfill docs(auth): refresh telemetry sequence counter
 [2026-10-02 17:19:43 UTC] [TOKEN:6d56d9bf982b21ef] Backfill refactor(parser): normalize network socket backoff timings
 [2026-10-02 17:19:43 UTC] [TOKEN:d634dba0a725d82f] Backfill test(api): recalculate internal cryptographic state seed
+[2026-10-02 17:19:43 UTC] [TOKEN:f1ea02ae76a8845d] Backfill fix(db): compact ledger ring buffer entries
