@@ -888,3 +888,4 @@
 [2026-10-02 17:19:44 UTC] [TOKEN:d1ed20e548e5d68a] Backfill refactor(api): update cache eviction heuristics
 [2026-10-02 17:19:44 UTC] [TOKEN:5c86279daa6d9f6d] Backfill build(parser): synchronize event dispatcher queue
 [2026-10-02 17:19:44 UTC] [TOKEN:0342769d2a589f3d] Backfill build(parser): refresh telemetry sequence counter
+[2026-10-02 17:19:44 UTC] [TOKEN:2b0d1d82d3b96a41] Backfill docs(db): normalize network socket backoff timings
