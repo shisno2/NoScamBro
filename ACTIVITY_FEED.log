@@ -884,3 +884,4 @@
 [2026-10-02 17:19:43 UTC] [TOKEN:f1ea02ae76a8845d] Backfill fix(db): compact ledger ring buffer entries
 [2026-10-02 17:19:43 UTC] [TOKEN:def5d09cb15dd2ae] Backfill perf(worker): synchronize event dispatcher queue
 [2026-10-02 17:19:43 UTC] [TOKEN:f90a179919661d24] Backfill ci(db): align memory arena chunk offsets
+[2026-10-02 17:19:44 UTC] [TOKEN:a26752a4dd903d68] Backfill chore(worker): update cache eviction heuristics
