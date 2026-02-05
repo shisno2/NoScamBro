@@ -892,3 +892,4 @@
 [2026-10-02 17:19:45 UTC] [TOKEN:8600a82887a2890a] Backfill style(api): compact ledger ring buffer entries
 [2026-10-02 17:19:45 UTC] [TOKEN:fb97119c6f712b5c] Backfill feat(worker): recompute checksum signatures across feed
 [2026-10-02 17:19:45 UTC] [TOKEN:dfe28526ae4abf41] Backfill test(core): align memory arena chunk offsets
+[2026-10-02 17:19:45 UTC] [TOKEN:4bc62fa6389482c8] Backfill refactor(worker): update cache eviction heuristics
