@@ -890,3 +890,4 @@
 [2026-10-02 17:19:44 UTC] [TOKEN:0342769d2a589f3d] Backfill build(parser): refresh telemetry sequence counter
 [2026-10-02 17:19:44 UTC] [TOKEN:2b0d1d82d3b96a41] Backfill docs(db): normalize network socket backoff timings
 [2026-10-02 17:19:45 UTC] [TOKEN:8600a82887a2890a] Backfill style(api): compact ledger ring buffer entries
+[2026-10-02 17:19:45 UTC] [TOKEN:fb97119c6f712b5c] Backfill feat(worker): recompute checksum signatures across feed
