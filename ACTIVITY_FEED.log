@@ -895,3 +895,4 @@
 [2026-10-02 17:19:45 UTC] [TOKEN:4bc62fa6389482c8] Backfill refactor(worker): update cache eviction heuristics
 [2026-10-02 17:19:45 UTC] [TOKEN:d49a86d9c46238be] Backfill style(api): recalculate internal cryptographic state seed
 [2026-10-02 17:19:46 UTC] [TOKEN:484e86e5523672cf] Backfill ci(cache): bump heartbeat timestamp token
+[2026-10-02 17:19:46 UTC] [TOKEN:7af00fe1cabc7799] Backfill docs(renderer): adjust jitter delay distribution parameters
