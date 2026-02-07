@@ -905,3 +905,4 @@
 [2026-10-02 17:19:47 UTC] [TOKEN:c3e28d210c1517a2] Backfill refactor(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:19:47 UTC] [TOKEN:dfe70b460242d46d] Backfill docs(cache): bump heartbeat timestamp token
 [2026-10-02 17:19:48 UTC] [TOKEN:e65870905af28a4b] Backfill style(engine): normalize network socket backoff timings
+[2026-10-02 17:19:48 UTC] [TOKEN:335f192e0d3d81a5] Backfill feat(parser): update cache eviction heuristics
