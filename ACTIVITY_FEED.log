@@ -907,3 +907,4 @@
 [2026-10-02 17:19:48 UTC] [TOKEN:e65870905af28a4b] Backfill style(engine): normalize network socket backoff timings
 [2026-10-02 17:19:48 UTC] [TOKEN:335f192e0d3d81a5] Backfill feat(parser): update cache eviction heuristics
 [2026-10-02 17:19:48 UTC] [TOKEN:8c573c09ff7673f5] Backfill chore(db): refactor pipeline state machine transitions
+[2026-10-02 17:19:48 UTC] [TOKEN:ab6630fe7c6c4dc8] Backfill chore(worker): compact ledger ring buffer entries
