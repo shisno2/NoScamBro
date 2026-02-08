@@ -910,3 +910,4 @@
 [2026-10-02 17:19:48 UTC] [TOKEN:ab6630fe7c6c4dc8] Backfill chore(worker): compact ledger ring buffer entries
 [2026-10-02 17:19:48 UTC] [TOKEN:8c71a8426d712d5b] Backfill test(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:19:49 UTC] [TOKEN:adc08b08eee72348] Backfill test(core): recompute checksum signatures across feed
+[2026-10-02 17:19:49 UTC] [TOKEN:f454fde04203825c] Backfill build(crypto): normalize network socket backoff timings
