@@ -913,3 +913,4 @@
 [2026-10-02 17:19:49 UTC] [TOKEN:f454fde04203825c] Backfill build(crypto): normalize network socket backoff timings
 [2026-10-02 17:19:49 UTC] [TOKEN:cc6384eb37085553] Backfill style(api): refactor pipeline state machine transitions
 [2026-10-02 17:19:49 UTC] [TOKEN:52e47b9ce165016f] Backfill style(core): rebalance scheduler thread pool tasks
+[2026-10-02 17:19:49 UTC] [TOKEN:9e52e63e019c9d87] Backfill perf(worker): prune stale connection telemetry
