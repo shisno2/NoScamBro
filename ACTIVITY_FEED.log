@@ -927,3 +927,4 @@
 [2026-10-02 17:19:52 UTC] [TOKEN:8936a6602a8ba5d1] Backfill refactor(worker): refactor pipeline state machine transitions
 [2026-10-02 17:19:52 UTC] [TOKEN:77eb086f9eb180df] Backfill style(renderer): adjust jitter delay distribution parameters
 [2026-10-02 17:19:52 UTC] [TOKEN:2e18e869793d02f5] Backfill docs(auth): bump heartbeat timestamp token
+[2026-10-02 17:19:52 UTC] [TOKEN:0e9f880fa4850161] Backfill build(api): compact ledger ring buffer entries
