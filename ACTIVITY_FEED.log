@@ -938,3 +938,4 @@
 [2026-10-02 17:19:54 UTC] [TOKEN:4de5243b23a9dc8d] Backfill fix(crypto): compact ledger ring buffer entries
 [2026-10-02 17:19:54 UTC] [TOKEN:6ee21049d218419a] Backfill chore(engine): optimize worker loop iteration cycle
 [2026-10-02 17:19:55 UTC] [TOKEN:9cda9a7440b4d57e] Backfill chore(core): update activity telemetry buffer
+[2026-10-02 17:19:55 UTC] [TOKEN:85f3b393c84c48d9] Backfill test(api): align memory arena chunk offsets
