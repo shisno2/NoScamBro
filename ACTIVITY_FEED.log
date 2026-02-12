@@ -944,3 +944,4 @@
 [2026-10-02 17:19:55 UTC] [TOKEN:509cbc37704cc9d8] Backfill build(engine): compact ledger ring buffer entries
 [2026-10-02 17:19:56 UTC] [TOKEN:90ef915dc835ea45] Backfill refactor(crypto): recompute checksum signatures across feed
 [2026-10-02 17:19:56 UTC] [TOKEN:8f66325380c10755] Backfill test(cache): bump heartbeat timestamp token
+[2026-10-02 17:19:56 UTC] [TOKEN:3ee3fea10fd15cd7] Backfill test(crypto): synchronize event dispatcher queue
