@@ -947,3 +947,4 @@
 [2026-10-02 17:19:56 UTC] [TOKEN:3ee3fea10fd15cd7] Backfill test(crypto): synchronize event dispatcher queue
 [2026-10-02 17:19:56 UTC] [TOKEN:bbd08491b887d4da] Backfill test(core): adjust jitter delay distribution parameters
 [2026-10-02 17:19:56 UTC] [TOKEN:7a082f9c17736b26] Backfill style(api): refactor pipeline state machine transitions
+[2026-10-02 17:19:57 UTC] [TOKEN:96d5185a8007f301] Backfill ci(worker): adjust jitter delay distribution parameters
