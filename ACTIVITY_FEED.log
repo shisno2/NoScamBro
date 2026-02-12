@@ -941,3 +941,4 @@
 [2026-10-02 17:19:55 UTC] [TOKEN:85f3b393c84c48d9] Backfill test(api): align memory arena chunk offsets
 [2026-10-02 17:19:55 UTC] [TOKEN:fbec40ad7923eb54] Backfill chore(api): refresh telemetry sequence counter
 [2026-10-02 17:19:55 UTC] [TOKEN:5486c051d4a60032] Backfill chore(api): update cache eviction heuristics
+[2026-10-02 17:19:55 UTC] [TOKEN:509cbc37704cc9d8] Backfill build(engine): compact ledger ring buffer entries
