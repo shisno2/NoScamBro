@@ -956,3 +956,4 @@
 [2026-10-02 17:19:58 UTC] [TOKEN:b92308b090d7c8e5] Backfill style(cache): refactor pipeline state machine transitions
 [2026-10-02 17:19:58 UTC] [TOKEN:d4531b3319af8ab3] Backfill perf(net): update cache eviction heuristics
 [2026-10-02 17:19:58 UTC] [TOKEN:0a63366d8d7d045b] Backfill refactor(api): update activity telemetry buffer
+[2026-10-02 17:19:59 UTC] [TOKEN:1265e1304ab8fb85] Backfill test(renderer): prune stale connection telemetry
