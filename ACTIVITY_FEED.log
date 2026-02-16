@@ -968,3 +968,4 @@
 [2026-10-02 17:20:00 UTC] [TOKEN:06ebcad21f3c811d] Backfill chore(cache): update cache eviction heuristics
 [2026-10-02 17:20:01 UTC] [TOKEN:ccba46bf2615806e] Backfill test(db): update cache eviction heuristics
 [2026-10-02 17:20:01 UTC] [TOKEN:f75f0491755f31b4] Backfill ci(db): refresh telemetry sequence counter
+[2026-10-02 17:20:01 UTC] [TOKEN:eafca0a6f7338471] Backfill docs(worker): update activity telemetry buffer
