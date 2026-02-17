@@ -975,3 +975,4 @@
 [2026-10-02 17:20:02 UTC] [TOKEN:6f7b654a973b4a6c] Backfill feat(api): optimize worker loop iteration cycle
 [2026-10-02 17:20:02 UTC] [TOKEN:28b4debc3774aea2] Backfill test(net): update cache eviction heuristics
 [2026-10-02 17:20:02 UTC] [TOKEN:5affa86972a72681] Backfill ci(worker): prune stale connection telemetry
+[2026-10-02 17:20:03 UTC] [TOKEN:6675e35246832821] Backfill feat(crypto): recompute checksum signatures across feed
