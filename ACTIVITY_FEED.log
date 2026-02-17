@@ -979,3 +979,4 @@
 [2026-10-02 17:20:03 UTC] [TOKEN:50b659b8c136effe] Backfill style(auth): compact ledger ring buffer entries
 [2026-10-02 17:20:03 UTC] [TOKEN:58ba40ac153889c2] Backfill build(net): update activity telemetry buffer
 [2026-10-02 17:20:03 UTC] [TOKEN:3b31e69df030476f] Backfill perf(core): normalize network socket backoff timings
+[2026-10-02 17:20:03 UTC] [TOKEN:11104e295aa7b25b] Backfill fix(renderer): refactor pipeline state machine transitions
