@@ -985,3 +985,4 @@
 [2026-10-02 17:20:04 UTC] [TOKEN:616904c2e4a2a225] Backfill refactor(worker): update cache eviction heuristics
 [2026-10-02 17:20:04 UTC] [TOKEN:6648980eb4b91c6e] Backfill docs(auth): refresh telemetry sequence counter
 [2026-10-02 17:20:04 UTC] [TOKEN:19f489a769084185] Backfill build(auth): compact ledger ring buffer entries
+[2026-10-02 17:20:05 UTC] [TOKEN:813c6437ff6d8397] Backfill docs(cache): update activity telemetry buffer
