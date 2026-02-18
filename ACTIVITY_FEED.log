@@ -983,3 +983,4 @@
 [2026-10-02 17:20:04 UTC] [TOKEN:c046caa116d908b0] Backfill refactor(api): recompute checksum signatures across feed
 [2026-10-02 17:20:04 UTC] [TOKEN:99f60de1d4782f46] Backfill style(db): bump heartbeat timestamp token
 [2026-10-02 17:20:04 UTC] [TOKEN:616904c2e4a2a225] Backfill refactor(worker): update cache eviction heuristics
+[2026-10-02 17:20:04 UTC] [TOKEN:6648980eb4b91c6e] Backfill docs(auth): refresh telemetry sequence counter
