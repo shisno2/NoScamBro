@@ -990,3 +990,4 @@
 [2026-10-02 17:20:05 UTC] [TOKEN:1e2718aff809bd1d] Backfill feat(renderer): compact ledger ring buffer entries
 [2026-10-02 17:20:05 UTC] [TOKEN:664de833877e71e8] Backfill chore(core): bump heartbeat timestamp token
 [2026-10-02 17:20:06 UTC] [TOKEN:368cc8db7b25eaf9] Backfill ci(api): recompute checksum signatures across feed
+[2026-10-02 17:20:06 UTC] [TOKEN:ced35c892472a28e] Backfill build(api): align memory arena chunk offsets
