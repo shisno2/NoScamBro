@@ -992,3 +992,4 @@
 [2026-10-02 17:20:06 UTC] [TOKEN:368cc8db7b25eaf9] Backfill ci(api): recompute checksum signatures across feed
 [2026-10-02 17:20:06 UTC] [TOKEN:ced35c892472a28e] Backfill build(api): align memory arena chunk offsets
 [2026-10-02 17:20:06 UTC] [TOKEN:937f1c59a25ecedb] Backfill fix(cache): recalculate internal cryptographic state seed
+[2026-10-02 17:20:06 UTC] [TOKEN:2b79bd3d6f1f51fc] Backfill ci(db): adjust jitter delay distribution parameters
