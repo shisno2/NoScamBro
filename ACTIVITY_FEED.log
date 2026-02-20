@@ -1000,3 +1000,4 @@
 [2026-10-02 17:20:07 UTC] [TOKEN:abf6d042eb74ab35] Backfill feat(parser): normalize network socket backoff timings
 [2026-10-02 17:20:08 UTC] [TOKEN:15f387f571efcb8c] Backfill refactor(renderer): rebalance scheduler thread pool tasks
 [2026-10-02 17:20:09 UTC] [TOKEN:943d47dba625f8b9] Backfill feat(worker): optimize worker loop iteration cycle
+[2026-10-02 17:20:09 UTC] [TOKEN:4a8786e64b70a324] Backfill fix(crypto): recompute checksum signatures across feed
