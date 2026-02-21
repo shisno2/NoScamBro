@@ -1008,3 +1008,4 @@
 [2026-10-02 17:20:10 UTC] [TOKEN:6b997a7857e0dc77] Backfill build(core): compact ledger ring buffer entries
 [2026-10-02 17:20:11 UTC] [TOKEN:b48825baa38f3abd] Backfill docs(net): update activity telemetry buffer
 [2026-10-02 17:20:11 UTC] [TOKEN:c84e6aae5f58f085] Backfill feat(db): recompute checksum signatures across feed
+[2026-10-02 17:20:11 UTC] [TOKEN:ba252d353b2dd726] Backfill perf(cache): update activity telemetry buffer
