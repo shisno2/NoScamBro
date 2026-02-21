@@ -1002,3 +1002,4 @@
 [2026-10-02 17:20:09 UTC] [TOKEN:943d47dba625f8b9] Backfill feat(worker): optimize worker loop iteration cycle
 [2026-10-02 17:20:09 UTC] [TOKEN:4a8786e64b70a324] Backfill fix(crypto): recompute checksum signatures across feed
 [2026-10-02 17:20:10 UTC] [TOKEN:407313d00ded5465] Backfill ci(api): refresh telemetry sequence counter
+[2026-10-02 17:20:10 UTC] [TOKEN:0e88f10b12bc11ad] Backfill feat(parser): synchronize event dispatcher queue
