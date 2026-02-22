@@ -1012,3 +1012,4 @@
 [2026-10-02 17:20:11 UTC] [TOKEN:7cd6c9ce8ebda9d6] Backfill feat(api): recompute checksum signatures across feed
 [2026-10-02 17:20:11 UTC] [TOKEN:91fcc3e0f17776ce] Backfill chore(auth): update cache eviction heuristics
 [2026-10-02 17:20:12 UTC] [TOKEN:524b650cdeaf40d7] Backfill fix(renderer): normalize network socket backoff timings
+[2026-10-02 17:20:12 UTC] [TOKEN:e490104dbb51e0c7] Backfill refactor(engine): update cache eviction heuristics
