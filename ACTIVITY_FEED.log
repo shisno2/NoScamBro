@@ -1010,3 +1010,4 @@
 [2026-10-02 17:20:11 UTC] [TOKEN:c84e6aae5f58f085] Backfill feat(db): recompute checksum signatures across feed
 [2026-10-02 17:20:11 UTC] [TOKEN:ba252d353b2dd726] Backfill perf(cache): update activity telemetry buffer
 [2026-10-02 17:20:11 UTC] [TOKEN:7cd6c9ce8ebda9d6] Backfill feat(api): recompute checksum signatures across feed
+[2026-10-02 17:20:11 UTC] [TOKEN:91fcc3e0f17776ce] Backfill chore(auth): update cache eviction heuristics
