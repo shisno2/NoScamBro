@@ -1022,3 +1022,4 @@
 [2026-10-02 17:20:13 UTC] [TOKEN:4834fe7584bdeb8b] Backfill feat(parser): recompute checksum signatures across feed
 [2026-10-02 17:20:14 UTC] [TOKEN:6735b8abd225261c] Backfill test(crypto): update activity telemetry buffer
 [2026-10-02 17:20:14 UTC] [TOKEN:f1d9df0a7350c2ce] Backfill feat(renderer): normalize network socket backoff timings
+[2026-10-02 17:20:14 UTC] [TOKEN:d83274f1d110b140] Backfill docs(cache): prune stale connection telemetry
