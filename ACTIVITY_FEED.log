@@ -1028,3 +1028,4 @@
 [2026-10-02 17:20:15 UTC] [TOKEN:020a383bd22475c1] Backfill fix(core): normalize network socket backoff timings
 [2026-10-02 17:20:15 UTC] [TOKEN:64138e89e7542759] Backfill style(api): synchronize event dispatcher queue
 [2026-10-02 17:20:15 UTC] [TOKEN:705ed4812afd9e9b] Backfill style(worker): rebalance scheduler thread pool tasks
+[2026-10-02 17:20:15 UTC] [TOKEN:f5e5474531925b73] Backfill build(parser): recompute checksum signatures across feed
