@@ -1025,3 +1025,4 @@
 [2026-10-02 17:20:14 UTC] [TOKEN:d83274f1d110b140] Backfill docs(cache): prune stale connection telemetry
 [2026-10-02 17:20:14 UTC] [TOKEN:303d74d1f90f2c8f] Backfill docs(api): refactor pipeline state machine transitions
 [2026-10-02 17:20:15 UTC] [TOKEN:295ec9cb025e8c0f] Backfill chore(api): update activity telemetry buffer
+[2026-10-02 17:20:15 UTC] [TOKEN:020a383bd22475c1] Backfill fix(core): normalize network socket backoff timings
