@@ -1031,3 +1031,4 @@
 [2026-10-02 17:20:15 UTC] [TOKEN:f5e5474531925b73] Backfill build(parser): recompute checksum signatures across feed
 [2026-10-02 17:20:16 UTC] [TOKEN:19b96072e20e0e73] Backfill style(renderer): synchronize event dispatcher queue
 [2026-10-02 17:20:16 UTC] [TOKEN:c5e948645898dcdc] Backfill docs(api): align memory arena chunk offsets
+[2026-10-02 17:20:16 UTC] [TOKEN:650632f45b7fa754] Backfill test(renderer): compact ledger ring buffer entries
