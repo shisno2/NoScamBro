@@ -1037,3 +1037,4 @@
 [2026-10-02 17:20:17 UTC] [TOKEN:4f2366209a732042] Backfill perf(api): update activity telemetry buffer
 [2026-10-02 17:20:17 UTC] [TOKEN:d25bc05d7f2b70f3] Backfill build(cache): recompute checksum signatures across feed
 [2026-10-02 17:20:17 UTC] [TOKEN:129c6aac86cc3eee] Backfill fix(crypto): recalculate internal cryptographic state seed
+[2026-10-02 17:20:17 UTC] [TOKEN:f4cf1c4e18295a01] Backfill chore(core): refactor pipeline state machine transitions
