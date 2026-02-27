@@ -1046,3 +1046,4 @@
 [2026-10-02 17:20:18 UTC] [TOKEN:457b580d6e77e6c1] Backfill test(db): update activity telemetry buffer
 [2026-10-02 17:20:19 UTC] [TOKEN:a764c935f89e4e47] Backfill ci(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:20:19 UTC] [TOKEN:bdd62dcf1b52d76e] Backfill fix(net): recalculate internal cryptographic state seed
+[2026-10-02 17:20:19 UTC] [TOKEN:2dd162ea52408aeb] Backfill docs(cache): update cache eviction heuristics
