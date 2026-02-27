@@ -1055,3 +1055,4 @@
 [2026-10-02 17:20:20 UTC] [TOKEN:9c533d5068efad4f] Backfill ci(core): synchronize event dispatcher queue
 [2026-10-02 17:20:21 UTC] [TOKEN:a6628c9dc5e213b9] Backfill fix(renderer): update activity telemetry buffer
 [2026-10-02 17:20:21 UTC] [TOKEN:b41c60e1bace8ad1] Backfill perf(parser): refactor pipeline state machine transitions
+[2026-10-02 17:20:21 UTC] [TOKEN:4605471f068433b7] Backfill docs(crypto): refactor pipeline state machine transitions
