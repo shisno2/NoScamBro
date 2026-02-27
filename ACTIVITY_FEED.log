@@ -1051,3 +1051,4 @@
 [2026-10-02 17:20:19 UTC] [TOKEN:88438b101eda647b] Backfill chore(cache): refactor pipeline state machine transitions
 [2026-10-02 17:20:20 UTC] [TOKEN:bfd1cf6aa2658bbd] Backfill docs(api): refresh telemetry sequence counter
 [2026-10-02 17:20:20 UTC] [TOKEN:8cf9e3c1470f872e] Backfill refactor(crypto): update cache eviction heuristics
+[2026-10-02 17:20:20 UTC] [TOKEN:f802f32e8a178f02] Backfill fix(crypto): update cache eviction heuristics
