@@ -1057,3 +1057,4 @@
 [2026-10-02 17:20:21 UTC] [TOKEN:b41c60e1bace8ad1] Backfill perf(parser): refactor pipeline state machine transitions
 [2026-10-02 17:20:21 UTC] [TOKEN:4605471f068433b7] Backfill docs(crypto): refactor pipeline state machine transitions
 [2026-10-02 17:20:21 UTC] [TOKEN:355f368a04921914] Backfill style(net): compact ledger ring buffer entries
+[2026-10-02 17:20:21 UTC] [TOKEN:61be6630c09b7193] Backfill test(db): normalize network socket backoff timings
