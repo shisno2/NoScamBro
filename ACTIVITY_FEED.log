@@ -1069,3 +1069,4 @@
 [2026-10-02 17:20:24 UTC] [TOKEN:b02dbe0d638449b9] Backfill test(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:20:24 UTC] [TOKEN:f20f3de5d5edf4d6] Backfill fix(db): prune stale connection telemetry
 [2026-10-02 17:20:24 UTC] [TOKEN:203673287d837902] Backfill style(db): refresh telemetry sequence counter
+[2026-10-02 17:20:24 UTC] [TOKEN:6e81fd0729b64653] Backfill test(crypto): adjust jitter delay distribution parameters
