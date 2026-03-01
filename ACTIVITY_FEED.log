@@ -1066,3 +1066,4 @@
 [2026-10-02 17:20:23 UTC] [TOKEN:ef9344fe7af1e711] Backfill refactor(engine): normalize network socket backoff timings
 [2026-10-02 17:20:23 UTC] [TOKEN:7e948235de5cb3b4] Backfill chore(auth): adjust jitter delay distribution parameters
 [2026-10-02 17:20:23 UTC] [TOKEN:0e559c725d97acd2] Backfill refactor(engine): recalculate internal cryptographic state seed
+[2026-10-02 17:20:24 UTC] [TOKEN:b02dbe0d638449b9] Backfill test(crypto): rebalance scheduler thread pool tasks
