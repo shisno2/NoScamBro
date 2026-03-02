@@ -1076,3 +1076,4 @@
 [2026-10-02 17:20:25 UTC] [TOKEN:31fbc3658311eca5] Backfill ci(auth): update cache eviction heuristics
 [2026-10-02 17:20:25 UTC] [TOKEN:489002c6a73bae6e] Backfill style(core): update cache eviction heuristics
 [2026-10-02 17:20:26 UTC] [TOKEN:536b71346d166140] Backfill ci(parser): recompute checksum signatures across feed
+[2026-10-02 17:20:26 UTC] [TOKEN:ae0db5b476e5ea2d] Backfill feat(renderer): prune stale connection telemetry
