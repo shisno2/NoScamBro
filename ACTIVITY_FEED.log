@@ -1092,3 +1092,4 @@
 [2026-10-02 17:20:28 UTC] [TOKEN:c1eb9fc291a06ca4] Backfill perf(db): update activity telemetry buffer
 [2026-10-02 17:20:29 UTC] [TOKEN:22b04571eaafa0ba] Backfill build(engine): refresh telemetry sequence counter
 [2026-10-02 17:20:29 UTC] [TOKEN:ddd053aa58369054] Backfill style(db): normalize network socket backoff timings
+[2026-10-02 17:20:29 UTC] [TOKEN:f39c454ae9b7b22e] Backfill ci(core): prune stale connection telemetry
