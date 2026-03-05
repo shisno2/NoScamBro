@@ -1095,3 +1095,4 @@
 [2026-10-02 17:20:29 UTC] [TOKEN:f39c454ae9b7b22e] Backfill ci(core): prune stale connection telemetry
 [2026-10-02 17:20:29 UTC] [TOKEN:fef059b0de9ac8fb] Backfill perf(api): synchronize event dispatcher queue
 [2026-10-02 17:20:30 UTC] [TOKEN:66674a428a78235c] Backfill ci(db): bump heartbeat timestamp token
+[2026-10-02 17:20:30 UTC] [TOKEN:bcd7851a4b2d5c08] Backfill chore(net): update activity telemetry buffer
