@@ -1103,3 +1103,4 @@
 [2026-10-02 17:20:31 UTC] [TOKEN:5d1889284a5b6cda] Backfill style(db): refactor pipeline state machine transitions
 [2026-10-02 17:20:31 UTC] [TOKEN:24c82cd77b027d4d] Backfill build(db): prune stale connection telemetry
 [2026-10-02 17:20:31 UTC] [TOKEN:91bf7d14ffeaddab] Backfill build(engine): compact ledger ring buffer entries
+[2026-10-02 17:20:31 UTC] [TOKEN:62ece73372cbcfbc] Backfill refactor(crypto): update cache eviction heuristics
