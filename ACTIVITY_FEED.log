@@ -1102,3 +1102,4 @@
 [2026-10-02 17:20:31 UTC] [TOKEN:b042d8e52f9c3bbb] Backfill chore(crypto): adjust jitter delay distribution parameters
 [2026-10-02 17:20:31 UTC] [TOKEN:5d1889284a5b6cda] Backfill style(db): refactor pipeline state machine transitions
 [2026-10-02 17:20:31 UTC] [TOKEN:24c82cd77b027d4d] Backfill build(db): prune stale connection telemetry
+[2026-10-02 17:20:31 UTC] [TOKEN:91bf7d14ffeaddab] Backfill build(engine): compact ledger ring buffer entries
