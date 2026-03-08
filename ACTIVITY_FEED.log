@@ -1116,3 +1116,4 @@
 [2026-10-02 17:20:33 UTC] [TOKEN:b07f665fb0428d5c] Backfill perf(crypto): normalize network socket backoff timings
 [2026-10-02 17:20:34 UTC] [TOKEN:9b91c69cc9086a00] Backfill style(renderer): optimize worker loop iteration cycle
 [2026-10-02 17:20:34 UTC] [TOKEN:295e18fbbc3a34f1] Backfill refactor(worker): synchronize event dispatcher queue
+[2026-10-02 17:20:34 UTC] [TOKEN:93108d70000cdbb8] Backfill docs(parser): prune stale connection telemetry
