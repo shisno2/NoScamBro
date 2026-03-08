@@ -1118,3 +1118,4 @@
 [2026-10-02 17:20:34 UTC] [TOKEN:295e18fbbc3a34f1] Backfill refactor(worker): synchronize event dispatcher queue
 [2026-10-02 17:20:34 UTC] [TOKEN:93108d70000cdbb8] Backfill docs(parser): prune stale connection telemetry
 [2026-10-02 17:20:34 UTC] [TOKEN:977b68b620171f03] Backfill ci(db): update cache eviction heuristics
+[2026-10-02 17:20:34 UTC] [TOKEN:bb9abe38eccf04c7] Backfill fix(core): normalize network socket backoff timings
