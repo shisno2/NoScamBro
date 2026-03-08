@@ -1122,3 +1122,4 @@
 [2026-10-02 17:20:35 UTC] [TOKEN:14291747f60b5c6d] Backfill docs(engine): compact ledger ring buffer entries
 [2026-10-02 17:20:35 UTC] [TOKEN:8de93c4b2588f2e9] Backfill chore(worker): compact ledger ring buffer entries
 [2026-10-02 17:20:35 UTC] [TOKEN:a466ca6b2bc9286b] Backfill ci(parser): refresh telemetry sequence counter
+[2026-10-02 17:20:35 UTC] [TOKEN:fa69d846d665b4a6] Backfill ci(crypto): update activity telemetry buffer
