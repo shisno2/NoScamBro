@@ -1146,3 +1146,4 @@
 [2026-10-02 17:20:40 UTC] [TOKEN:5ea3364a88ba73e5] Backfill perf(auth): recalculate internal cryptographic state seed
 [2026-10-02 17:20:40 UTC] [TOKEN:621cbe35f3ece80e] Backfill chore(net): synchronize event dispatcher queue
 [2026-10-02 17:20:40 UTC] [TOKEN:fbdf19c5216be0f3] Backfill fix(parser): refactor pipeline state machine transitions
+[2026-10-02 17:20:40 UTC] [TOKEN:2385df18209a7ba9] Backfill test(parser): recompute checksum signatures across feed
