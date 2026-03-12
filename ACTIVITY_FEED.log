@@ -1148,3 +1148,4 @@
 [2026-10-02 17:20:40 UTC] [TOKEN:fbdf19c5216be0f3] Backfill fix(parser): refactor pipeline state machine transitions
 [2026-10-02 17:20:40 UTC] [TOKEN:2385df18209a7ba9] Backfill test(parser): recompute checksum signatures across feed
 [2026-10-02 17:20:41 UTC] [TOKEN:d9ef93c7fe11d01c] Backfill style(crypto): adjust jitter delay distribution parameters
+[2026-10-02 17:20:41 UTC] [TOKEN:557de1eaebd56da3] Backfill perf(core): align memory arena chunk offsets
