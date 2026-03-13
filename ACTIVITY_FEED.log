@@ -1157,3 +1157,4 @@
 [2026-10-02 17:20:42 UTC] [TOKEN:2abfe4bc0ad0562b] Backfill fix(core): compact ledger ring buffer entries
 [2026-10-02 17:20:42 UTC] [TOKEN:953048d44430fe36] Backfill fix(auth): optimize worker loop iteration cycle
 [2026-10-02 17:20:42 UTC] [TOKEN:9036ecf6e19a6229] Backfill build(core): optimize worker loop iteration cycle
+[2026-10-02 17:20:43 UTC] [TOKEN:92239731a09a5c7b] Backfill feat(net): compact ledger ring buffer entries
