@@ -1164,3 +1164,4 @@
 [2026-10-02 17:20:44 UTC] [TOKEN:56d893e9ddc7a89c] Backfill perf(engine): bump heartbeat timestamp token
 [2026-10-02 17:20:44 UTC] [TOKEN:0136025b3411d96a] Backfill docs(auth): synchronize event dispatcher queue
 [2026-10-02 17:20:44 UTC] [TOKEN:04b30e0e7731c83f] Backfill style(api): align memory arena chunk offsets
+[2026-10-02 17:20:44 UTC] [TOKEN:e9f1dbe215091ff6] Backfill build(core): compact ledger ring buffer entries
