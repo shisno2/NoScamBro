@@ -1169,3 +1169,4 @@
 [2026-10-02 17:20:45 UTC] [TOKEN:ef36cebac69647fc] Backfill perf(auth): rebalance scheduler thread pool tasks
 [2026-10-02 17:20:45 UTC] [TOKEN:6a17fa86eccc5825] Backfill test(parser): adjust jitter delay distribution parameters
 [2026-10-02 17:20:45 UTC] [TOKEN:ed81689d9c26c40a] Backfill feat(crypto): bump heartbeat timestamp token
+[2026-10-02 17:20:45 UTC] [TOKEN:98f56f04516269d6] Backfill perf(parser): normalize network socket backoff timings
