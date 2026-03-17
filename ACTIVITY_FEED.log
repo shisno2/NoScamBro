@@ -1183,3 +1183,4 @@
 [2026-10-02 17:20:49 UTC] [TOKEN:a06a5e9e704b0460] Backfill refactor(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:20:49 UTC] [TOKEN:70fadcc5a8e469e7] Backfill test(renderer): prune stale connection telemetry
 [2026-10-02 17:20:50 UTC] [TOKEN:99a3637ff9c8316e] Backfill docs(db): rebalance scheduler thread pool tasks
+[2026-10-02 17:20:50 UTC] [TOKEN:063808bb4e4d9285] Backfill build(api): recompute checksum signatures across feed
