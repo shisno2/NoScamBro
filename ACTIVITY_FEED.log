@@ -1179,3 +1179,4 @@
 [2026-10-02 17:20:47 UTC] [TOKEN:9a6ed2d240b626f8] Backfill refactor(parser): update activity telemetry buffer
 [2026-10-02 17:20:48 UTC] [TOKEN:9619eca2cbfefb5c] Backfill perf(parser): rebalance scheduler thread pool tasks
 [2026-10-02 17:20:49 UTC] [TOKEN:4b34e00d9be3b95c] Backfill fix(parser): prune stale connection telemetry
+[2026-10-02 17:20:49 UTC] [TOKEN:d8cecf1ec1a6c83e] Backfill fix(cache): recompute checksum signatures across feed
