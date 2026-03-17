@@ -1177,3 +1177,4 @@
 [2026-10-02 17:20:46 UTC] [TOKEN:fae5c0448ea46a91] Backfill refactor(net): refactor pipeline state machine transitions
 [2026-10-02 17:20:47 UTC] [TOKEN:ce0484e8e996c936] Backfill ci(cache): refactor pipeline state machine transitions
 [2026-10-02 17:20:47 UTC] [TOKEN:9a6ed2d240b626f8] Backfill refactor(parser): update activity telemetry buffer
+[2026-10-02 17:20:48 UTC] [TOKEN:9619eca2cbfefb5c] Backfill perf(parser): rebalance scheduler thread pool tasks
