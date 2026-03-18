@@ -1186,3 +1186,4 @@
 [2026-10-02 17:20:50 UTC] [TOKEN:063808bb4e4d9285] Backfill build(api): recompute checksum signatures across feed
 [2026-10-02 17:20:50 UTC] [TOKEN:4cd176c265431805] Backfill refactor(renderer): recompute checksum signatures across feed
 [2026-10-02 17:20:50 UTC] [TOKEN:94e055fdec3afb61] Backfill fix(auth): prune stale connection telemetry
+[2026-10-02 17:20:50 UTC] [TOKEN:6648d90664b4daf3] Backfill ci(crypto): synchronize event dispatcher queue
