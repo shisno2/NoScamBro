@@ -1199,3 +1199,4 @@
 [2026-10-02 17:20:53 UTC] [TOKEN:a351de45a00917c9] Backfill perf(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:20:53 UTC] [TOKEN:c2f2428ddabd2f82] Backfill style(cache): align memory arena chunk offsets
 [2026-10-02 17:20:53 UTC] [TOKEN:10c3b4ae93a99f78] Backfill ci(core): recompute checksum signatures across feed
+[2026-10-02 17:20:53 UTC] [TOKEN:e456e09dac9accb7] Backfill docs(api): update cache eviction heuristics
