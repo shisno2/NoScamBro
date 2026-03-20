@@ -1203,3 +1203,4 @@
 [2026-10-02 17:20:53 UTC] [TOKEN:9f2c6fd9cf8c6937] Backfill build(core): update cache eviction heuristics
 [2026-10-02 17:20:54 UTC] [TOKEN:977fe1edc90c5e63] Backfill feat(engine): recalculate internal cryptographic state seed
 [2026-10-02 17:20:54 UTC] [TOKEN:0423314daa161cfd] Backfill build(engine): update activity telemetry buffer
+[2026-10-02 17:20:54 UTC] [TOKEN:278250ac9e48498b] Backfill style(auth): prune stale connection telemetry
