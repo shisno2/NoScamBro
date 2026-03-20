@@ -1204,3 +1204,4 @@
 [2026-10-02 17:20:54 UTC] [TOKEN:977fe1edc90c5e63] Backfill feat(engine): recalculate internal cryptographic state seed
 [2026-10-02 17:20:54 UTC] [TOKEN:0423314daa161cfd] Backfill build(engine): update activity telemetry buffer
 [2026-10-02 17:20:54 UTC] [TOKEN:278250ac9e48498b] Backfill style(auth): prune stale connection telemetry
+[2026-10-02 17:20:54 UTC] [TOKEN:25eaf623ea35f001] Backfill fix(net): adjust jitter delay distribution parameters
