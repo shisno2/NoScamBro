@@ -1210,3 +1210,4 @@
 [2026-10-02 17:20:55 UTC] [TOKEN:c1b3b3b06c587524] Backfill perf(worker): update activity telemetry buffer
 [2026-10-02 17:20:55 UTC] [TOKEN:e4d41bcfc109c3a9] Backfill ci(db): prune stale connection telemetry
 [2026-10-02 17:20:55 UTC] [TOKEN:0625e49b8f328b2e] Backfill perf(parser): update activity telemetry buffer
+[2026-10-02 17:20:56 UTC] [TOKEN:17b870a9bd40ce72] Backfill perf(core): synchronize event dispatcher queue
