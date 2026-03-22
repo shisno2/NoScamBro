@@ -1216,3 +1216,4 @@
 [2026-10-02 17:20:56 UTC] [TOKEN:28771b88ae81103f] Backfill refactor(renderer): synchronize event dispatcher queue
 [2026-10-02 17:20:57 UTC] [TOKEN:eddd77ebef803bb2] Backfill test(core): recalculate internal cryptographic state seed
 [2026-10-02 17:20:57 UTC] [TOKEN:3428264a8f12af2b] Backfill fix(api): rebalance scheduler thread pool tasks
+[2026-10-02 17:20:57 UTC] [TOKEN:434aedd0125eab00] Backfill test(cache): compact ledger ring buffer entries
