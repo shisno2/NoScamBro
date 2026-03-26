@@ -1247,3 +1247,4 @@
 [2026-10-02 17:21:03 UTC] [TOKEN:bf87df485db473d5] Backfill test(engine): refactor pipeline state machine transitions
 [2026-10-02 17:21:03 UTC] [TOKEN:bb99a878e9df3112] Backfill fix(core): normalize network socket backoff timings
 [2026-10-02 17:21:03 UTC] [TOKEN:b80d2ea1f8d6ee4d] Backfill test(engine): recompute checksum signatures across feed
+[2026-10-02 17:21:04 UTC] [TOKEN:120028e8e9edeb34] Backfill build(api): prune stale connection telemetry
