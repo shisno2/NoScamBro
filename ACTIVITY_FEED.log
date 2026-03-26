@@ -1245,3 +1245,4 @@
 [2026-10-02 17:21:02 UTC] [TOKEN:c896462ab8f0f20c] Backfill ci(crypto): align memory arena chunk offsets
 [2026-10-02 17:21:02 UTC] [TOKEN:4b50b46585c257a2] Backfill perf(worker): bump heartbeat timestamp token
 [2026-10-02 17:21:03 UTC] [TOKEN:bf87df485db473d5] Backfill test(engine): refactor pipeline state machine transitions
+[2026-10-02 17:21:03 UTC] [TOKEN:bb99a878e9df3112] Backfill fix(core): normalize network socket backoff timings
