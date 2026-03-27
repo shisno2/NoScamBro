@@ -1255,3 +1255,4 @@
 [2026-10-02 17:21:05 UTC] [TOKEN:fa6cbce44e0e359e] Backfill ci(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:05 UTC] [TOKEN:1c32ad975e06c0da] Backfill feat(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:05 UTC] [TOKEN:3881f151df6d7b82] Backfill feat(engine): recompute checksum signatures across feed
+[2026-10-02 17:21:06 UTC] [TOKEN:2de1c132d9f6c87d] Backfill style(core): normalize network socket backoff timings
