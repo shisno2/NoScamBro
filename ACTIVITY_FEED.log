@@ -1253,3 +1253,4 @@
 [2026-10-02 17:21:05 UTC] [TOKEN:0b86dc486d1cbb0f] Backfill chore(api): recompute checksum signatures across feed
 [2026-10-02 17:21:05 UTC] [TOKEN:d0291a2bb485800e] Backfill perf(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:21:05 UTC] [TOKEN:fa6cbce44e0e359e] Backfill ci(crypto): rebalance scheduler thread pool tasks
+[2026-10-02 17:21:05 UTC] [TOKEN:1c32ad975e06c0da] Backfill feat(worker): rebalance scheduler thread pool tasks
