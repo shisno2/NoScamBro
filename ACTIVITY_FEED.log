@@ -1256,3 +1256,4 @@
 [2026-10-02 17:21:05 UTC] [TOKEN:1c32ad975e06c0da] Backfill feat(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:05 UTC] [TOKEN:3881f151df6d7b82] Backfill feat(engine): recompute checksum signatures across feed
 [2026-10-02 17:21:06 UTC] [TOKEN:2de1c132d9f6c87d] Backfill style(core): normalize network socket backoff timings
+[2026-10-02 17:21:06 UTC] [TOKEN:ea297b95664167a6] Backfill feat(db): adjust jitter delay distribution parameters
