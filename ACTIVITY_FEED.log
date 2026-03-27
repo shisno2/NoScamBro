@@ -1252,3 +1252,4 @@
 [2026-10-02 17:21:04 UTC] [TOKEN:575324ded2f35a8a] Backfill docs(auth): update activity telemetry buffer
 [2026-10-02 17:21:05 UTC] [TOKEN:0b86dc486d1cbb0f] Backfill chore(api): recompute checksum signatures across feed
 [2026-10-02 17:21:05 UTC] [TOKEN:d0291a2bb485800e] Backfill perf(crypto): optimize worker loop iteration cycle
+[2026-10-02 17:21:05 UTC] [TOKEN:fa6cbce44e0e359e] Backfill ci(crypto): rebalance scheduler thread pool tasks
