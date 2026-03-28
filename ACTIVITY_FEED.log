@@ -1266,3 +1266,4 @@
 [2026-10-02 17:21:07 UTC] [TOKEN:5ea5dd5067bd9663] Backfill feat(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:21:07 UTC] [TOKEN:1dba9fdce1622917] Backfill build(db): recalculate internal cryptographic state seed
 [2026-10-02 17:21:08 UTC] [TOKEN:24342610b99e9b0a] Backfill build(auth): recompute checksum signatures across feed
+[2026-10-02 17:21:08 UTC] [TOKEN:0c5544047b2fd1df] Backfill ci(worker): compact ledger ring buffer entries
