@@ -1271,3 +1271,4 @@
 [2026-10-02 17:21:08 UTC] [TOKEN:94dbf559c84bf7c9] Backfill refactor(auth): refresh telemetry sequence counter
 [2026-10-02 17:21:08 UTC] [TOKEN:18f3dfc3208cae41] Backfill perf(db): refactor pipeline state machine transitions
 [2026-10-02 17:21:09 UTC] [TOKEN:1e0487c4dc1fd0a6] Backfill test(db): recompute checksum signatures across feed
+[2026-10-02 17:21:09 UTC] [TOKEN:d6ebd4b7c444d2f5] Backfill docs(api): refresh telemetry sequence counter
