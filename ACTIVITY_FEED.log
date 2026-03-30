@@ -1278,3 +1278,4 @@
 [2026-10-02 17:21:10 UTC] [TOKEN:f8a058884e821593] Backfill style(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:21:10 UTC] [TOKEN:a139cae53e25fb4a] Backfill perf(crypto): adjust jitter delay distribution parameters
 [2026-10-02 17:21:10 UTC] [TOKEN:4f546db026433b1d] Backfill style(api): recompute checksum signatures across feed
+[2026-10-02 17:21:10 UTC] [TOKEN:02cb0f4237d41620] Backfill refactor(core): prune stale connection telemetry
