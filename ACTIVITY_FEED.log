@@ -1281,3 +1281,4 @@
 [2026-10-02 17:21:10 UTC] [TOKEN:02cb0f4237d41620] Backfill refactor(core): prune stale connection telemetry
 [2026-10-02 17:21:11 UTC] [TOKEN:eb70ca1d1cf0ff97] Backfill build(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:21:11 UTC] [TOKEN:298bb06cd06d7cbc] Backfill feat(api): prune stale connection telemetry
+[2026-10-02 17:21:11 UTC] [TOKEN:ab0d57eff5af1dbb] Backfill ci(net): normalize network socket backoff timings
