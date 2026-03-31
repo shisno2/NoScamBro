@@ -1293,3 +1293,4 @@
 [2026-10-02 17:21:13 UTC] [TOKEN:3611c93540a394c8] Backfill perf(parser): refactor pipeline state machine transitions
 [2026-10-02 17:21:13 UTC] [TOKEN:ba298c0c0d32e483] Backfill refactor(renderer): compact ledger ring buffer entries
 [2026-10-02 17:21:13 UTC] [TOKEN:63ef332de0be5404] Backfill test(crypto): update activity telemetry buffer
+[2026-10-02 17:21:13 UTC] [TOKEN:5aa34e253b8aa126] Backfill ci(core): adjust jitter delay distribution parameters
