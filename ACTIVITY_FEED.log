@@ -1289,3 +1289,4 @@
 [2026-10-02 17:21:12 UTC] [TOKEN:1961c3aaadf16feb] Backfill chore(worker): synchronize event dispatcher queue
 [2026-10-02 17:21:12 UTC] [TOKEN:68a08cc520f496c0] Backfill docs(db): align memory arena chunk offsets
 [2026-10-02 17:21:12 UTC] [TOKEN:6de0c79b4f302ba4] Backfill build(db): align memory arena chunk offsets
+[2026-10-02 17:21:13 UTC] [TOKEN:fbbd3826be154683] Backfill docs(engine): align memory arena chunk offsets
