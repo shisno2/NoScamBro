@@ -1300,3 +1300,4 @@
 [2026-10-02 17:21:14 UTC] [TOKEN:9cea06ac4ea6d9ae] Backfill build(api): recompute checksum signatures across feed
 [2026-10-02 17:21:14 UTC] [TOKEN:39bea4d8381a3719] Backfill feat(core): refresh telemetry sequence counter
 [2026-10-02 17:21:15 UTC] [TOKEN:e6354d4a3ed391cb] Backfill build(parser): adjust jitter delay distribution parameters
+[2026-10-02 17:21:15 UTC] [TOKEN:d3f201cb304d22e9] Backfill docs(net): refresh telemetry sequence counter
