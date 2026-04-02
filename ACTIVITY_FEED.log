@@ -1305,3 +1305,4 @@
 [2026-10-02 17:21:15 UTC] [TOKEN:73971b928b10762d] Backfill docs(core): normalize network socket backoff timings
 [2026-10-02 17:21:15 UTC] [TOKEN:af75ab6e4c0ef043] Backfill docs(core): bump heartbeat timestamp token
 [2026-10-02 17:21:16 UTC] [TOKEN:19e452cf730f20c9] Backfill fix(core): compact ledger ring buffer entries
+[2026-10-02 17:21:16 UTC] [TOKEN:27f7b18dd8614969] Backfill build(core): normalize network socket backoff timings
