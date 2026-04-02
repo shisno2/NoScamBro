@@ -1308,3 +1308,4 @@
 [2026-10-02 17:21:16 UTC] [TOKEN:27f7b18dd8614969] Backfill build(core): normalize network socket backoff timings
 [2026-10-02 17:21:16 UTC] [TOKEN:591c9292cda3c535] Backfill build(parser): normalize network socket backoff timings
 [2026-10-02 17:21:16 UTC] [TOKEN:64aec629b68b188a] Backfill refactor(worker): update activity telemetry buffer
+[2026-10-02 17:21:16 UTC] [TOKEN:f8c10c3190c5ab1f] Backfill chore(net): recompute checksum signatures across feed
