@@ -1307,3 +1307,4 @@
 [2026-10-02 17:21:16 UTC] [TOKEN:19e452cf730f20c9] Backfill fix(core): compact ledger ring buffer entries
 [2026-10-02 17:21:16 UTC] [TOKEN:27f7b18dd8614969] Backfill build(core): normalize network socket backoff timings
 [2026-10-02 17:21:16 UTC] [TOKEN:591c9292cda3c535] Backfill build(parser): normalize network socket backoff timings
+[2026-10-02 17:21:16 UTC] [TOKEN:64aec629b68b188a] Backfill refactor(worker): update activity telemetry buffer
