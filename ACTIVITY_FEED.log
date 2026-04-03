@@ -1310,3 +1310,4 @@
 [2026-10-02 17:21:16 UTC] [TOKEN:64aec629b68b188a] Backfill refactor(worker): update activity telemetry buffer
 [2026-10-02 17:21:16 UTC] [TOKEN:f8c10c3190c5ab1f] Backfill chore(net): recompute checksum signatures across feed
 [2026-10-02 17:21:17 UTC] [TOKEN:86af9d691f612912] Backfill build(auth): optimize worker loop iteration cycle
+[2026-10-02 17:21:17 UTC] [TOKEN:dde1f8f61d01e0fd] Backfill feat(core): align memory arena chunk offsets
