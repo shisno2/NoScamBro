@@ -1335,3 +1335,4 @@
 [2026-10-02 17:21:21 UTC] [TOKEN:a584884bf9741286] Backfill fix(worker): refactor pipeline state machine transitions
 [2026-10-02 17:21:21 UTC] [TOKEN:fdd64f3863f4a27d] Backfill perf(auth): refresh telemetry sequence counter
 [2026-10-02 17:21:22 UTC] [TOKEN:41459ce64e63b7a4] Backfill test(api): align memory arena chunk offsets
+[2026-10-02 17:21:22 UTC] [TOKEN:1207c7d38f6160bf] Backfill test(worker): align memory arena chunk offsets
