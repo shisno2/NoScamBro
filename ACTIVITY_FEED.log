@@ -1354,3 +1354,4 @@
 [2026-10-02 17:21:26 UTC] [TOKEN:1e91afe09565e3b4] Backfill chore(auth): compact ledger ring buffer entries
 [2026-10-02 17:21:26 UTC] [TOKEN:2f8e2ac998846891] Backfill chore(renderer): recalculate internal cryptographic state seed
 [2026-10-02 17:21:26 UTC] [TOKEN:880ea62eee5d6a8d] Backfill build(net): compact ledger ring buffer entries
+[2026-10-02 17:21:27 UTC] [TOKEN:87b2e4ea557d1824] Backfill style(engine): rebalance scheduler thread pool tasks
