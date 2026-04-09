@@ -1350,3 +1350,4 @@
 [2026-10-02 17:21:25 UTC] [TOKEN:56c3198df59363e9] Backfill fix(api): normalize network socket backoff timings
 [2026-10-02 17:21:25 UTC] [TOKEN:cfdd81f54d5c86b6] Backfill fix(core): refactor pipeline state machine transitions
 [2026-10-02 17:21:26 UTC] [TOKEN:4f3c0ba9955cb7c3] Backfill ci(parser): recompute checksum signatures across feed
+[2026-10-02 17:21:26 UTC] [TOKEN:046b3c53e561e33c] Backfill perf(worker): refactor pipeline state machine transitions
