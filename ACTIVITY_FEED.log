@@ -1351,3 +1351,4 @@
 [2026-10-02 17:21:25 UTC] [TOKEN:cfdd81f54d5c86b6] Backfill fix(core): refactor pipeline state machine transitions
 [2026-10-02 17:21:26 UTC] [TOKEN:4f3c0ba9955cb7c3] Backfill ci(parser): recompute checksum signatures across feed
 [2026-10-02 17:21:26 UTC] [TOKEN:046b3c53e561e33c] Backfill perf(worker): refactor pipeline state machine transitions
+[2026-10-02 17:21:26 UTC] [TOKEN:1e91afe09565e3b4] Backfill chore(auth): compact ledger ring buffer entries
