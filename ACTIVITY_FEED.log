@@ -1359,3 +1359,4 @@
 [2026-10-02 17:21:27 UTC] [TOKEN:5a76dac9542caa7a] Backfill build(auth): normalize network socket backoff timings
 [2026-10-02 17:21:27 UTC] [TOKEN:7fbe76cbfdef2864] Backfill ci(cache): update activity telemetry buffer
 [2026-10-02 17:21:28 UTC] [TOKEN:96e460acbeef5c01] Backfill chore(cache): align memory arena chunk offsets
+[2026-10-02 17:21:28 UTC] [TOKEN:094d7882c8617387] Backfill chore(engine): prune stale connection telemetry
