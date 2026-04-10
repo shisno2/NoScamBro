@@ -1360,3 +1360,4 @@
 [2026-10-02 17:21:27 UTC] [TOKEN:7fbe76cbfdef2864] Backfill ci(cache): update activity telemetry buffer
 [2026-10-02 17:21:28 UTC] [TOKEN:96e460acbeef5c01] Backfill chore(cache): align memory arena chunk offsets
 [2026-10-02 17:21:28 UTC] [TOKEN:094d7882c8617387] Backfill chore(engine): prune stale connection telemetry
+[2026-10-02 17:21:28 UTC] [TOKEN:6d15cf17d86f4a3a] Backfill style(net): rebalance scheduler thread pool tasks
