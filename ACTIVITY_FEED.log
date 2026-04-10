@@ -1361,3 +1361,4 @@
 [2026-10-02 17:21:28 UTC] [TOKEN:96e460acbeef5c01] Backfill chore(cache): align memory arena chunk offsets
 [2026-10-02 17:21:28 UTC] [TOKEN:094d7882c8617387] Backfill chore(engine): prune stale connection telemetry
 [2026-10-02 17:21:28 UTC] [TOKEN:6d15cf17d86f4a3a] Backfill style(net): rebalance scheduler thread pool tasks
+[2026-10-02 17:21:28 UTC] [TOKEN:f4c3b0e8688dbb55] Backfill build(api): rebalance scheduler thread pool tasks
