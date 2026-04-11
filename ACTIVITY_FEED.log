@@ -1367,3 +1367,4 @@
 [2026-10-02 17:21:29 UTC] [TOKEN:92efdabd73ae58f0] Backfill refactor(parser): refresh telemetry sequence counter
 [2026-10-02 17:21:29 UTC] [TOKEN:24a7dc5a022aec0a] Backfill refactor(api): prune stale connection telemetry
 [2026-10-02 17:21:29 UTC] [TOKEN:843f9423409613d0] Backfill feat(engine): recompute checksum signatures across feed
+[2026-10-02 17:21:29 UTC] [TOKEN:d083f441e69b56ab] Backfill ci(renderer): prune stale connection telemetry
