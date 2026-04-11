@@ -1365,3 +1365,4 @@
 [2026-10-02 17:21:28 UTC] [TOKEN:e9a7c6afd4644ed1] Backfill style(cache): update activity telemetry buffer
 [2026-10-02 17:21:29 UTC] [TOKEN:93e1dd63ee1f4f0c] Backfill test(cache): synchronize event dispatcher queue
 [2026-10-02 17:21:29 UTC] [TOKEN:92efdabd73ae58f0] Backfill refactor(parser): refresh telemetry sequence counter
+[2026-10-02 17:21:29 UTC] [TOKEN:24a7dc5a022aec0a] Backfill refactor(api): prune stale connection telemetry
