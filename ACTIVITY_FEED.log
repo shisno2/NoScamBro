@@ -1363,3 +1363,4 @@
 [2026-10-02 17:21:28 UTC] [TOKEN:6d15cf17d86f4a3a] Backfill style(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:28 UTC] [TOKEN:f4c3b0e8688dbb55] Backfill build(api): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:28 UTC] [TOKEN:e9a7c6afd4644ed1] Backfill style(cache): update activity telemetry buffer
+[2026-10-02 17:21:29 UTC] [TOKEN:93e1dd63ee1f4f0c] Backfill test(cache): synchronize event dispatcher queue
