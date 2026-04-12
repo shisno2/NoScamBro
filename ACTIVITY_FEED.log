@@ -1377,3 +1377,4 @@
 [2026-10-02 17:21:31 UTC] [TOKEN:b2ed78b5581c4d85] Backfill chore(db): adjust jitter delay distribution parameters
 [2026-10-02 17:21:31 UTC] [TOKEN:b2ef976185344860] Backfill docs(renderer): normalize network socket backoff timings
 [2026-10-02 17:21:31 UTC] [TOKEN:1163b18099a5df11] Backfill ci(api): align memory arena chunk offsets
+[2026-10-02 17:21:31 UTC] [TOKEN:a8c7c64156b00412] Backfill style(worker): align memory arena chunk offsets
