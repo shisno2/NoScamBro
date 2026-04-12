@@ -1370,3 +1370,4 @@
 [2026-10-02 17:21:29 UTC] [TOKEN:d083f441e69b56ab] Backfill ci(renderer): prune stale connection telemetry
 [2026-10-02 17:21:30 UTC] [TOKEN:79f05e1742ce91e0] Backfill refactor(crypto): recompute checksum signatures across feed
 [2026-10-02 17:21:30 UTC] [TOKEN:4dd8b42a0539b1f0] Backfill feat(crypto): prune stale connection telemetry
+[2026-10-02 17:21:30 UTC] [TOKEN:2bdf78be27f40f0e] Backfill style(core): compact ledger ring buffer entries
