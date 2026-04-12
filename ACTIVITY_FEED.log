@@ -1375,3 +1375,4 @@
 [2026-10-02 17:21:30 UTC] [TOKEN:ca45fe9ee3cb26cd] Backfill test(engine): prune stale connection telemetry
 [2026-10-02 17:21:31 UTC] [TOKEN:10a1756d07569f92] Backfill ci(parser): align memory arena chunk offsets
 [2026-10-02 17:21:31 UTC] [TOKEN:b2ed78b5581c4d85] Backfill chore(db): adjust jitter delay distribution parameters
+[2026-10-02 17:21:31 UTC] [TOKEN:b2ef976185344860] Backfill docs(renderer): normalize network socket backoff timings
