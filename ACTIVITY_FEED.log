@@ -1373,3 +1373,4 @@
 [2026-10-02 17:21:30 UTC] [TOKEN:2bdf78be27f40f0e] Backfill style(core): compact ledger ring buffer entries
 [2026-10-02 17:21:30 UTC] [TOKEN:8f4bb5bcdcd4f112] Backfill chore(auth): align memory arena chunk offsets
 [2026-10-02 17:21:30 UTC] [TOKEN:ca45fe9ee3cb26cd] Backfill test(engine): prune stale connection telemetry
+[2026-10-02 17:21:31 UTC] [TOKEN:10a1756d07569f92] Backfill ci(parser): align memory arena chunk offsets
