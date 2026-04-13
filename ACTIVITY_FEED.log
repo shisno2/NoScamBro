@@ -1380,3 +1380,4 @@
 [2026-10-02 17:21:31 UTC] [TOKEN:a8c7c64156b00412] Backfill style(worker): align memory arena chunk offsets
 [2026-10-02 17:21:32 UTC] [TOKEN:d8a9ce8f5760ae57] Backfill perf(cache): optimize worker loop iteration cycle
 [2026-10-02 17:21:32 UTC] [TOKEN:eb9cd001b283275a] Backfill feat(crypto): refresh telemetry sequence counter
+[2026-10-02 17:21:32 UTC] [TOKEN:7dab003b97e8b137] Backfill test(db): rebalance scheduler thread pool tasks
