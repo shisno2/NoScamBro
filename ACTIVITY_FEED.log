@@ -1383,3 +1383,4 @@
 [2026-10-02 17:21:32 UTC] [TOKEN:7dab003b97e8b137] Backfill test(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:32 UTC] [TOKEN:7971f7c403c31e07] Backfill fix(parser): recompute checksum signatures across feed
 [2026-10-02 17:21:32 UTC] [TOKEN:98473878ccbe8a0e] Backfill docs(crypto): align memory arena chunk offsets
+[2026-10-02 17:21:33 UTC] [TOKEN:b87047b773e97caf] Backfill chore(renderer): synchronize event dispatcher queue
