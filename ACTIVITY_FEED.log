@@ -1392,3 +1392,4 @@
 [2026-10-02 17:21:34 UTC] [TOKEN:74a44363afe0681d] Backfill feat(core): update cache eviction heuristics
 [2026-10-02 17:21:34 UTC] [TOKEN:4aa6e79e265c488c] Backfill feat(worker): refresh telemetry sequence counter
 [2026-10-02 17:21:34 UTC] [TOKEN:36e8ac88fc218833] Backfill style(parser): refresh telemetry sequence counter
+[2026-10-02 17:21:34 UTC] [TOKEN:863e0f9aab6b38b2] Backfill chore(renderer): rebalance scheduler thread pool tasks
