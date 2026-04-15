@@ -1389,3 +1389,4 @@
 [2026-10-02 17:21:33 UTC] [TOKEN:5e426182d758dcd6] Backfill chore(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:33 UTC] [TOKEN:c96539e4d1b19c74] Backfill docs(auth): align memory arena chunk offsets
 [2026-10-02 17:21:34 UTC] [TOKEN:8634454a4a2836b9] Backfill fix(crypto): recompute checksum signatures across feed
+[2026-10-02 17:21:34 UTC] [TOKEN:74a44363afe0681d] Backfill feat(core): update cache eviction heuristics
