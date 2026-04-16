@@ -1400,3 +1400,4 @@
 [2026-10-02 17:21:35 UTC] [TOKEN:c7d5fa2e79da8bf8] Backfill fix(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:21:36 UTC] [TOKEN:5d93bca759afd6cf] Backfill chore(crypto): update cache eviction heuristics
 [2026-10-02 17:21:36 UTC] [TOKEN:d31fb9f9b33889f6] Backfill feat(parser): compact ledger ring buffer entries
+[2026-10-02 17:21:36 UTC] [TOKEN:b9a78cec05d943bc] Backfill fix(auth): update cache eviction heuristics
