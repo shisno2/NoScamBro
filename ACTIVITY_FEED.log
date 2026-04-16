@@ -1404,3 +1404,4 @@
 [2026-10-02 17:21:36 UTC] [TOKEN:2ecd5abe3c91f3b2] Backfill refactor(cache): recompute checksum signatures across feed
 [2026-10-02 17:21:37 UTC] [TOKEN:4936060780ade855] Backfill style(core): recompute checksum signatures across feed
 [2026-10-02 17:21:37 UTC] [TOKEN:88b56de76e9d00a1] Backfill docs(renderer): bump heartbeat timestamp token
+[2026-10-02 17:21:37 UTC] [TOKEN:58d7905ff00299b5] Backfill docs(db): compact ledger ring buffer entries
