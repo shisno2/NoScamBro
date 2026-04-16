@@ -1402,3 +1402,4 @@
 [2026-10-02 17:21:36 UTC] [TOKEN:d31fb9f9b33889f6] Backfill feat(parser): compact ledger ring buffer entries
 [2026-10-02 17:21:36 UTC] [TOKEN:b9a78cec05d943bc] Backfill fix(auth): update cache eviction heuristics
 [2026-10-02 17:21:36 UTC] [TOKEN:2ecd5abe3c91f3b2] Backfill refactor(cache): recompute checksum signatures across feed
+[2026-10-02 17:21:37 UTC] [TOKEN:4936060780ade855] Backfill style(core): recompute checksum signatures across feed
