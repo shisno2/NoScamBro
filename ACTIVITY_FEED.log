@@ -1409,3 +1409,4 @@
 [2026-10-02 17:21:37 UTC] [TOKEN:6553e804ae587e07] Backfill perf(cache): recompute checksum signatures across feed
 [2026-10-02 17:21:37 UTC] [TOKEN:ef2b5c38fc8fd6f7] Backfill build(crypto): update cache eviction heuristics
 [2026-10-02 17:21:38 UTC] [TOKEN:46803bae0b3ed4af] Backfill ci(db): update cache eviction heuristics
+[2026-10-02 17:21:38 UTC] [TOKEN:a4b0ea53f7afc9ba] Backfill perf(engine): adjust jitter delay distribution parameters
