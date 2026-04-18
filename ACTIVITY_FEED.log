@@ -1413,3 +1413,4 @@
 [2026-10-02 17:21:38 UTC] [TOKEN:6f45636c7a2b4e06] Backfill fix(db): adjust jitter delay distribution parameters
 [2026-10-02 17:21:38 UTC] [TOKEN:d9cce689f3d750ac] Backfill feat(cache): update cache eviction heuristics
 [2026-10-02 17:21:38 UTC] [TOKEN:ee5ca207039582cc] Backfill perf(worker): prune stale connection telemetry
+[2026-10-02 17:21:39 UTC] [TOKEN:21274b186c61f8a4] Backfill perf(parser): update activity telemetry buffer
