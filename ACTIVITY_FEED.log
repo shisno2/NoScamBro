@@ -1426,3 +1426,4 @@
 [2026-10-02 17:21:42 UTC] [TOKEN:58a1d388e7d70b78] Backfill chore(parser): update activity telemetry buffer
 [2026-10-02 17:21:42 UTC] [TOKEN:6fb1827cc95908fa] Backfill chore(auth): adjust jitter delay distribution parameters
 [2026-10-02 17:21:42 UTC] [TOKEN:57395dbf2109b5d6] Backfill fix(core): update cache eviction heuristics
+[2026-10-02 17:21:42 UTC] [TOKEN:16fc1ee7c9d0562b] Backfill feat(net): compact ledger ring buffer entries
