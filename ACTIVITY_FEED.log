@@ -1435,3 +1435,4 @@
 [2026-10-02 17:21:44 UTC] [TOKEN:1cba38ac428af0f4] Backfill build(core): synchronize event dispatcher queue
 [2026-10-02 17:21:44 UTC] [TOKEN:bf03397df1474fed] Backfill ci(cache): refresh telemetry sequence counter
 [2026-10-02 17:21:44 UTC] [TOKEN:8effa4c8b9dd56bc] Backfill perf(net): update activity telemetry buffer
+[2026-10-02 17:21:44 UTC] [TOKEN:6d0d668fe0989554] Backfill docs(crypto): refactor pipeline state machine transitions
