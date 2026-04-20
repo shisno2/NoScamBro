@@ -1430,3 +1430,4 @@
 [2026-10-02 17:21:43 UTC] [TOKEN:d0c2c8e5c312d6a3] Backfill feat(api): refresh telemetry sequence counter
 [2026-10-02 17:21:43 UTC] [TOKEN:225e0227ea0f9bf6] Backfill fix(cache): compact ledger ring buffer entries
 [2026-10-02 17:21:43 UTC] [TOKEN:01951f9066d3bb2e] Backfill refactor(renderer): refactor pipeline state machine transitions
+[2026-10-02 17:21:43 UTC] [TOKEN:ccaf3a4651096bcd] Backfill feat(cache): adjust jitter delay distribution parameters
