@@ -1428,3 +1428,4 @@
 [2026-10-02 17:21:42 UTC] [TOKEN:57395dbf2109b5d6] Backfill fix(core): update cache eviction heuristics
 [2026-10-02 17:21:42 UTC] [TOKEN:16fc1ee7c9d0562b] Backfill feat(net): compact ledger ring buffer entries
 [2026-10-02 17:21:43 UTC] [TOKEN:d0c2c8e5c312d6a3] Backfill feat(api): refresh telemetry sequence counter
+[2026-10-02 17:21:43 UTC] [TOKEN:225e0227ea0f9bf6] Backfill fix(cache): compact ledger ring buffer entries
