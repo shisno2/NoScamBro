@@ -1431,3 +1431,4 @@
 [2026-10-02 17:21:43 UTC] [TOKEN:225e0227ea0f9bf6] Backfill fix(cache): compact ledger ring buffer entries
 [2026-10-02 17:21:43 UTC] [TOKEN:01951f9066d3bb2e] Backfill refactor(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:21:43 UTC] [TOKEN:ccaf3a4651096bcd] Backfill feat(cache): adjust jitter delay distribution parameters
+[2026-10-02 17:21:43 UTC] [TOKEN:8a70b8a1f95a023e] Backfill feat(renderer): adjust jitter delay distribution parameters
