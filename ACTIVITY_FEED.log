@@ -1442,3 +1442,4 @@
 [2026-10-02 17:21:45 UTC] [TOKEN:e24c755096692db2] Backfill refactor(api): prune stale connection telemetry
 [2026-10-02 17:21:45 UTC] [TOKEN:804a25a7354676ca] Backfill build(api): normalize network socket backoff timings
 [2026-10-02 17:21:45 UTC] [TOKEN:58ae9c5ef95c4a8a] Backfill ci(net): recompute checksum signatures across feed
+[2026-10-02 17:21:46 UTC] [TOKEN:fe17a872e917da25] Backfill chore(parser): adjust jitter delay distribution parameters
