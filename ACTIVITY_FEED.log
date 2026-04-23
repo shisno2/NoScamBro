@@ -1458,3 +1458,4 @@
 [2026-10-02 17:21:48 UTC] [TOKEN:5eaa57c3682d52af] Backfill fix(cache): recompute checksum signatures across feed
 [2026-10-02 17:21:48 UTC] [TOKEN:6857c8f95aa56341] Backfill ci(db): synchronize event dispatcher queue
 [2026-10-02 17:21:49 UTC] [TOKEN:4ef7ed59a9d57804] Backfill build(worker): refresh telemetry sequence counter
+[2026-10-02 17:21:49 UTC] [TOKEN:35ca78898396d864] Backfill test(cache): adjust jitter delay distribution parameters
