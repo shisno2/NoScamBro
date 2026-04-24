@@ -1460,3 +1460,4 @@
 [2026-10-02 17:21:49 UTC] [TOKEN:4ef7ed59a9d57804] Backfill build(worker): refresh telemetry sequence counter
 [2026-10-02 17:21:49 UTC] [TOKEN:35ca78898396d864] Backfill test(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:21:49 UTC] [TOKEN:66f12158347c2d3a] Backfill style(auth): normalize network socket backoff timings
+[2026-10-02 17:21:49 UTC] [TOKEN:72658471980dc330] Backfill test(worker): rebalance scheduler thread pool tasks
