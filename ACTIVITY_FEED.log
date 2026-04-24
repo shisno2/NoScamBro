@@ -1463,3 +1463,4 @@
 [2026-10-02 17:21:49 UTC] [TOKEN:72658471980dc330] Backfill test(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:50 UTC] [TOKEN:23dc9ae790880830] Backfill build(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:50 UTC] [TOKEN:a166ec218b993e57] Backfill feat(auth): rebalance scheduler thread pool tasks
+[2026-10-02 17:21:50 UTC] [TOKEN:2940a265edaab736] Backfill refactor(parser): rebalance scheduler thread pool tasks
