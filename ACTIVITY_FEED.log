@@ -1480,3 +1480,4 @@
 [2026-10-02 17:21:54 UTC] [TOKEN:d9d6b4c18e616f06] Backfill chore(crypto): synchronize event dispatcher queue
 [2026-10-02 17:21:54 UTC] [TOKEN:e717687f40df84fc] Backfill docs(core): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:54 UTC] [TOKEN:f1d43e48d3dc4e06] Backfill perf(renderer): rebalance scheduler thread pool tasks
+[2026-10-02 17:21:54 UTC] [TOKEN:5b86cc887b949409] Backfill chore(worker): synchronize event dispatcher queue
