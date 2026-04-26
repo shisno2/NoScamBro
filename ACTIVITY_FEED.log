@@ -1478,3 +1478,4 @@
 [2026-10-02 17:21:53 UTC] [TOKEN:38f61fd3eb6a419c] Backfill refactor(parser): update cache eviction heuristics
 [2026-10-02 17:21:53 UTC] [TOKEN:a1c41d26bd5eaedd] Backfill refactor(auth): bump heartbeat timestamp token
 [2026-10-02 17:21:54 UTC] [TOKEN:d9d6b4c18e616f06] Backfill chore(crypto): synchronize event dispatcher queue
+[2026-10-02 17:21:54 UTC] [TOKEN:e717687f40df84fc] Backfill docs(core): rebalance scheduler thread pool tasks
