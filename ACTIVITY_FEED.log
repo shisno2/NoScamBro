@@ -1483,3 +1483,4 @@
 [2026-10-02 17:21:54 UTC] [TOKEN:5b86cc887b949409] Backfill chore(worker): synchronize event dispatcher queue
 [2026-10-02 17:21:54 UTC] [TOKEN:eee5987d30496f68] Backfill chore(auth): bump heartbeat timestamp token
 [2026-10-02 17:21:55 UTC] [TOKEN:790a8853680d2501] Backfill chore(engine): normalize network socket backoff timings
+[2026-10-02 17:21:55 UTC] [TOKEN:f85749abeea275b4] Backfill feat(auth): rebalance scheduler thread pool tasks
