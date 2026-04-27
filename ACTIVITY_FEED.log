@@ -1486,3 +1486,4 @@
 [2026-10-02 17:21:55 UTC] [TOKEN:f85749abeea275b4] Backfill feat(auth): rebalance scheduler thread pool tasks
 [2026-10-02 17:21:55 UTC] [TOKEN:bd4147871516fb13] Backfill refactor(worker): synchronize event dispatcher queue
 [2026-10-02 17:21:55 UTC] [TOKEN:0f526108340f261d] Backfill test(worker): refresh telemetry sequence counter
+[2026-10-02 17:21:55 UTC] [TOKEN:309407f6177d8727] Backfill chore(worker): refactor pipeline state machine transitions
