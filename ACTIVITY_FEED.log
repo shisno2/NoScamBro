@@ -1494,3 +1494,4 @@
 [2026-10-02 17:21:57 UTC] [TOKEN:cd3aa9bf37ccba47] Backfill perf(crypto): bump heartbeat timestamp token
 [2026-10-02 17:21:57 UTC] [TOKEN:b60989abbb86ce41] Backfill fix(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:21:57 UTC] [TOKEN:6dd72c6886ec423a] Backfill perf(auth): rebalance scheduler thread pool tasks
+[2026-10-02 17:21:57 UTC] [TOKEN:60945bf7bf0d7612] Backfill docs(engine): refactor pipeline state machine transitions
