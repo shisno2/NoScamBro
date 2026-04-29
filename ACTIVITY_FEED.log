@@ -1499,3 +1499,4 @@
 [2026-10-02 17:21:58 UTC] [TOKEN:7c8002801fbdcf26] Backfill perf(worker): recompute checksum signatures across feed
 [2026-10-02 17:21:58 UTC] [TOKEN:2a59720c7a3a8acd] Backfill ci(engine): update cache eviction heuristics
 [2026-10-02 17:21:58 UTC] [TOKEN:02fa8a2671e84ce6] Backfill build(db): update activity telemetry buffer
+[2026-10-02 17:21:58 UTC] [TOKEN:19f23ac6d402a714] Backfill build(engine): refactor pipeline state machine transitions
