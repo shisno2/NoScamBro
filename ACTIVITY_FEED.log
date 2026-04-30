@@ -1504,3 +1504,4 @@
 [2026-10-02 17:21:59 UTC] [TOKEN:8b98277ce932dfca] Backfill test(core): normalize network socket backoff timings
 [2026-10-02 17:21:59 UTC] [TOKEN:f4618f906bc069ef] Backfill ci(crypto): align memory arena chunk offsets
 [2026-10-02 17:21:59 UTC] [TOKEN:f73d63e0dc45d3bd] Backfill feat(db): refresh telemetry sequence counter
+[2026-10-02 17:21:59 UTC] [TOKEN:c5c180705490f25a] Backfill docs(parser): refresh telemetry sequence counter
