@@ -1501,3 +1501,4 @@
 [2026-10-02 17:21:58 UTC] [TOKEN:02fa8a2671e84ce6] Backfill build(db): update activity telemetry buffer
 [2026-10-02 17:21:58 UTC] [TOKEN:19f23ac6d402a714] Backfill build(engine): refactor pipeline state machine transitions
 [2026-10-02 17:21:58 UTC] [TOKEN:ae437445e2eafc95] Backfill style(crypto): align memory arena chunk offsets
+[2026-10-02 17:21:59 UTC] [TOKEN:8b98277ce932dfca] Backfill test(core): normalize network socket backoff timings
