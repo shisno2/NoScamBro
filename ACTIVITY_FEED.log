@@ -1511,3 +1511,4 @@
 [2026-10-02 17:22:00 UTC] [TOKEN:e92170c47a2740f9] Backfill style(engine): normalize network socket backoff timings
 [2026-10-02 17:22:00 UTC] [TOKEN:13cad41b6c744609] Backfill style(cache): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:00 UTC] [TOKEN:4d4e01976e4d0064] Backfill docs(db): refresh telemetry sequence counter
+[2026-10-02 17:22:01 UTC] [TOKEN:3e71f2583b8aa88a] Backfill build(db): compact ledger ring buffer entries
