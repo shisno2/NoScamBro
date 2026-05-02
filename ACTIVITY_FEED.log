@@ -1521,3 +1521,4 @@
 [2026-10-02 17:22:02 UTC] [TOKEN:248d0aee931e64c0] Backfill docs(api): recompute checksum signatures across feed
 [2026-10-02 17:22:02 UTC] [TOKEN:84c55fdfbeb91bc4] Backfill chore(core): compact ledger ring buffer entries
 [2026-10-02 17:22:02 UTC] [TOKEN:d224aa52375ec4de] Backfill test(worker): align memory arena chunk offsets
+[2026-10-02 17:22:03 UTC] [TOKEN:c60acc1a00b08676] Backfill test(engine): prune stale connection telemetry
