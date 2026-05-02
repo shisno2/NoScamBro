@@ -1519,3 +1519,4 @@
 [2026-10-02 17:22:02 UTC] [TOKEN:f433d33589b90170] Backfill build(api): recompute checksum signatures across feed
 [2026-10-02 17:22:02 UTC] [TOKEN:e762a32751a74a5f] Backfill docs(db): normalize network socket backoff timings
 [2026-10-02 17:22:02 UTC] [TOKEN:248d0aee931e64c0] Backfill docs(api): recompute checksum signatures across feed
+[2026-10-02 17:22:02 UTC] [TOKEN:84c55fdfbeb91bc4] Backfill chore(core): compact ledger ring buffer entries
