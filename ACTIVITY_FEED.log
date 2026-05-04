@@ -1533,3 +1533,4 @@
 [2026-10-02 17:22:04 UTC] [TOKEN:6da28469938b04cd] Backfill test(api): recompute checksum signatures across feed
 [2026-10-02 17:22:05 UTC] [TOKEN:dcf823603f37eca5] Backfill docs(db): align memory arena chunk offsets
 [2026-10-02 17:22:05 UTC] [TOKEN:f2bb16131d151639] Backfill chore(db): bump heartbeat timestamp token
+[2026-10-02 17:22:05 UTC] [TOKEN:e3d832c08620e1de] Backfill ci(worker): rebalance scheduler thread pool tasks
