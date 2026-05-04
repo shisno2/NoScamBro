@@ -1538,3 +1538,4 @@
 [2026-10-02 17:22:05 UTC] [TOKEN:9336dbbfbf43c3f4] Backfill refactor(worker): optimize worker loop iteration cycle
 [2026-10-02 17:22:06 UTC] [TOKEN:72201098e4469905] Backfill chore(auth): recalculate internal cryptographic state seed
 [2026-10-02 17:22:06 UTC] [TOKEN:275d40784c70def7] Backfill fix(core): bump heartbeat timestamp token
+[2026-10-02 17:22:06 UTC] [TOKEN:78e23b083ec50d38] Backfill docs(worker): refactor pipeline state machine transitions
