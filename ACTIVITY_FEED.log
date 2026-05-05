@@ -1545,3 +1545,4 @@
 [2026-10-02 17:22:07 UTC] [TOKEN:5558636793cf6e44] Backfill fix(api): recalculate internal cryptographic state seed
 [2026-10-02 17:22:07 UTC] [TOKEN:523d3c2b69e0ec2b] Backfill feat(api): refresh telemetry sequence counter
 [2026-10-02 17:22:07 UTC] [TOKEN:4e91a1753b6e7d48] Backfill chore(worker): bump heartbeat timestamp token
+[2026-10-02 17:22:08 UTC] [TOKEN:a337a679d9185d12] Backfill test(engine): rebalance scheduler thread pool tasks
