@@ -1548,3 +1548,4 @@
 [2026-10-02 17:22:08 UTC] [TOKEN:a337a679d9185d12] Backfill test(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:08 UTC] [TOKEN:6a2779267c976b33] Backfill fix(auth): refresh telemetry sequence counter
 [2026-10-02 17:22:08 UTC] [TOKEN:19d8e3ba31909e3a] Backfill test(core): update activity telemetry buffer
+[2026-10-02 17:22:08 UTC] [TOKEN:a8cd2f37001bc4fe] Backfill build(engine): compact ledger ring buffer entries
