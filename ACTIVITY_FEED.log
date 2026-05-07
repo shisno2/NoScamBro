@@ -1553,3 +1553,4 @@
 [2026-10-02 17:22:09 UTC] [TOKEN:1f4de4ce4fe0763d] Backfill fix(auth): adjust jitter delay distribution parameters
 [2026-10-02 17:22:09 UTC] [TOKEN:8fb7802c9f72441d] Backfill feat(cache): optimize worker loop iteration cycle
 [2026-10-02 17:22:09 UTC] [TOKEN:14bf00021c2ed7ad] Backfill docs(api): bump heartbeat timestamp token
+[2026-10-02 17:22:09 UTC] [TOKEN:8efd6cfdddaa0a61] Backfill chore(api): prune stale connection telemetry
