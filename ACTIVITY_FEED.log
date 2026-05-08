@@ -1566,3 +1566,4 @@
 [2026-10-02 17:22:11 UTC] [TOKEN:8a5447a63974506a] Backfill chore(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:22:12 UTC] [TOKEN:da1ae6544965d9fd] Backfill refactor(db): update activity telemetry buffer
 [2026-10-02 17:22:12 UTC] [TOKEN:43577fab38ba6af6] Backfill build(db): refresh telemetry sequence counter
+[2026-10-02 17:22:12 UTC] [TOKEN:078e4bd1625746dc] Backfill fix(engine): compact ledger ring buffer entries
