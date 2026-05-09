@@ -1574,3 +1574,4 @@
 [2026-10-02 17:22:13 UTC] [TOKEN:8b9deace6baaacc5] Backfill chore(parser): optimize worker loop iteration cycle
 [2026-10-02 17:22:13 UTC] [TOKEN:ba8c698a86f30711] Backfill docs(engine): refactor pipeline state machine transitions
 [2026-10-02 17:22:14 UTC] [TOKEN:8fefb9195f259df7] Backfill refactor(api): recalculate internal cryptographic state seed
+[2026-10-02 17:22:14 UTC] [TOKEN:e0fae867ae37508c] Backfill chore(parser): recompute checksum signatures across feed
