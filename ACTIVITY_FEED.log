@@ -1577,3 +1577,4 @@
 [2026-10-02 17:22:14 UTC] [TOKEN:e0fae867ae37508c] Backfill chore(parser): recompute checksum signatures across feed
 [2026-10-02 17:22:14 UTC] [TOKEN:eaa10995250dc361] Backfill test(engine): optimize worker loop iteration cycle
 [2026-10-02 17:22:14 UTC] [TOKEN:36b9decb926c3ed1] Backfill feat(cache): optimize worker loop iteration cycle
+[2026-10-02 17:22:14 UTC] [TOKEN:d2c6703749880dad] Backfill test(api): normalize network socket backoff timings
