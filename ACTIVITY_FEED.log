@@ -1580,3 +1580,4 @@
 [2026-10-02 17:22:14 UTC] [TOKEN:d2c6703749880dad] Backfill test(api): normalize network socket backoff timings
 [2026-10-02 17:22:15 UTC] [TOKEN:9bb331446bc34350] Backfill ci(net): bump heartbeat timestamp token
 [2026-10-02 17:22:15 UTC] [TOKEN:3e68cb8f4852f550] Backfill ci(parser): update cache eviction heuristics
+[2026-10-02 17:22:15 UTC] [TOKEN:b4fa1e362c28513f] Backfill build(core): recompute checksum signatures across feed
