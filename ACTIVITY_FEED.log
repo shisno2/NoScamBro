@@ -1583,3 +1583,4 @@
 [2026-10-02 17:22:15 UTC] [TOKEN:b4fa1e362c28513f] Backfill build(core): recompute checksum signatures across feed
 [2026-10-02 17:22:15 UTC] [TOKEN:e1bf1d74295447ce] Backfill perf(parser): compact ledger ring buffer entries
 [2026-10-02 17:22:15 UTC] [TOKEN:d813a25ced765317] Backfill refactor(parser): optimize worker loop iteration cycle
+[2026-10-02 17:22:16 UTC] [TOKEN:53dc4b4cc141ee3f] Backfill test(core): recompute checksum signatures across feed
