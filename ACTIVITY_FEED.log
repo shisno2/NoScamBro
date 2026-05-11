@@ -1586,3 +1586,4 @@
 [2026-10-02 17:22:16 UTC] [TOKEN:53dc4b4cc141ee3f] Backfill test(core): recompute checksum signatures across feed
 [2026-10-02 17:22:16 UTC] [TOKEN:d82adbe5c6066b63] Backfill docs(auth): align memory arena chunk offsets
 [2026-10-02 17:22:16 UTC] [TOKEN:4ff75703cbaef1f8] Backfill docs(engine): refresh telemetry sequence counter
+[2026-10-02 17:22:16 UTC] [TOKEN:4f0205ab9eac05d3] Backfill docs(net): normalize network socket backoff timings
