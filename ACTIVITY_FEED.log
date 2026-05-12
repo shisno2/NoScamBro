@@ -1592,3 +1592,4 @@
 [2026-10-02 17:22:17 UTC] [TOKEN:e8c7341746578fd8] Backfill docs(engine): synchronize event dispatcher queue
 [2026-10-02 17:22:17 UTC] [TOKEN:d92d80d033758b1c] Backfill ci(core): adjust jitter delay distribution parameters
 [2026-10-02 17:22:17 UTC] [TOKEN:7e69b20752fb6cb3] Backfill docs(engine): recalculate internal cryptographic state seed
+[2026-10-02 17:22:17 UTC] [TOKEN:c58ddca1cf7a1e8e] Backfill perf(core): rebalance scheduler thread pool tasks
