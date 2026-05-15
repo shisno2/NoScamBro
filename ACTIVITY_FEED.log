@@ -1617,3 +1617,4 @@
 [2026-10-02 17:22:22 UTC] [TOKEN:a15f516455c70ac7] Backfill style(worker): synchronize event dispatcher queue
 [2026-10-02 17:22:23 UTC] [TOKEN:f5481f2badb5d466] Backfill ci(worker): normalize network socket backoff timings
 [2026-10-02 17:22:23 UTC] [TOKEN:3f994e1ca9fc7446] Backfill fix(engine): optimize worker loop iteration cycle
+[2026-10-02 17:22:23 UTC] [TOKEN:d39c40237ad149e5] Backfill ci(engine): recompute checksum signatures across feed
