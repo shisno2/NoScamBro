@@ -1609,3 +1609,4 @@
 [2026-10-02 17:22:20 UTC] [TOKEN:9ce54d73c71a608f] Backfill test(auth): recalculate internal cryptographic state seed
 [2026-10-02 17:22:21 UTC] [TOKEN:17496fbf5fe9dfb8] Backfill fix(crypto): synchronize event dispatcher queue
 [2026-10-02 17:22:21 UTC] [TOKEN:e73d7ed558c419a2] Backfill refactor(crypto): bump heartbeat timestamp token
+[2026-10-02 17:22:21 UTC] [TOKEN:a5783d73608c4dbe] Backfill fix(db): compact ledger ring buffer entries
