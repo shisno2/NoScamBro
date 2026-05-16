@@ -1622,3 +1622,4 @@
 [2026-10-02 17:22:23 UTC] [TOKEN:cd111a4981c8ff53] Backfill refactor(renderer): synchronize event dispatcher queue
 [2026-10-02 17:22:24 UTC] [TOKEN:9247141783913cd7] Backfill refactor(parser): refresh telemetry sequence counter
 [2026-10-02 17:22:24 UTC] [TOKEN:e14e0edf14a2cb18] Backfill chore(renderer): recompute checksum signatures across feed
+[2026-10-02 17:22:24 UTC] [TOKEN:cc895ea52e4de1ac] Backfill feat(renderer): rebalance scheduler thread pool tasks
