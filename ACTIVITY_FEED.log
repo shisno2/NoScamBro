@@ -1647,3 +1647,4 @@
 [2026-10-02 17:22:29 UTC] [TOKEN:7452a1a5c920902a] Backfill refactor(auth): recalculate internal cryptographic state seed
 [2026-10-02 17:22:29 UTC] [TOKEN:c176f79b6cf18ca7] Backfill docs(auth): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:29 UTC] [TOKEN:6aa241a8441f98e0] Backfill perf(api): refresh telemetry sequence counter
+[2026-10-02 17:22:29 UTC] [TOKEN:73a38cd1b34ae5ca] Backfill refactor(cache): rebalance scheduler thread pool tasks
