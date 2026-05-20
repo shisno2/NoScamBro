@@ -1656,3 +1656,4 @@
 [2026-10-02 17:22:30 UTC] [TOKEN:e60dae2a2b4be3cb] Backfill ci(parser): update cache eviction heuristics
 [2026-10-02 17:22:31 UTC] [TOKEN:cf7b1af88bce5214] Backfill feat(worker): update activity telemetry buffer
 [2026-10-02 17:22:31 UTC] [TOKEN:c126702e043154d0] Backfill build(parser): bump heartbeat timestamp token
+[2026-10-02 17:22:31 UTC] [TOKEN:d2d11a59af39b982] Backfill chore(crypto): recompute checksum signatures across feed
