@@ -1662,3 +1662,4 @@
 [2026-10-02 17:22:32 UTC] [TOKEN:33f0e63f25a566d5] Backfill build(cache): update activity telemetry buffer
 [2026-10-02 17:22:32 UTC] [TOKEN:eb76d7afa60acf81] Backfill ci(engine): refactor pipeline state machine transitions
 [2026-10-02 17:22:32 UTC] [TOKEN:bf9cfd4c60392c74] Backfill fix(renderer): update cache eviction heuristics
+[2026-10-02 17:22:32 UTC] [TOKEN:30d83cb8f4620cf2] Backfill perf(worker): adjust jitter delay distribution parameters
