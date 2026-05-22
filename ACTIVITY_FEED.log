@@ -1665,3 +1665,4 @@
 [2026-10-02 17:22:32 UTC] [TOKEN:30d83cb8f4620cf2] Backfill perf(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:22:33 UTC] [TOKEN:158ceffcba889a40] Backfill docs(worker): align memory arena chunk offsets
 [2026-10-02 17:22:33 UTC] [TOKEN:c7265b6f95beee39] Backfill build(core): prune stale connection telemetry
+[2026-10-02 17:22:33 UTC] [TOKEN:b73d0bc0d345353b] Backfill chore(api): rebalance scheduler thread pool tasks
