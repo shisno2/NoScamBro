@@ -1673,3 +1673,4 @@
 [2026-10-02 17:22:34 UTC] [TOKEN:9a00ae83f8d7e402] Backfill build(cache): prune stale connection telemetry
 [2026-10-02 17:22:35 UTC] [TOKEN:7624fb885b00baee] Backfill perf(db): update cache eviction heuristics
 [2026-10-02 17:22:35 UTC] [TOKEN:a35974eef91ef7fa] Backfill feat(parser): adjust jitter delay distribution parameters
+[2026-10-02 17:22:35 UTC] [TOKEN:b8c6d55e0da472c2] Backfill build(worker): recompute checksum signatures across feed
