@@ -1678,3 +1678,4 @@
 [2026-10-02 17:22:35 UTC] [TOKEN:a24689a92890750e] Backfill refactor(core): update cache eviction heuristics
 [2026-10-02 17:22:36 UTC] [TOKEN:bfa91b8b121591aa] Backfill test(engine): prune stale connection telemetry
 [2026-10-02 17:22:36 UTC] [TOKEN:967eea0d331c2ad0] Backfill build(net): refresh telemetry sequence counter
+[2026-10-02 17:22:36 UTC] [TOKEN:676be01668113425] Backfill fix(renderer): update activity telemetry buffer
