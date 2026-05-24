@@ -1679,3 +1679,4 @@
 [2026-10-02 17:22:36 UTC] [TOKEN:bfa91b8b121591aa] Backfill test(engine): prune stale connection telemetry
 [2026-10-02 17:22:36 UTC] [TOKEN:967eea0d331c2ad0] Backfill build(net): refresh telemetry sequence counter
 [2026-10-02 17:22:36 UTC] [TOKEN:676be01668113425] Backfill fix(renderer): update activity telemetry buffer
+[2026-10-02 17:22:36 UTC] [TOKEN:0b0321f45fb43358] Backfill refactor(db): optimize worker loop iteration cycle
