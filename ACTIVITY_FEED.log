@@ -1686,3 +1686,4 @@
 [2026-10-02 17:22:37 UTC] [TOKEN:1918ff9c7a7b47a6] Backfill refactor(auth): bump heartbeat timestamp token
 [2026-10-02 17:22:37 UTC] [TOKEN:168e53fc7f09bf71] Backfill feat(engine): recompute checksum signatures across feed
 [2026-10-02 17:22:37 UTC] [TOKEN:43ed5d5b5f1ae934] Backfill ci(api): bump heartbeat timestamp token
+[2026-10-02 17:22:39 UTC] [TOKEN:9b3713a7d8adf9c2] Backfill test(core): update cache eviction heuristics
