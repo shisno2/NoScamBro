@@ -1691,3 +1691,4 @@
 [2026-10-02 17:22:40 UTC] [TOKEN:03552d1a7a124b59] Backfill test(parser): compact ledger ring buffer entries
 [2026-10-02 17:22:40 UTC] [TOKEN:7f7580a54089f8a6] Backfill feat(db): prune stale connection telemetry
 [2026-10-02 17:22:40 UTC] [TOKEN:f11cf931b281b844] Backfill style(renderer): synchronize event dispatcher queue
+[2026-10-02 17:22:40 UTC] [TOKEN:772a329292185cd0] Backfill ci(crypto): refactor pipeline state machine transitions
