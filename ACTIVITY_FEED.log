@@ -1689,3 +1689,4 @@
 [2026-10-02 17:22:39 UTC] [TOKEN:9b3713a7d8adf9c2] Backfill test(core): update cache eviction heuristics
 [2026-10-02 17:22:39 UTC] [TOKEN:9958874312a5763b] Backfill fix(cache): recompute checksum signatures across feed
 [2026-10-02 17:22:40 UTC] [TOKEN:03552d1a7a124b59] Backfill test(parser): compact ledger ring buffer entries
+[2026-10-02 17:22:40 UTC] [TOKEN:7f7580a54089f8a6] Backfill feat(db): prune stale connection telemetry
