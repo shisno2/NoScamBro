@@ -1700,3 +1700,4 @@
 [2026-10-02 17:22:41 UTC] [TOKEN:8a82aec85ccb816b] Backfill fix(db): refactor pipeline state machine transitions
 [2026-10-02 17:22:42 UTC] [TOKEN:c1650081313bb14f] Backfill feat(crypto): adjust jitter delay distribution parameters
 [2026-10-02 17:22:42 UTC] [TOKEN:55f1db6bed05fb4a] Backfill style(crypto): compact ledger ring buffer entries
+[2026-10-02 17:22:42 UTC] [TOKEN:f9611d0fac4fc08f] Backfill build(worker): update activity telemetry buffer
