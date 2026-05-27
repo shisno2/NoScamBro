@@ -1697,3 +1697,4 @@
 [2026-10-02 17:22:41 UTC] [TOKEN:e470f317bcda2e61] Backfill chore(net): update cache eviction heuristics
 [2026-10-02 17:22:41 UTC] [TOKEN:157193251df512cc] Backfill perf(auth): align memory arena chunk offsets
 [2026-10-02 17:22:41 UTC] [TOKEN:56bb4bdf6f3b1002] Backfill test(cache): align memory arena chunk offsets
+[2026-10-02 17:22:41 UTC] [TOKEN:8a82aec85ccb816b] Backfill fix(db): refactor pipeline state machine transitions
