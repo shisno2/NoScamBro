@@ -1703,3 +1703,4 @@
 [2026-10-02 17:22:42 UTC] [TOKEN:f9611d0fac4fc08f] Backfill build(worker): update activity telemetry buffer
 [2026-10-02 17:22:42 UTC] [TOKEN:d52143d1680371bd] Backfill feat(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:22:42 UTC] [TOKEN:40fcfea277bcd6bf] Backfill fix(cache): update activity telemetry buffer
+[2026-10-02 17:22:43 UTC] [TOKEN:932fd280236c70b5] Backfill perf(db): align memory arena chunk offsets
