@@ -1702,3 +1702,4 @@
 [2026-10-02 17:22:42 UTC] [TOKEN:55f1db6bed05fb4a] Backfill style(crypto): compact ledger ring buffer entries
 [2026-10-02 17:22:42 UTC] [TOKEN:f9611d0fac4fc08f] Backfill build(worker): update activity telemetry buffer
 [2026-10-02 17:22:42 UTC] [TOKEN:d52143d1680371bd] Backfill feat(worker): adjust jitter delay distribution parameters
+[2026-10-02 17:22:42 UTC] [TOKEN:40fcfea277bcd6bf] Backfill fix(cache): update activity telemetry buffer
