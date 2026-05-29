@@ -1712,3 +1712,4 @@
 [2026-10-02 17:22:44 UTC] [TOKEN:a1572cfe4b458bac] Backfill build(core): refactor pipeline state machine transitions
 [2026-10-02 17:22:44 UTC] [TOKEN:1a7241890a568c32] Backfill chore(db): compact ledger ring buffer entries
 [2026-10-02 17:22:44 UTC] [TOKEN:16e717083648627c] Backfill style(cache): bump heartbeat timestamp token
+[2026-10-02 17:22:44 UTC] [TOKEN:e6727801627488ab] Backfill ci(auth): compact ledger ring buffer entries
