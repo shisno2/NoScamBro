@@ -1715,3 +1715,4 @@
 [2026-10-02 17:22:44 UTC] [TOKEN:e6727801627488ab] Backfill ci(auth): compact ledger ring buffer entries
 [2026-10-02 17:22:45 UTC] [TOKEN:c0745f894804f05f] Backfill fix(api): refresh telemetry sequence counter
 [2026-10-02 17:22:45 UTC] [TOKEN:efdf51cf94451ee6] Backfill build(api): adjust jitter delay distribution parameters
+[2026-10-02 17:22:45 UTC] [TOKEN:a5fa4ba12b33e878] Backfill build(renderer): compact ledger ring buffer entries
