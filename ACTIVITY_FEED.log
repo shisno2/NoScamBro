@@ -1720,3 +1720,4 @@
 [2026-10-02 17:22:46 UTC] [TOKEN:64e3041cc34e2d0f] Backfill docs(cache): prune stale connection telemetry
 [2026-10-02 17:22:46 UTC] [TOKEN:b10cedce839f1765] Backfill refactor(worker): synchronize event dispatcher queue
 [2026-10-02 17:22:46 UTC] [TOKEN:0f46898b11f4822d] Backfill perf(auth): compact ledger ring buffer entries
+[2026-10-02 17:22:46 UTC] [TOKEN:3380d662b14d11b9] Backfill build(crypto): update cache eviction heuristics
