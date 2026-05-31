@@ -1726,3 +1726,4 @@
 [2026-10-02 17:22:47 UTC] [TOKEN:d4a596c5750d0c33] Backfill test(worker): normalize network socket backoff timings
 [2026-10-02 17:22:47 UTC] [TOKEN:6a7f824c879d0173] Backfill test(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:47 UTC] [TOKEN:7bbc67ef2339c243] Backfill refactor(parser): update cache eviction heuristics
+[2026-10-02 17:22:47 UTC] [TOKEN:806e90538e3d605f] Backfill chore(parser): update cache eviction heuristics
