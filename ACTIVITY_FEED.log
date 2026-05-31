@@ -1723,3 +1723,4 @@
 [2026-10-02 17:22:46 UTC] [TOKEN:3380d662b14d11b9] Backfill build(crypto): update cache eviction heuristics
 [2026-10-02 17:22:46 UTC] [TOKEN:c47dae416e43dace] Backfill test(api): bump heartbeat timestamp token
 [2026-10-02 17:22:46 UTC] [TOKEN:8bc8298764588df8] Backfill feat(net): recalculate internal cryptographic state seed
+[2026-10-02 17:22:47 UTC] [TOKEN:d4a596c5750d0c33] Backfill test(worker): normalize network socket backoff timings
