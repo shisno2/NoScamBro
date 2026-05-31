@@ -1729,3 +1729,4 @@
 [2026-10-02 17:22:47 UTC] [TOKEN:806e90538e3d605f] Backfill chore(parser): update cache eviction heuristics
 [2026-10-02 17:22:48 UTC] [TOKEN:145ad76211eb6b25] Backfill perf(worker): update activity telemetry buffer
 [2026-10-02 17:22:48 UTC] [TOKEN:453814b2c1ad5335] Backfill feat(auth): refresh telemetry sequence counter
+[2026-10-02 17:22:48 UTC] [TOKEN:8dbf4aa19a5ce003] Backfill ci(auth): prune stale connection telemetry
