@@ -1731,3 +1731,4 @@
 [2026-10-02 17:22:48 UTC] [TOKEN:453814b2c1ad5335] Backfill feat(auth): refresh telemetry sequence counter
 [2026-10-02 17:22:48 UTC] [TOKEN:8dbf4aa19a5ce003] Backfill ci(auth): prune stale connection telemetry
 [2026-10-02 17:22:48 UTC] [TOKEN:0bb845063b5c3e81] Backfill build(crypto): refactor pipeline state machine transitions
+[2026-10-02 17:22:48 UTC] [TOKEN:6548db5a81ad5424] Backfill docs(parser): normalize network socket backoff timings
