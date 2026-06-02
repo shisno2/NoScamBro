@@ -1740,3 +1740,4 @@
 [2026-10-02 17:22:49 UTC] [TOKEN:c1854854c29e12b1] Backfill fix(parser): compact ledger ring buffer entries
 [2026-10-02 17:22:50 UTC] [TOKEN:4a47fb51d809094c] Backfill style(core): normalize network socket backoff timings
 [2026-10-02 17:22:50 UTC] [TOKEN:00701507cb18d48e] Backfill perf(db): refresh telemetry sequence counter
+[2026-10-02 17:22:50 UTC] [TOKEN:221e20e71d5178d1] Backfill perf(db): refresh telemetry sequence counter
