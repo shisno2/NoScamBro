@@ -1742,3 +1742,4 @@
 [2026-10-02 17:22:50 UTC] [TOKEN:00701507cb18d48e] Backfill perf(db): refresh telemetry sequence counter
 [2026-10-02 17:22:50 UTC] [TOKEN:221e20e71d5178d1] Backfill perf(db): refresh telemetry sequence counter
 [2026-10-02 17:22:50 UTC] [TOKEN:540688fb14dd1965] Backfill fix(engine): adjust jitter delay distribution parameters
+[2026-10-02 17:22:50 UTC] [TOKEN:23cd2964275c359a] Backfill feat(parser): prune stale connection telemetry
