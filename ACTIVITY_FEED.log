@@ -1747,3 +1747,4 @@
 [2026-10-02 17:22:51 UTC] [TOKEN:c09d5264fc04a6f0] Backfill feat(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:51 UTC] [TOKEN:be5c7d395e2d98d3] Backfill chore(core): optimize worker loop iteration cycle
 [2026-10-02 17:22:51 UTC] [TOKEN:42caf84e7f8c8418] Backfill feat(cache): update activity telemetry buffer
+[2026-10-02 17:22:52 UTC] [TOKEN:3df2c7e98ef22261] Backfill test(renderer): compact ledger ring buffer entries
