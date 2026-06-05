@@ -1763,3 +1763,4 @@
 [2026-10-02 17:22:54 UTC] [TOKEN:87b11919ae758b1d] Backfill refactor(worker): refresh telemetry sequence counter
 [2026-10-02 17:22:54 UTC] [TOKEN:8f14349bb0ede5e5] Backfill build(api): update cache eviction heuristics
 [2026-10-02 17:22:55 UTC] [TOKEN:4cf28f01fb4a20ec] Backfill ci(worker): prune stale connection telemetry
+[2026-10-02 17:22:55 UTC] [TOKEN:68db5ec893953d53] Backfill chore(renderer): update cache eviction heuristics
