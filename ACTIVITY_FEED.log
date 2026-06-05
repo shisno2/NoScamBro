@@ -1759,3 +1759,4 @@
 [2026-10-02 17:22:53 UTC] [TOKEN:eeb34997c7da6620] Backfill fix(cache): refactor pipeline state machine transitions
 [2026-10-02 17:22:54 UTC] [TOKEN:580beb916b331436] Backfill refactor(crypto): refactor pipeline state machine transitions
 [2026-10-02 17:22:54 UTC] [TOKEN:c2408dfbaca857c7] Backfill ci(crypto): bump heartbeat timestamp token
+[2026-10-02 17:22:54 UTC] [TOKEN:06cb58c6ab12095b] Backfill build(engine): recompute checksum signatures across feed
