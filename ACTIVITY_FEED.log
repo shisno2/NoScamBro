@@ -1770,3 +1770,4 @@
 [2026-10-02 17:22:56 UTC] [TOKEN:555d94b19f536fe6] Backfill chore(renderer): update activity telemetry buffer
 [2026-10-02 17:22:56 UTC] [TOKEN:8137c26683a8922f] Backfill ci(core): normalize network socket backoff timings
 [2026-10-02 17:22:56 UTC] [TOKEN:46fbe9491a80797d] Backfill test(renderer): recalculate internal cryptographic state seed
+[2026-10-02 17:22:56 UTC] [TOKEN:cea3be56df67bdaa] Backfill test(crypto): prune stale connection telemetry
