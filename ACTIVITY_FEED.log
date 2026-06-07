@@ -1772,3 +1772,4 @@
 [2026-10-02 17:22:56 UTC] [TOKEN:46fbe9491a80797d] Backfill test(renderer): recalculate internal cryptographic state seed
 [2026-10-02 17:22:56 UTC] [TOKEN:cea3be56df67bdaa] Backfill test(crypto): prune stale connection telemetry
 [2026-10-02 17:22:57 UTC] [TOKEN:75d0b0332a08990c] Backfill perf(engine): update activity telemetry buffer
+[2026-10-02 17:22:57 UTC] [TOKEN:01c336dd2dd18338] Backfill fix(renderer): refactor pipeline state machine transitions
