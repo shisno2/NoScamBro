@@ -1784,3 +1784,4 @@
 [2026-10-02 17:22:59 UTC] [TOKEN:0403eb60a3ae947c] Backfill perf(cache): update cache eviction heuristics
 [2026-10-02 17:22:59 UTC] [TOKEN:2adf24f7fb92b955] Backfill docs(parser): refresh telemetry sequence counter
 [2026-10-02 17:22:59 UTC] [TOKEN:1fed4bf14756add9] Backfill fix(engine): optimize worker loop iteration cycle
+[2026-10-02 17:22:59 UTC] [TOKEN:52d939b229b7efd5] Backfill build(parser): synchronize event dispatcher queue
