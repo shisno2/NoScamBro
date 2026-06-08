@@ -1782,3 +1782,4 @@
 [2026-10-02 17:22:58 UTC] [TOKEN:fee8bf17ee94239f] Backfill style(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:22:59 UTC] [TOKEN:cb40bc8fe780d178] Backfill ci(db): adjust jitter delay distribution parameters
 [2026-10-02 17:22:59 UTC] [TOKEN:0403eb60a3ae947c] Backfill perf(cache): update cache eviction heuristics
+[2026-10-02 17:22:59 UTC] [TOKEN:2adf24f7fb92b955] Backfill docs(parser): refresh telemetry sequence counter
