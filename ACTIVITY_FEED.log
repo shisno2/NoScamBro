@@ -1790,3 +1790,4 @@
 [2026-10-02 17:23:00 UTC] [TOKEN:d30f793373dd584d] Backfill feat(api): compact ledger ring buffer entries
 [2026-10-02 17:23:00 UTC] [TOKEN:85f3d9ca7fb24489] Backfill ci(db): refactor pipeline state machine transitions
 [2026-10-02 17:23:01 UTC] [TOKEN:bc71f2b1852bb7e4] Backfill test(worker): refactor pipeline state machine transitions
+[2026-10-02 17:23:01 UTC] [TOKEN:e7eff7aabd09f4b9] Backfill fix(renderer): update activity telemetry buffer
