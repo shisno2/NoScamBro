@@ -1800,3 +1800,4 @@
 [2026-10-02 17:23:02 UTC] [TOKEN:90ee500d4f9de47c] Backfill test(worker): normalize network socket backoff timings
 [2026-10-02 17:23:02 UTC] [TOKEN:bafa73c77a3ceb36] Backfill style(cache): align memory arena chunk offsets
 [2026-10-02 17:23:03 UTC] [TOKEN:19c9a81ac14483d1] Backfill ci(worker): align memory arena chunk offsets
+[2026-10-02 17:23:03 UTC] [TOKEN:4b4be2b888827561] Backfill feat(worker): adjust jitter delay distribution parameters
