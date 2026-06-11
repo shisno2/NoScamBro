@@ -1808,3 +1808,4 @@
 [2026-10-02 17:23:04 UTC] [TOKEN:a0530d6dffd04551] Backfill ci(cache): prune stale connection telemetry
 [2026-10-02 17:23:04 UTC] [TOKEN:8d17ec4ce051dd1b] Backfill fix(core): prune stale connection telemetry
 [2026-10-02 17:23:04 UTC] [TOKEN:d7f61823e6b26b06] Backfill test(crypto): refresh telemetry sequence counter
+[2026-10-02 17:23:04 UTC] [TOKEN:c51d148a98f919bd] Backfill perf(cache): recompute checksum signatures across feed
