@@ -1812,3 +1812,4 @@
 [2026-10-02 17:23:05 UTC] [TOKEN:430049b2c8212967] Backfill perf(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:23:05 UTC] [TOKEN:c8ff542a9831b582] Backfill style(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:05 UTC] [TOKEN:6ac17a8ad0febe0b] Backfill build(core): recompute checksum signatures across feed
+[2026-10-02 17:23:05 UTC] [TOKEN:0c3a1b25e0981a14] Backfill feat(worker): rebalance scheduler thread pool tasks
