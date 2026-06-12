@@ -1810,3 +1810,4 @@
 [2026-10-02 17:23:04 UTC] [TOKEN:d7f61823e6b26b06] Backfill test(crypto): refresh telemetry sequence counter
 [2026-10-02 17:23:04 UTC] [TOKEN:c51d148a98f919bd] Backfill perf(cache): recompute checksum signatures across feed
 [2026-10-02 17:23:05 UTC] [TOKEN:430049b2c8212967] Backfill perf(renderer): refactor pipeline state machine transitions
+[2026-10-02 17:23:05 UTC] [TOKEN:c8ff542a9831b582] Backfill style(db): rebalance scheduler thread pool tasks
