@@ -1820,3 +1820,4 @@
 [2026-10-02 17:23:06 UTC] [TOKEN:4158c1ca483973c3] Backfill style(crypto): recompute checksum signatures across feed
 [2026-10-02 17:23:06 UTC] [TOKEN:86f021db09f708be] Backfill docs(core): optimize worker loop iteration cycle
 [2026-10-02 17:23:07 UTC] [TOKEN:c379d6b21f492325] Backfill chore(db): recalculate internal cryptographic state seed
+[2026-10-02 17:23:07 UTC] [TOKEN:d1c145f97af75b1e] Backfill perf(crypto): compact ledger ring buffer entries
