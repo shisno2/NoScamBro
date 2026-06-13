@@ -1824,3 +1824,4 @@
 [2026-10-02 17:23:07 UTC] [TOKEN:49fc214bd1ab25e9] Backfill chore(api): synchronize event dispatcher queue
 [2026-10-02 17:23:07 UTC] [TOKEN:e45cc78b3432eb8c] Backfill ci(api): refresh telemetry sequence counter
 [2026-10-02 17:23:07 UTC] [TOKEN:920d5031125397c7] Backfill ci(parser): refresh telemetry sequence counter
+[2026-10-02 17:23:08 UTC] [TOKEN:9a732dacb55b49c9] Backfill ci(db): recompute checksum signatures across feed
