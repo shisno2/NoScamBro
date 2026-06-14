@@ -1831,3 +1831,4 @@
 [2026-10-02 17:23:09 UTC] [TOKEN:363fe797f9e7b58f] Backfill chore(worker): update activity telemetry buffer
 [2026-10-02 17:23:09 UTC] [TOKEN:bd6d04fe9ac1c6e4] Backfill chore(api): recompute checksum signatures across feed
 [2026-10-02 17:23:09 UTC] [TOKEN:20a23098e3467d66] Backfill feat(api): prune stale connection telemetry
+[2026-10-02 17:23:09 UTC] [TOKEN:6a34f83ac9cf40e4] Backfill fix(worker): adjust jitter delay distribution parameters
