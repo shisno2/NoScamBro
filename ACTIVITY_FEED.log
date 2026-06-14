@@ -1830,3 +1830,4 @@
 [2026-10-02 17:23:08 UTC] [TOKEN:91a81dff7d76c0b7] Backfill docs(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:09 UTC] [TOKEN:363fe797f9e7b58f] Backfill chore(worker): update activity telemetry buffer
 [2026-10-02 17:23:09 UTC] [TOKEN:bd6d04fe9ac1c6e4] Backfill chore(api): recompute checksum signatures across feed
+[2026-10-02 17:23:09 UTC] [TOKEN:20a23098e3467d66] Backfill feat(api): prune stale connection telemetry
