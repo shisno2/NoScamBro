@@ -1837,3 +1837,4 @@
 [2026-10-02 17:23:10 UTC] [TOKEN:56229ce8d93cdfea] Backfill test(api): recompute checksum signatures across feed
 [2026-10-02 17:23:10 UTC] [TOKEN:d017684b43b27c0b] Backfill style(parser): align memory arena chunk offsets
 [2026-10-02 17:23:10 UTC] [TOKEN:eed3814a0ade82dc] Backfill docs(core): update activity telemetry buffer
+[2026-10-02 17:23:10 UTC] [TOKEN:83bc7e19008ea5cc] Backfill refactor(parser): update cache eviction heuristics
