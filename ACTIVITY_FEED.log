@@ -1843,3 +1843,4 @@
 [2026-10-02 17:23:11 UTC] [TOKEN:ee323372bd8aa641] Backfill refactor(cache): bump heartbeat timestamp token
 [2026-10-02 17:23:11 UTC] [TOKEN:4a31a8d291d5d801] Backfill perf(api): align memory arena chunk offsets
 [2026-10-02 17:23:11 UTC] [TOKEN:4e9597a4a36ceff4] Backfill build(renderer): compact ledger ring buffer entries
+[2026-10-02 17:23:12 UTC] [TOKEN:268b8791f10a6e65] Backfill ci(engine): update cache eviction heuristics
