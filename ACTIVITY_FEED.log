@@ -1851,3 +1851,4 @@
 [2026-10-02 17:23:13 UTC] [TOKEN:16398e22f29c714f] Backfill chore(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:23:13 UTC] [TOKEN:e1d2890efdbfa134] Backfill ci(parser): recompute checksum signatures across feed
 [2026-10-02 17:23:13 UTC] [TOKEN:6b737a003fcfe851] Backfill style(auth): recompute checksum signatures across feed
+[2026-10-02 17:23:13 UTC] [TOKEN:e2bc77575ef53f9a] Backfill perf(api): rebalance scheduler thread pool tasks
