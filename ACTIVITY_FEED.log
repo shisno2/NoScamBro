@@ -1846,3 +1846,4 @@
 [2026-10-02 17:23:12 UTC] [TOKEN:268b8791f10a6e65] Backfill ci(engine): update cache eviction heuristics
 [2026-10-02 17:23:12 UTC] [TOKEN:2af61371e4c2e5e4] Backfill docs(cache): synchronize event dispatcher queue
 [2026-10-02 17:23:12 UTC] [TOKEN:0b691fc84bae542b] Backfill ci(net): align memory arena chunk offsets
+[2026-10-02 17:23:12 UTC] [TOKEN:4abfd98e8dcc1199] Backfill docs(worker): adjust jitter delay distribution parameters
