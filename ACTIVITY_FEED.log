@@ -1848,3 +1848,4 @@
 [2026-10-02 17:23:12 UTC] [TOKEN:0b691fc84bae542b] Backfill ci(net): align memory arena chunk offsets
 [2026-10-02 17:23:12 UTC] [TOKEN:4abfd98e8dcc1199] Backfill docs(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:23:13 UTC] [TOKEN:1ee96dbb052415e7] Backfill ci(worker): compact ledger ring buffer entries
+[2026-10-02 17:23:13 UTC] [TOKEN:16398e22f29c714f] Backfill chore(engine): adjust jitter delay distribution parameters
