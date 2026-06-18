@@ -1858,3 +1858,4 @@
 [2026-10-02 17:23:14 UTC] [TOKEN:3941a6f43e078012] Backfill style(core): recompute checksum signatures across feed
 [2026-10-02 17:23:15 UTC] [TOKEN:8c2c8239c030fe01] Backfill chore(engine): synchronize event dispatcher queue
 [2026-10-02 17:23:15 UTC] [TOKEN:509d12ca656a4b91] Backfill feat(crypto): recalculate internal cryptographic state seed
+[2026-10-02 17:23:15 UTC] [TOKEN:0a5bcbfc449045f4] Backfill fix(db): adjust jitter delay distribution parameters
