@@ -1861,3 +1861,4 @@
 [2026-10-02 17:23:15 UTC] [TOKEN:0a5bcbfc449045f4] Backfill fix(db): adjust jitter delay distribution parameters
 [2026-10-02 17:23:15 UTC] [TOKEN:e78c5c987e2b2522] Backfill test(api): prune stale connection telemetry
 [2026-10-02 17:23:15 UTC] [TOKEN:cb04a97e57bec963] Backfill perf(net): synchronize event dispatcher queue
+[2026-10-02 17:23:16 UTC] [TOKEN:3ff76287b9fc32b3] Backfill fix(api): refresh telemetry sequence counter
