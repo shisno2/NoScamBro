@@ -1864,3 +1864,4 @@
 [2026-10-02 17:23:16 UTC] [TOKEN:3ff76287b9fc32b3] Backfill fix(api): refresh telemetry sequence counter
 [2026-10-02 17:23:16 UTC] [TOKEN:70639cd676f8e7bb] Backfill ci(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:23:16 UTC] [TOKEN:f9d037520d7657b6] Backfill feat(cache): normalize network socket backoff timings
+[2026-10-02 17:23:16 UTC] [TOKEN:3bb28930a94fa279] Backfill build(auth): normalize network socket backoff timings
