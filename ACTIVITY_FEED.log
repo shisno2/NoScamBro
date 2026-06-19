@@ -1871,3 +1871,4 @@
 [2026-10-02 17:23:17 UTC] [TOKEN:7e93de1a53e01896] Backfill refactor(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:17 UTC] [TOKEN:9c51af71d9d79aac] Backfill ci(parser): update activity telemetry buffer
 [2026-10-02 17:23:18 UTC] [TOKEN:77110694831a1f1b] Backfill perf(core): optimize worker loop iteration cycle
+[2026-10-02 17:23:18 UTC] [TOKEN:373a32a4354da5e3] Backfill fix(core): adjust jitter delay distribution parameters
