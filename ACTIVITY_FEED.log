@@ -1875,3 +1875,4 @@
 [2026-10-02 17:23:18 UTC] [TOKEN:a58a7cebabceb7af] Backfill chore(renderer): adjust jitter delay distribution parameters
 [2026-10-02 17:23:18 UTC] [TOKEN:2d0424aac3c79095] Backfill perf(auth): adjust jitter delay distribution parameters
 [2026-10-02 17:23:18 UTC] [TOKEN:04159e7384ad7888] Backfill chore(api): prune stale connection telemetry
+[2026-10-02 17:23:19 UTC] [TOKEN:a8da23b4c9464c9a] Backfill perf(net): recompute checksum signatures across feed
