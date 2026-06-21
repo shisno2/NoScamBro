@@ -1879,3 +1879,4 @@
 [2026-10-02 17:23:19 UTC] [TOKEN:07de226b5b185696] Backfill fix(core): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:19 UTC] [TOKEN:f7e4b888dbfed1fd] Backfill fix(api): normalize network socket backoff timings
 [2026-10-02 17:23:19 UTC] [TOKEN:5d76c97339572607] Backfill test(core): synchronize event dispatcher queue
+[2026-10-02 17:23:19 UTC] [TOKEN:1bbcf7957fd0e30f] Backfill build(net): synchronize event dispatcher queue
