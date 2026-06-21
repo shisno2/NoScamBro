@@ -1880,3 +1880,4 @@
 [2026-10-02 17:23:19 UTC] [TOKEN:f7e4b888dbfed1fd] Backfill fix(api): normalize network socket backoff timings
 [2026-10-02 17:23:19 UTC] [TOKEN:5d76c97339572607] Backfill test(core): synchronize event dispatcher queue
 [2026-10-02 17:23:19 UTC] [TOKEN:1bbcf7957fd0e30f] Backfill build(net): synchronize event dispatcher queue
+[2026-10-02 17:23:20 UTC] [TOKEN:0e4cb87620e13df0] Backfill chore(auth): prune stale connection telemetry
