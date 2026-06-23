@@ -1895,3 +1895,4 @@
 [2026-10-02 17:23:22 UTC] [TOKEN:64d5b6281904f393] Backfill perf(worker): refresh telemetry sequence counter
 [2026-10-02 17:23:22 UTC] [TOKEN:8cd5f8f590bf1bff] Backfill refactor(net): prune stale connection telemetry
 [2026-10-02 17:23:22 UTC] [TOKEN:9cc54fd940222f5c] Backfill ci(auth): recalculate internal cryptographic state seed
+[2026-10-02 17:23:23 UTC] [TOKEN:0dac5f497bf567d6] Backfill fix(worker): align memory arena chunk offsets
