@@ -1893,3 +1893,4 @@
 [2026-10-02 17:23:22 UTC] [TOKEN:7732cca37ae4a27b] Backfill docs(cache): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:22 UTC] [TOKEN:bfc523b1705957b8] Backfill perf(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:22 UTC] [TOKEN:64d5b6281904f393] Backfill perf(worker): refresh telemetry sequence counter
+[2026-10-02 17:23:22 UTC] [TOKEN:8cd5f8f590bf1bff] Backfill refactor(net): prune stale connection telemetry
