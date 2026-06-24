@@ -1899,3 +1899,4 @@
 [2026-10-02 17:23:23 UTC] [TOKEN:1f54f6ad80307671] Backfill ci(worker): recalculate internal cryptographic state seed
 [2026-10-02 17:23:23 UTC] [TOKEN:ffefed6fbbb24c2d] Backfill chore(auth): compact ledger ring buffer entries
 [2026-10-02 17:23:23 UTC] [TOKEN:9be48965a32b8704] Backfill ci(engine): optimize worker loop iteration cycle
+[2026-10-02 17:23:23 UTC] [TOKEN:51ebb74eb11e3534] Backfill feat(engine): rebalance scheduler thread pool tasks
