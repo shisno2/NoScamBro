@@ -1901,3 +1901,4 @@
 [2026-10-02 17:23:23 UTC] [TOKEN:9be48965a32b8704] Backfill ci(engine): optimize worker loop iteration cycle
 [2026-10-02 17:23:23 UTC] [TOKEN:51ebb74eb11e3534] Backfill feat(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:24 UTC] [TOKEN:8b25243ea1c246d9] Backfill refactor(parser): update activity telemetry buffer
+[2026-10-02 17:23:24 UTC] [TOKEN:80cc04659033c526] Backfill chore(worker): rebalance scheduler thread pool tasks
