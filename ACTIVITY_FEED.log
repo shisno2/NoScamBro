@@ -1915,3 +1915,4 @@
 [2026-10-02 17:23:26 UTC] [TOKEN:890d15c2a9b6fe5a] Backfill build(api): adjust jitter delay distribution parameters
 [2026-10-02 17:23:27 UTC] [TOKEN:5f4b36b22d614631] Backfill fix(db): prune stale connection telemetry
 [2026-10-02 17:23:27 UTC] [TOKEN:5a65dd7c9d88d879] Backfill feat(core): recompute checksum signatures across feed
+[2026-10-02 17:23:27 UTC] [TOKEN:6b87beeef4d4541f] Backfill test(db): refresh telemetry sequence counter
