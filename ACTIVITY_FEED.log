@@ -1913,3 +1913,4 @@
 [2026-10-02 17:23:26 UTC] [TOKEN:b4e830b9a8ad0af0] Backfill test(worker): optimize worker loop iteration cycle
 [2026-10-02 17:23:26 UTC] [TOKEN:f9c1658253fb7c83] Backfill feat(cache): prune stale connection telemetry
 [2026-10-02 17:23:26 UTC] [TOKEN:890d15c2a9b6fe5a] Backfill build(api): adjust jitter delay distribution parameters
+[2026-10-02 17:23:27 UTC] [TOKEN:5f4b36b22d614631] Backfill fix(db): prune stale connection telemetry
