@@ -1923,3 +1923,4 @@
 [2026-10-02 17:23:28 UTC] [TOKEN:57dad28d5a11e660] Backfill refactor(crypto): refresh telemetry sequence counter
 [2026-10-02 17:23:28 UTC] [TOKEN:32344ac0f907b36a] Backfill test(worker): normalize network socket backoff timings
 [2026-10-02 17:23:29 UTC] [TOKEN:85b20711964587a5] Backfill refactor(worker): update cache eviction heuristics
+[2026-10-02 17:23:29 UTC] [TOKEN:8d5363a439c64d22] Backfill style(api): prune stale connection telemetry
