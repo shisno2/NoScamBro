@@ -1925,3 +1925,4 @@
 [2026-10-02 17:23:29 UTC] [TOKEN:85b20711964587a5] Backfill refactor(worker): update cache eviction heuristics
 [2026-10-02 17:23:29 UTC] [TOKEN:8d5363a439c64d22] Backfill style(api): prune stale connection telemetry
 [2026-10-02 17:23:29 UTC] [TOKEN:b464b191f963af62] Backfill perf(auth): align memory arena chunk offsets
+[2026-10-02 17:23:29 UTC] [TOKEN:db4ab04eba0807b3] Backfill build(engine): adjust jitter delay distribution parameters
