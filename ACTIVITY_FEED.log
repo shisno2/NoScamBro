@@ -1936,3 +1936,4 @@
 [2026-10-02 17:23:31 UTC] [TOKEN:672bb95946794e35] Backfill chore(engine): refactor pipeline state machine transitions
 [2026-10-02 17:23:31 UTC] [TOKEN:a947b7b63c6095e4] Backfill feat(cache): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:31 UTC] [TOKEN:1d6dd17b44259913] Backfill style(renderer): adjust jitter delay distribution parameters
+[2026-10-02 17:23:31 UTC] [TOKEN:10094c624ffac1f4] Backfill build(engine): update cache eviction heuristics
