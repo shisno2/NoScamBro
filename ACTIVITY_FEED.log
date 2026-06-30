@@ -1945,3 +1945,4 @@
 [2026-10-02 17:23:33 UTC] [TOKEN:f6c97e9e494ec5c1] Backfill chore(parser): refactor pipeline state machine transitions
 [2026-10-02 17:23:33 UTC] [TOKEN:a72506b2d4ed7f07] Backfill refactor(cache): synchronize event dispatcher queue
 [2026-10-02 17:23:33 UTC] [TOKEN:3705b0c6878dfcd2] Backfill perf(core): update activity telemetry buffer
+[2026-10-02 17:23:33 UTC] [TOKEN:d46d6ef1344f5b81] Backfill feat(engine): normalize network socket backoff timings
