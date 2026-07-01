@@ -1952,3 +1952,4 @@
 [2026-10-02 17:23:34 UTC] [TOKEN:2829a2884f2a0981] Backfill feat(engine): update activity telemetry buffer
 [2026-10-02 17:23:34 UTC] [TOKEN:53f537431ce32d40] Backfill refactor(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:35 UTC] [TOKEN:503f1f5fc0959c66] Backfill test(db): update activity telemetry buffer
+[2026-10-02 17:23:35 UTC] [TOKEN:54b03fe0161b65fb] Backfill test(auth): align memory arena chunk offsets
