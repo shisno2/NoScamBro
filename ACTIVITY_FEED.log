@@ -1948,3 +1948,4 @@
 [2026-10-02 17:23:33 UTC] [TOKEN:d46d6ef1344f5b81] Backfill feat(engine): normalize network socket backoff timings
 [2026-10-02 17:23:34 UTC] [TOKEN:3bbb3dcda160eabb] Backfill build(auth): update cache eviction heuristics
 [2026-10-02 17:23:34 UTC] [TOKEN:6c2fbb65b04149ea] Backfill refactor(crypto): normalize network socket backoff timings
+[2026-10-02 17:23:34 UTC] [TOKEN:49173b5176d94102] Backfill fix(core): refactor pipeline state machine transitions
