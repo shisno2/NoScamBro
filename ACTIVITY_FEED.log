@@ -1959,3 +1959,4 @@
 [2026-10-02 17:23:36 UTC] [TOKEN:313bd25e6700234f] Backfill perf(cache): align memory arena chunk offsets
 [2026-10-02 17:23:36 UTC] [TOKEN:35cf9193ad7ac1e0] Backfill build(cache): update cache eviction heuristics
 [2026-10-02 17:23:36 UTC] [TOKEN:ed21e194819ed38c] Backfill feat(crypto): normalize network socket backoff timings
+[2026-10-02 17:23:36 UTC] [TOKEN:7f1f9d57717eeb37] Backfill test(core): rebalance scheduler thread pool tasks
