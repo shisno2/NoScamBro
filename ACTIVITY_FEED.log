@@ -1961,3 +1961,4 @@
 [2026-10-02 17:23:36 UTC] [TOKEN:ed21e194819ed38c] Backfill feat(crypto): normalize network socket backoff timings
 [2026-10-02 17:23:36 UTC] [TOKEN:7f1f9d57717eeb37] Backfill test(core): rebalance scheduler thread pool tasks
 [2026-10-02 17:23:36 UTC] [TOKEN:1baae73bd5966a60] Backfill ci(engine): adjust jitter delay distribution parameters
+[2026-10-02 17:23:37 UTC] [TOKEN:f4eb83608eb86b15] Backfill fix(crypto): optimize worker loop iteration cycle
