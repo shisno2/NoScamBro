@@ -5,3 +5,4 @@
 [2026-10-02 17:14:01 UTC] [TOKEN:fa3647c9b7424b99] Backfill refactor(crypto): prune stale connection telemetry
 [2026-10-02 17:14:02 UTC] [TOKEN:6f06161129053d4c] Backfill style(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:14:02 UTC] [TOKEN:941d7899e2f1d8d6] Backfill ci(core): update cache eviction heuristics
+[2026-10-02 17:14:02 UTC] [TOKEN:dccf21d2ea0436a4] Backfill perf(cache): refresh telemetry sequence counter
