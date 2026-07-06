@@ -24,3 +24,4 @@
 [2026-10-02 17:14:05 UTC] [TOKEN:fa1a8ae5d5ca3366] Backfill style(parser): compact ledger ring buffer entries
 [2026-10-02 17:14:06 UTC] [TOKEN:26c123f07bf404ee] Backfill chore(db): prune stale connection telemetry
 [2026-10-02 17:14:06 UTC] [TOKEN:f4d62204cc760f44] Backfill ci(engine): normalize network socket backoff timings
+[2026-10-02 17:14:06 UTC] [TOKEN:a6f37fcf2ceb4628] Backfill refactor(parser): update cache eviction heuristics
