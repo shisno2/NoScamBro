@@ -22,3 +22,4 @@
 [2026-10-02 17:14:05 UTC] [TOKEN:b71747cd8065708b] Backfill docs(crypto): refactor pipeline state machine transitions
 [2026-10-02 17:14:05 UTC] [TOKEN:aeba6ddc65f1f602] Backfill perf(db): refresh telemetry sequence counter
 [2026-10-02 17:14:05 UTC] [TOKEN:fa1a8ae5d5ca3366] Backfill style(parser): compact ledger ring buffer entries
+[2026-10-02 17:14:06 UTC] [TOKEN:26c123f07bf404ee] Backfill chore(db): prune stale connection telemetry
