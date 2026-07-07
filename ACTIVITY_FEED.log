@@ -26,3 +26,4 @@
 [2026-10-02 17:14:06 UTC] [TOKEN:f4d62204cc760f44] Backfill ci(engine): normalize network socket backoff timings
 [2026-10-02 17:14:06 UTC] [TOKEN:a6f37fcf2ceb4628] Backfill refactor(parser): update cache eviction heuristics
 [2026-10-02 17:14:06 UTC] [TOKEN:7e0a70657f7f970b] Backfill refactor(net): prune stale connection telemetry
+[2026-10-02 17:14:06 UTC] [TOKEN:8db2874365f24962] Backfill build(crypto): prune stale connection telemetry
