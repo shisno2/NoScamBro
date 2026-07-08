@@ -33,3 +33,4 @@
 [2026-10-02 17:14:07 UTC] [TOKEN:f94b3be7ca6e8c40] Backfill docs(db): prune stale connection telemetry
 [2026-10-02 17:14:08 UTC] [TOKEN:7a97c5c9ca37dc9a] Backfill feat(parser): align memory arena chunk offsets
 [2026-10-02 17:14:08 UTC] [TOKEN:a68139b60de3dae2] Backfill feat(worker): update activity telemetry buffer
+[2026-10-02 17:14:08 UTC] [TOKEN:f3da6487f4708127] Backfill test(parser): recompute checksum signatures across feed
