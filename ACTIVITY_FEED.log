@@ -50,3 +50,4 @@
 [2026-10-02 17:14:11 UTC] [TOKEN:0126b53a8c8d314f] Backfill refactor(engine): refactor pipeline state machine transitions
 [2026-10-02 17:14:12 UTC] [TOKEN:c28c7b4372fccc41] Backfill perf(auth): refresh telemetry sequence counter
 [2026-10-02 17:14:12 UTC] [TOKEN:e51d68b8bdce3d53] Backfill perf(core): update activity telemetry buffer
+[2026-10-02 17:14:12 UTC] [TOKEN:e287d5a5bfe13f76] Backfill test(cache): recompute checksum signatures across feed
