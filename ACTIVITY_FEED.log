@@ -56,3 +56,4 @@
 [2026-10-02 17:14:13 UTC] [TOKEN:47132f48c31a9676] Backfill style(renderer): refresh telemetry sequence counter
 [2026-10-02 17:14:13 UTC] [TOKEN:3e68459efcf0ee80] Backfill test(cache): align memory arena chunk offsets
 [2026-10-02 17:14:13 UTC] [TOKEN:6e985ca57a9adc9b] Backfill fix(cache): update cache eviction heuristics
+[2026-10-02 17:14:13 UTC] [TOKEN:756c56a90c303e28] Backfill ci(crypto): prune stale connection telemetry
