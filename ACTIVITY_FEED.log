@@ -64,3 +64,4 @@
 [2026-10-02 17:14:14 UTC] [TOKEN:242fa4f1d3a8eec6] Backfill docs(api): adjust jitter delay distribution parameters
 [2026-10-02 17:14:14 UTC] [TOKEN:8f67fac63b28781e] Backfill docs(parser): compact ledger ring buffer entries
 [2026-10-02 17:14:15 UTC] [TOKEN:bdd44bcdcc4979de] Backfill feat(renderer): rebalance scheduler thread pool tasks
+[2026-10-02 17:14:15 UTC] [TOKEN:0db88ad2d3d9e31e] Backfill build(renderer): prune stale connection telemetry
