@@ -66,3 +66,4 @@
 [2026-10-02 17:14:15 UTC] [TOKEN:bdd44bcdcc4979de] Backfill feat(renderer): rebalance scheduler thread pool tasks
 [2026-10-02 17:14:15 UTC] [TOKEN:0db88ad2d3d9e31e] Backfill build(renderer): prune stale connection telemetry
 [2026-10-02 17:14:15 UTC] [TOKEN:dae73887db8462c9] Backfill docs(crypto): compact ledger ring buffer entries
+[2026-10-02 17:14:15 UTC] [TOKEN:f11c728609beff7f] Backfill style(auth): synchronize event dispatcher queue
