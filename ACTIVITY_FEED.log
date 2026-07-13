@@ -86,3 +86,4 @@
 [2026-10-02 17:14:19 UTC] [TOKEN:1d7750d48b7d8828] Backfill chore(engine): refactor pipeline state machine transitions
 [2026-10-02 17:14:19 UTC] [TOKEN:85b2fd06e1a0d179] Backfill refactor(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:14:19 UTC] [TOKEN:877e6f2891af5ad4] Backfill chore(crypto): prune stale connection telemetry
+[2026-10-02 17:14:19 UTC] [TOKEN:f09895bf9c04ecba] Backfill docs(parser): recalculate internal cryptographic state seed
