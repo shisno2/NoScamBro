@@ -90,3 +90,4 @@
 [2026-10-02 17:14:20 UTC] [TOKEN:bc56da322bcf9794] Backfill ci(core): compact ledger ring buffer entries
 [2026-10-02 17:14:20 UTC] [TOKEN:0e3edbe3f8be0e78] Backfill style(auth): synchronize event dispatcher queue
 [2026-10-02 17:14:20 UTC] [TOKEN:dbcaf1aebf1256d8] Backfill ci(auth): adjust jitter delay distribution parameters
+[2026-10-02 17:14:20 UTC] [TOKEN:5a48a80ca2a56156] Backfill refactor(auth): rebalance scheduler thread pool tasks
