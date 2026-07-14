@@ -97,3 +97,4 @@
 [2026-10-02 17:14:21 UTC] [TOKEN:541b77e8d5b2dd41] Backfill ci(auth): refresh telemetry sequence counter
 [2026-10-02 17:14:21 UTC] [TOKEN:05aa384c5909e697] Backfill perf(core): refactor pipeline state machine transitions
 [2026-10-02 17:14:21 UTC] [TOKEN:5c0244b5275f1d45] Backfill test(engine): refactor pipeline state machine transitions
+[2026-10-02 17:14:22 UTC] [TOKEN:1c4ec16a380b01fb] Backfill fix(db): update cache eviction heuristics
