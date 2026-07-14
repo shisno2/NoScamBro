@@ -102,3 +102,4 @@
 [2026-10-02 17:14:22 UTC] [TOKEN:107ebe759f1eff86] Backfill fix(net): recalculate internal cryptographic state seed
 [2026-10-02 17:14:22 UTC] [TOKEN:946be0c0c51db0c3] Backfill ci(db): prune stale connection telemetry
 [2026-10-02 17:14:23 UTC] [TOKEN:004f14f93135fa9b] Backfill chore(renderer): align memory arena chunk offsets
+[2026-10-02 17:14:23 UTC] [TOKEN:51c47c176ab673a8] Backfill chore(core): recompute checksum signatures across feed
