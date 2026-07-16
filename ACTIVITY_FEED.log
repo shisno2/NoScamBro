@@ -118,3 +118,4 @@
 [2026-10-02 17:14:26 UTC] [TOKEN:c4a7a901e37735be] Backfill docs(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:14:26 UTC] [TOKEN:1fdf4d8cdfdbefcd] Backfill ci(db): align memory arena chunk offsets
 [2026-10-02 17:14:26 UTC] [TOKEN:d807c36da75c1ed6] Backfill fix(parser): rebalance scheduler thread pool tasks
+[2026-10-02 17:14:26 UTC] [TOKEN:920d8fbf83429202] Backfill docs(parser): compact ledger ring buffer entries
