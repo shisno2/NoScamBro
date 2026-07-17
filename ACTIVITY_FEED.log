@@ -127,3 +127,4 @@
 [2026-10-02 17:14:27 UTC] [TOKEN:72ada99cc6bdd27e] Backfill style(core): optimize worker loop iteration cycle
 [2026-10-02 17:14:28 UTC] [TOKEN:079f54b79efd7332] Backfill build(engine): bump heartbeat timestamp token
 [2026-10-02 17:14:28 UTC] [TOKEN:87f3ed872f7fe5c3] Backfill test(crypto): synchronize event dispatcher queue
+[2026-10-02 17:14:28 UTC] [TOKEN:1101a155d71409c9] Backfill perf(cache): prune stale connection telemetry
