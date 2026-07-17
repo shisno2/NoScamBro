@@ -129,3 +129,4 @@
 [2026-10-02 17:14:28 UTC] [TOKEN:87f3ed872f7fe5c3] Backfill test(crypto): synchronize event dispatcher queue
 [2026-10-02 17:14:28 UTC] [TOKEN:1101a155d71409c9] Backfill perf(cache): prune stale connection telemetry
 [2026-10-02 17:14:28 UTC] [TOKEN:e4caead0b28a3251] Backfill ci(api): recompute checksum signatures across feed
+[2026-10-02 17:14:28 UTC] [TOKEN:c1974bd004adde32] Backfill feat(core): compact ledger ring buffer entries
