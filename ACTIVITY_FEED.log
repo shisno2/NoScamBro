@@ -123,3 +123,4 @@
 [2026-10-02 17:14:27 UTC] [TOKEN:dbaf6c8da8ae1d9a] Backfill ci(engine): recompute checksum signatures across feed
 [2026-10-02 17:14:27 UTC] [TOKEN:4a6b3887226a6d5c] Backfill style(worker): bump heartbeat timestamp token
 [2026-10-02 17:14:27 UTC] [TOKEN:ff244baceddf3cdf] Backfill feat(crypto): refactor pipeline state machine transitions
+[2026-10-02 17:14:27 UTC] [TOKEN:44e501b7662c5e52] Backfill perf(worker): recompute checksum signatures across feed
