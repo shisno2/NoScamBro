@@ -136,3 +136,4 @@
 [2026-10-02 17:14:29 UTC] [TOKEN:06451f9fec11641a] Backfill perf(auth): update cache eviction heuristics
 [2026-10-02 17:14:29 UTC] [TOKEN:a1e6102cef6030ab] Backfill refactor(net): align memory arena chunk offsets
 [2026-10-02 17:14:30 UTC] [TOKEN:a4978381819c85d4] Backfill perf(api): synchronize event dispatcher queue
+[2026-10-02 17:14:30 UTC] [TOKEN:e255aa7d6e6ad617] Backfill ci(parser): update cache eviction heuristics
