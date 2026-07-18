@@ -132,3 +132,4 @@
 [2026-10-02 17:14:28 UTC] [TOKEN:c1974bd004adde32] Backfill feat(core): compact ledger ring buffer entries
 [2026-10-02 17:14:29 UTC] [TOKEN:74d0aaf2ea4be42e] Backfill fix(db): recalculate internal cryptographic state seed
 [2026-10-02 17:14:29 UTC] [TOKEN:3c5db3607ae658b2] Backfill style(net): synchronize event dispatcher queue
+[2026-10-02 17:14:29 UTC] [TOKEN:b1f6dea182e1189f] Backfill feat(engine): normalize network socket backoff timings
