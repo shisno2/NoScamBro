@@ -142,3 +142,4 @@
 [2026-10-02 17:14:30 UTC] [TOKEN:3c6c4f6ef38b5294] Backfill ci(api): adjust jitter delay distribution parameters
 [2026-10-02 17:14:31 UTC] [TOKEN:87396d1178ad7f65] Backfill chore(core): recompute checksum signatures across feed
 [2026-10-02 17:14:31 UTC] [TOKEN:7dd978d169addabd] Backfill perf(api): optimize worker loop iteration cycle
+[2026-10-02 17:14:31 UTC] [TOKEN:e3524fe3eb76ff1c] Backfill style(cache): update cache eviction heuristics
