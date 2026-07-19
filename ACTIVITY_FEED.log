@@ -139,3 +139,4 @@
 [2026-10-02 17:14:30 UTC] [TOKEN:e255aa7d6e6ad617] Backfill ci(parser): update cache eviction heuristics
 [2026-10-02 17:14:30 UTC] [TOKEN:477f5dd9733723f2] Backfill ci(db): update activity telemetry buffer
 [2026-10-02 17:14:30 UTC] [TOKEN:e19f882a0eec577f] Backfill docs(crypto): align memory arena chunk offsets
+[2026-10-02 17:14:30 UTC] [TOKEN:3c6c4f6ef38b5294] Backfill ci(api): adjust jitter delay distribution parameters
