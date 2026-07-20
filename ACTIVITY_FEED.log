@@ -155,3 +155,4 @@
 [2026-10-02 17:14:33 UTC] [TOKEN:fde8ec60b2f2ec24] Backfill feat(api): prune stale connection telemetry
 [2026-10-02 17:14:34 UTC] [TOKEN:01d7824454583a5a] Backfill feat(core): update activity telemetry buffer
 [2026-10-02 17:14:34 UTC] [TOKEN:92af3d88cc6e7dcd] Backfill build(net): update activity telemetry buffer
+[2026-10-02 17:14:34 UTC] [TOKEN:f848cadeb2ba9dbc] Backfill refactor(net): align memory arena chunk offsets
