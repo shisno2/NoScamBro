@@ -153,3 +153,4 @@
 [2026-10-02 17:14:33 UTC] [TOKEN:0d3be3b5d0004e31] Backfill feat(engine): refresh telemetry sequence counter
 [2026-10-02 17:14:33 UTC] [TOKEN:8b2ff36b34d25634] Backfill docs(core): bump heartbeat timestamp token
 [2026-10-02 17:14:33 UTC] [TOKEN:fde8ec60b2f2ec24] Backfill feat(api): prune stale connection telemetry
+[2026-10-02 17:14:34 UTC] [TOKEN:01d7824454583a5a] Backfill feat(core): update activity telemetry buffer
