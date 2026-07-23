@@ -174,3 +174,4 @@
 [2026-10-02 17:14:38 UTC] [TOKEN:6cfbaa792d540906] Backfill refactor(parser): synchronize event dispatcher queue
 [2026-10-02 17:14:38 UTC] [TOKEN:448e370ded9d8614] Backfill build(api): update cache eviction heuristics
 [2026-10-02 17:14:38 UTC] [TOKEN:d0c30286ec11d36e] Backfill fix(crypto): normalize network socket backoff timings
+[2026-10-02 17:14:38 UTC] [TOKEN:4827dc6274a7c045] Backfill docs(cache): update activity telemetry buffer
