@@ -179,3 +179,4 @@
 [2026-10-02 17:14:39 UTC] [TOKEN:93b3689243989e17] Backfill test(auth): align memory arena chunk offsets
 [2026-10-02 17:14:39 UTC] [TOKEN:57c694e2ce216517] Backfill ci(cache): recalculate internal cryptographic state seed
 [2026-10-02 17:14:39 UTC] [TOKEN:18f615349102763a] Backfill chore(auth): adjust jitter delay distribution parameters
+[2026-10-02 17:14:39 UTC] [TOKEN:116dc94a11f8f0d0] Backfill refactor(auth): normalize network socket backoff timings
