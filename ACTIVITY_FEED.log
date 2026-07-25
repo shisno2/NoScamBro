@@ -196,3 +196,4 @@
 [2026-10-02 17:14:42 UTC] [TOKEN:c781c7f9bf471f96] Backfill test(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:14:43 UTC] [TOKEN:c747830522570c01] Backfill perf(worker): refactor pipeline state machine transitions
 [2026-10-02 17:14:43 UTC] [TOKEN:83b75a982be9354d] Backfill docs(core): rebalance scheduler thread pool tasks
+[2026-10-02 17:14:43 UTC] [TOKEN:29c78bb124434a92] Backfill perf(engine): refactor pipeline state machine transitions
