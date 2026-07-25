@@ -194,3 +194,4 @@
 [2026-10-02 17:14:42 UTC] [TOKEN:bb886ab938bfbe59] Backfill perf(api): normalize network socket backoff timings
 [2026-10-02 17:14:42 UTC] [TOKEN:5fa1e39caffdace7] Backfill chore(auth): update cache eviction heuristics
 [2026-10-02 17:14:42 UTC] [TOKEN:c781c7f9bf471f96] Backfill test(engine): adjust jitter delay distribution parameters
+[2026-10-02 17:14:43 UTC] [TOKEN:c747830522570c01] Backfill perf(worker): refactor pipeline state machine transitions
