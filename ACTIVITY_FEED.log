@@ -199,3 +199,4 @@
 [2026-10-02 17:14:43 UTC] [TOKEN:29c78bb124434a92] Backfill perf(engine): refactor pipeline state machine transitions
 [2026-10-02 17:14:43 UTC] [TOKEN:fc998256ca6fb7e4] Backfill docs(engine): recalculate internal cryptographic state seed
 [2026-10-02 17:14:44 UTC] [TOKEN:2930de33c45f17e1] Backfill feat(engine): adjust jitter delay distribution parameters
+[2026-10-02 17:14:44 UTC] [TOKEN:ef10aa16d8c6143d] Backfill build(cache): prune stale connection telemetry
