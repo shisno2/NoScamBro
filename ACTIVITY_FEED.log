@@ -217,3 +217,4 @@
 [2026-10-02 17:14:47 UTC] [TOKEN:6406e9a23b7d6c22] Backfill perf(worker): bump heartbeat timestamp token
 [2026-10-02 17:14:47 UTC] [TOKEN:d4eb02189f3e48aa] Backfill chore(auth): synchronize event dispatcher queue
 [2026-10-02 17:14:48 UTC] [TOKEN:d77d72657990476e] Backfill build(worker): update cache eviction heuristics
+[2026-10-02 17:14:48 UTC] [TOKEN:f704457d014b3175] Backfill perf(auth): prune stale connection telemetry
