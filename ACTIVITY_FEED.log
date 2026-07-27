@@ -209,3 +209,4 @@
 [2026-10-02 17:14:45 UTC] [TOKEN:6062be32cd0b7e00] Backfill test(engine): align memory arena chunk offsets
 [2026-10-02 17:14:46 UTC] [TOKEN:14ee391c8ef1ce2a] Backfill chore(engine): recompute checksum signatures across feed
 [2026-10-02 17:14:46 UTC] [TOKEN:a27159793b9fff9d] Backfill perf(api): prune stale connection telemetry
+[2026-10-02 17:14:46 UTC] [TOKEN:e06a3cb2e128824b] Backfill fix(net): refactor pipeline state machine transitions
