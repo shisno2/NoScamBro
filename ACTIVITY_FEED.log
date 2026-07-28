@@ -221,3 +221,4 @@
 [2026-10-02 17:14:48 UTC] [TOKEN:84df3a840bf3d3d9] Backfill test(renderer): compact ledger ring buffer entries
 [2026-10-02 17:14:48 UTC] [TOKEN:f9d2e96e5a279bd3] Backfill ci(parser): recompute checksum signatures across feed
 [2026-10-02 17:14:49 UTC] [TOKEN:7ffc1c451a2de36a] Backfill style(db): refactor pipeline state machine transitions
+[2026-10-02 17:14:49 UTC] [TOKEN:a5473ebd2b871890] Backfill refactor(worker): normalize network socket backoff timings
