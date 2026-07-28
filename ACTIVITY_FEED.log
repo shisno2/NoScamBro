@@ -226,3 +226,4 @@
 [2026-10-02 17:14:49 UTC] [TOKEN:b3671a2cd754eaff] Backfill fix(auth): adjust jitter delay distribution parameters
 [2026-10-02 17:14:49 UTC] [TOKEN:d43d9e018f8bcaf5] Backfill chore(renderer): rebalance scheduler thread pool tasks
 [2026-10-02 17:14:50 UTC] [TOKEN:b4783ed39c8a0ca1] Backfill docs(parser): recompute checksum signatures across feed
+[2026-10-02 17:14:50 UTC] [TOKEN:3000817f5e0eed27] Backfill style(worker): update activity telemetry buffer
