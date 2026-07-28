@@ -219,3 +219,4 @@
 [2026-10-02 17:14:48 UTC] [TOKEN:d77d72657990476e] Backfill build(worker): update cache eviction heuristics
 [2026-10-02 17:14:48 UTC] [TOKEN:f704457d014b3175] Backfill perf(auth): prune stale connection telemetry
 [2026-10-02 17:14:48 UTC] [TOKEN:84df3a840bf3d3d9] Backfill test(renderer): compact ledger ring buffer entries
+[2026-10-02 17:14:48 UTC] [TOKEN:f9d2e96e5a279bd3] Backfill ci(parser): recompute checksum signatures across feed
