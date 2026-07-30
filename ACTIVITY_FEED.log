@@ -242,3 +242,4 @@
 [2026-10-02 17:14:53 UTC] [TOKEN:ccc4f64ab237854b] Backfill feat(worker): update cache eviction heuristics
 [2026-10-02 17:14:53 UTC] [TOKEN:20a8ec5fdc8333f9] Backfill refactor(api): update activity telemetry buffer
 [2026-10-02 17:14:53 UTC] [TOKEN:91ce250e4928e8ae] Backfill ci(worker): align memory arena chunk offsets
+[2026-10-02 17:14:54 UTC] [TOKEN:4dd1efd3f265f707] Backfill docs(db): update cache eviction heuristics
