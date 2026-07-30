@@ -235,3 +235,4 @@
 [2026-10-02 17:14:51 UTC] [TOKEN:62f8e8414fcfd7f6] Backfill chore(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:14:52 UTC] [TOKEN:265c5c3f4139961e] Backfill refactor(crypto): adjust jitter delay distribution parameters
 [2026-10-02 17:14:52 UTC] [TOKEN:e6b5f164d27bcb2a] Backfill refactor(renderer): recompute checksum signatures across feed
+[2026-10-02 17:14:52 UTC] [TOKEN:b587f09106a62d77] Backfill docs(core): update cache eviction heuristics
