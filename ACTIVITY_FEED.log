@@ -237,3 +237,4 @@
 [2026-10-02 17:14:52 UTC] [TOKEN:e6b5f164d27bcb2a] Backfill refactor(renderer): recompute checksum signatures across feed
 [2026-10-02 17:14:52 UTC] [TOKEN:b587f09106a62d77] Backfill docs(core): update cache eviction heuristics
 [2026-10-02 17:14:52 UTC] [TOKEN:d4468a1dd7abf687] Backfill build(api): rebalance scheduler thread pool tasks
+[2026-10-02 17:14:52 UTC] [TOKEN:3df7d56a0226c2d2] Backfill refactor(api): adjust jitter delay distribution parameters
