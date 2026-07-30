@@ -240,3 +240,4 @@
 [2026-10-02 17:14:52 UTC] [TOKEN:3df7d56a0226c2d2] Backfill refactor(api): adjust jitter delay distribution parameters
 [2026-10-02 17:14:53 UTC] [TOKEN:1af91c6036a0a0a5] Backfill refactor(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:14:53 UTC] [TOKEN:ccc4f64ab237854b] Backfill feat(worker): update cache eviction heuristics
+[2026-10-02 17:14:53 UTC] [TOKEN:20a8ec5fdc8333f9] Backfill refactor(api): update activity telemetry buffer
