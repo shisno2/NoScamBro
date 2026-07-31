@@ -249,3 +249,4 @@
 [2026-10-02 17:14:55 UTC] [TOKEN:58f318b492231056] Backfill test(worker): prune stale connection telemetry
 [2026-10-02 17:14:55 UTC] [TOKEN:29e1e6a708635b91] Backfill refactor(parser): adjust jitter delay distribution parameters
 [2026-10-02 17:14:55 UTC] [TOKEN:b45afd9285984caa] Backfill style(cache): rebalance scheduler thread pool tasks
+[2026-10-02 17:14:55 UTC] [TOKEN:91dc60943dc8138f] Backfill chore(api): rebalance scheduler thread pool tasks
