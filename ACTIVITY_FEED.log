@@ -252,3 +252,4 @@
 [2026-10-02 17:14:55 UTC] [TOKEN:91dc60943dc8138f] Backfill chore(api): rebalance scheduler thread pool tasks
 [2026-10-02 17:14:55 UTC] [TOKEN:794e1fe5fc0cef25] Backfill test(db): synchronize event dispatcher queue
 [2026-10-02 17:14:56 UTC] [TOKEN:aaa0c6f621bed0cd] Backfill refactor(auth): optimize worker loop iteration cycle
+[2026-10-02 17:14:56 UTC] [TOKEN:2e6d4406d2753d8b] Backfill fix(engine): optimize worker loop iteration cycle
