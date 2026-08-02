@@ -261,3 +261,4 @@
 [2026-10-02 17:14:57 UTC] [TOKEN:b018a68c6cb96016] Backfill test(core): synchronize event dispatcher queue
 [2026-10-02 17:14:58 UTC] [TOKEN:101d6400f2d1ae55] Backfill fix(db): normalize network socket backoff timings
 [2026-10-02 17:14:58 UTC] [TOKEN:a726d660daee74f1] Backfill style(core): align memory arena chunk offsets
+[2026-10-02 17:14:58 UTC] [TOKEN:6001d5701fc24959] Backfill perf(parser): optimize worker loop iteration cycle
