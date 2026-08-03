@@ -268,3 +268,4 @@
 [2026-10-02 17:14:59 UTC] [TOKEN:ee8f6790107c2734] Backfill feat(worker): refresh telemetry sequence counter
 [2026-10-02 17:14:59 UTC] [TOKEN:ae8164294ed2eadf] Backfill chore(net): update activity telemetry buffer
 [2026-10-02 17:14:59 UTC] [TOKEN:8560f54e6f599dc8] Backfill chore(worker): bump heartbeat timestamp token
+[2026-10-02 17:14:59 UTC] [TOKEN:9abd82d2cfe83143] Backfill test(api): compact ledger ring buffer entries
