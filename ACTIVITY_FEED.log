@@ -279,3 +279,4 @@
 [2026-10-02 17:15:05 UTC] [TOKEN:7764c5d2b519b669] Backfill perf(auth): prune stale connection telemetry
 [2026-10-02 17:15:05 UTC] [TOKEN:54ddb1c447f37bb1] Backfill test(renderer): refactor pipeline state machine transitions
 [2026-10-02 17:15:05 UTC] [TOKEN:9492bfad9991b092] Backfill ci(db): align memory arena chunk offsets
+[2026-10-02 17:15:05 UTC] [TOKEN:8bf92d9f97ef45d1] Backfill perf(cache): recompute checksum signatures across feed
