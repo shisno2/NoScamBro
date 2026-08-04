@@ -283,3 +283,4 @@
 [2026-10-02 17:15:06 UTC] [TOKEN:463eec1feb652049] Backfill test(auth): update activity telemetry buffer
 [2026-10-02 17:15:06 UTC] [TOKEN:9c3464a6b2457fe6] Backfill docs(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:15:06 UTC] [TOKEN:2a223393b73caba4] Backfill perf(net): normalize network socket backoff timings
+[2026-10-02 17:15:06 UTC] [TOKEN:4d597e11ffd569fa] Backfill ci(net): rebalance scheduler thread pool tasks
