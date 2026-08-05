@@ -288,3 +288,4 @@
 [2026-10-02 17:15:07 UTC] [TOKEN:d7b0790af21cd66d] Backfill style(engine): prune stale connection telemetry
 [2026-10-02 17:15:07 UTC] [TOKEN:14a43ebeb6792ccc] Backfill ci(parser): update activity telemetry buffer
 [2026-10-02 17:15:07 UTC] [TOKEN:a8a8599471284c9f] Backfill chore(worker): synchronize event dispatcher queue
+[2026-10-02 17:15:07 UTC] [TOKEN:44b149983ab9bc8e] Backfill docs(api): refresh telemetry sequence counter
