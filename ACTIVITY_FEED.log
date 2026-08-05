@@ -293,3 +293,4 @@
 [2026-10-02 17:15:08 UTC] [TOKEN:2d8d7fee554b658e] Backfill test(net): normalize network socket backoff timings
 [2026-10-02 17:15:08 UTC] [TOKEN:954ac6d7a5140e81] Backfill fix(renderer): prune stale connection telemetry
 [2026-10-02 17:15:08 UTC] [TOKEN:fff4c51d9ada8c88] Backfill docs(renderer): adjust jitter delay distribution parameters
+[2026-10-02 17:15:08 UTC] [TOKEN:3a8ddef4dd3a9a1d] Backfill test(engine): adjust jitter delay distribution parameters
