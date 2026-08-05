@@ -286,3 +286,4 @@
 [2026-10-02 17:15:06 UTC] [TOKEN:4d597e11ffd569fa] Backfill ci(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:07 UTC] [TOKEN:e2d7c5968e6a3b90] Backfill refactor(core): normalize network socket backoff timings
 [2026-10-02 17:15:07 UTC] [TOKEN:d7b0790af21cd66d] Backfill style(engine): prune stale connection telemetry
+[2026-10-02 17:15:07 UTC] [TOKEN:14a43ebeb6792ccc] Backfill ci(parser): update activity telemetry buffer
