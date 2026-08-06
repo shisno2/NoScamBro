@@ -304,3 +304,4 @@
 [2026-10-02 17:15:10 UTC] [TOKEN:ee0ff2cc3083ceeb] Backfill build(engine): refresh telemetry sequence counter
 [2026-10-02 17:15:10 UTC] [TOKEN:d5aef4ba57ed8f75] Backfill chore(cache): refactor pipeline state machine transitions
 [2026-10-02 17:15:10 UTC] [TOKEN:cd83b5dc8d91636d] Backfill ci(engine): update cache eviction heuristics
+[2026-10-02 17:15:11 UTC] [TOKEN:f942e20e023d4774] Backfill build(parser): update activity telemetry buffer
