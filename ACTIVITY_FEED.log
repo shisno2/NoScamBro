@@ -298,3 +298,4 @@
 [2026-10-02 17:15:09 UTC] [TOKEN:5dff2ccd21571e5a] Backfill perf(auth): align memory arena chunk offsets
 [2026-10-02 17:15:09 UTC] [TOKEN:541e3e8a75cf92fb] Backfill style(worker): update activity telemetry buffer
 [2026-10-02 17:15:09 UTC] [TOKEN:ac5095e6095c6681] Backfill build(engine): refactor pipeline state machine transitions
+[2026-10-02 17:15:09 UTC] [TOKEN:e7cf59af6240d916] Backfill style(core): update cache eviction heuristics
