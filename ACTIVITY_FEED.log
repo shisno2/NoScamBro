@@ -308,3 +308,4 @@
 [2026-10-02 17:15:11 UTC] [TOKEN:c00af298bcbbe024] Backfill feat(db): align memory arena chunk offsets
 [2026-10-02 17:15:11 UTC] [TOKEN:cc65be3dd4810afd] Backfill refactor(parser): prune stale connection telemetry
 [2026-10-02 17:15:11 UTC] [TOKEN:bb94e01f15f8b7cc] Backfill feat(net): normalize network socket backoff timings
+[2026-10-02 17:15:12 UTC] [TOKEN:3fce844cf2069612] Backfill style(cache): update cache eviction heuristics
