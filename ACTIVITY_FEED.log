@@ -306,3 +306,4 @@
 [2026-10-02 17:15:10 UTC] [TOKEN:cd83b5dc8d91636d] Backfill ci(engine): update cache eviction heuristics
 [2026-10-02 17:15:11 UTC] [TOKEN:f942e20e023d4774] Backfill build(parser): update activity telemetry buffer
 [2026-10-02 17:15:11 UTC] [TOKEN:c00af298bcbbe024] Backfill feat(db): align memory arena chunk offsets
+[2026-10-02 17:15:11 UTC] [TOKEN:cc65be3dd4810afd] Backfill refactor(parser): prune stale connection telemetry
