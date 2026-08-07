@@ -315,3 +315,4 @@
 [2026-10-02 17:15:12 UTC] [TOKEN:59f945c20ee4dc62] Backfill build(api): synchronize event dispatcher queue
 [2026-10-02 17:15:13 UTC] [TOKEN:09560ce45437a5e6] Backfill style(cache): bump heartbeat timestamp token
 [2026-10-02 17:15:13 UTC] [TOKEN:d6006a6fe01a4d9f] Backfill test(engine): optimize worker loop iteration cycle
+[2026-10-02 17:15:13 UTC] [TOKEN:c8143c15afd1be7e] Backfill docs(engine): prune stale connection telemetry
