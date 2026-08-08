@@ -318,3 +318,4 @@
 [2026-10-02 17:15:13 UTC] [TOKEN:c8143c15afd1be7e] Backfill docs(engine): prune stale connection telemetry
 [2026-10-02 17:15:13 UTC] [TOKEN:fd37243e2db85d8b] Backfill refactor(parser): refactor pipeline state machine transitions
 [2026-10-02 17:15:13 UTC] [TOKEN:951f46f67ba909a3] Backfill build(renderer): adjust jitter delay distribution parameters
+[2026-10-02 17:15:14 UTC] [TOKEN:88ec87de6d657753] Backfill feat(cache): refresh telemetry sequence counter
