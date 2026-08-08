@@ -322,3 +322,4 @@
 [2026-10-02 17:15:14 UTC] [TOKEN:c5072f994d06fd7b] Backfill feat(renderer): update cache eviction heuristics
 [2026-10-02 17:15:14 UTC] [TOKEN:65b726ebb4bb6f00] Backfill fix(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:15:14 UTC] [TOKEN:031eaa011b191860] Backfill docs(auth): normalize network socket backoff timings
+[2026-10-02 17:15:15 UTC] [TOKEN:0bf38313cf09df40] Backfill fix(crypto): recompute checksum signatures across feed
