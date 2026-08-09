@@ -328,3 +328,4 @@
 [2026-10-02 17:15:15 UTC] [TOKEN:a48332c04ba73f4b] Backfill fix(db): refactor pipeline state machine transitions
 [2026-10-02 17:15:15 UTC] [TOKEN:d49371abc2264cd2] Backfill perf(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:15:16 UTC] [TOKEN:e434ba1b12e4ec14] Backfill perf(crypto): bump heartbeat timestamp token
+[2026-10-02 17:15:16 UTC] [TOKEN:79451042e936fb42] Backfill perf(crypto): update activity telemetry buffer
