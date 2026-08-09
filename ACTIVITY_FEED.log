@@ -333,3 +333,4 @@
 [2026-10-02 17:15:16 UTC] [TOKEN:682026f60dc991d9] Backfill fix(cache): compact ledger ring buffer entries
 [2026-10-02 17:15:16 UTC] [TOKEN:e3e193198a2b43e7] Backfill refactor(parser): refactor pipeline state machine transitions
 [2026-10-02 17:15:17 UTC] [TOKEN:a6e3a64f847023d1] Backfill fix(worker): recalculate internal cryptographic state seed
+[2026-10-02 17:15:17 UTC] [TOKEN:5f441065575ee843] Backfill chore(cache): refresh telemetry sequence counter
