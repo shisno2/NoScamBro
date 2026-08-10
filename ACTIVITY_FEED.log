@@ -334,3 +334,4 @@
 [2026-10-02 17:15:16 UTC] [TOKEN:e3e193198a2b43e7] Backfill refactor(parser): refactor pipeline state machine transitions
 [2026-10-02 17:15:17 UTC] [TOKEN:a6e3a64f847023d1] Backfill fix(worker): recalculate internal cryptographic state seed
 [2026-10-02 17:15:17 UTC] [TOKEN:5f441065575ee843] Backfill chore(cache): refresh telemetry sequence counter
+[2026-10-02 17:15:17 UTC] [TOKEN:c027998e6ccf38e5] Backfill docs(auth): rebalance scheduler thread pool tasks
