@@ -342,3 +342,4 @@
 [2026-10-02 17:15:18 UTC] [TOKEN:7e01e39b9a90eac3] Backfill refactor(parser): bump heartbeat timestamp token
 [2026-10-02 17:15:18 UTC] [TOKEN:9c50362c5227d3e2] Backfill fix(renderer): recompute checksum signatures across feed
 [2026-10-02 17:15:19 UTC] [TOKEN:96990a53acc2e4e5] Backfill style(parser): adjust jitter delay distribution parameters
+[2026-10-02 17:15:19 UTC] [TOKEN:bdd7ab8deee89e78] Backfill refactor(parser): update cache eviction heuristics
