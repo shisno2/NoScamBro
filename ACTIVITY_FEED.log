@@ -344,3 +344,4 @@
 [2026-10-02 17:15:19 UTC] [TOKEN:96990a53acc2e4e5] Backfill style(parser): adjust jitter delay distribution parameters
 [2026-10-02 17:15:19 UTC] [TOKEN:bdd7ab8deee89e78] Backfill refactor(parser): update cache eviction heuristics
 [2026-10-02 17:15:19 UTC] [TOKEN:6ec188e07af572e8] Backfill perf(net): compact ledger ring buffer entries
+[2026-10-02 17:15:19 UTC] [TOKEN:3eaa8f8c9d226784] Backfill style(core): update activity telemetry buffer
