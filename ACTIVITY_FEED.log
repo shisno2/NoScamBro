@@ -351,3 +351,4 @@
 [2026-10-02 17:15:20 UTC] [TOKEN:e32f75255a64a25c] Backfill refactor(parser): recompute checksum signatures across feed
 [2026-10-02 17:15:20 UTC] [TOKEN:95ed72acfc858091] Backfill test(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:21 UTC] [TOKEN:e094604dbe7531cf] Backfill ci(net): update activity telemetry buffer
+[2026-10-02 17:15:21 UTC] [TOKEN:280b688bb76eefe0] Backfill style(core): refactor pipeline state machine transitions
