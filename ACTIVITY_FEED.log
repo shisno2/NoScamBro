@@ -349,3 +349,4 @@
 [2026-10-02 17:15:20 UTC] [TOKEN:9467dd5d9bafd4d1] Backfill fix(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:15:20 UTC] [TOKEN:2e9e3faa2152711e] Backfill ci(core): align memory arena chunk offsets
 [2026-10-02 17:15:20 UTC] [TOKEN:e32f75255a64a25c] Backfill refactor(parser): recompute checksum signatures across feed
+[2026-10-02 17:15:20 UTC] [TOKEN:95ed72acfc858091] Backfill test(net): rebalance scheduler thread pool tasks
