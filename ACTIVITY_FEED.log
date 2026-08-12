@@ -353,3 +353,4 @@
 [2026-10-02 17:15:21 UTC] [TOKEN:e094604dbe7531cf] Backfill ci(net): update activity telemetry buffer
 [2026-10-02 17:15:21 UTC] [TOKEN:280b688bb76eefe0] Backfill style(core): refactor pipeline state machine transitions
 [2026-10-02 17:15:21 UTC] [TOKEN:74a2e477512c41f0] Backfill test(parser): refresh telemetry sequence counter
+[2026-10-02 17:15:21 UTC] [TOKEN:0ef9c824ac5c8e4f] Backfill docs(core): recompute checksum signatures across feed
