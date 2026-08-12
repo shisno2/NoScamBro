@@ -355,3 +355,4 @@
 [2026-10-02 17:15:21 UTC] [TOKEN:74a2e477512c41f0] Backfill test(parser): refresh telemetry sequence counter
 [2026-10-02 17:15:21 UTC] [TOKEN:0ef9c824ac5c8e4f] Backfill docs(core): recompute checksum signatures across feed
 [2026-10-02 17:15:22 UTC] [TOKEN:653468a064814778] Backfill refactor(net): align memory arena chunk offsets
+[2026-10-02 17:15:22 UTC] [TOKEN:299c4e9817a158c1] Backfill docs(db): compact ledger ring buffer entries
