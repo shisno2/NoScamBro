@@ -357,3 +357,4 @@
 [2026-10-02 17:15:22 UTC] [TOKEN:653468a064814778] Backfill refactor(net): align memory arena chunk offsets
 [2026-10-02 17:15:22 UTC] [TOKEN:299c4e9817a158c1] Backfill docs(db): compact ledger ring buffer entries
 [2026-10-02 17:15:22 UTC] [TOKEN:b7db32c50702d6ad] Backfill feat(db): update cache eviction heuristics
+[2026-10-02 17:15:22 UTC] [TOKEN:b2aff4bf14eae80e] Backfill feat(crypto): prune stale connection telemetry
