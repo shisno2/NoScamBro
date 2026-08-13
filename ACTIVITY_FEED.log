@@ -359,3 +359,4 @@
 [2026-10-02 17:15:22 UTC] [TOKEN:b7db32c50702d6ad] Backfill feat(db): update cache eviction heuristics
 [2026-10-02 17:15:22 UTC] [TOKEN:b2aff4bf14eae80e] Backfill feat(crypto): prune stale connection telemetry
 [2026-10-02 17:15:23 UTC] [TOKEN:76817465f467cc7c] Backfill build(parser): adjust jitter delay distribution parameters
+[2026-10-02 17:15:23 UTC] [TOKEN:9e923b2e55d73e1e] Backfill fix(parser): prune stale connection telemetry
