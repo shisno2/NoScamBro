@@ -367,3 +367,4 @@
 [2026-10-02 17:15:24 UTC] [TOKEN:730287a15f74ae77] Backfill perf(cache): synchronize event dispatcher queue
 [2026-10-02 17:15:24 UTC] [TOKEN:e8bf7ccc538b15ab] Backfill chore(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:24 UTC] [TOKEN:a74fd28d49aae057] Backfill perf(cache): rebalance scheduler thread pool tasks
+[2026-10-02 17:15:25 UTC] [TOKEN:7f3db99710e0ac0c] Backfill fix(net): update cache eviction heuristics
