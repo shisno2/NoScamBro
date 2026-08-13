@@ -361,3 +361,4 @@
 [2026-10-02 17:15:23 UTC] [TOKEN:76817465f467cc7c] Backfill build(parser): adjust jitter delay distribution parameters
 [2026-10-02 17:15:23 UTC] [TOKEN:9e923b2e55d73e1e] Backfill fix(parser): prune stale connection telemetry
 [2026-10-02 17:15:23 UTC] [TOKEN:d88052b21f2df56e] Backfill fix(db): adjust jitter delay distribution parameters
+[2026-10-02 17:15:23 UTC] [TOKEN:4fae6e6b41f8bcb1] Backfill perf(cache): align memory arena chunk offsets
