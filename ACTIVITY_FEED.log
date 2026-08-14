@@ -374,3 +374,4 @@
 [2026-10-02 17:15:26 UTC] [TOKEN:de1e09888ae7ff49] Backfill fix(engine): optimize worker loop iteration cycle
 [2026-10-02 17:15:26 UTC] [TOKEN:987fb717c79faf20] Backfill test(worker): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:26 UTC] [TOKEN:96310895a4e1588b] Backfill fix(api): refactor pipeline state machine transitions
+[2026-10-02 17:15:26 UTC] [TOKEN:d33c14ddb29d31ea] Backfill feat(auth): update activity telemetry buffer
