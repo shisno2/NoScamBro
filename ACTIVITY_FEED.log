@@ -377,3 +377,4 @@
 [2026-10-02 17:15:26 UTC] [TOKEN:d33c14ddb29d31ea] Backfill feat(auth): update activity telemetry buffer
 [2026-10-02 17:15:27 UTC] [TOKEN:a3e36d1438969d4b] Backfill style(worker): recompute checksum signatures across feed
 [2026-10-02 17:15:27 UTC] [TOKEN:ee3a333e679d328a] Backfill chore(engine): refresh telemetry sequence counter
+[2026-10-02 17:15:27 UTC] [TOKEN:4326c4de0d31ec2c] Backfill build(core): prune stale connection telemetry
