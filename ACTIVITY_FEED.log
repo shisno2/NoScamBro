@@ -369,3 +369,4 @@
 [2026-10-02 17:15:24 UTC] [TOKEN:a74fd28d49aae057] Backfill perf(cache): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:25 UTC] [TOKEN:7f3db99710e0ac0c] Backfill fix(net): update cache eviction heuristics
 [2026-10-02 17:15:25 UTC] [TOKEN:59621a64da4af73a] Backfill perf(api): update activity telemetry buffer
+[2026-10-02 17:15:25 UTC] [TOKEN:a001a9e3cac4a82c] Backfill ci(renderer): normalize network socket backoff timings
