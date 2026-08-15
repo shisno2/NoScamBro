@@ -382,3 +382,4 @@
 [2026-10-02 17:15:28 UTC] [TOKEN:3b6a40a5e1a4caca] Backfill refactor(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:15:28 UTC] [TOKEN:9df293afe946e89d] Backfill style(auth): recompute checksum signatures across feed
 [2026-10-02 17:15:28 UTC] [TOKEN:987b246dcbad8b54] Backfill perf(renderer): recalculate internal cryptographic state seed
+[2026-10-02 17:15:28 UTC] [TOKEN:b0eceebbcd88f4b9] Backfill style(worker): update cache eviction heuristics
