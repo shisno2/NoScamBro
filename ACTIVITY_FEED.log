@@ -383,3 +383,4 @@
 [2026-10-02 17:15:28 UTC] [TOKEN:9df293afe946e89d] Backfill style(auth): recompute checksum signatures across feed
 [2026-10-02 17:15:28 UTC] [TOKEN:987b246dcbad8b54] Backfill perf(renderer): recalculate internal cryptographic state seed
 [2026-10-02 17:15:28 UTC] [TOKEN:b0eceebbcd88f4b9] Backfill style(worker): update cache eviction heuristics
+[2026-10-02 17:15:29 UTC] [TOKEN:cac27fdacc3744e2] Backfill docs(worker): refresh telemetry sequence counter
