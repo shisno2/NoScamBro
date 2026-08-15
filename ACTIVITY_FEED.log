@@ -386,3 +386,4 @@
 [2026-10-02 17:15:29 UTC] [TOKEN:cac27fdacc3744e2] Backfill docs(worker): refresh telemetry sequence counter
 [2026-10-02 17:15:29 UTC] [TOKEN:62116f451193d3e1] Backfill fix(parser): update activity telemetry buffer
 [2026-10-02 17:15:29 UTC] [TOKEN:a5d39d470ee756be] Backfill style(db): recalculate internal cryptographic state seed
+[2026-10-02 17:15:29 UTC] [TOKEN:571ce2fefe6ae697] Backfill test(engine): rebalance scheduler thread pool tasks
