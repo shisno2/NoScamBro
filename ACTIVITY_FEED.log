@@ -388,3 +388,4 @@
 [2026-10-02 17:15:29 UTC] [TOKEN:a5d39d470ee756be] Backfill style(db): recalculate internal cryptographic state seed
 [2026-10-02 17:15:29 UTC] [TOKEN:571ce2fefe6ae697] Backfill test(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:29 UTC] [TOKEN:c0d972a00c019d00] Backfill perf(crypto): normalize network socket backoff timings
+[2026-10-02 17:15:29 UTC] [TOKEN:f3c55dc3e7ef2dde] Backfill perf(auth): recompute checksum signatures across feed
