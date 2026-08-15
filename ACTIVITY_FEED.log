@@ -379,3 +379,4 @@
 [2026-10-02 17:15:27 UTC] [TOKEN:ee3a333e679d328a] Backfill chore(engine): refresh telemetry sequence counter
 [2026-10-02 17:15:27 UTC] [TOKEN:4326c4de0d31ec2c] Backfill build(core): prune stale connection telemetry
 [2026-10-02 17:15:27 UTC] [TOKEN:1a636f2e5134ebef] Backfill feat(api): adjust jitter delay distribution parameters
+[2026-10-02 17:15:28 UTC] [TOKEN:3b6a40a5e1a4caca] Backfill refactor(cache): adjust jitter delay distribution parameters
