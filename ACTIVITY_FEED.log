@@ -390,3 +390,4 @@
 [2026-10-02 17:15:29 UTC] [TOKEN:c0d972a00c019d00] Backfill perf(crypto): normalize network socket backoff timings
 [2026-10-02 17:15:29 UTC] [TOKEN:f3c55dc3e7ef2dde] Backfill perf(auth): recompute checksum signatures across feed
 [2026-10-02 17:15:30 UTC] [TOKEN:0e1a9ed5f3e45580] Backfill refactor(cache): normalize network socket backoff timings
+[2026-10-02 17:15:30 UTC] [TOKEN:f58782879e81b2d0] Backfill docs(api): compact ledger ring buffer entries
