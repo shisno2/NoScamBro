@@ -393,3 +393,4 @@
 [2026-10-02 17:15:30 UTC] [TOKEN:f58782879e81b2d0] Backfill docs(api): compact ledger ring buffer entries
 [2026-10-02 17:15:30 UTC] [TOKEN:0b3a77545b259452] Backfill test(worker): update cache eviction heuristics
 [2026-10-02 17:15:30 UTC] [TOKEN:c2bb5df35847eb4d] Backfill build(crypto): update cache eviction heuristics
+[2026-10-02 17:15:31 UTC] [TOKEN:ad09a77dc9432fd4] Backfill ci(cache): adjust jitter delay distribution parameters
