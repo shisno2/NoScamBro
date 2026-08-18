@@ -411,3 +411,4 @@
 [2026-10-02 17:15:34 UTC] [TOKEN:8403bc86e72b05aa] Backfill perf(crypto): update cache eviction heuristics
 [2026-10-02 17:15:34 UTC] [TOKEN:0a755527ee6f46b2] Backfill perf(auth): align memory arena chunk offsets
 [2026-10-02 17:15:34 UTC] [TOKEN:0446d2b57d607ce8] Backfill perf(cache): prune stale connection telemetry
+[2026-10-02 17:15:34 UTC] [TOKEN:8f918c7310afcb97] Backfill fix(engine): adjust jitter delay distribution parameters
