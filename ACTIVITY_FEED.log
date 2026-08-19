@@ -417,3 +417,4 @@
 [2026-10-02 17:15:35 UTC] [TOKEN:10ac9fc89a1ee3c3] Backfill perf(worker): update cache eviction heuristics
 [2026-10-02 17:15:35 UTC] [TOKEN:c6bbb1a15ba12da7] Backfill perf(crypto): bump heartbeat timestamp token
 [2026-10-02 17:15:35 UTC] [TOKEN:16d6a315e2b901e8] Backfill style(db): update cache eviction heuristics
+[2026-10-02 17:15:36 UTC] [TOKEN:02765b1459bbabb8] Backfill fix(parser): update cache eviction heuristics
