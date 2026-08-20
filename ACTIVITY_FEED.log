@@ -431,3 +431,4 @@
 [2026-10-02 17:15:38 UTC] [TOKEN:b438bf38022afe19] Backfill build(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:15:38 UTC] [TOKEN:3ecb338941d11cc7] Backfill style(renderer): refresh telemetry sequence counter
 [2026-10-02 17:15:38 UTC] [TOKEN:973702e6af5d54c2] Backfill perf(engine): align memory arena chunk offsets
+[2026-10-02 17:15:39 UTC] [TOKEN:ce7ec094102cd989] Backfill chore(cache): synchronize event dispatcher queue
