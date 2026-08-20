@@ -426,3 +426,4 @@
 [2026-10-02 17:15:37 UTC] [TOKEN:3fe956a9dae8c215] Backfill docs(auth): normalize network socket backoff timings
 [2026-10-02 17:15:37 UTC] [TOKEN:c60b50a2cb9ba81d] Backfill ci(worker): adjust jitter delay distribution parameters
 [2026-10-02 17:15:37 UTC] [TOKEN:5265e842cbf5136d] Backfill perf(api): update activity telemetry buffer
+[2026-10-02 17:15:38 UTC] [TOKEN:eb73e4ce690efa9b] Backfill fix(auth): align memory arena chunk offsets
