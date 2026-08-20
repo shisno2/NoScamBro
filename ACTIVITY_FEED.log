@@ -434,3 +434,4 @@
 [2026-10-02 17:15:39 UTC] [TOKEN:ce7ec094102cd989] Backfill chore(cache): synchronize event dispatcher queue
 [2026-10-02 17:15:39 UTC] [TOKEN:28051eefed0817de] Backfill build(cache): update activity telemetry buffer
 [2026-10-02 17:15:39 UTC] [TOKEN:fb95ccfbe819763a] Backfill docs(engine): compact ledger ring buffer entries
+[2026-10-02 17:15:39 UTC] [TOKEN:b27da0946b090b84] Backfill style(core): rebalance scheduler thread pool tasks
