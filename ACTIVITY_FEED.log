@@ -440,3 +440,4 @@
 [2026-10-02 17:15:40 UTC] [TOKEN:5621097bb9b03296] Backfill feat(api): recalculate internal cryptographic state seed
 [2026-10-02 17:15:40 UTC] [TOKEN:31bb229132f20e46] Backfill perf(auth): recompute checksum signatures across feed
 [2026-10-02 17:15:40 UTC] [TOKEN:4ad415b453cbcc1d] Backfill docs(worker): compact ledger ring buffer entries
+[2026-10-02 17:15:41 UTC] [TOKEN:cf90dae22e385b1b] Backfill ci(core): synchronize event dispatcher queue
