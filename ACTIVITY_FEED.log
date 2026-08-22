@@ -441,3 +441,4 @@
 [2026-10-02 17:15:40 UTC] [TOKEN:31bb229132f20e46] Backfill perf(auth): recompute checksum signatures across feed
 [2026-10-02 17:15:40 UTC] [TOKEN:4ad415b453cbcc1d] Backfill docs(worker): compact ledger ring buffer entries
 [2026-10-02 17:15:41 UTC] [TOKEN:cf90dae22e385b1b] Backfill ci(core): synchronize event dispatcher queue
+[2026-10-02 17:15:41 UTC] [TOKEN:3de438244168153a] Backfill build(renderer): compact ledger ring buffer entries
