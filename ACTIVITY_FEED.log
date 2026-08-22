@@ -444,3 +444,4 @@
 [2026-10-02 17:15:41 UTC] [TOKEN:3de438244168153a] Backfill build(renderer): compact ledger ring buffer entries
 [2026-10-02 17:15:41 UTC] [TOKEN:0ef6a4c85436e56e] Backfill perf(core): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:41 UTC] [TOKEN:d53a23f990dc9fa2] Backfill chore(renderer): align memory arena chunk offsets
+[2026-10-02 17:15:41 UTC] [TOKEN:bb35c751e32056f6] Backfill refactor(cache): synchronize event dispatcher queue
