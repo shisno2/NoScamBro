@@ -458,3 +458,4 @@
 [2026-10-02 17:15:44 UTC] [TOKEN:6e30c9e7c2bfefd1] Backfill chore(renderer): bump heartbeat timestamp token
 [2026-10-02 17:15:45 UTC] [TOKEN:d1f3a2688bf997a3] Backfill build(core): compact ledger ring buffer entries
 [2026-10-02 17:15:45 UTC] [TOKEN:1cc47ebefba98712] Backfill test(cache): adjust jitter delay distribution parameters
+[2026-10-02 17:15:45 UTC] [TOKEN:04710163880134b6] Backfill build(parser): recompute checksum signatures across feed
