@@ -462,3 +462,4 @@
 [2026-10-02 17:15:45 UTC] [TOKEN:fb97fd5e9c1d3e4d] Backfill build(core): refresh telemetry sequence counter
 [2026-10-02 17:15:46 UTC] [TOKEN:d257c0d300f0578e] Backfill fix(worker): compact ledger ring buffer entries
 [2026-10-02 17:15:46 UTC] [TOKEN:1408ffec630178a7] Backfill fix(cache): update cache eviction heuristics
+[2026-10-02 17:15:46 UTC] [TOKEN:80e710f5b48125e5] Backfill build(crypto): refactor pipeline state machine transitions
