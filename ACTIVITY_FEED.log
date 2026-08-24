@@ -464,3 +464,4 @@
 [2026-10-02 17:15:46 UTC] [TOKEN:1408ffec630178a7] Backfill fix(cache): update cache eviction heuristics
 [2026-10-02 17:15:46 UTC] [TOKEN:80e710f5b48125e5] Backfill build(crypto): refactor pipeline state machine transitions
 [2026-10-02 17:15:47 UTC] [TOKEN:4694683051e4bd3a] Backfill build(crypto): optimize worker loop iteration cycle
+[2026-10-02 17:15:47 UTC] [TOKEN:fbb0e6ae5c8069c0] Backfill fix(core): normalize network socket backoff timings
