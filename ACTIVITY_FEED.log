@@ -467,3 +467,4 @@
 [2026-10-02 17:15:47 UTC] [TOKEN:fbb0e6ae5c8069c0] Backfill fix(core): normalize network socket backoff timings
 [2026-10-02 17:15:47 UTC] [TOKEN:ed36f01aadea25ad] Backfill refactor(net): refactor pipeline state machine transitions
 [2026-10-02 17:15:47 UTC] [TOKEN:1b0ae5cea661b805] Backfill test(worker): optimize worker loop iteration cycle
+[2026-10-02 17:15:47 UTC] [TOKEN:98d2a1e8ad679580] Backfill refactor(cache): recompute checksum signatures across feed
