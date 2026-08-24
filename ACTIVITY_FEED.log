@@ -471,3 +471,4 @@
 [2026-10-02 17:15:48 UTC] [TOKEN:4b2f012fc421c033] Backfill refactor(cache): optimize worker loop iteration cycle
 [2026-10-02 17:15:48 UTC] [TOKEN:feb744f7bf30ea33] Backfill feat(renderer): normalize network socket backoff timings
 [2026-10-02 17:15:48 UTC] [TOKEN:c019e86e73d66d34] Backfill test(crypto): prune stale connection telemetry
+[2026-10-02 17:15:48 UTC] [TOKEN:b76b0699bac01718] Backfill refactor(cache): align memory arena chunk offsets
