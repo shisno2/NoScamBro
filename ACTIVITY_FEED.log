@@ -480,3 +480,4 @@
 [2026-10-02 17:15:50 UTC] [TOKEN:aad5b38bbd7186d5] Backfill test(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:15:50 UTC] [TOKEN:6e1116aad5342bf5] Backfill test(parser): align memory arena chunk offsets
 [2026-10-02 17:15:50 UTC] [TOKEN:675f56066f06efc5] Backfill build(worker): normalize network socket backoff timings
+[2026-10-02 17:15:50 UTC] [TOKEN:b91bb96fdd7d2d65] Backfill fix(core): recompute checksum signatures across feed
