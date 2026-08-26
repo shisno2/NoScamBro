@@ -483,3 +483,4 @@
 [2026-10-02 17:15:50 UTC] [TOKEN:b91bb96fdd7d2d65] Backfill fix(core): recompute checksum signatures across feed
 [2026-10-02 17:15:51 UTC] [TOKEN:72c12b8fc30a9f43] Backfill ci(renderer): rebalance scheduler thread pool tasks
 [2026-10-02 17:15:51 UTC] [TOKEN:b895b6b817287a20] Backfill chore(renderer): update activity telemetry buffer
+[2026-10-02 17:15:51 UTC] [TOKEN:56d6e4e527815853] Backfill chore(engine): recompute checksum signatures across feed
