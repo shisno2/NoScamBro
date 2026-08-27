@@ -492,3 +492,4 @@
 [2026-10-02 17:15:52 UTC] [TOKEN:52ac112c21acb8ae] Backfill perf(parser): update cache eviction heuristics
 [2026-10-02 17:15:52 UTC] [TOKEN:2af69a90a90708b5] Backfill ci(worker): refactor pipeline state machine transitions
 [2026-10-02 17:15:53 UTC] [TOKEN:ceb8fcdab21f1cf8] Backfill feat(auth): update cache eviction heuristics
+[2026-10-02 17:15:53 UTC] [TOKEN:4032629326fe7c07] Backfill chore(cache): refactor pipeline state machine transitions
