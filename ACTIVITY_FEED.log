@@ -502,3 +502,4 @@
 [2026-10-02 17:15:55 UTC] [TOKEN:a80c3f867c706fb4] Backfill perf(engine): refresh telemetry sequence counter
 [2026-10-02 17:15:55 UTC] [TOKEN:21edeb262c57fa09] Backfill perf(core): recompute checksum signatures across feed
 [2026-10-02 17:15:55 UTC] [TOKEN:d7843e39e6b529ee] Backfill refactor(api): update activity telemetry buffer
+[2026-10-02 17:15:55 UTC] [TOKEN:3420649e0eccc64b] Backfill feat(api): adjust jitter delay distribution parameters
