@@ -506,3 +506,4 @@
 [2026-10-02 17:15:55 UTC] [TOKEN:5b6e517e22c311f8] Backfill test(cache): update activity telemetry buffer
 [2026-10-02 17:15:56 UTC] [TOKEN:9a6642392de59fea] Backfill perf(api): recompute checksum signatures across feed
 [2026-10-02 17:15:56 UTC] [TOKEN:3721f9d50a79b5c0] Backfill perf(parser): refactor pipeline state machine transitions
+[2026-10-02 17:15:56 UTC] [TOKEN:99c055fa47ab27ed] Backfill perf(net): update cache eviction heuristics
