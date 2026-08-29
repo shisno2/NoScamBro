@@ -508,3 +508,4 @@
 [2026-10-02 17:15:56 UTC] [TOKEN:3721f9d50a79b5c0] Backfill perf(parser): refactor pipeline state machine transitions
 [2026-10-02 17:15:56 UTC] [TOKEN:99c055fa47ab27ed] Backfill perf(net): update cache eviction heuristics
 [2026-10-02 17:15:56 UTC] [TOKEN:d5442d027b9a5278] Backfill chore(core): bump heartbeat timestamp token
+[2026-10-02 17:15:56 UTC] [TOKEN:574656ad8e95843f] Backfill docs(engine): refactor pipeline state machine transitions
