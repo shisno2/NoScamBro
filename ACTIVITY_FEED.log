@@ -510,3 +510,4 @@
 [2026-10-02 17:15:56 UTC] [TOKEN:d5442d027b9a5278] Backfill chore(core): bump heartbeat timestamp token
 [2026-10-02 17:15:56 UTC] [TOKEN:574656ad8e95843f] Backfill docs(engine): refactor pipeline state machine transitions
 [2026-10-02 17:15:57 UTC] [TOKEN:ae33e1c7e5c41e68] Backfill ci(renderer): align memory arena chunk offsets
+[2026-10-02 17:15:57 UTC] [TOKEN:688e367fd2e3bad0] Backfill perf(cache): normalize network socket backoff timings
