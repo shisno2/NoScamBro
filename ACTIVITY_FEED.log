@@ -515,3 +515,4 @@
 [2026-10-02 17:15:57 UTC] [TOKEN:ec8bc043b190ff6b] Backfill feat(api): adjust jitter delay distribution parameters
 [2026-10-02 17:15:57 UTC] [TOKEN:8b5595d4c33dcd78] Backfill chore(db): compact ledger ring buffer entries
 [2026-10-02 17:15:58 UTC] [TOKEN:e76c18126d496ee3] Backfill feat(api): synchronize event dispatcher queue
+[2026-10-02 17:15:58 UTC] [TOKEN:d24fa9cb0bc29077] Backfill docs(net): prune stale connection telemetry
