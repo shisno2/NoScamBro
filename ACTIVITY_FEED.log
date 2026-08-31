@@ -518,3 +518,4 @@
 [2026-10-02 17:15:58 UTC] [TOKEN:d24fa9cb0bc29077] Backfill docs(net): prune stale connection telemetry
 [2026-10-02 17:15:58 UTC] [TOKEN:005497d5efd29c63] Backfill chore(api): synchronize event dispatcher queue
 [2026-10-02 17:15:58 UTC] [TOKEN:a287fad43da47187] Backfill build(worker): update activity telemetry buffer
+[2026-10-02 17:15:58 UTC] [TOKEN:c2e3b567935dd792] Backfill perf(crypto): recompute checksum signatures across feed
