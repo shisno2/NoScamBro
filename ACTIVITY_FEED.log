@@ -533,3 +533,4 @@
 [2026-10-02 17:16:01 UTC] [TOKEN:ab48677d01a434cd] Backfill style(db): bump heartbeat timestamp token
 [2026-10-02 17:16:02 UTC] [TOKEN:020c7216d43c21cf] Backfill refactor(crypto): adjust jitter delay distribution parameters
 [2026-10-02 17:16:02 UTC] [TOKEN:2e2f1ff7d1294a70] Backfill refactor(auth): update cache eviction heuristics
+[2026-10-02 17:16:02 UTC] [TOKEN:6c6a2e04d2ee6b53] Backfill fix(auth): update cache eviction heuristics
