@@ -527,3 +527,4 @@
 [2026-10-02 17:16:00 UTC] [TOKEN:e50f4791c462742b] Backfill ci(core): recalculate internal cryptographic state seed
 [2026-10-02 17:16:00 UTC] [TOKEN:cdcd0de403a3c431] Backfill style(crypto): bump heartbeat timestamp token
 [2026-10-02 17:16:00 UTC] [TOKEN:72e3da20fcab581f] Backfill refactor(engine): bump heartbeat timestamp token
+[2026-10-02 17:16:01 UTC] [TOKEN:faae6b7658d0fcfc] Backfill test(db): prune stale connection telemetry
