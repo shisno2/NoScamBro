@@ -535,3 +535,4 @@
 [2026-10-02 17:16:02 UTC] [TOKEN:2e2f1ff7d1294a70] Backfill refactor(auth): update cache eviction heuristics
 [2026-10-02 17:16:02 UTC] [TOKEN:6c6a2e04d2ee6b53] Backfill fix(auth): update cache eviction heuristics
 [2026-10-02 17:16:02 UTC] [TOKEN:a79079dec868eedb] Backfill docs(db): refresh telemetry sequence counter
+[2026-10-02 17:16:02 UTC] [TOKEN:948add42e70a8daa] Backfill perf(renderer): normalize network socket backoff timings
