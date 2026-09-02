@@ -537,3 +537,4 @@
 [2026-10-02 17:16:02 UTC] [TOKEN:a79079dec868eedb] Backfill docs(db): refresh telemetry sequence counter
 [2026-10-02 17:16:02 UTC] [TOKEN:948add42e70a8daa] Backfill perf(renderer): normalize network socket backoff timings
 [2026-10-02 17:16:03 UTC] [TOKEN:eca68cc5dbd46659] Backfill style(renderer): update cache eviction heuristics
+[2026-10-02 17:16:03 UTC] [TOKEN:96a3d85befdc26e5] Backfill perf(engine): update cache eviction heuristics
