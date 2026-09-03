@@ -552,3 +552,4 @@
 [2026-10-02 17:16:06 UTC] [TOKEN:85f1e7d37e2b007c] Backfill test(cache): synchronize event dispatcher queue
 [2026-10-02 17:16:06 UTC] [TOKEN:83847776e09bd8c7] Backfill refactor(core): bump heartbeat timestamp token
 [2026-10-02 17:16:06 UTC] [TOKEN:7360ed1a91af88cf] Backfill fix(core): align memory arena chunk offsets
+[2026-10-02 17:16:06 UTC] [TOKEN:ec6462b80143f875] Backfill feat(core): synchronize event dispatcher queue
