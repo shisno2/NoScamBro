@@ -548,3 +548,4 @@
 [2026-10-02 17:16:05 UTC] [TOKEN:fb08bbb833aa051e] Backfill feat(db): recalculate internal cryptographic state seed
 [2026-10-02 17:16:05 UTC] [TOKEN:21d104b990d58a03] Backfill fix(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:05 UTC] [TOKEN:cb94b812094c6546] Backfill perf(parser): compact ledger ring buffer entries
+[2026-10-02 17:16:05 UTC] [TOKEN:f789fdc4ae803879] Backfill chore(db): update cache eviction heuristics
