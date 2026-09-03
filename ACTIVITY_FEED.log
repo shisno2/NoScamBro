@@ -544,3 +544,4 @@
 [2026-10-02 17:16:04 UTC] [TOKEN:b2f2d1f1dddb7735] Backfill ci(parser): refactor pipeline state machine transitions
 [2026-10-02 17:16:04 UTC] [TOKEN:41440baec2f4ff78] Backfill build(net): bump heartbeat timestamp token
 [2026-10-02 17:16:04 UTC] [TOKEN:a8de7f66994b9209] Backfill fix(auth): rebalance scheduler thread pool tasks
+[2026-10-02 17:16:04 UTC] [TOKEN:5773453c42701e0a] Backfill docs(auth): align memory arena chunk offsets
