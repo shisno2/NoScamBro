@@ -559,3 +559,4 @@
 [2026-10-02 17:16:07 UTC] [TOKEN:6eefac16bbe9f850] Backfill refactor(db): refactor pipeline state machine transitions
 [2026-10-02 17:16:07 UTC] [TOKEN:5c4d767de1af2658] Backfill chore(worker): prune stale connection telemetry
 [2026-10-02 17:16:07 UTC] [TOKEN:38b6ddd081a84586] Backfill docs(api): recalculate internal cryptographic state seed
+[2026-10-02 17:16:08 UTC] [TOKEN:fd2108d0a9983f74] Backfill perf(parser): normalize network socket backoff timings
