@@ -569,3 +569,4 @@
 [2026-10-02 17:16:09 UTC] [TOKEN:6364155d4129dff3] Backfill test(engine): update cache eviction heuristics
 [2026-10-02 17:16:09 UTC] [TOKEN:0f8e7b2ac2aea061] Backfill chore(api): update cache eviction heuristics
 [2026-10-02 17:16:10 UTC] [TOKEN:712a3146df68351b] Backfill perf(cache): optimize worker loop iteration cycle
+[2026-10-02 17:16:10 UTC] [TOKEN:50b4221818ea23bb] Backfill build(net): compact ledger ring buffer entries
