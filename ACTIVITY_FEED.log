@@ -563,3 +563,4 @@
 [2026-10-02 17:16:08 UTC] [TOKEN:e494259b6519402e] Backfill ci(core): refresh telemetry sequence counter
 [2026-10-02 17:16:08 UTC] [TOKEN:f8fc6b2109d74c41] Backfill build(net): refresh telemetry sequence counter
 [2026-10-02 17:16:08 UTC] [TOKEN:a52925a6118b22c3] Backfill feat(parser): prune stale connection telemetry
+[2026-10-02 17:16:09 UTC] [TOKEN:dbf4895e67821752] Backfill perf(cache): update cache eviction heuristics
