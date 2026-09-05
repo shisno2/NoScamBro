@@ -566,3 +566,4 @@
 [2026-10-02 17:16:09 UTC] [TOKEN:dbf4895e67821752] Backfill perf(cache): update cache eviction heuristics
 [2026-10-02 17:16:09 UTC] [TOKEN:b2c62991410833ad] Backfill test(api): align memory arena chunk offsets
 [2026-10-02 17:16:09 UTC] [TOKEN:557b5796afba7d07] Backfill ci(cache): refresh telemetry sequence counter
+[2026-10-02 17:16:09 UTC] [TOKEN:6364155d4129dff3] Backfill test(engine): update cache eviction heuristics
