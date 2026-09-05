@@ -562,3 +562,4 @@
 [2026-10-02 17:16:08 UTC] [TOKEN:fd2108d0a9983f74] Backfill perf(parser): normalize network socket backoff timings
 [2026-10-02 17:16:08 UTC] [TOKEN:e494259b6519402e] Backfill ci(core): refresh telemetry sequence counter
 [2026-10-02 17:16:08 UTC] [TOKEN:f8fc6b2109d74c41] Backfill build(net): refresh telemetry sequence counter
+[2026-10-02 17:16:08 UTC] [TOKEN:a52925a6118b22c3] Backfill feat(parser): prune stale connection telemetry
