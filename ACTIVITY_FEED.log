@@ -574,3 +574,4 @@
 [2026-10-02 17:16:10 UTC] [TOKEN:a74937dfd7a35459] Backfill perf(db): normalize network socket backoff timings
 [2026-10-02 17:16:11 UTC] [TOKEN:1dab4bc1e8fcdd0b] Backfill refactor(db): refactor pipeline state machine transitions
 [2026-10-02 17:16:11 UTC] [TOKEN:23e9352301dbc96f] Backfill fix(core): synchronize event dispatcher queue
+[2026-10-02 17:16:11 UTC] [TOKEN:8e9de927564b3035] Backfill ci(engine): update activity telemetry buffer
