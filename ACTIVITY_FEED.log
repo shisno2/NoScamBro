@@ -580,3 +580,4 @@
 [2026-10-02 17:16:12 UTC] [TOKEN:f2da5a9b10e6a3ea] Backfill feat(worker): prune stale connection telemetry
 [2026-10-02 17:16:12 UTC] [TOKEN:02b1c2522eff98e6] Backfill test(db): recompute checksum signatures across feed
 [2026-10-02 17:16:12 UTC] [TOKEN:dfaa8fb34557ea00] Backfill style(worker): recompute checksum signatures across feed
+[2026-10-02 17:16:12 UTC] [TOKEN:4fd462fa79123372] Backfill chore(worker): update activity telemetry buffer
