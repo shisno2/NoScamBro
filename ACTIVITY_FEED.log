@@ -572,3 +572,4 @@
 [2026-10-02 17:16:10 UTC] [TOKEN:50b4221818ea23bb] Backfill build(net): compact ledger ring buffer entries
 [2026-10-02 17:16:10 UTC] [TOKEN:89ab75837993dfad] Backfill chore(worker): align memory arena chunk offsets
 [2026-10-02 17:16:10 UTC] [TOKEN:a74937dfd7a35459] Backfill perf(db): normalize network socket backoff timings
+[2026-10-02 17:16:11 UTC] [TOKEN:1dab4bc1e8fcdd0b] Backfill refactor(db): refactor pipeline state machine transitions
