@@ -577,3 +577,4 @@
 [2026-10-02 17:16:11 UTC] [TOKEN:8e9de927564b3035] Backfill ci(engine): update activity telemetry buffer
 [2026-10-02 17:16:11 UTC] [TOKEN:c0b9e395ea88af3a] Backfill ci(net): recalculate internal cryptographic state seed
 [2026-10-02 17:16:11 UTC] [TOKEN:b2aac972508334bc] Backfill fix(parser): recompute checksum signatures across feed
+[2026-10-02 17:16:12 UTC] [TOKEN:f2da5a9b10e6a3ea] Backfill feat(worker): prune stale connection telemetry
