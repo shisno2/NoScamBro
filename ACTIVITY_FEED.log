@@ -583,3 +583,4 @@
 [2026-10-02 17:16:12 UTC] [TOKEN:4fd462fa79123372] Backfill chore(worker): update activity telemetry buffer
 [2026-10-02 17:16:12 UTC] [TOKEN:5cb53d5da1e0dc52] Backfill perf(engine): compact ledger ring buffer entries
 [2026-10-02 17:16:13 UTC] [TOKEN:3d6a01494511f5d7] Backfill docs(renderer): normalize network socket backoff timings
+[2026-10-02 17:16:13 UTC] [TOKEN:a906591f58dd11f2] Backfill feat(api): update activity telemetry buffer
