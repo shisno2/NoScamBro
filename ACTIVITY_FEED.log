@@ -582,3 +582,4 @@
 [2026-10-02 17:16:12 UTC] [TOKEN:dfaa8fb34557ea00] Backfill style(worker): recompute checksum signatures across feed
 [2026-10-02 17:16:12 UTC] [TOKEN:4fd462fa79123372] Backfill chore(worker): update activity telemetry buffer
 [2026-10-02 17:16:12 UTC] [TOKEN:5cb53d5da1e0dc52] Backfill perf(engine): compact ledger ring buffer entries
+[2026-10-02 17:16:13 UTC] [TOKEN:3d6a01494511f5d7] Backfill docs(renderer): normalize network socket backoff timings
