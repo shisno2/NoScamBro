@@ -599,3 +599,4 @@
 [2026-10-02 17:16:15 UTC] [TOKEN:d9600bb64c2b1ac8] Backfill docs(net): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:15 UTC] [TOKEN:925f6d789aca6ec4] Backfill build(worker): recompute checksum signatures across feed
 [2026-10-02 17:16:16 UTC] [TOKEN:448c6831738585f9] Backfill ci(worker): compact ledger ring buffer entries
+[2026-10-02 17:16:16 UTC] [TOKEN:03f50b968436cb5e] Backfill fix(api): refresh telemetry sequence counter
