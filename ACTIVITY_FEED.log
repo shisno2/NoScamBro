@@ -606,3 +606,4 @@
 [2026-10-02 17:16:17 UTC] [TOKEN:a8d1e8eb9c2eb611] Backfill fix(auth): optimize worker loop iteration cycle
 [2026-10-02 17:16:17 UTC] [TOKEN:f74ef9e831ec9f3f] Backfill feat(engine): compact ledger ring buffer entries
 [2026-10-02 17:16:17 UTC] [TOKEN:b809a6a8efda589f] Backfill docs(core): adjust jitter delay distribution parameters
+[2026-10-02 17:16:17 UTC] [TOKEN:7687f64669d6b3c5] Backfill build(renderer): compact ledger ring buffer entries
