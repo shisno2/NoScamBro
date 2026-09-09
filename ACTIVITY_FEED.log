@@ -604,3 +604,4 @@
 [2026-10-02 17:16:16 UTC] [TOKEN:2cbbeffdcb3563ea] Backfill fix(worker): update cache eviction heuristics
 [2026-10-02 17:16:17 UTC] [TOKEN:0b9b88453241c736] Backfill build(cache): normalize network socket backoff timings
 [2026-10-02 17:16:17 UTC] [TOKEN:a8d1e8eb9c2eb611] Backfill fix(auth): optimize worker loop iteration cycle
+[2026-10-02 17:16:17 UTC] [TOKEN:f74ef9e831ec9f3f] Backfill feat(engine): compact ledger ring buffer entries
