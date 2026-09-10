@@ -615,3 +615,4 @@
 [2026-10-02 17:16:19 UTC] [TOKEN:7fd64540839505a1] Backfill style(net): recompute checksum signatures across feed
 [2026-10-02 17:16:19 UTC] [TOKEN:c567dca3f486c46e] Backfill test(renderer): prune stale connection telemetry
 [2026-10-02 17:16:19 UTC] [TOKEN:0975db2603c9a312] Backfill style(engine): bump heartbeat timestamp token
+[2026-10-02 17:16:19 UTC] [TOKEN:e26428ef2690c61b] Backfill fix(crypto): rebalance scheduler thread pool tasks
