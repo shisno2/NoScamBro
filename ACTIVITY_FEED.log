@@ -618,3 +618,4 @@
 [2026-10-02 17:16:19 UTC] [TOKEN:e26428ef2690c61b] Backfill fix(crypto): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:19 UTC] [TOKEN:303d42275350575e] Backfill test(engine): optimize worker loop iteration cycle
 [2026-10-02 17:16:20 UTC] [TOKEN:74c6baa0643f53eb] Backfill test(parser): synchronize event dispatcher queue
+[2026-10-02 17:16:20 UTC] [TOKEN:bbd9fb5766ed6489] Backfill refactor(crypto): recompute checksum signatures across feed
