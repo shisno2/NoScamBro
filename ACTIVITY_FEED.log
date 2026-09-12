@@ -633,3 +633,4 @@
 [2026-10-02 17:16:22 UTC] [TOKEN:fb917ad0e2ce1dd1] Backfill build(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:23 UTC] [TOKEN:bd8f57bac644b025] Backfill docs(core): refresh telemetry sequence counter
 [2026-10-02 17:16:23 UTC] [TOKEN:cfa7f8c7ee9879f5] Backfill fix(core): update activity telemetry buffer
+[2026-10-02 17:16:23 UTC] [TOKEN:ed8591d214792b0e] Backfill fix(net): normalize network socket backoff timings
