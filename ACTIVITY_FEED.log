@@ -638,3 +638,4 @@
 [2026-10-02 17:16:23 UTC] [TOKEN:1033269f9b8367b6] Backfill build(parser): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:24 UTC] [TOKEN:404e4d062f4a0c0b] Backfill feat(renderer): normalize network socket backoff timings
 [2026-10-02 17:16:24 UTC] [TOKEN:a11eeabef41102a8] Backfill docs(cache): compact ledger ring buffer entries
+[2026-10-02 17:16:24 UTC] [TOKEN:e99af5e3b1c7c3d2] Backfill perf(core): synchronize event dispatcher queue
