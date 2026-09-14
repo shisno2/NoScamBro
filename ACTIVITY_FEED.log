@@ -648,3 +648,4 @@
 [2026-10-02 17:16:26 UTC] [TOKEN:539f2822854deaab] Backfill build(parser): adjust jitter delay distribution parameters
 [2026-10-02 17:16:26 UTC] [TOKEN:0396c3c2210fdcd0] Backfill refactor(parser): refactor pipeline state machine transitions
 [2026-10-02 17:16:26 UTC] [TOKEN:16f10a6eb170601b] Backfill test(api): recompute checksum signatures across feed
+[2026-10-02 17:16:26 UTC] [TOKEN:93284399a7df3b09] Backfill build(db): refactor pipeline state machine transitions
