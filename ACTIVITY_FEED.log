@@ -644,3 +644,4 @@
 [2026-10-02 17:16:25 UTC] [TOKEN:3be3a46ed2a54cc8] Backfill perf(net): bump heartbeat timestamp token
 [2026-10-02 17:16:25 UTC] [TOKEN:05cb1976129b4928] Backfill refactor(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:25 UTC] [TOKEN:bf4f4649f4a1d5bd] Backfill test(db): normalize network socket backoff timings
+[2026-10-02 17:16:25 UTC] [TOKEN:12852f60c47f5166] Backfill docs(db): align memory arena chunk offsets
