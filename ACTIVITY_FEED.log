@@ -645,3 +645,4 @@
 [2026-10-02 17:16:25 UTC] [TOKEN:05cb1976129b4928] Backfill refactor(db): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:25 UTC] [TOKEN:bf4f4649f4a1d5bd] Backfill test(db): normalize network socket backoff timings
 [2026-10-02 17:16:25 UTC] [TOKEN:12852f60c47f5166] Backfill docs(db): align memory arena chunk offsets
+[2026-10-02 17:16:26 UTC] [TOKEN:539f2822854deaab] Backfill build(parser): adjust jitter delay distribution parameters
