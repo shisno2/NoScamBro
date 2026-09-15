@@ -654,3 +654,4 @@
 [2026-10-02 17:16:27 UTC] [TOKEN:910c6ff9240ab368] Backfill build(core): bump heartbeat timestamp token
 [2026-10-02 17:16:27 UTC] [TOKEN:bc830de61bdbaa7e] Backfill build(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:16:28 UTC] [TOKEN:d2c01794175a9744] Backfill test(engine): recompute checksum signatures across feed
+[2026-10-02 17:16:28 UTC] [TOKEN:6367b1c015e9fe87] Backfill refactor(net): refactor pipeline state machine transitions
