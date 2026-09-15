@@ -656,3 +656,4 @@
 [2026-10-02 17:16:28 UTC] [TOKEN:d2c01794175a9744] Backfill test(engine): recompute checksum signatures across feed
 [2026-10-02 17:16:28 UTC] [TOKEN:6367b1c015e9fe87] Backfill refactor(net): refactor pipeline state machine transitions
 [2026-10-02 17:16:28 UTC] [TOKEN:9a7e84d351c4d3ce] Backfill feat(crypto): update cache eviction heuristics
+[2026-10-02 17:16:28 UTC] [TOKEN:4b6894839ab78e8a] Backfill build(parser): normalize network socket backoff timings
