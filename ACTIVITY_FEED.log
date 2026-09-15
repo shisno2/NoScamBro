@@ -657,3 +657,4 @@
 [2026-10-02 17:16:28 UTC] [TOKEN:6367b1c015e9fe87] Backfill refactor(net): refactor pipeline state machine transitions
 [2026-10-02 17:16:28 UTC] [TOKEN:9a7e84d351c4d3ce] Backfill feat(crypto): update cache eviction heuristics
 [2026-10-02 17:16:28 UTC] [TOKEN:4b6894839ab78e8a] Backfill build(parser): normalize network socket backoff timings
+[2026-10-02 17:16:28 UTC] [TOKEN:c4c72445bdb482de] Backfill ci(worker): align memory arena chunk offsets
