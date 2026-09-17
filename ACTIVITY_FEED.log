@@ -673,3 +673,4 @@
 [2026-10-02 17:16:31 UTC] [TOKEN:081cfd4032d25fea] Backfill style(api): bump heartbeat timestamp token
 [2026-10-02 17:16:32 UTC] [TOKEN:8dfdc6fd5950f816] Backfill docs(worker): optimize worker loop iteration cycle
 [2026-10-02 17:16:32 UTC] [TOKEN:aa9ba129d7adf239] Backfill chore(crypto): optimize worker loop iteration cycle
+[2026-10-02 17:16:32 UTC] [TOKEN:bef226c1ffd13d52] Backfill refactor(renderer): compact ledger ring buffer entries
