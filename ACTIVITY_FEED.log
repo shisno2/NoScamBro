@@ -675,3 +675,4 @@
 [2026-10-02 17:16:32 UTC] [TOKEN:aa9ba129d7adf239] Backfill chore(crypto): optimize worker loop iteration cycle
 [2026-10-02 17:16:32 UTC] [TOKEN:bef226c1ffd13d52] Backfill refactor(renderer): compact ledger ring buffer entries
 [2026-10-02 17:16:32 UTC] [TOKEN:d1707e88e55088b3] Backfill docs(db): align memory arena chunk offsets
+[2026-10-02 17:16:32 UTC] [TOKEN:eb6ad1505feed5fe] Backfill ci(worker): refresh telemetry sequence counter
