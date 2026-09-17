@@ -677,3 +677,4 @@
 [2026-10-02 17:16:32 UTC] [TOKEN:d1707e88e55088b3] Backfill docs(db): align memory arena chunk offsets
 [2026-10-02 17:16:32 UTC] [TOKEN:eb6ad1505feed5fe] Backfill ci(worker): refresh telemetry sequence counter
 [2026-10-02 17:16:33 UTC] [TOKEN:6383ca794fe865ee] Backfill perf(renderer): prune stale connection telemetry
+[2026-10-02 17:16:33 UTC] [TOKEN:93d07c328789fcd4] Backfill build(net): compact ledger ring buffer entries
