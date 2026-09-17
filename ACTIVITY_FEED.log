@@ -679,3 +679,4 @@
 [2026-10-02 17:16:33 UTC] [TOKEN:6383ca794fe865ee] Backfill perf(renderer): prune stale connection telemetry
 [2026-10-02 17:16:33 UTC] [TOKEN:93d07c328789fcd4] Backfill build(net): compact ledger ring buffer entries
 [2026-10-02 17:16:33 UTC] [TOKEN:9d1aa34ecd1eeb08] Backfill style(worker): update cache eviction heuristics
+[2026-10-02 17:16:33 UTC] [TOKEN:79a5bf9691ee846b] Backfill perf(cache): recompute checksum signatures across feed
