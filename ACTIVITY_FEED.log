@@ -687,3 +687,4 @@
 [2026-10-02 17:16:34 UTC] [TOKEN:2959c4734027d9bb] Backfill docs(worker): recompute checksum signatures across feed
 [2026-10-02 17:16:35 UTC] [TOKEN:60e1fa1f5d1fe7d7] Backfill perf(renderer): synchronize event dispatcher queue
 [2026-10-02 17:16:35 UTC] [TOKEN:32cafe710847199a] Backfill test(api): update cache eviction heuristics
+[2026-10-02 17:16:35 UTC] [TOKEN:6fcf9bf56585b373] Backfill perf(auth): normalize network socket backoff timings
