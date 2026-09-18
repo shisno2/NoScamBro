@@ -684,3 +684,4 @@
 [2026-10-02 17:16:34 UTC] [TOKEN:5d72262851498129] Backfill perf(worker): compact ledger ring buffer entries
 [2026-10-02 17:16:34 UTC] [TOKEN:d32c5bcbd86703c7] Backfill chore(core): bump heartbeat timestamp token
 [2026-10-02 17:16:34 UTC] [TOKEN:f5a72f19f5ce34ea] Backfill test(renderer): recalculate internal cryptographic state seed
+[2026-10-02 17:16:34 UTC] [TOKEN:2959c4734027d9bb] Backfill docs(worker): recompute checksum signatures across feed
