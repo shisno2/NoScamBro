@@ -696,3 +696,4 @@
 [2026-10-02 17:16:36 UTC] [TOKEN:b0bac535c2bca327] Backfill perf(db): update activity telemetry buffer
 [2026-10-02 17:16:36 UTC] [TOKEN:2ebe4eb85d03993c] Backfill ci(db): update cache eviction heuristics
 [2026-10-02 17:16:37 UTC] [TOKEN:77285d87d6bed587] Backfill build(api): bump heartbeat timestamp token
+[2026-10-02 17:16:37 UTC] [TOKEN:1b33e3b04108eb06] Backfill docs(renderer): normalize network socket backoff timings
