@@ -701,3 +701,4 @@
 [2026-10-02 17:16:37 UTC] [TOKEN:63ead0478d814947] Backfill chore(core): refactor pipeline state machine transitions
 [2026-10-02 17:16:37 UTC] [TOKEN:ceae467c77c09360] Backfill docs(engine): optimize worker loop iteration cycle
 [2026-10-02 17:16:38 UTC] [TOKEN:4c8bfdc07fd9b18c] Backfill style(renderer): adjust jitter delay distribution parameters
+[2026-10-02 17:16:38 UTC] [TOKEN:31eeb18549b29853] Backfill feat(parser): prune stale connection telemetry
