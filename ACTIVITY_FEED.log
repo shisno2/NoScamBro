@@ -694,3 +694,4 @@
 [2026-10-02 17:16:36 UTC] [TOKEN:5d28fbec25b7b38f] Backfill refactor(engine): adjust jitter delay distribution parameters
 [2026-10-02 17:16:36 UTC] [TOKEN:6e429baefecdca02] Backfill refactor(db): optimize worker loop iteration cycle
 [2026-10-02 17:16:36 UTC] [TOKEN:b0bac535c2bca327] Backfill perf(db): update activity telemetry buffer
+[2026-10-02 17:16:36 UTC] [TOKEN:2ebe4eb85d03993c] Backfill ci(db): update cache eviction heuristics
