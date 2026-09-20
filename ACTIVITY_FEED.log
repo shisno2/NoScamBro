@@ -704,3 +704,4 @@
 [2026-10-02 17:16:38 UTC] [TOKEN:31eeb18549b29853] Backfill feat(parser): prune stale connection telemetry
 [2026-10-02 17:16:38 UTC] [TOKEN:80c2414119bed02f] Backfill style(db): adjust jitter delay distribution parameters
 [2026-10-02 17:16:38 UTC] [TOKEN:c9d1656690589dae] Backfill fix(engine): update activity telemetry buffer
+[2026-10-02 17:16:39 UTC] [TOKEN:391c74a4a4f63cf7] Backfill build(crypto): rebalance scheduler thread pool tasks
