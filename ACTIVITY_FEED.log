@@ -705,3 +705,4 @@
 [2026-10-02 17:16:38 UTC] [TOKEN:80c2414119bed02f] Backfill style(db): adjust jitter delay distribution parameters
 [2026-10-02 17:16:38 UTC] [TOKEN:c9d1656690589dae] Backfill fix(engine): update activity telemetry buffer
 [2026-10-02 17:16:39 UTC] [TOKEN:391c74a4a4f63cf7] Backfill build(crypto): rebalance scheduler thread pool tasks
+[2026-10-02 17:16:39 UTC] [TOKEN:0444d35a7e498343] Backfill build(net): normalize network socket backoff timings
