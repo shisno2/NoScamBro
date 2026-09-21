@@ -721,3 +721,4 @@
 [2026-10-02 17:16:45 UTC] [TOKEN:243f633ee26eaf48] Backfill perf(net): align memory arena chunk offsets
 [2026-10-02 17:16:45 UTC] [TOKEN:f5841811f3d96ab1] Backfill style(worker): align memory arena chunk offsets
 [2026-10-02 17:16:45 UTC] [TOKEN:8a8c53ddac43eea5] Backfill build(core): optimize worker loop iteration cycle
+[2026-10-02 17:16:45 UTC] [TOKEN:3a6da5d7c5860a78] Backfill docs(core): rebalance scheduler thread pool tasks
