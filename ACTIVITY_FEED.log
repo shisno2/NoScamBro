@@ -714,3 +714,4 @@
 [2026-10-02 17:16:43 UTC] [TOKEN:d3602a5c135b6171] Backfill style(net): align memory arena chunk offsets
 [2026-10-02 17:16:43 UTC] [TOKEN:5cd8b5e981b354c1] Backfill docs(api): adjust jitter delay distribution parameters
 [2026-10-02 17:16:43 UTC] [TOKEN:a4f247309da14e23] Backfill feat(parser): optimize worker loop iteration cycle
+[2026-10-02 17:16:44 UTC] [TOKEN:889ff68f8881b514] Backfill test(api): rebalance scheduler thread pool tasks
