@@ -727,3 +727,4 @@
 [2026-10-02 17:16:46 UTC] [TOKEN:56ee5691f3cc1a2f] Backfill build(net): recalculate internal cryptographic state seed
 [2026-10-02 17:16:46 UTC] [TOKEN:b634f43d706597a8] Backfill fix(core): recalculate internal cryptographic state seed
 [2026-10-02 17:16:47 UTC] [TOKEN:bbf44f80b0c7c5e9] Backfill feat(api): refresh telemetry sequence counter
+[2026-10-02 17:16:47 UTC] [TOKEN:d8a7e30505381b83] Backfill docs(core): recalculate internal cryptographic state seed
