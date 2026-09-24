@@ -745,3 +745,4 @@
 [2026-10-02 17:16:50 UTC] [TOKEN:7a98c697a5f611c0] Backfill feat(core): optimize worker loop iteration cycle
 [2026-10-02 17:16:50 UTC] [TOKEN:909d0e2d75dd4dfd] Backfill test(db): synchronize event dispatcher queue
 [2026-10-02 17:16:50 UTC] [TOKEN:5d5e3568e9c4519f] Backfill chore(core): synchronize event dispatcher queue
+[2026-10-02 17:16:51 UTC] [TOKEN:e0878e944dcf5b96] Backfill docs(cache): adjust jitter delay distribution parameters
