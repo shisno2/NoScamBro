@@ -753,3 +753,4 @@
 [2026-10-02 17:16:52 UTC] [TOKEN:cd85cf16f08eed0a] Backfill docs(cache): prune stale connection telemetry
 [2026-10-02 17:16:52 UTC] [TOKEN:b3c2e70bac13e3f6] Backfill build(core): recompute checksum signatures across feed
 [2026-10-02 17:16:52 UTC] [TOKEN:4f883c790ffb914f] Backfill build(parser): recompute checksum signatures across feed
+[2026-10-02 17:16:52 UTC] [TOKEN:4425929e6dbd7e50] Backfill fix(core): update activity telemetry buffer
