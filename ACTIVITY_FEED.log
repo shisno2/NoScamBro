@@ -755,3 +755,4 @@
 [2026-10-02 17:16:52 UTC] [TOKEN:4f883c790ffb914f] Backfill build(parser): recompute checksum signatures across feed
 [2026-10-02 17:16:52 UTC] [TOKEN:4425929e6dbd7e50] Backfill fix(core): update activity telemetry buffer
 [2026-10-02 17:16:52 UTC] [TOKEN:5c7da3e2047f6a63] Backfill chore(net): prune stale connection telemetry
+[2026-10-02 17:16:53 UTC] [TOKEN:733f2ae23bb22350] Backfill docs(db): optimize worker loop iteration cycle
