@@ -751,3 +751,4 @@
 [2026-10-02 17:16:51 UTC] [TOKEN:80d36e5dd3ff3710] Backfill test(renderer): refresh telemetry sequence counter
 [2026-10-02 17:16:51 UTC] [TOKEN:e01d437ed6b888d8] Backfill ci(net): optimize worker loop iteration cycle
 [2026-10-02 17:16:52 UTC] [TOKEN:cd85cf16f08eed0a] Backfill docs(cache): prune stale connection telemetry
+[2026-10-02 17:16:52 UTC] [TOKEN:b3c2e70bac13e3f6] Backfill build(core): recompute checksum signatures across feed
