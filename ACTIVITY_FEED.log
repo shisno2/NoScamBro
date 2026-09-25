@@ -750,3 +750,4 @@
 [2026-10-02 17:16:51 UTC] [TOKEN:d106b684c7a277ff] Backfill feat(api): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:51 UTC] [TOKEN:80d36e5dd3ff3710] Backfill test(renderer): refresh telemetry sequence counter
 [2026-10-02 17:16:51 UTC] [TOKEN:e01d437ed6b888d8] Backfill ci(net): optimize worker loop iteration cycle
+[2026-10-02 17:16:52 UTC] [TOKEN:cd85cf16f08eed0a] Backfill docs(cache): prune stale connection telemetry
