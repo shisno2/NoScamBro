@@ -1,9 +1,17 @@
 /**
- * GameDev Tycoon: Studio Master
- * Полная логика симулятора разработки игр
+ * GameDev Tycoon: Studio Master Pro
+ * Продвинутая версия симулятора разработки игр:
+ * - Собственные движки с модулями (Рэйтрейсинг, AI, Физика, Мультиплеер)
+ * - Франшизы и сиквелы (Part II, Trilogy)
+ * - DLC, сезонные обновления и патчи
+ * - Ежегодная премия The Game Awards (GOTY) и сезонные выставки
+ * - Акции студии и капитализация
+ * - Случайные события индустрии (утечки кода, вирусные мемы, хакерские атаки)
+ * - Система морали сотрудников и кранч-режим
+ * - Система достижений (Achievements)
  */
 
-// --- Аудио-синтезатор для звуковых эффектов (без внешних файлов) ---
+// --- Синтезатор звуковых эффектов ---
 class SoundManager {
   constructor() {
     this.enabled = true;
@@ -35,7 +43,7 @@ class SoundManager {
       osc.start();
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {
-      // Audio autoplay policy
+      // Audio autoplay restrictions
     }
   }
 
@@ -57,19 +65,25 @@ class SoundManager {
       setTimeout(() => this.playTone(f, 0.15, 'sine'), i * 90);
     });
   }
+  playFanfare() {
+    [440, 554, 659, 880, 1108].forEach((f, i) => {
+      setTimeout(() => this.playTone(f, 0.2, 'triangle'), i * 110);
+    });
+  }
 }
 
 const sounds = new SoundManager();
 
-// --- ИГРОВАЯ БАЗА ДАННЫХ ---
+// --- БАЗА ДАННЫХ ИНДУСТРИИ ---
 const GAME_DB = {
   genres: [
     { id: 'rpg', name: 'RPG (Ролевая игра)', cost: 1500, unlockRp: 0, bestThemes: ['fantasy', 'scifi', 'postapoc'], weights: { code: 40, design: 35, sound: 25 } },
     { id: 'action', name: 'Экшен / Шутер', cost: 1800, unlockRp: 0, bestThemes: ['scifi', 'military', 'zombie', 'cyberpunk'], weights: { code: 45, design: 35, sound: 20 } },
-    { id: 'strategy', name: 'Стратегия', cost: 2000, unlockRp: 20, bestThemes: ['history', 'space', 'medieval'], weights: { code: 50, design: 30, sound: 20 } },
-    { id: 'simulator', name: 'Симулятор', cost: 1200, unlockRp: 0, bestThemes: ['business', 'city', 'transport'], weights: { code: 45, design: 30, sound: 25 } },
+    { id: 'strategy', name: 'Стратегия в реальном времени', cost: 2000, unlockRp: 20, bestThemes: ['history', 'space', 'medieval', 'city'], weights: { code: 50, design: 30, sound: 20 } },
+    { id: 'simulator', name: 'Симулятор жизни / бизнеса', cost: 1200, unlockRp: 0, bestThemes: ['business', 'city', 'transport'], weights: { code: 45, design: 30, sound: 25 } },
     { id: 'horror', name: 'Хоррор на выживание', cost: 1600, unlockRp: 25, bestThemes: ['zombie', 'mystery', 'paranormal'], weights: { code: 30, design: 35, sound: 35 } },
-    { id: 'puzzle', name: 'Головоломка / Казуалка', cost: 800, unlockRp: 15, bestThemes: ['abstract', 'fantasy', 'mystery'], weights: { code: 35, design: 45, sound: 20 } }
+    { id: 'puzzle', name: 'Головоломка / Казуалка', cost: 800, unlockRp: 15, bestThemes: ['abstract', 'fantasy', 'mystery'], weights: { code: 35, design: 45, sound: 20 } },
+    { id: 'openworld', name: 'Открытый мир / Sandbox', cost: 4500, unlockRp: 45, bestThemes: ['postapoc', 'fantasy', 'cyberpunk', 'crime'], weights: { code: 45, design: 40, sound: 15 } }
   ],
 
   themes: [
@@ -84,21 +98,26 @@ const GAME_DB = {
     { id: 'city', name: 'Строительство городов', unlockRp: 20 },
     { id: 'military', name: 'Военные спецоперации', unlockRp: 15 },
     { id: 'paranormal', name: 'Мистика и призраки', unlockRp: 30 },
+    { id: 'crime', name: 'Криминальный мегаполис', unlockRp: 25 },
     { id: 'abstract', name: 'Абстрактный минимализм', unlockRp: 0 }
   ],
 
   platforms: [
     { id: 'pc', name: 'Персональный компьютер (Steam)', cost: 1000, audienceShare: 0.9, unlockRp: 0 },
-    { id: 'playbox', name: 'Консоль PlayBox 5', cost: 5000, audienceShare: 1.3, unlockRp: 30 },
-    { id: 'nintento', name: 'Портативка Switchy', cost: 3500, audienceShare: 1.1, unlockRp: 25 },
-    { id: 'mobile', name: 'Мобильные телефоны (iOS/Android)', cost: 2500, audienceShare: 1.4, unlockRp: 20 },
-    { id: 'vr', name: 'Шлем виртуальной реальности (VR)', cost: 8000, audienceShare: 0.8, unlockRp: 50 }
+    { id: 'playbox', name: 'Консоль PlayBox 5 Pro', cost: 5000, audienceShare: 1.3, unlockRp: 30 },
+    { id: 'nintento', name: 'Портативка Switchy OLED', cost: 3500, audienceShare: 1.1, unlockRp: 25 },
+    { id: 'mobile', name: 'Мобильные телефоны (iOS/Android)', cost: 2500, audienceShare: 1.5, unlockRp: 20 },
+    { id: 'vr', name: 'Шлем виртуальной реальности (VR Meta)', cost: 8000, audienceShare: 0.85, unlockRp: 50 },
+    { id: 'cloud', name: 'Облачный гейминг CloudStation', cost: 12000, audienceShare: 1.6, unlockRp: 70 }
   ],
 
-  engines: [
-    { id: 'custom_basic', name: 'Базовый 2D движок', cost: 0, mult: 1.0, unlockRp: 0 },
-    { id: 'unity_style', name: 'Voxel3D Engine v1.0', cost: 3000, mult: 1.25, unlockRp: 35 },
-    { id: 'unreal_style', name: 'Titan 5 Engine (RayTracing)', cost: 10000, mult: 1.6, unlockRp: 80 }
+  engineModules: [
+    { id: 'mod_2d', name: '2D Спрайтовый конвейер', cost: 1000, mult: 0.1, rp: 0 },
+    { id: 'mod_physics', name: 'Физический движок Havoc-X', cost: 3500, mult: 0.2, rp: 20 },
+    { id: 'mod_ai', name: 'Продвинутый ИИ противников', cost: 4000, mult: 0.25, rp: 25 },
+    { id: 'mod_raytracing', name: 'Трассировка лучей (RayTracing)', cost: 8000, mult: 0.35, rp: 40 },
+    { id: 'mod_netcode', name: 'Сетевой код со сглаживанием пинга', cost: 6000, mult: 0.3, rp: 35 },
+    { id: 'mod_sound', name: 'Пространственное 3D аудио Dolby Atmos', cost: 3000, mult: 0.15, rp: 20 }
   ],
 
   offices: [
@@ -113,27 +132,91 @@ const GAME_DB = {
     { id: 'coffee_machine', name: 'Итальянская кофемашина', cost: 2000, desc: '-20% к шансу появления багов', owned: false },
     { id: 'dual_monitors', name: 'Сверхширокие 4K мониторы', cost: 5000, desc: '+25% к очкам дизайна и арта', owned: false },
     { id: 'sound_booth', name: 'Акустическая студия звукозаписи', cost: 6500, desc: '+30% к качеству саундтрека', owned: false },
-    { id: 'server_rack', name: 'Локальный CI/CD сервер билдов', cost: 12000, desc: '+35% к скорости компиляции и кодинга', owned: false }
+    { id: 'server_rack', name: 'Локальный CI/CD сервер билдов', cost: 12000, desc: '+35% к скорости компиляции и кодинга', owned: false },
+    { id: 'lounge_zone', name: 'Зона отдыха с PS5 и массажными креслами', cost: 8000, desc: 'Восстанавливает мораль команды после кранчей', owned: false }
   ],
 
   marketingCampaigns: [
-    { id: 'social', name: 'Таргетинг в соцсетях и TikTok', cost: 1500, boostSales: 1.3, duration: 4, desc: 'Привлекает казуальную молодую аудиторию.' },
-    { id: 'streamers', name: 'Спонсорские стримы у топ-блогеров', cost: 6000, boostSales: 1.7, duration: 4, desc: 'Взрывной интерес геймеров и хайп в прямом эфире.' },
-    { id: 'gamescom', name: 'Стенд на игровой выставке E3 / Gamescom', cost: 18000, boostSales: 2.4, duration: 6, desc: 'Мировое признание, внимание прессы и куча вишлистов!' }
+    { id: 'social', name: 'Таргетинг в соцсетях и вирусные мемы', cost: 1500, boostSales: 1.35, duration: 4, desc: 'Привлекает молодежь и формирует хайп.' },
+    { id: 'streamers', name: 'Спонсорские стримы у топ-блогеров Twitch/YouTube', cost: 6000, boostSales: 1.75, duration: 4, desc: 'Взрывной интерес геймеров и миллионные просмотры.' },
+    { id: 'gamescom', name: 'Стенд на крупнейшей выставке Gamescom / E3', cost: 18000, boostSales: 2.5, duration: 6, desc: 'Мировое признание, внимание прессы и куча вишлистов!' },
+    { id: 'times_square', name: 'Цифровые билборды на Таймс-Сквер в Нью-Йорке', cost: 45000, boostSales: 3.8, duration: 8, desc: 'Ультимативная глобальная реклама AAA-уровня!' }
+  ],
+
+  conventions: [
+    { id: 'indie_cup', name: 'Indie Cup Festival', month: 3, boothCost: 3000, fansBonus: 600, desc: 'Отличный шанс показать ранний билд инди-сообществу.' },
+    { id: 'gamescom', name: 'Gamescom Кельн', month: 8, boothCost: 15000, fansBonus: 3500, desc: 'Крупнейшая европейская выставка с сотнями тысяч посетителей.' },
+    { id: 'e3_expo', name: 'E3 Expo Лос-Анджелес', month: 6, boothCost: 25000, fansBonus: 8000, desc: 'Главная арена анонсов игр мирового масштаба.' }
+  ],
+
+  achievements: [
+    { id: 'first_game', title: 'Первый блин не комом', desc: 'Выпустите свою первую видеоигру', rewardCash: 2000, rewardRp: 5, unlocked: false },
+    { id: 'hit_score', title: 'Признание критиков', desc: 'Получите средний балл 8.5 или выше', rewardCash: 5000, rewardRp: 15, unlocked: false },
+    { id: 'masterpiece', title: 'Истинный шедевр!', desc: 'Получите рекордную оценку 9.5 или 10.0', rewardCash: 25000, rewardRp: 30, unlocked: false },
+    { id: 'first_million', title: 'Первый миллион', desc: 'Заработайте $1,000,000 валовой выручки', rewardCash: 50000, rewardRp: 25, unlocked: false },
+    { id: 'custom_engine', title: 'Технологический суверенитет', desc: 'Соберите собственный игровой движок', rewardCash: 4000, rewardRp: 20, unlocked: false },
+    { id: 'goty_winner', title: 'Триумфатор года', desc: 'Завоюйте главную награду GOTY (Игра Года)', rewardCash: 100000, rewardRp: 50, unlocked: false },
+    { id: 'big_team', title: 'Серьёзный бизнес', desc: 'Наймите команду из 4 или более разработчиков', rewardCash: 10000, rewardRp: 10, unlocked: false },
+    { id: 'skyscraper_move', title: 'Взгляд с высоты птичьего полёта', desc: 'Купите небоскрёб GameDev Corp', rewardCash: 50000, rewardRp: 40, unlocked: false },
+    { id: 'dlc_released', title: 'Поддержка сервиса', desc: 'Выпустите крупное дополнение (DLC)', rewardCash: 8000, rewardRp: 10, unlocked: false },
+    { id: 'bug_hunter', title: 'Гроза тараканов', desc: 'Уничтожьте 20 или более жуков в мини-игре', rewardCash: 3000, rewardRp: 5, unlocked: false },
+    { id: 'fan_army', title: 'Культ преданных фанатов', desc: 'Соберите армию из более 10,000 фанатов', rewardCash: 15000, rewardRp: 20, unlocked: false },
+    { id: 'stock_bull', title: 'Уолл-Стрит ликует', desc: 'Поднимите стоимость акций студии выше $150', rewardCash: 30000, rewardRp: 25, unlocked: false }
   ]
 };
 
-// Генератор случайных названий игр
+// Генератор названий
 const RANDOM_TITLES = {
-  prefixes: ['Cyber', 'Super', 'Dark', 'Pixel', 'Mega', 'Shadow', 'Final', 'Eternal', 'Neon', 'Grand', 'Pocket', 'Quantum'],
-  nouns: ['Quest', 'Strike', 'Legends', 'Simulator', 'Revenge', 'Chronicles', 'Tactics', 'Hunters', 'Runner', 'Empire', 'Warriors', 'Odyssey']
+  prefixes: ['Cyber', 'Super', 'Dark', 'Pixel', 'Mega', 'Shadow', 'Final', 'Eternal', 'Neon', 'Grand', 'Pocket', 'Quantum', 'Apex', 'Star', 'Iron', 'Bio'],
+  nouns: ['Quest', 'Strike', 'Legends', 'Simulator', 'Revenge', 'Chronicles', 'Tactics', 'Hunters', 'Runner', 'Empire', 'Warriors', 'Odyssey', 'Protocol', 'Overdrive']
 };
+
+// Случайные события индустрии
+const RANDOM_EVENTS = [
+  {
+    title: '🔥 Вирусный мем в TikTok!',
+    desc: 'Блогер записал смешной ролик по вашей игре, и он набрал 10 миллионов просмотров!',
+    effect: (s) => {
+      s.fans += 1200;
+      s.money += 6000;
+      if (s.games.length > 0) s.games[0].audiencePool += 8000;
+      showToast('Вирусный мем принёс +1,200 фанатов и $6,000!', 'good');
+    }
+  },
+  {
+    title: '⚡ Утечка исходного кода движка конкурента!',
+    desc: 'На форумах выложили документацию и алгоритмы. Ваши программисты изучили их за ночь!',
+    effect: (s) => {
+      s.researchPoints += 15;
+      showToast('Получено +15 очков исследований RP!', 'gold');
+    }
+  },
+  {
+    title: '📉 Серверный сбой у хостинг-провайдера',
+    desc: 'Датацентр был обесточен на два дня. Пришлось потратиться на срочное восстановление бэкапов.',
+    effect: (s) => {
+      s.money = Math.max(0, s.money - 2500);
+      showToast('Расходы на восстановление серверов: -$2,500', 'bad');
+    }
+  },
+  {
+    title: '🤝 Предложение от крупного издателя',
+    desc: 'Инвестиционный фонд прислал грант на поддержку независимых талантов!',
+    effect: (s) => {
+      s.money += 8000;
+      showToast('Грант получен: +$8,000 в бюджет студии!', 'good');
+    }
+  }
+];
 
 // --- СОСТОЯНИЕ ИГРЫ (STATE) ---
 let state = {
   money: 15000,
   fans: 10,
-  researchPoints: 10,
+  researchPoints: 15,
+  stockPrice: 50.0,
+  stockGrowth: 0.0,
+  studioMorale: 100, // 0 - 100%
   
   date: { year: 1, month: 1, week: 1 },
   speed: 1, // 0 = pause, 1 = 1x, 2 = 2x, 5 = 5x
@@ -146,19 +229,29 @@ let state = {
       name: 'Вы (Основатель)',
       role: 'Универсал',
       avatar: '👨‍💻',
-      code: 15,
-      design: 12,
-      sound: 10,
+      code: 16,
+      design: 14,
+      sound: 12,
       salary: 0,
-      energy: 100
+      morale: 100
     }
   ],
 
   candidatePool: [],
   games: [],
-  unlockedTech: ['rpg', 'action', 'simulator', 'fantasy', 'scifi', 'medieval', 'abstract', 'pc', 'custom_basic'],
+  engines: [
+    {
+      id: 'custom_basic',
+      name: 'Базовый 2D движок',
+      mult: 1.0,
+      modules: ['2D Спрайтовый конвейер'],
+      isProprietary: false
+    }
+  ],
+  unlockedTech: ['rpg', 'action', 'simulator', 'fantasy', 'scifi', 'medieval', 'abstract', 'pc', 'custom_basic', 'mod_2d'],
   ownedUpgrades: [],
   activeCampaigns: [],
+  awardsTrophies: [],
 
   // Текущая разработка
   dev: {
@@ -168,15 +261,17 @@ let state = {
     theme: null,
     platform: null,
     engine: null,
-    progress: 0, // 0 - 100
-    phase: 1,    // 1, 2, 3
+    monetization: 'premium',
+    scale: 'indie',
+    isCrunch: false,
+    progress: 0,
+    phase: 1,
     points: { code: 0, design: 0, sound: 0, bugs: 0 },
     sliders: { gameplay: 40, graphics: 30, sound: 30 },
     marketingBonus: 1.0,
     costSpent: 0
   },
 
-  // Баг хант мини-игра
   bugHunt: {
     active: false,
     timer: 10,
@@ -185,21 +280,24 @@ let state = {
   }
 };
 
-// --- ИНИЦИАЛИЗАЦИЯ ИНТЕРФЕЙСА ---
+// --- СТАРТ ПРИЛОЖЕНИЯ ---
 document.addEventListener('DOMContentLoaded', () => {
   initUI();
   renderOffice();
   renderStaff();
+  renderEnginesList();
+  renderConventions();
   renderResearchTree();
   renderUpgrades();
   renderMarketing();
+  renderAchievements();
   renderGamesHistory();
   updateTopStats();
   startGameLoop();
 });
 
 function initUI() {
-  // Навигация по вкладкам
+  // Навигация
   document.querySelectorAll('.nav-item').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
@@ -211,7 +309,7 @@ function initUI() {
     });
   });
 
-  // Кнопки скорости
+  // Скорость
   document.getElementById('btn-pause').addEventListener('click', () => setSpeed(0));
   document.getElementById('btn-speed-1').addEventListener('click', () => setSpeed(1));
   document.getElementById('btn-speed-2').addEventListener('click', () => setSpeed(2));
@@ -226,7 +324,7 @@ function initUI() {
       : '<i class="fa-solid fa-volume-xmark"></i> Звуки: ВЫКЛ';
   });
 
-  // Быстрые кнопки сайдбара
+  // Быстрые кнопки
   document.getElementById('btn-start-dev-main').addEventListener('click', () => {
     if (state.dev.active) {
       showToast('Разработка уже идёт! Завершите текущую игру.', 'bad');
@@ -237,27 +335,33 @@ function initUI() {
   });
 
   document.getElementById('btn-contract-work').addEventListener('click', openContractsModal);
+  document.getElementById('btn-open-engine-builder').addEventListener('click', openEngineBuilderModal);
+  document.getElementById('btn-new-engine-dialog').addEventListener('click', openEngineBuilderModal);
 
-  // Конструктор новой игры
+  // Конструктор разработки
   populateDevDropdowns();
   setupSliders();
   document.getElementById('btn-random-name').addEventListener('click', generateRandomGameName);
   document.getElementById('btn-start-dev-confirm').addEventListener('click', startNewGameDevelopment);
 
-  // Кнопки управления в плашке разработки
+  // Управление девом
   document.getElementById('btn-finish-game-now').addEventListener('click', finishGameDevelopment);
   document.getElementById('btn-fix-bugs-now').addEventListener('click', startBugHuntMiniGame);
+  document.getElementById('btn-crunch-mode').addEventListener('click', toggleCrunchMode);
 
-  // Модальные окна закрытие
+  // Модальные окна
   document.getElementById('btn-close-hire').addEventListener('click', () => hideModal('hire-modal'));
   document.getElementById('btn-close-train').addEventListener('click', () => hideModal('train-modal'));
   document.getElementById('btn-close-contracts').addEventListener('click', () => hideModal('contracts-modal'));
+  document.getElementById('btn-close-engine-builder').addEventListener('click', () => hideModal('engine-builder-modal'));
+  document.getElementById('btn-close-awards-modal').addEventListener('click', () => hideModal('awards-ceremony-modal'));
   document.getElementById('btn-close-reviews').addEventListener('click', () => {
     hideModal('reviews-modal');
     switchTab('games-history-tab');
   });
   document.getElementById('btn-finish-bug-hunt').addEventListener('click', endBugHuntMiniGame);
   document.getElementById('btn-open-hire-modal').addEventListener('click', openHireAgency);
+  document.getElementById('btn-confirm-build-engine').addEventListener('click', buildCustomEngineConfirm);
 }
 
 function switchTab(tabId) {
@@ -276,13 +380,11 @@ function setSpeed(sp) {
   if (sp === 5) document.getElementById('btn-speed-3').classList.add('active');
 }
 
-// --- ИГРОВОЙ ЦИКЛ (ТИК ВРЕМЕНИ) ---
+// --- ИГРОВОЙ ЦИКЛ ---
 function startGameLoop() {
   if (state.timer) clearInterval(state.timer);
   state.timer = setInterval(() => {
-    if (state.speed === 0) return; // Пауза
-    
-    // Число шагов за такт зависит от скорости
+    if (state.speed === 0) return;
     for (let i = 0; i < state.speed; i++) {
       tickWeek();
     }
@@ -299,42 +401,92 @@ function tickWeek() {
   if (state.date.month > 12) {
     state.date.month = 1;
     state.date.year++;
-    showToast(`🎉 С Новым Годом! Наступил ${state.date.year}-й год работы студии!`, 'gold');
+    showToast(`🎉 С Новым Годом! Начался ${state.date.year}-й год работы студии!`, 'gold');
+    checkGameAwardsCeremony();
   }
 
-  // Обновляем разработку игры, если активна
+  // Обновление разработки
   if (state.dev.active) {
     progressGameDev();
   }
 
-  // Продажи всех активных выпущенных игр
+  // Продажи игр
   processGameSales();
 
-  // Маркетинговые кампании
+  // Маркетинг
   processMarketingCampaigns();
+
+  // Случайные события индустрии (шанс 5% каждую неделю)
+  if (Math.random() < 0.05) {
+    triggerRandomIndustryEvent();
+  }
+
+  // Колебания акций
+  updateStockMarket();
+
+  // Проверка ачивок
+  checkAchievements();
 
   updateTopStats();
 }
 
 function onMonthPassed() {
-  // Выплата зарплат персоналу и аренда
   const currentOffice = GAME_DB.offices[state.officeIndex];
   const rent = currentOffice.rent;
   const salaries = state.staff.reduce((acc, s) => acc + s.salary, 0);
-  const totalMonthlyExpenses = rent + salaries;
+  const totalCost = rent + salaries;
 
-  state.money -= totalMonthlyExpenses;
+  state.money -= totalCost;
   
-  if (totalMonthlyExpenses > 0) {
-    addFeedItem(`Ежемесячные расходы: Зарплаты -$${salaries}, Аренда офиса -$${rent}.`, 'info');
+  if (totalCost > 0) {
+    addFeedItem(`Ежемесячные расходы: Зарплаты -$${salaries}, Аренда -$${rent}.`, 'info');
+  }
+
+  // Восстановление морали, если есть комната отдыха
+  if (state.ownedUpgrades.includes('lounge_zone')) {
+    state.studioMorale = Math.min(100, state.studioMorale + 10);
+  }
+
+  // Отчисления за стороннее лицензирование ваших движков
+  let engineRoyalties = 0;
+  state.engines.forEach(eng => {
+    if (eng.isProprietary) {
+      engineRoyalties += Math.round(eng.mult * 800);
+    }
+  });
+  if (engineRoyalties > 0) {
+    state.money += engineRoyalties;
+    addFeedItem(`Лицензионные отчисления за ваши движки: +$${engineRoyalties.toLocaleString()}!`, 'good');
+  }
+
+  // Напоминание о The Game Awards в ноябре (11 месяц)
+  if (state.date.month === 11) {
+    showToast('🏆 Внимание! В следующем месяце пройдёт церемония The Game Awards!', 'gold');
   }
 
   if (state.money < 0) {
-    showToast(`⚠️ Внимание! Отрицательный баланс ($${state.money.toLocaleString()})! Выполняйте контракты во избежание банкротства!`, 'bad');
+    showToast(`⚠️ Внимание! Отрицательный баланс ($${state.money.toLocaleString()})! Выполняйте контракты!`, 'bad');
   }
 }
 
-// --- СИСТЕМА РАЗРАБОТКИ ИГРЫ ---
+function triggerRandomIndustryEvent() {
+  const ev = RANDOM_EVENTS[Math.floor(Math.random() * RANDOM_EVENTS.length)];
+  addFeedItem(`${ev.title}: ${ev.desc}`, 'gold');
+  ev.effect(state);
+}
+
+function updateStockMarket() {
+  // Акции растут от успешных релизов и падают от долгов
+  let delta = (Math.random() * 2.0 - 0.9);
+  if (state.money > 100000) delta += 1.5;
+  if (state.money < 0) delta -= 3.0;
+  if (state.games.some(g => g.score >= 8.5 && g.weeksOnMarket < 10)) delta += 2.0;
+
+  state.stockPrice = Math.max(5.0, state.stockPrice + delta);
+  state.stockGrowth = delta;
+}
+
+// --- КОНСТРУКТОР НОВОЙ ИГРЫ ---
 function populateDevDropdowns() {
   const genreSel = document.getElementById('select-game-genre');
   const themeSel = document.getElementById('select-game-theme');
@@ -363,14 +515,13 @@ function populateDevDropdowns() {
   });
 
   engSel.innerHTML = '';
-  GAME_DB.engines.forEach(e => {
-    if (state.unlockedTech.includes(e.id)) {
-      engSel.innerHTML += `<option value="${e.id}">${e.name}</option>`;
-    }
+  state.engines.forEach(e => {
+    engSel.innerHTML += `<option value="${e.id}">${e.name} (Множитель: x${e.mult.toFixed(2)})</option>`;
   });
 
   genreSel.addEventListener('change', updateSynergyHint);
   themeSel.addEventListener('change', updateSynergyHint);
+  document.getElementById('select-game-scale').addEventListener('change', updateSynergyHint);
   updateSynergyHint();
   generateRandomGameName();
 }
@@ -382,17 +533,21 @@ function updateSynergyHint() {
   const hintText = document.getElementById('synergy-hint-text');
 
   if (genre && genre.bestThemes.includes(tId)) {
-    hintText.innerHTML = `✨ <strong>Отличная синергия!</strong> Тематика идеально ложится на выбранный жанр. Критики оценят!`;
+    hintText.innerHTML = `✨ <strong>Идеальная синергия!</strong> Тематика безупречно подходит жанру. Критики оценят!`;
     hintText.parentElement.style.borderColor = 'var(--accent-green)';
   } else {
-    hintText.innerHTML = `💡 Экспериментальное сочетание. Результат зависит от баланса команды и скилла.`;
+    hintText.innerHTML = `💡 Экспериментальное сочетание. Результат зависит от скилла команды и полировки.`;
     hintText.parentElement.style.borderColor = 'rgba(99, 102, 241, 0.3)';
   }
 
-  // Расчет стоимости
   const pId = document.getElementById('select-game-platform').value;
   const plat = GAME_DB.platforms.find(p => p.id === pId) || { cost: 0 };
-  const cost = (genre ? genre.cost : 1000) + plat.cost;
+  const scale = document.getElementById('select-game-scale').value;
+  let scaleMult = 1.0;
+  if (scale === 'medium') scaleMult = 1.5;
+  if (scale === 'aaa') scaleMult = 3.0;
+
+  const cost = Math.round(((genre ? genre.cost : 1000) + plat.cost) * scaleMult);
   document.getElementById('est-dev-cost').innerText = `$${cost.toLocaleString()}`;
 }
 
@@ -442,20 +597,31 @@ function startNewGameDevelopment() {
   const tId = document.getElementById('select-game-theme').value;
   const pId = document.getElementById('select-game-platform').value;
   const eId = document.getElementById('select-game-engine').value;
+  const scale = document.getElementById('select-game-scale').value;
+  const monetization = document.getElementById('select-game-monetization').value;
+
+  if (scale === 'aaa' && state.staff.length < 4) {
+    showToast('Для создания AAA-блокбастера требуется команда минимум из 4 человек!', 'bad');
+    return;
+  }
 
   const totalSliders = parseInt(document.getElementById('slider-gameplay').value) +
                        parseInt(document.getElementById('slider-graphics').value) +
                        parseInt(document.getElementById('slider-sound').value);
 
   if (totalSliders !== 100) {
-    showToast('Сумма приоритетов должна равняться ровно 100%!', 'bad');
+    showToast('Сумма приоритетов команды должна быть ровно 100%!', 'bad');
     return;
   }
 
   const genre = GAME_DB.genres.find(g => g.id === gId);
   const theme = GAME_DB.themes.find(t => t.id === tId);
   const plat = GAME_DB.platforms.find(p => p.id === pId);
-  const eng = GAME_DB.engines.find(e => e.id === eId);
+  const eng = state.engines.find(e => e.id === eId) || state.engines[0];
+
+  let scaleMult = 1.0;
+  if (scale === 'medium') scaleMult = 1.5;
+  if (scale === 'aaa') scaleMult = 3.0;
 
   const mktType = document.getElementById('select-launch-marketing').value;
   let mktCost = 0;
@@ -463,18 +629,17 @@ function startNewGameDevelopment() {
   if (mktType === 'social') { mktCost = 1000; mktMult = 1.25; }
   else if (mktType === 'streamers') { mktCost = 4000; mktMult = 1.6; }
   else if (mktType === 'trailers') { mktCost = 12000; mktMult = 2.2; }
+  else if (mktType === 'times_square') { mktCost = 35000; mktMult = 3.5; }
 
-  const totalCost = genre.cost + plat.cost + mktCost;
+  const totalCost = Math.round((genre.cost + plat.cost) * scaleMult) + mktCost;
   if (state.money < totalCost) {
     showToast(`Недостаточно средств! Требуется $${totalCost.toLocaleString()}`, 'bad');
     return;
   }
 
-  // Списание затрат
   state.money -= totalCost;
   sounds.playClick();
 
-  // Инициализация объекта активной разработки
   state.dev = {
     active: true,
     title: name,
@@ -482,6 +647,9 @@ function startNewGameDevelopment() {
     theme: theme,
     platform: plat,
     engine: eng,
+    scale: scale,
+    monetization: monetization,
+    isCrunch: false,
     progress: 0,
     phase: 1,
     points: { code: 0, design: 0, sound: 0, bugs: 0 },
@@ -499,15 +667,30 @@ function startNewGameDevelopment() {
   document.getElementById('dev-active-title').innerText = name;
   updateDevBarWidget();
 
-  addFeedItem(`Стартовала разработка «${name}» (${genre.name} / ${theme.name})!`, 'info');
+  addFeedItem(`Стартовала разработка масштабного проекта «${name}»!`, 'info');
   showToast(`Разработка «${name}» успешно началась!`, 'good');
   switchTab('office-tab');
+}
+
+function toggleCrunchMode() {
+  if (!state.dev.active) return;
+  state.dev.isCrunch = !state.dev.isCrunch;
+  const btn = document.getElementById('btn-crunch-mode');
+
+  if (state.dev.isCrunch) {
+    btn.classList.add('btn-primary');
+    btn.innerHTML = '<i class="fa-solid fa-fire"></i> Кранч ВКЛ (x2 темп, мораль падает!)';
+    showToast('Кранч-режим включен! Скорость удвоена, но растёт усталость и баги!', 'bad');
+  } else {
+    btn.classList.remove('btn-primary');
+    btn.innerHTML = '<i class="fa-solid fa-fire"></i> Кранч-режим (x2 темп)';
+    showToast('Кранч выключен. Команда вернулась к нормальному ритму.', 'good');
+  }
 }
 
 function progressGameDev() {
   if (!state.dev.active) return;
 
-  // Суммарные мощности сотрудников
   let totalCode = 0;
   let totalDesign = 0;
   let totalSound = 0;
@@ -518,23 +701,24 @@ function progressGameDev() {
     totalSound += s.sound;
   });
 
-  // Эффекты улучшений
+  const crunchMult = state.dev.isCrunch ? 2.0 : 1.0;
+  if (state.dev.isCrunch) {
+    state.studioMorale = Math.max(10, state.studioMorale - 2);
+  }
+
   const chairBonus = state.ownedUpgrades.includes('ergonomic_chairs') ? 1.15 : 1.0;
   const monitorBonus = state.ownedUpgrades.includes('dual_monitors') ? 1.25 : 1.0;
   const soundBonus = state.ownedUpgrades.includes('sound_booth') ? 1.30 : 1.0;
   const serverBonus = state.ownedUpgrades.includes('server_rack') ? 1.35 : 1.0;
   const coffeeBugReduction = state.ownedUpgrades.includes('coffee_machine') ? 0.8 : 1.0;
 
-  // Генерация очков за тик с учётом слайдеров
-  const codeGen = Math.round((totalCode * (state.dev.sliders.gameplay / 40) * chairBonus * serverBonus * state.dev.engine.mult) / 4);
-  const designGen = Math.round((totalDesign * (state.dev.sliders.graphics / 30) * chairBonus * monitorBonus * state.dev.engine.mult) / 4);
-  const soundGen = Math.round((totalSound * (state.dev.sliders.sound / 30) * chairBonus * soundBonus * state.dev.engine.mult) / 4);
+  const codeGen = Math.round((totalCode * (state.dev.sliders.gameplay / 40) * chairBonus * serverBonus * state.dev.engine.mult * crunchMult) / 4);
+  const designGen = Math.round((totalDesign * (state.dev.sliders.graphics / 30) * chairBonus * monitorBonus * state.dev.engine.mult * crunchMult) / 4);
+  const soundGen = Math.round((totalSound * (state.dev.sliders.sound / 30) * chairBonus * soundBonus * state.dev.engine.mult * crunchMult) / 4);
   
-  // Шанс бага зависит от сложности и спешки
-  const bugChance = 0.35 * coffeeBugReduction;
-  const bugsGen = Math.random() < bugChance ? Math.floor(Math.random() * 2) + 1 : 0;
+  const bugChance = (state.dev.isCrunch ? 0.6 : 0.35) * coffeeBugReduction;
+  const bugsGen = Math.random() < bugChance ? Math.floor(Math.random() * (state.dev.isCrunch ? 3 : 2)) + 1 : 0;
 
-  // Очки опыта/исследований RP
   const rpGen = Math.random() < 0.25 ? 1 : 0;
   if (rpGen > 0) {
     state.researchPoints += rpGen;
@@ -546,7 +730,6 @@ function progressGameDev() {
   state.dev.points.sound += Math.max(1, soundGen);
   state.dev.points.bugs += bugsGen;
 
-  // Звуки и пузырьки на сцене
   if (Math.random() < 0.4) {
     spawnFloatingBubble(`+${codeGen} Код`, 'bubble-code');
     sounds.playCodePoint();
@@ -560,11 +743,10 @@ function progressGameDev() {
     sounds.playBugPoint();
   }
 
-  // Прирост прогресса (100% за ~16-24 тиков в зависимости от команды)
-  const progressStep = (totalCode + totalDesign + totalSound) / 40;
-  state.dev.progress = Math.min(100, state.dev.progress + Math.max(3, progressStep));
+  const scaleDivisor = state.dev.scale === 'aaa' ? 80 : (state.dev.scale === 'medium' ? 55 : 40);
+  const progressStep = ((totalCode + totalDesign + totalSound) / scaleDivisor) * crunchMult;
+  state.dev.progress = Math.min(100, state.dev.progress + Math.max(2.5, progressStep));
 
-  // Фазы разработки
   if (state.dev.progress < 35) {
     state.dev.phase = 1;
     document.getElementById('dev-active-phase').innerText = 'Фаза 1: Движок & Механики';
@@ -577,11 +759,6 @@ function progressGameDev() {
   }
 
   updateDevBarWidget();
-
-  // Автоматический финиш при 100% если игрок не делает этого вручную
-  if (state.dev.progress >= 100) {
-    document.getElementById('btn-finish-game-now').classList.add('pulse-anim');
-  }
 }
 
 function updateDevBarWidget() {
@@ -606,19 +783,13 @@ function startBugHuntMiniGame() {
   document.getElementById('bugs-squashed-counter').innerText = '0';
   document.getElementById('bug-timer-badge').innerText = 'Осталось: 10 сек';
 
-  const arena = document.getElementById('bug-arena');
-  arena.innerHTML = '';
-
   showModal('bug-hunt-modal');
-
-  // Спавн жуков
   spawnHuntBugs();
 
   if (state.bugHunt.interval) clearInterval(state.bugHunt.interval);
   state.bugHunt.interval = setInterval(() => {
     state.bugHunt.timer--;
     document.getElementById('bug-timer-badge').innerText = `Осталось: ${state.bugHunt.timer} сек`;
-
     if (state.bugHunt.timer <= 0) {
       endBugHuntMiniGame();
     }
@@ -628,12 +799,12 @@ function startBugHuntMiniGame() {
 function spawnHuntBugs() {
   const arena = document.getElementById('bug-arena');
   arena.innerHTML = '';
-  const count = Math.min(12, Math.max(4, state.dev.points.bugs));
+  const count = Math.min(14, Math.max(4, state.dev.points.bugs));
   
   for (let i = 0; i < count; i++) {
     const bug = document.createElement('div');
     bug.className = 'bug-target';
-    bug.innerHTML = ['🐛', '🪲', '👾', '🐞'][Math.floor(Math.random() * 4)];
+    bug.innerHTML = ['🐛', '🪲', '👾', '🐞', '🦗'][Math.floor(Math.random() * 5)];
     bug.style.left = `${Math.floor(Math.random() * 85)}%`;
     bug.style.top = `${Math.floor(Math.random() * 80)}%`;
 
@@ -645,9 +816,8 @@ function spawnHuntBugs() {
       updateDevBarWidget();
       bug.remove();
 
-      // Доспавнить, если ещё есть баги
       if (state.dev.points.bugs > 0) {
-        setTimeout(spawnHuntBugs, 300);
+        setTimeout(spawnHuntBugs, 250);
       }
     });
 
@@ -659,24 +829,22 @@ function endBugHuntMiniGame() {
   if (state.bugHunt.interval) clearInterval(state.bugHunt.interval);
   state.bugHunt.active = false;
   hideModal('bug-hunt-modal');
-  showToast(`Отличная работа! Уничтожено ${state.bugHunt.squashed} багов перед релизом!`, 'good');
+  showToast(`Отличная реакция! Уничтожено ${state.bugHunt.squashed} багов!`, 'good');
 }
 
-// Финиш разработки и релиз
+// Финиш разработки
 function finishGameDevelopment() {
   if (!state.dev.active) return;
 
   if (state.dev.progress < 50) {
-    if (!confirm('Игра готова меньше чем наполовину! Релиз в сыром виде приведёт к разгромным оценкам. Всё равно выпустить?')) {
+    if (!confirm('Игра готова меньше чем наполовину! Релиз в сыром виде приведёт к разгрому. Всё равно выпустить?')) {
       return;
     }
   }
 
-  // Расчет финальной оценки (1.0 - 10.0)
   const isSynergy = state.dev.genre.bestThemes.includes(state.dev.theme.id);
   const synergyScore = isSynergy ? 9.2 : 7.0;
 
-  // Влияние баланса очков
   const targetWeights = state.dev.genre.weights;
   const totalPts = (state.dev.points.code + state.dev.points.design + state.dev.points.sound) || 1;
   const cRatio = (state.dev.points.code / totalPts) * 100;
@@ -688,61 +856,60 @@ function finishGameDevelopment() {
                Math.abs(sRatio - targetWeights.sound);
   
   const balanceFactor = Math.max(0.5, 1.0 - (diff / 100));
-
-  // Штраф за оставшиеся баги
   const bugPenalty = Math.min(4.5, (state.dev.points.bugs * 0.35));
 
-  // Базовый балл
   let rawScore = (synergyScore * balanceFactor) - bugPenalty + (state.dev.progress / 50);
-  rawScore = Math.min(10.0, Math.max(1.5, rawScore + (Math.random() * 1.2 - 0.6)));
+  rawScore = Math.min(10.0, Math.max(1.5, rawScore + (Math.random() * 1.0 - 0.5)));
   const finalScore = Math.round(rawScore * 10) / 10;
 
-  // Опыт сотрудникам
   state.staff.forEach(s => {
     s.code += Math.floor(Math.random() * 3) + 1;
     s.design += Math.floor(Math.random() * 3) + 1;
     s.sound += Math.floor(Math.random() * 2) + 1;
   });
 
-  // Прирост фанатов
-  const fansGain = Math.round(Math.pow(finalScore, 2.5) * 8 + (state.fans * 0.15));
+  const fansGain = Math.round(Math.pow(finalScore, 2.5) * 10 + (state.fans * 0.15));
   state.fans += fansGain;
 
-  // Очки RP за релиз
-  const rpReward = Math.round(finalScore * 3);
+  const rpReward = Math.round(finalScore * 3.5);
   state.researchPoints += rpReward;
 
-  // Создаём запись в истории игр
+  // Определение базовой цены
+  let basePrice = 20;
+  if (state.dev.monetization === 'f2p') basePrice = 0;
+  if (state.dev.monetization === 'subscription') basePrice = 10;
+
   const gameRecord = {
     id: Date.now(),
     title: state.dev.title,
     genre: state.dev.genre.name,
     theme: state.dev.theme.name,
     platform: state.dev.platform.name,
+    engine: state.dev.engine.name,
+    monetization: state.dev.monetization,
+    scale: state.dev.scale,
     score: finalScore,
     copiesSold: 0,
     revenue: 0,
     weeksOnMarket: 0,
-    price: 15 + Math.floor(finalScore * 2), // $17 - $35 за копию
-    marketDecay: 1.0,
+    price: basePrice,
     marketingMultiplier: state.dev.marketingBonus,
-    audiencePool: Math.round(15000 * state.dev.platform.audienceShare * Math.pow(finalScore / 4, 3))
+    dlcCount: 0,
+    audiencePool: Math.round(20000 * state.dev.platform.audienceShare * Math.pow(finalScore / 4, 3))
   };
 
   state.games.unshift(gameRecord);
 
-  // Сброс активного дева
+  // Сброс
   state.dev.active = false;
   document.getElementById('dev-busy-indicator').style.display = 'none';
   document.getElementById('active-dev-bar-widget').style.display = 'none';
 
-  // Звук и конфетти при хорошей оценке
   sounds.playRelease();
-  if (finalScore >= 7.5 && window.confetti) {
-    window.confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 } });
+  if (finalScore >= 8.0 && window.confetti) {
+    window.confetti({ particleCount: 140, spread: 75, origin: { y: 0.6 } });
   }
 
-  // Показ модалки обзоров
   showReviewsModal(gameRecord, fansGain);
   renderGamesHistory();
   renderStaff();
@@ -754,14 +921,12 @@ function showReviewsModal(game, fansGain) {
   const scoreEl = document.getElementById('rev-overall-score');
   scoreEl.innerText = game.score.toFixed(1);
 
-  // Классы цвета оценки
   scoreEl.className = 'score-circle';
   if (game.score >= 9.0) scoreEl.style.borderColor = 'var(--accent-gold)';
   else if (game.score >= 7.0) scoreEl.style.borderColor = 'var(--accent-green)';
   else if (game.score >= 5.0) scoreEl.style.borderColor = 'var(--accent-cyan)';
   else scoreEl.style.borderColor = 'var(--accent-red)';
 
-  // Звезды
   const fullStars = Math.round(game.score / 2);
   document.getElementById('rev-stars-box').innerText = '★'.repeat(fullStars) + '☆'.repeat(5 - fullStars);
 
@@ -772,12 +937,11 @@ function showReviewsModal(game, fansGain) {
   else if (game.score >= 4.5) verdictEl.innerText = 'Посредственно. Много багов и скучный геймплей.';
   else verdictEl.innerText = 'Полный провал! Неиграбельный кошмар.';
 
-  // Отзывы 4 журналов
   const mags = [
-    { name: 'Игромания Онлайн', score: genReviewScore(game.score), quote: genReviewQuote(game.score, 'tech') },
-    { name: 'GameSpot Global', score: genReviewScore(game.score), quote: genReviewQuote(game.score, 'fun') },
-    { name: 'PC Gamer Pro', score: genReviewScore(game.score), quote: genReviewQuote(game.score, 'art') },
-    { name: 'Kotaku Insider', score: genReviewScore(game.score), quote: genReviewQuote(game.score, 'general') }
+    { name: 'Игромания Онлайн', score: genReviewScore(game.score), quote: genReviewQuote(game.score) },
+    { name: 'GameSpot Global', score: genReviewScore(game.score), quote: genReviewQuote(game.score) },
+    { name: 'PC Gamer Pro', score: genReviewScore(game.score), quote: genReviewQuote(game.score) },
+    { name: 'Kotaku Insider', score: genReviewScore(game.score), quote: genReviewQuote(game.score) }
   ];
 
   const grid = document.getElementById('reviews-magazines-grid');
@@ -800,20 +964,20 @@ function genReviewScore(base) {
   return s.toFixed(1);
 }
 
-function genReviewQuote(score, type) {
+function genReviewQuote(score) {
   if (score >= 8.5) {
     const quotes = [
       'Мы не могли оторваться ни на минуту!',
       'Графика, звук и геймплей сочетаются идеально.',
-      'Это явный кандидат на Игру Года!',
+      'Это явный кандидат на Игру Года (GOTY)!',
       'Невероятная глубина механик и потрясающая полировка.'
     ];
     return quotes[Math.floor(Math.random() * quotes.length)];
   } else if (score >= 6.5) {
     const quotes = [
-      'Очень увлекательно, хотя шероховатости встречаются.',
+      'Очень увлекательно, хотя мелкие недочеты встречаются.',
       'Фанатам жанра точно зайдёт на несколько вечеров.',
-      'Крепкий релиз, но до шедевра чуть-чуть не дотянули.',
+      'Крепкий релиз, но до культового статуса чуть-чуть не дотянули.',
       'Хорошая идея, ждём патчей и продолжения.'
     ];
     return quotes[Math.floor(Math.random() * quotes.length)];
@@ -821,35 +985,44 @@ function genReviewQuote(score, type) {
     const quotes = [
       'Огромное количество критических багов и вылетов.',
       'Скучно, вторично и быстро надоедает.',
-      'Разработчикам стоило потратить больше времени на полировку.',
+      'Разработчикам стоило потратить больше времени на тесты.',
       'Потенциал был, но реализация полностью подкачала.'
     ];
     return quotes[Math.floor(Math.random() * quotes.length)];
   }
 }
 
-// --- СИСТЕМА ПРОДАЖ ВЫПУЩЕННЫХ ИГР ---
+// --- ПРОДАЖИ И DLC ---
 function processGameSales() {
   state.games.forEach(game => {
-    // Игра продаётся активно около 12-20 игровых недель
-    if (game.weeksOnMarket > 24) return;
+    if (game.weeksOnMarket > 28) return;
 
     game.weeksOnMarket++;
-    
-    // Экспоненциальное затухание интереса
-    const decay = Math.pow(0.88, game.weeksOnMarket);
+    const decay = Math.pow(0.89, game.weeksOnMarket);
     const mktBonus = game.marketingMultiplier || 1.0;
 
-    let weeklyCopies = Math.round(
-      (game.audiencePool * 0.12 * decay * mktBonus) + (state.fans * 0.05 * decay)
-    );
+    let weeklyCopies = 0;
+    let weeklyIncome = 0;
+
+    if (game.monetization === 'f2p') {
+      // Free-to-play: скачивания + донаты (Battle Pass, скины)
+      weeklyCopies = Math.round((game.audiencePool * 0.3 * decay * mktBonus) + (state.fans * 0.15 * decay));
+      weeklyIncome = Math.round(weeklyCopies * (2.5 + (game.score * 0.5))); // средний чек доната
+    } else if (game.monetization === 'subscription') {
+      // MMO/Сервис подписка
+      weeklyCopies = Math.round((game.audiencePool * 0.1 * decay * mktBonus));
+      weeklyIncome = weeklyCopies * 10;
+    } else {
+      // Премиум релиз
+      weeklyCopies = Math.round((game.audiencePool * 0.14 * decay * mktBonus) + (state.fans * 0.06 * decay));
+      weeklyIncome = weeklyCopies * game.price;
+    }
 
     weeklyCopies = Math.max(0, weeklyCopies);
     if (weeklyCopies > 0) {
-      const revenue = weeklyCopies * game.price;
       game.copiesSold += weeklyCopies;
-      game.revenue += revenue;
-      state.money += revenue;
+      game.revenue += weeklyIncome;
+      state.money += weeklyIncome;
     }
   });
 
@@ -864,7 +1037,7 @@ function renderGamesHistory() {
     container.innerHTML = `
       <div class="empty-state">
         <i class="fa-solid fa-ghost"></i>
-        <p>Вы пока не выпустили ни одной игры. Нажмите «Создать игру», чтобы покорить чарты продаж!</p>
+        <p>Вы пока не выпустили ни одной игры. Нажмите «Создать игру», чтобы покорить мировые чарты!</p>
       </div>
     `;
     return;
@@ -882,14 +1055,14 @@ function renderGamesHistory() {
     else if (game.score >= 7.0) scoreClass = 'score-great';
     else if (game.score < 5.0) scoreClass = 'score-bad';
 
-    const isActive = game.weeksOnMarket <= 24;
+    const isActive = game.weeksOnMarket <= 28;
 
     return `
       <div class="game-card">
         <div class="game-card-header">
           <div>
             <div class="game-card-title">${game.title}</div>
-            <div class="subtitle" style="font-size: 0.8rem;">Цена: $${game.price}</div>
+            <div class="subtitle" style="font-size: 0.8rem;">Модель: ${game.monetization.toUpperCase()} | Движок: ${game.engine}</div>
           </div>
           <div class="game-score-badge ${scoreClass}">${game.score.toFixed(1)}</div>
         </div>
@@ -898,12 +1071,13 @@ function renderGamesHistory() {
           <span class="game-tag">${game.genre}</span>
           <span class="game-tag">${game.theme}</span>
           <span class="game-tag">${game.platform}</span>
+          ${game.dlcCount > 0 ? `<span class="game-tag" style="background:#065f46; color:#a7f3d0;">DLC: ${game.dlcCount} шт.</span>` : ''}
         </div>
 
         <div class="game-financial-row">
           <div>
-            <div class="stat-sub">Продано копий</div>
-            <strong>${game.copiesSold.toLocaleString()} шт.</strong>
+            <div class="stat-sub">Игроков / Копий</div>
+            <strong>${game.copiesSold.toLocaleString()}</strong>
           </div>
           <div>
             <div class="stat-sub">Выручка</div>
@@ -912,8 +1086,17 @@ function renderGamesHistory() {
         </div>
 
         <div class="game-sales-trend">
-          <span>Статус: ${isActive ? '<b style="color:#10b981">В топе продаж 🔥</b>' : 'Архив'}</span>
-          <span>На рынке: ${game.weeksOnMarket} нед.</span>
+          <span>Статус: ${isActive ? '<b style="color:#10b981">В продаже 🔥</b>' : 'Архив'}</span>
+          <span>Недель: ${game.weeksOnMarket}</span>
+        </div>
+
+        <div class="game-post-actions">
+          <button class="btn btn-secondary btn-sm" onclick="releaseDLCForGame(${game.id})">
+            <i class="fa-solid fa-puzzle-piece"></i> Выпустить DLC
+          </button>
+          <button class="btn btn-action-secondary btn-sm" onclick="createSequelPrompt('${game.title}', '${game.genre}')">
+            <i class="fa-solid fa-forward-step"></i> Сиквел
+          </button>
         </div>
       </div>
     `;
@@ -923,7 +1106,317 @@ function renderGamesHistory() {
   document.getElementById('total-revenue-sum').innerText = `$${totalRev.toLocaleString()}`;
 }
 
-// --- ВИЗУАЛИЗАЦИЯ ОФИСА И СОТРУДНИКОВ ---
+window.releaseDLCForGame = function(gameId) {
+  const game = state.games.find(g => g.id === gameId);
+  if (!game) return;
+
+  const dlcCost = 3000;
+  if (state.money < dlcCost) {
+    showToast(`Для разработки крупного DLC требуется $${dlcCost.toLocaleString()}!`, 'bad');
+    return;
+  }
+
+  state.money -= dlcCost;
+  game.dlcCount = (game.dlcCount || 0) + 1;
+  game.weeksOnMarket = Math.max(1, game.weeksOnMarket - 8); // продлеваем жизнь в чартах
+  game.audiencePool += 12000;
+  sounds.playCash();
+
+  showToast(`Крупное дополнение «${game.title}: Expansion Pack» вышло! Продажи снова взлетели!`, 'good');
+  addFeedItem(`Выпущено DLC для игры «${game.title}». Интерес геймеров возродился!`, 'good');
+  renderGamesHistory();
+  updateTopStats();
+};
+
+window.createSequelPrompt = function(title, genre) {
+  switchTab('develop-tab');
+  const sequelName = `${title} 2: Overdrive`;
+  document.getElementById('input-game-name').value = sequelName;
+  showToast(`Начато планирование долгожданного сиквела «${sequelName}»!`, 'gold');
+};
+
+// --- КОНСТРУКТОР СОБСТВЕННЫХ ДВИЖКОВ ---
+function openEngineBuilderModal() {
+  const container = document.getElementById('engine-modules-list');
+  container.innerHTML = GAME_DB.engineModules.map(m => {
+    const isUnlocked = state.unlockedTech.includes(m.id);
+    return `
+      <label class="engine-module-checkbox-item">
+        <input type="checkbox" value="${m.id}" data-cost="${m.cost}" data-mult="${m.mult}" ${m.id === 'mod_2d' ? 'checked disabled' : ''}>
+        <div>
+          <strong>${m.name}</strong>
+          <div style="font-size:0.75rem; color:var(--text-muted);">
+            Цена: $${m.cost.toLocaleString()} | Мощность: +${Math.round(m.mult * 100)}%
+          </div>
+        </div>
+      </label>
+    `;
+  }).join('');
+
+  document.querySelectorAll('#engine-modules-list input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', updateEngineSummary);
+  });
+
+  updateEngineSummary();
+  showModal('engine-builder-modal');
+}
+
+function updateEngineSummary() {
+  let cost = 5000;
+  let mult = 1.0;
+  document.querySelectorAll('#engine-modules-list input[type="checkbox"]:checked').forEach(cb => {
+    cost += parseInt(cb.dataset.cost || 0);
+    mult += parseFloat(cb.dataset.mult || 0);
+  });
+
+  document.getElementById('custom-engine-total-cost').innerText = `$${cost.toLocaleString()}`;
+  document.getElementById('custom-engine-total-mult').innerText = `x${mult.toFixed(2)}`;
+}
+
+function buildCustomEngineConfirm() {
+  const name = document.getElementById('input-custom-engine-name').value.trim() || 'Custom Quantum 1.0';
+  let cost = 5000;
+  let mult = 1.0;
+  const mods = [];
+
+  document.querySelectorAll('#engine-modules-list input[type="checkbox"]:checked').forEach(cb => {
+    cost += parseInt(cb.dataset.cost || 0);
+    mult += parseFloat(cb.dataset.mult || 0);
+    const modObj = GAME_DB.engineModules.find(m => m.id === cb.value);
+    if (modObj) mods.push(modObj.name);
+  });
+
+  if (state.money < cost) {
+    showToast(`Недостаточно денег для сборки движка ($${cost.toLocaleString()})!`, 'bad');
+    return;
+  }
+
+  state.money -= cost;
+  sounds.playLevelUp();
+
+  const newEngine = {
+    id: `custom_${Date.now()}`,
+    name: name,
+    mult: Math.round(mult * 100) / 100,
+    modules: mods,
+    isProprietary: true
+  };
+
+  state.engines.push(newEngine);
+  hideModal('engine-builder-modal');
+  showToast(`Поздравляем! Движок «${name}» успешно собран и приносит лицензионные отчисления!`, 'gold');
+  addFeedItem(`Создан собственный движок «${name}» (Мощность: x${newEngine.mult})!`, 'gold');
+
+  renderEnginesList();
+  populateDevDropdowns();
+  updateTopStats();
+}
+
+function renderEnginesList() {
+  const container = document.getElementById('custom-engines-grid');
+  document.getElementById('engine-count-badge').innerText = state.engines.length;
+
+  container.innerHTML = state.engines.map(eng => `
+    <div class="engine-card">
+      <div>
+        <span class="sub-badge" style="background:#4338ca; color:#c7d2fe;">${eng.isProprietary ? 'Собственная разработка' : 'Стандартный'}</span>
+        <h3 style="margin-top: 8px;">${eng.name}</h3>
+        <p class="subtitle">Множитель очков: <strong style="color:var(--accent-green)">x${eng.mult.toFixed(2)}</strong></p>
+        <div style="font-size:0.8rem; color:var(--text-muted); margin-top:8px;">
+          Модули: ${eng.modules.join(', ')}
+        </div>
+      </div>
+      ${eng.isProprietary ? `
+        <div style="font-size:0.8rem; color:var(--accent-gold);">
+          Лицензионные отчисления: +$${Math.round(eng.mult * 800)}/мес
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
+}
+
+// --- ВЫСТАВКИ И ПРЕМИЯ THE GAME AWARDS ---
+function renderConventions() {
+  const container = document.getElementById('conventions-cards-grid');
+  container.innerHTML = GAME_DB.conventions.map(conv => `
+    <div class="convention-card">
+      <div>
+        <span class="sub-badge">Сезон: ${conv.month}-й месяц года</span>
+        <h3 style="margin-top:8px;">${conv.name}</h3>
+        <p class="subtitle">${conv.desc}</p>
+        <div style="font-size:0.85rem; margin-top:8px;">
+          Стоимость стенда: <strong>$${conv.boothCost.toLocaleString()}</strong><br>
+          Прирост фанатов: <strong>+${conv.fansBonus.toLocaleString()}</strong>
+        </div>
+      </div>
+      <button class="btn btn-action-primary" onclick="attendConvention('${conv.id}')">
+        Арендовать стенд
+      </button>
+    </div>
+  `).join('');
+
+  updateTrophyRoom();
+}
+
+window.attendConvention = function(convId) {
+  const conv = GAME_DB.conventions.find(c => c.id === convId);
+  if (!conv) return;
+
+  if (state.money < conv.boothCost) {
+    showToast(`Недостаточно средств для участия в выставке ($${conv.boothCost.toLocaleString()})!`, 'bad');
+    return;
+  }
+
+  state.money -= conv.boothCost;
+  state.fans += conv.fansBonus;
+  sounds.playFanfare();
+  if (window.confetti) window.confetti({ particleCount: 100 });
+
+  showToast(`Выставка «${conv.name}» прошла с аншлагом! +${conv.fansBonus.toLocaleString()} новых фанатов!`, 'gold');
+  addFeedItem(`Студия с триумфом выступила на выставке «${conv.name}»!`, 'gold');
+  updateTopStats();
+};
+
+function checkGameAwardsCeremony() {
+  if (state.games.length === 0) return;
+
+  // Ищем лучшую игру студии за прошедший год
+  const candidates = [...state.games].sort((a, b) => b.score - a.score);
+  const bestGame = candidates[0];
+
+  const wonGoty = bestGame.score >= 9.0;
+  const wonArt = bestGame.score >= 8.2;
+  const wonSound = bestGame.score >= 8.0;
+
+  let resultsHtml = `
+    <p style="font-size:1.1rem; margin-bottom:16px;">
+      На главной сцене в прямом эфире объявлены победители премии <strong>The Game Awards</strong>!
+    </p>
+  `;
+
+  if (wonGoty) {
+    state.awardsTrophies.push('goty');
+    resultsHtml += `
+      <div style="background:rgba(245,158,11,0.2); border:2px solid var(--accent-gold); border-radius:12px; padding:18px; margin-bottom:14px;">
+        <h3 style="color:var(--accent-gold); font-size:1.4rem;">🏆 ПОБЕДИТЕЛЬ В НОМИНАЦИИ «ИГРА ГОДА (GOTY)»!</h3>
+        <p style="font-size:1.1rem; margin-top:6px;">Победу одержала ваша игра: <strong>«${bestGame.title}»</strong>!</p>
+        <p style="font-size:0.85rem; color:#fde68a;">+5,000 фанатов и всемирное признание индустрии!</p>
+      </div>
+    `;
+    state.fans += 5000;
+  } else {
+    resultsHtml += `
+      <div style="background:rgba(255,255,255,0.05); border-radius:10px; padding:14px; margin-bottom:12px;">
+        <strong>Номинация «Игра года (GOTY)»:</strong> В этот раз статуэтку забрала игра конкурентов. Продолжайте полировать проекты!
+      </div>
+    `;
+  }
+
+  if (wonArt) {
+    state.awardsTrophies.push('art');
+    resultsHtml += `
+      <div style="background:rgba(236,72,153,0.15); border-radius:10px; padding:12px; margin-bottom:8px;">
+        🎨 <strong>Лучший визуальный стиль и Арт:</strong> «${bestGame.title}» забирает награду!
+      </div>
+    `;
+  }
+
+  document.getElementById('awards-ceremony-content').innerHTML = resultsHtml;
+  showModal('awards-ceremony-modal');
+  sounds.playFanfare();
+  if (window.confetti) window.confetti({ particleCount: 200, spread: 90 });
+  updateTrophyRoom();
+}
+
+function updateTrophyRoom() {
+  const grid = document.getElementById('trophy-room-grid');
+  if (!grid) return;
+
+  grid.innerHTML = `
+    <div class="trophy-slot ${state.awardsTrophies.includes('goty') ? '' : 'empty'}">
+      <i class="fa-solid fa-trophy"></i>
+      <strong>GOTY (Игра Года)</strong>
+      <span style="font-size:0.75rem;">${state.awardsTrophies.includes('goty') ? 'Завоёван 🏆' : 'Не получено'}</span>
+    </div>
+    <div class="trophy-slot ${state.awardsTrophies.includes('art') ? '' : 'empty'}">
+      <i class="fa-solid fa-palette"></i>
+      <strong>Лучший Арт</strong>
+      <span style="font-size:0.75rem;">${state.awardsTrophies.includes('art') ? 'Завоёван 🎨' : 'Не получено'}</span>
+    </div>
+    <div class="trophy-slot ${state.awardsTrophies.includes('sound') ? '' : 'empty'}">
+      <i class="fa-solid fa-music"></i>
+      <strong>Лучший Саундтрек</strong>
+      <span style="font-size:0.75rem;">${state.awardsTrophies.includes('sound') ? 'Завоёван 🎵' : 'Не получено'}</span>
+    </div>
+    <div class="trophy-slot ${state.engines.some(e => e.isProprietary) ? '' : 'empty'}">
+      <i class="fa-solid fa-bolt"></i>
+      <strong>Инновации Движка</strong>
+      <span style="font-size:0.75rem;">${state.engines.some(e => e.isProprietary) ? 'Завоёван ⚡' : 'Не получено'}</span>
+    </div>
+  `;
+}
+
+// --- ДОСТИЖЕНИЯ (ACHIEVEMENTS) ---
+function renderAchievements() {
+  const container = document.getElementById('achievements-grid');
+  let unlockedCount = 0;
+
+  container.innerHTML = GAME_DB.achievements.map(ach => {
+    if (ach.unlocked) unlockedCount++;
+    return `
+      <div class="achievement-card ${ach.unlocked ? 'unlocked' : ''}">
+        <div class="achievement-icon">
+          <i class="fa-solid ${ach.unlocked ? 'fa-trophy' : 'fa-lock'}" style="color:${ach.unlocked ? 'var(--accent-gold)' : 'var(--text-dim)'};"></i>
+        </div>
+        <div>
+          <strong>${ach.title}</strong>
+          <div style="font-size:0.8rem; color:var(--text-muted);">${ach.desc}</div>
+          <div style="font-size:0.75rem; color:var(--accent-green); margin-top:2px;">
+            Награда: +$${ach.rewardCash.toLocaleString()} | +${ach.rewardRp} RP
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('achieve-count-badge').innerText = `${unlockedCount}/${GAME_DB.achievements.length}`;
+}
+
+function checkAchievements() {
+  let changed = false;
+
+  GAME_DB.achievements.forEach(ach => {
+    if (ach.unlocked) return;
+
+    let satisfied = false;
+    if (ach.id === 'first_game' && state.games.length >= 1) satisfied = true;
+    if (ach.id === 'hit_score' && state.games.some(g => g.score >= 8.5)) satisfied = true;
+    if (ach.id === 'masterpiece' && state.games.some(g => g.score >= 9.5)) satisfied = true;
+    if (ach.id === 'first_million' && state.games.reduce((acc, g) => acc + g.revenue, 0) >= 1000000) satisfied = true;
+    if (ach.id === 'custom_engine' && state.engines.some(e => e.isProprietary)) satisfied = true;
+    if (ach.id === 'goty_winner' && state.awardsTrophies.includes('goty')) satisfied = true;
+    if (ach.id === 'big_team' && state.staff.length >= 4) satisfied = true;
+    if (ach.id === 'skyscraper_move' && state.officeIndex >= 3) satisfied = true;
+    if (ach.id === 'dlc_released' && state.games.some(g => g.dlcCount > 0)) satisfied = true;
+    if (ach.id === 'fan_army' && state.fans >= 10000) satisfied = true;
+    if (ach.id === 'stock_bull' && state.stockPrice >= 150) satisfied = true;
+
+    if (satisfied) {
+      ach.unlocked = true;
+      state.money += ach.rewardCash;
+      state.researchPoints += ach.rewardRp;
+      sounds.playLevelUp();
+      showToast(`🏆 Достижение разблокировано: «${ach.title}»! Награда: +$${ach.rewardCash.toLocaleString()}`, 'gold');
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    renderAchievements();
+  }
+}
+
+// --- ОФИС И ПЕРСОНАЛ ---
 function renderOffice() {
   const currentOffice = GAME_DB.offices[state.officeIndex];
   document.getElementById('office-room-name').innerText = currentOffice.name;
@@ -931,20 +1424,20 @@ function renderOffice() {
   document.getElementById('studio-tier-badge').innerText = `${currentOffice.name} (Ур. ${state.officeIndex + 1})`;
   document.getElementById('staff-slots-val').innerText = `${state.staff.length}/${currentOffice.capacity}`;
   document.getElementById('staff-count-badge').innerText = `${state.staff.length}/${currentOffice.capacity}`;
+  document.getElementById('office-vibe-pill').innerHTML = `Мораль команды: <strong>${state.studioMorale}% ${state.studioMorale > 70 ? '🔥' : (state.studioMorale > 40 ? '😐' : '💀')}</strong>`;
 
   const desksGrid = document.getElementById('desks-container');
   desksGrid.innerHTML = '';
 
-  // Рендерим столы для занятых сотрудников
   state.staff.forEach(emp => {
     const pod = document.createElement('div');
-    pod.className = `desk-pod ${state.dev.active ? 'working' : ''}`;
+    pod.className = `desk-pod ${state.dev.active ? 'working' : ''} ${state.dev.isCrunch ? 'crunching' : ''}`;
     pod.innerHTML = `
       <div class="desk-avatar">${emp.avatar}</div>
       <div class="desk-name">${emp.name}</div>
       <div class="desk-role">${emp.role}</div>
       <div class="desk-stats-mini">
-        <span title="Кодинг"><i class="fa-solid fa-code"></i> ${emp.code}</span>
+        <span title="Код"><i class="fa-solid fa-code"></i> ${emp.code}</span>
         <span title="Арт"><i class="fa-solid fa-palette"></i> ${emp.design}</span>
         <span title="Звук"><i class="fa-solid fa-music"></i> ${emp.sound}</span>
       </div>
@@ -952,15 +1445,14 @@ function renderOffice() {
     desksGrid.appendChild(pod);
   });
 
-  // Пустые рабочие места в рамках лимита офиса
   const emptySlots = currentOffice.capacity - state.staff.length;
   for (let i = 0; i < emptySlots; i++) {
     const emptyPod = document.createElement('div');
     emptyPod.className = 'desk-empty';
     emptyPod.innerHTML = `
       <i class="fa-solid fa-chair" style="font-size: 2rem; margin-bottom: 8px;"></i>
-      <span>Свободное место</span>
-      <small style="color: #6366f1;">Нанять таланта +</small>
+      <span>Свободный стол</span>
+      <small style="color: #6366f1;">Нанять разработчика +</small>
     `;
     emptyPod.addEventListener('click', openHireAgency);
     desksGrid.appendChild(emptyPod);
@@ -974,8 +1466,6 @@ function spawnFloatingBubble(text, cls) {
   const bubble = document.createElement('div');
   bubble.className = `float-bubble ${cls}`;
   bubble.innerText = text;
-  
-  // Рандомная позиция над персонажами
   bubble.style.left = `${20 + Math.random() * 60}%`;
   bubble.style.top = `${40 + Math.random() * 30}%`;
 
@@ -983,7 +1473,6 @@ function spawnFloatingBubble(text, cls) {
   setTimeout(() => bubble.remove(), 1400);
 }
 
-// --- УПРАВЛЕНИЕ ПЕРСОНАЛОМ ---
 function renderStaff() {
   const container = document.getElementById('staff-list-grid');
   if (!container) return;
@@ -1028,6 +1517,9 @@ function renderStaff() {
         <button class="btn btn-secondary btn-sm" onclick="openTrainModal(${emp.id})">
           <i class="fa-solid fa-graduation-cap"></i> Обучить
         </button>
+        <button class="btn btn-outline btn-sm" onclick="sendOnVacation(${emp.id})">
+          <i class="fa-solid fa-umbrella-beach"></i> Отпуск
+        </button>
         ${emp.id !== 1 ? `
           <button class="btn btn-outline btn-sm" style="color:#ef4444" onclick="fireEmployee(${emp.id})">
             Уволить
@@ -1038,6 +1530,19 @@ function renderStaff() {
   `).join('');
 }
 
+window.sendOnVacation = function(empId) {
+  const cost = 800;
+  if (state.money < cost) {
+    showToast('Недостаточно денег на оплату путевки ($800)!', 'bad');
+    return;
+  }
+  state.money -= cost;
+  state.studioMorale = Math.min(100, state.studioMorale + 25);
+  showToast('Сотрудник отдохнул на море и полон творческих сил! Мораль выросла!', 'good');
+  renderOffice();
+  updateTopStats();
+};
+
 function openHireAgency() {
   const currentOffice = GAME_DB.offices[state.officeIndex];
   if (state.staff.length >= currentOffice.capacity) {
@@ -1045,13 +1550,13 @@ function openHireAgency() {
     return;
   }
 
-  // Генерация 3 кандидатов
-  const names = ['Алексей Смирнов', 'Елена Ковалёва', 'Дмитрий Волков', 'Анна Морозова', 'Сергей Петров', 'Кристина Ким', 'Максим Орлов'];
+  const names = ['Алексей Смирнов', 'Елена Ковалёва', 'Дмитрий Волков', 'Анна Морозова', 'Сергей Петров', 'Кристина Ким', 'Максим Орлов', 'Виктор Цой-младший'];
   const roles = [
     { title: 'Ведущий Программист', icon: '👨‍💻', c: 28, d: 8, s: 6, sal: 1200 },
     { title: 'Концепт-Художник 3D', icon: '👩‍🎨', c: 6, d: 30, s: 8, sal: 1100 },
     { title: 'Саунд-дизайнер', icon: '🎧', c: 7, d: 10, s: 32, sal: 1050 },
-    { title: 'Геймдизайнер-Дженералист', icon: '🧙‍♂️', c: 18, d: 20, s: 15, sal: 1300 }
+    { title: 'Геймдизайнер-Дженералист', icon: '🧙‍♂️', c: 18, d: 20, s: 15, sal: 1300 },
+    { title: 'Архитектор Движков', icon: '⚙️', c: 35, d: 6, s: 6, sal: 1600 }
   ];
 
   state.candidatePool = [];
@@ -1082,7 +1587,7 @@ function openHireAgency() {
             Навыки: Код <b>${c.code}</b> | Арт <b>${c.design}</b> | Звук <b>${c.sound}</b>
           </div>
           <div style="font-size: 0.8rem; color: #38bdf8; margin-top: 2px;">
-            Зарплата: $${c.salary}/мес | Разовый бонус найма: $${c.hireFee}
+            Зарплата: $${c.salary}/мес | Бонус найма: $${c.hireFee}
           </div>
         </div>
       </div>
@@ -1120,7 +1625,7 @@ window.hireCandidate = function(candId) {
     design: cand.design,
     sound: cand.sound,
     salary: cand.salary,
-    energy: 100
+    morale: 100
   });
 
   hideModal('hire-modal');
@@ -1149,10 +1654,10 @@ window.openTrainModal = function(empId) {
   document.getElementById('train-employee-name').innerText = emp.name;
 
   const courses = [
-    { title: 'Интенсив по C++ и Vulkan', cost: 1200, skill: 'code', boost: 8, icon: 'fa-code' },
-    { title: 'Мастер-класс по Blender & 3D Анимации', cost: 1100, skill: 'design', boost: 8, icon: 'fa-palette' },
-    { title: 'Сведение оркестровых саундтреков', cost: 900, skill: 'sound', boost: 8, icon: 'fa-music' },
-    { title: 'Курс по комплексному геймдизайну', cost: 2000, skill: 'all', boost: 5, icon: 'fa-brain' }
+    { title: 'Интенсив по C++ и оптимизации шейдеров', cost: 1200, skill: 'code', boost: 8, icon: 'fa-code' },
+    { title: 'Мастер-класс по 3D Анимации и Motion Capture', cost: 1100, skill: 'design', boost: 8, icon: 'fa-palette' },
+    { title: 'Сведение оркестровых саундтреков и синтов', cost: 900, skill: 'sound', boost: 8, icon: 'fa-music' },
+    { title: 'Глобальный геймдизайн и режиссура катсцен', cost: 2000, skill: 'all', boost: 5, icon: 'fa-brain' }
   ];
 
   const list = document.getElementById('trainings-list');
@@ -1161,7 +1666,7 @@ window.openTrainModal = function(empId) {
       <div>
         <strong><i class="fa-solid ${c.icon}"></i> ${c.title}</strong>
         <div style="font-size:0.8rem; color:var(--text-muted);">
-          Прирост: +${c.boost} к ${c.skill === 'all' ? 'всем характеристикам' : c.skill}
+          Прирост: +${c.boost} к характеристикам
         </div>
       </div>
       <button class="btn btn-action-primary btn-sm" onclick="applyTraining(${emp.id}, ${i})">
@@ -1195,7 +1700,7 @@ window.applyTraining = function(empId, courseIdx) {
   }
 
   hideModal('train-modal');
-  showToast(`${emp.name} успешно завершил обучение! Навыки повышены!`, 'good');
+  showToast(`${emp.name} успешно завершил обучение!`, 'good');
   renderStaff();
   renderOffice();
   updateTopStats();
@@ -1204,10 +1709,10 @@ window.applyTraining = function(empId, courseIdx) {
 // --- ФРИЛАНС КОНТРАКТЫ ---
 function openContractsModal() {
   const contracts = [
-    { title: 'Редизайн мобильного интерфейса', payout: 2500, timeWeeks: 1, req: 'Графика' },
-    { title: 'Сетевой модуль для чужого шутера', payout: 5000, timeWeeks: 2, req: 'Код' },
-    { title: 'Написание 8-битного саундтрека', payout: 1800, timeWeeks: 1, req: 'Звук' },
-    { title: 'Портирование инди-проекта на Linux', payout: 3800, timeWeeks: 1, req: 'Код & Тест' }
+    { title: 'Редизайн мобильного интерфейса и UI', payout: 2500, req: 'Графика' },
+    { title: 'Сетевой модуль для шутера в Steam', payout: 5500, req: 'Код' },
+    { title: 'Написание чиптюн саундтрека к инди-платформеру', payout: 2200, req: 'Звук' },
+    { title: 'Оптимизация физики ткани и рэгдоллов', payout: 4800, req: 'Код & Тест' }
   ];
 
   const list = document.getElementById('contracts-list');
@@ -1215,10 +1720,10 @@ function openContractsModal() {
     <div class="contract-card">
       <div>
         <strong>${c.title}</strong>
-        <div style="font-size: 0.8rem; color: var(--text-muted);">Требование: ${c.req} | Срок: ${c.timeWeeks} нед.</div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Направление: ${c.req}</div>
       </div>
       <button class="btn btn-action-secondary" onclick="completeContract(${idx})">
-        Выполнить (+$${c.payout})
+        Выполнить (+$${c.payout.toLocaleString()})
       </button>
     </div>
   `).join('');
@@ -1237,7 +1742,7 @@ window.completeContract = function(idx) {
   updateTopStats();
 };
 
-// --- СИСТЕМА ИССЛЕДОВАНИЙ ---
+// --- ИССЛЕДОВАНИЯ ---
 function renderResearchTree() {
   document.getElementById('research-tab-rp-val').innerText = state.researchPoints;
   const grid = document.getElementById('research-tree-grid');
@@ -1246,7 +1751,7 @@ function renderResearchTree() {
     ...GAME_DB.genres.map(g => ({ ...g, type: 'Жанр' })),
     ...GAME_DB.themes.map(t => ({ ...t, type: 'Тематика' })),
     ...GAME_DB.platforms.map(p => ({ ...p, type: 'Платформа' })),
-    ...GAME_DB.engines.map(e => ({ ...e, type: 'Движок' }))
+    ...GAME_DB.engineModules.map(m => ({ ...m, type: 'Модуль движка', unlockRp: m.rp }))
   ].filter(item => item.unlockRp > 0);
 
   grid.innerHTML = allResearchables.map(item => {
@@ -1285,7 +1790,7 @@ window.unlockResearch = function(id, rpCost) {
   state.researchPoints -= rpCost;
   state.unlockedTech.push(id);
   sounds.playLevelUp();
-  showToast('Технология успешно исследована и доступна для новых игр!', 'good');
+  showToast('Технология успешно исследована и разблокирована!', 'good');
   
   populateDevDropdowns();
   renderResearchTree();
@@ -1295,10 +1800,9 @@ window.unlockResearch = function(id, rpCost) {
 // --- УЛУЧШЕНИЯ И ОФИСЫ ---
 function renderUpgrades() {
   const container = document.getElementById('upgrades-list-grid');
-  
-  // Доступный апгрейд офиса
   const nextOffice = GAME_DB.offices[state.officeIndex + 1];
   let officeHtml = '';
+
   if (nextOffice) {
     officeHtml = `
       <div class="upgrade-card" style="border: 2px solid var(--primary);">
@@ -1319,13 +1823,12 @@ function renderUpgrades() {
   } else {
     officeHtml = `
       <div class="upgrade-card owned">
-        <h3>🏆 Максимальный офис достигнут!</h3>
-        <p class="subtitle">Ваша компания занимает вершину небоскрёба индустрии!</p>
+        <h3>🏆 Максимальный офис!</h3>
+        <p class="subtitle">Ваша компания занимает вершину индустриального олимпа!</p>
       </div>
     `;
   }
 
-  // Оборудование
   const hardwareHtml = GAME_DB.upgrades.map(up => {
     const isOwned = state.ownedUpgrades.includes(up.id);
     return `
@@ -1360,7 +1863,7 @@ window.buyOfficeUpgrade = function(nextIdx) {
   state.money -= office.price;
   state.officeIndex = nextIdx;
   sounds.playLevelUp();
-  if (window.confetti) window.confetti({ particleCount: 150 });
+  if (window.confetti) window.confetti({ particleCount: 160 });
 
   showToast(`Поздравляем с переездом! Новый офис: ${office.name}!`, 'gold');
   addFeedItem(`Студия переехала в «${office.name}»! Вместимость выросла до ${office.capacity} мест.`, 'gold');
@@ -1385,7 +1888,7 @@ window.buyHardwareUpgrade = function(id, cost) {
   updateTopStats();
 };
 
-// --- МАРКЕТИНГОВЫЕ КАМПАНИИ ---
+// --- МАРКЕТИНГ ---
 function renderMarketing() {
   const container = document.getElementById('marketing-actions-grid');
 
@@ -1426,15 +1929,14 @@ window.launchMarketingCampaign = function(campId) {
     weeksLeft: camp.duration
   });
 
-  // Усиливаем все текущие продаваемые игры
   state.games.forEach(g => {
-    if (g.weeksOnMarket <= 24) {
+    if (g.weeksOnMarket <= 28) {
       g.marketingMultiplier = (g.marketingMultiplier || 1.0) * camp.boostSales;
     }
   });
 
   showToast(`Рекламная кампания «${camp.name}» запущена! Продажи резко возросли!`, 'good');
-  addFeedItem(`Запущена маркетинговая кампания «${camp.name}». Интерес публики на пике!`, 'info');
+  addFeedItem(`Запущена маркетинговая кампания «${camp.name}».`, 'info');
   updateTopStats();
 };
 
@@ -1445,7 +1947,7 @@ function processMarketingCampaigns() {
   });
 }
 
-// --- УТИЛИТЫ И ОБНОВЛЕНИЕ ДАННЫХ ---
+// --- УТИЛИТЫ ---
 function updateTopStats() {
   const cashValEl = document.getElementById('cash-val');
   cashValEl.innerText = `$${state.money.toLocaleString()}`;
@@ -1455,12 +1957,19 @@ function updateTopStats() {
   document.getElementById('research-val').innerText = state.researchPoints;
   document.getElementById('date-val').innerText = `Год ${state.date.year}, Мес ${state.date.month}, Нед ${state.date.week}`;
 
-  // Расчет ежемесячной прибыли
   const currentOffice = GAME_DB.offices[state.officeIndex];
   const rent = currentOffice.rent;
   const salaries = state.staff.reduce((acc, s) => acc + s.salary, 0);
   const monthlyCost = rent + salaries;
   document.getElementById('cash-rate').innerText = `-$${monthlyCost.toLocaleString()}/мес`;
+
+  const stockValEl = document.getElementById('stock-val');
+  const stockSubEl = document.getElementById('stock-sub');
+  if (stockValEl && stockSubEl) {
+    stockValEl.innerText = `$${state.stockPrice.toFixed(2)}`;
+    stockSubEl.innerText = `${state.stockGrowth >= 0 ? '+' : ''}${state.stockGrowth.toFixed(1)}%`;
+    stockSubEl.style.color = state.stockGrowth >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+  }
 }
 
 function addFeedItem(text, type = 'info') {

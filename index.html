@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GameDev Tycoon: Studio Master | Симулятор Создания Игр</title>
+  <title>GameDev Tycoon: Studio Master Pro | Симулятор Создания Игр</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
         <div class="stat-card" title="Деньги компании">
           <i class="fa-solid fa-sack-dollar icon-gold"></i>
           <div>
-            <div class="stat-value" id="cash-val">$10,000</div>
+            <div class="stat-value" id="cash-val">$15,000</div>
             <div class="stat-sub" id="cash-rate">+$0/мес</div>
           </div>
         </div>
@@ -35,7 +35,7 @@
         <div class="stat-card" title="Очки фанатов и популярность">
           <i class="fa-solid fa-heart icon-red"></i>
           <div>
-            <div class="stat-value" id="fans-val">0</div>
+            <div class="stat-value" id="fans-val">10</div>
             <div class="stat-sub">Фанаты</div>
           </div>
         </div>
@@ -43,15 +43,23 @@
         <div class="stat-card" title="Очки опыта и исследований">
           <i class="fa-solid fa-flask icon-cyan"></i>
           <div>
-            <div class="stat-value" id="research-val">0</div>
+            <div class="stat-value" id="research-val">15</div>
             <div class="stat-sub">Очки RP</div>
+          </div>
+        </div>
+
+        <div class="stat-card" title="Акции и капитализация студии">
+          <i class="fa-solid fa-chart-line icon-purple"></i>
+          <div>
+            <div class="stat-value" id="stock-val">$50.00</div>
+            <div class="stat-sub" id="stock-sub">+0.0%</div>
           </div>
         </div>
 
         <div class="stat-card date-card" title="Текущая дата">
           <i class="fa-regular fa-calendar icon-purple"></i>
           <div>
-            <div class="stat-value" id="date-val">Год 1, Мес 1</div>
+            <div class="stat-value" id="date-val">Год 1, Мес 1, Нед 1</div>
             <div class="time-controls">
               <button id="btn-pause" title="Пауза"><i class="fa-solid fa-pause"></i></button>
               <button id="btn-speed-1" class="active" title="Скорость 1x">1x</button>
@@ -87,6 +95,15 @@
             <span>Команда</span>
             <span class="badge" id="staff-count-badge">1/2</span>
           </button>
+          <button class="nav-item" data-tab="engine-tab">
+            <i class="fa-solid fa-cubes-stacked"></i>
+            <span>Конструктор Движков</span>
+            <span class="badge badge-accent" id="engine-count-badge">1</span>
+          </button>
+          <button class="nav-item" data-tab="conventions-tab">
+            <i class="fa-solid fa-champagne-glasses"></i>
+            <span>Выставки & Awards</span>
+          </button>
           <button class="nav-item" data-tab="research-tab">
             <i class="fa-solid fa-microchip"></i>
             <span>Исследования</span>
@@ -99,6 +116,11 @@
             <i class="fa-solid fa-bullhorn"></i>
             <span>Маркетинг</span>
           </button>
+          <button class="nav-item" data-tab="achievements-tab">
+            <i class="fa-solid fa-trophy"></i>
+            <span>Достижения</span>
+            <span class="badge" id="achieve-count-badge">0/12</span>
+          </button>
         </nav>
 
         <div class="quick-action-box">
@@ -107,6 +129,9 @@
           </button>
           <button class="btn btn-action-secondary" id="btn-contract-work">
             <i class="fa-solid fa-file-invoice-dollar"></i> Быстрый фриланс
+          </button>
+          <button class="btn btn-action-secondary" id="btn-open-engine-builder">
+            <i class="fa-solid fa-gears"></i> Создать движок
           </button>
         </div>
 
@@ -128,8 +153,13 @@
                 <h2 id="office-room-name">Гараж родителей</h2>
                 <p id="office-room-desc">Уютный уголок начинающего разработчика. Хватит на 2 человек.</p>
               </div>
-              <div class="office-capacity-pill">
-                Рабочие места: <span id="staff-slots-val">1/2</span>
+              <div class="office-stats-group">
+                <div class="office-capacity-pill">
+                  Команда: <span id="staff-slots-val">1/2</span>
+                </div>
+                <div class="office-vibe-pill" id="office-vibe-pill">
+                  Настроение: <strong>100% 🔥</strong>
+                </div>
               </div>
             </div>
 
@@ -161,14 +191,15 @@
                 <div class="progress-bar-fill" id="dev-progress-fill" style="width: 0%"></div>
               </div>
               <div class="dev-actions-row">
-                <button class="btn btn-sm btn-outline" id="btn-fix-bugs-now"><i class="fa-solid fa-wrench"></i> Полировка багов</button>
+                <button class="btn btn-sm btn-outline" id="btn-fix-bugs-now"><i class="fa-solid fa-crosshairs"></i> Охота на баги!</button>
+                <button class="btn btn-sm btn-secondary" id="btn-crunch-mode"><i class="fa-solid fa-fire"></i> Кранч-режим (x2 темп)</button>
                 <button class="btn btn-sm btn-primary" id="btn-finish-game-now"><i class="fa-solid fa-rocket"></i> Выпустить игру!</button>
               </div>
             </div>
 
             <!-- Лента новостей / лог событий -->
             <div class="office-feed-card">
-              <h3><i class="fa-solid fa-bell"></i> Новости индустрии и студии</h3>
+              <h3><i class="fa-solid fa-newspaper"></i> Информационная лента индустрии</h3>
               <div class="feed-list" id="feed-list">
                 <div class="feed-item info">Добро пожаловать в мир разработки видеоигр! Нажмите «Создать игру», чтобы выпустить свой первый шедевр.</div>
               </div>
@@ -180,7 +211,7 @@
         <section id="develop-tab" class="tab-pane">
           <div class="wizard-container">
             <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Конструктор новой игры</h2>
-            <p class="subtitle">Придумайте хит, выберите идеальную комбинацию жанра, платформы и распределите усилия!</p>
+            <p class="subtitle">Придумайте хит, выберите идеальную комбинацию жанра, платформы, монетизации и распределите усилия!</p>
 
             <div class="wizard-box" id="wizard-step-1">
               <div class="form-group">
@@ -193,7 +224,7 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label for="select-game-genre"><i class="fa-solid fa-shapes"></i> Жанр:</label>
+                  <label for="select-game-genre"><i class="fa-solid fa-shapes"></i> Основной жанр:</label>
                   <select id="select-game-genre"></select>
                 </div>
 
@@ -215,13 +246,33 @@
                 </div>
               </div>
 
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="select-game-monetization"><i class="fa-solid fa-coins"></i> Модель монетизации:</label>
+                  <select id="select-game-monetization">
+                    <option value="premium">Премиум игра ($19.99 единоразово) - Идеально для сюжета и критиков</option>
+                    <option value="f2p">Free-to-Play с Battle Pass и скинами - Больше игроков и долгосрочный доход</option>
+                    <option value="subscription">Подписка MMO / Сервис ($9.99/мес) - Требует высокого качества</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="select-game-scale"><i class="fa-solid fa-layer-group"></i> Масштаб проекта:</label>
+                  <select id="select-game-scale">
+                    <option value="indie">Инди проект (Быстро, дёшево, 100% готовности)</option>
+                    <option value="medium">AA Проект (Требует команду от 2 чел, x1.5 бюджет, больше охват)</option>
+                    <option value="aaa">AAA Блокбастер (Требует команду от 4 чел, x3 бюджет, шанс на мировой рекорд)</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="genre-synergy-preview" id="synergy-hint-box">
                 <i class="fa-solid fa-lightbulb"></i> <span id="synergy-hint-text">Сочетание жанра и темы влияет на оценки критиков!</span>
               </div>
 
               <div class="sliders-section">
                 <h3><i class="fa-solid fa-sliders"></i> Распределение приоритетов команды</h3>
-                <p class="section-desc">Балансируйте ползунки. Сумма должна быть равна 100%.</p>
+                <p class="section-desc">Балансируйте ползунки под выбранный жанр. Сумма должна быть равна 100%.</p>
 
                 <div class="slider-control">
                   <div class="slider-info">
@@ -258,9 +309,10 @@
                 <label for="select-launch-marketing"><i class="fa-solid fa-bullhorn"></i> Предрелизная реклама:</label>
                 <select id="select-launch-marketing">
                   <option value="none">Без рекламы ($0)</option>
-                  <option value="social">Посты в соцсетях и форумах ($1,000)</option>
+                  <option value="social">Посты в соцсетях и мемах ($1,000)</option>
                   <option value="streamers">Ключи стримерам и блогерам ($4,000)</option>
                   <option value="trailers">Кинематографичный трейлер и баннеры ($12,000)</option>
+                  <option value="times_square">Реклама на Таймс-Сквер в Нью-Йорке ($35,000)</option>
                 </select>
               </div>
 
@@ -274,13 +326,16 @@
           </div>
         </section>
 
-        <!-- Вкладка: ИСТОРИЯ ИГР (Портфолио, продажи, выручка) -->
+        <!-- Вкладка: ИСТОРИЯ ИГР (Портфолио, продажи, DLC, сиквелы) -->
         <section id="games-history-tab" class="tab-pane">
           <div class="tab-inner">
             <div class="header-flex">
-              <h2><i class="fa-solid fa-trophy"></i> Выпущенные игры</h2>
+              <div>
+                <h2><i class="fa-solid fa-trophy"></i> Выпущенные игры</h2>
+                <p>Выпускайте DLC и патчи для продления жизни игр, создавайте сиквелы успешных франшиз!</p>
+              </div>
               <div class="history-summary">
-                Всего продано копий: <strong id="total-copies-sold">0</strong> | Валовый доход: <strong id="total-revenue-sum">$0</strong>
+                Всего продано: <strong id="total-copies-sold">0</strong> | Валовый доход: <strong id="total-revenue-sum">$0</strong>
               </div>
             </div>
 
@@ -294,13 +349,68 @@
           </div>
         </section>
 
+        <!-- Вкладка: СОБСТВЕННЫЕ ДВИЖКИ -->
+        <section id="engine-tab" class="tab-pane">
+          <div class="tab-inner">
+            <div class="header-flex">
+              <div>
+                <h2><i class="fa-solid fa-cubes-stacked"></i> Собственные Игровые Движки</h2>
+                <p>Создавайте собственные проприетарные технологии, внедряйте трассировку лучей и получайте отчисления!</p>
+              </div>
+              <button class="btn btn-primary" id="btn-new-engine-dialog">
+                <i class="fa-solid fa-plus"></i> Собрать новый движок
+              </button>
+            </div>
+
+            <div class="engines-grid" id="custom-engines-grid">
+              <!-- Карточки движков -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: ИГРОВЫЕ ВЫСТАВКИ И ПРЕМИИ (AWARDS) -->
+        <section id="conventions-tab" class="tab-pane">
+          <div class="tab-inner">
+            <h2><i class="fa-solid fa-champagne-glasses"></i> Выставки и Награды (The Game Awards)</h2>
+            <p>Участвуйте в ежегодных выставках E3/Gamescom и боритесь за звание «Игра Года» (GOTY)!</p>
+
+            <div class="awards-hero-card">
+              <div class="awards-hero-content">
+                <span class="sub-badge" style="background:var(--accent-gold); color:black; font-weight:800;">ГЛАВНОЕ СОБЫТИЕ ГОДА</span>
+                <h3 style="font-size:1.6rem; margin-top:8px;">🏆 The Annual Game Awards</h3>
+                <p>Каждый 12-й месяц года мировая коллегия критиков выбирает лучшую игру года, лучшую графику и инди-прорыв.</p>
+                <div class="awards-status-badge" id="awards-status-text">
+                  До следующей церемонии: <strong>через 11 мес.</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="trophy-room-section">
+              <h3><i class="fa-solid fa-award"></i> Зал Славы Студии</h3>
+              <div class="trophy-grid" id="trophy-room-grid">
+                <div class="trophy-slot empty"><i class="fa-solid fa-trophy"></i><span>GOTY (Игра года)</span></div>
+                <div class="trophy-slot empty"><i class="fa-solid fa-palette"></i><span>Лучший Арт</span></div>
+                <div class="trophy-slot empty"><i class="fa-solid fa-music"></i><span>Лучший Саундтрек</span></div>
+                <div class="trophy-slot empty"><i class="fa-solid fa-bolt"></i><span>Инновация года</span></div>
+              </div>
+            </div>
+
+            <div class="conventions-promo-section">
+              <h3><i class="fa-solid fa-ticket"></i> Участие в сезонных выставках</h3>
+              <div class="conventions-cards-grid" id="conventions-cards-grid">
+                <!-- Карточки выставок -->
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Вкладка: СОТРУДНИКИ И КОМАНДА -->
         <section id="staff-tab" class="tab-pane">
           <div class="tab-inner">
             <div class="header-flex">
               <div>
                 <h2><i class="fa-solid fa-user-group"></i> Персонал компании</h2>
-                <p>Нанимайте программистов, художников и музыкантов. Тренируйте их навыки!</p>
+                <p>Нанимайте легендарных разработчиков, следите за их моралью и отправляйте в отпуск!</p>
               </div>
               <button class="btn btn-secondary" id="btn-open-hire-modal">
                 <i class="fa-solid fa-user-plus"></i> Найти кандидатов
@@ -352,6 +462,18 @@
 
             <div class="marketing-actions-grid" id="marketing-actions-grid">
               <!-- Доступные промо-кампании -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: ДОСТИЖЕНИЯ -->
+        <section id="achievements-tab" class="tab-pane">
+          <div class="tab-inner">
+            <h2><i class="fa-solid fa-trophy"></i> Достижения студии</h2>
+            <p>Выполняйте испытания, открывайте бейджи и получайте приятные денежные и RP бонусы!</p>
+
+            <div class="achievements-grid" id="achievements-grid">
+              <!-- Достижения генерируются через JS -->
             </div>
           </div>
         </section>
@@ -428,6 +550,35 @@
       </div>
     </div>
 
+    <!-- МОДАЛЬНОЕ ОКНО: КОНСТРУКТОР ДВИЖКОВ -->
+    <div class="modal-backdrop" id="engine-builder-modal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-gears"></i> Сборка собственного движка</h2>
+          <button class="modal-close-btn" id="btn-close-engine-builder">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="input-custom-engine-name">Название движка:</label>
+            <input type="text" id="input-custom-engine-name" placeholder="Например: Quantum Engine v2.0">
+          </div>
+          <p class="subtitle">Выберите передовые модули для включения в движок:</p>
+          <div class="engine-modules-list" id="engine-modules-list">
+            <!-- Чекбоксы модулей -->
+          </div>
+          <div class="engine-build-summary" style="margin-top:16px; padding:12px; background:var(--bg-input); border-radius:8px;">
+            Стоимость разработки: <strong id="custom-engine-total-cost">$10,000</strong> |
+            Множитель мощности: <strong id="custom-engine-total-mult" style="color:var(--accent-green);">x1.40</strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-action-primary" id="btn-confirm-build-engine">
+            <i class="fa-solid fa-hammer"></i> Собрать движок
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- МОДАЛЬНОЕ ОКНО: МИНИ-ИГРА ИНТЕРАКТИВНОГО ТЕСТИРОВАНИЯ БАГОВ -->
     <div class="modal-backdrop" id="bug-hunt-modal" style="display:none;">
       <div class="modal-card bug-hunt-card">
@@ -436,7 +587,7 @@
           <span class="badge" id="bug-timer-badge">Осталось: 10 сек</span>
         </div>
         <div class="modal-body">
-          <p>Поймайте как можно больше багов до релиза, чтобы поднять оценку игры!</p>
+          <p>Поймайте как можно больше багов до релиза, чтобы спасти оценку игры от разгрома!</p>
           <div class="bug-canvas-arena" id="bug-arena"></div>
           <div class="bug-hunt-stats">
             Уничтожено багов: <strong id="bugs-squashed-counter">0</strong>
@@ -444,6 +595,21 @@
         </div>
         <div class="modal-footer">
           <button class="btn btn-primary" id="btn-finish-bug-hunt">Закончить охоту</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ЦЕРЕМОНИЯ THE GAME AWARDS -->
+    <div class="modal-backdrop" id="awards-ceremony-modal" style="display:none;">
+      <div class="modal-card" style="max-width:700px; text-align:center;">
+        <div class="modal-header" style="justify-content:center;">
+          <h2 style="color:var(--accent-gold);"><i class="fa-solid fa-trophy"></i> Церемония The Game Awards</h2>
+        </div>
+        <div class="modal-body">
+          <div id="awards-ceremony-content" style="padding:20px 0;"></div>
+        </div>
+        <div class="modal-footer" style="justify-content:center;">
+          <button class="btn btn-action-primary btn-lg" id="btn-close-awards-modal">Спасибо геймерам!</button>
         </div>
       </div>
     </div>
