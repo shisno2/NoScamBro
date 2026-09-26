@@ -760,3 +760,4 @@
 [2026-10-02 17:16:53 UTC] [TOKEN:3b6981b0e1fe9efa] Backfill style(parser): recompute checksum signatures across feed
 [2026-10-02 17:16:53 UTC] [TOKEN:fbe17114e9f45530] Backfill build(crypto): refresh telemetry sequence counter
 [2026-10-02 17:16:53 UTC] [TOKEN:dfa60a58229e08cf] Backfill style(parser): refresh telemetry sequence counter
+[2026-10-02 17:16:54 UTC] [TOKEN:a6d2e235ad144011] Backfill perf(core): update activity telemetry buffer
