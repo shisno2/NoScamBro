@@ -9,6 +9,7 @@ struct Genre {
     int unlockRp;
     std::vector<std::string> bestThemes;
     int wCode, wDesign, wSound;
+    std::wstring desc;
 };
 
 struct Theme {
@@ -59,6 +60,28 @@ struct Employee {
     int sound;
     int salary;
     int morale;
+    int avatarColorIdx;
+};
+
+struct Candidate {
+    int id;
+    std::wstring name;
+    std::wstring role;
+    int code;
+    int design;
+    int sound;
+    int salary;
+    int hireCost;
+    int avatarColorIdx;
+};
+
+struct TechResearch {
+    std::string id;
+    std::wstring title;
+    std::wstring desc;
+    int rpCost;
+    bool unlocked;
+    std::wstring category;
 };
 
 struct ReleasedGame {
