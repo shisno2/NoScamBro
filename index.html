@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameDev Tycoon: Studio Master | Симулятор Создания Игр</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- Верхний бар со статусом -->
+    <header class="top-nav">
+      <div class="logo-area">
+        <i class="fa-solid fa-gamepad brand-icon"></i>
+        <div>
+          <h1 id="studio-display-name">Pixel Forge Studios</h1>
+          <span class="sub-badge" id="studio-tier-badge">Гаражный стартап (Ур. 1)</span>
+        </div>
+      </div>
+
+      <div class="stats-ribbon">
+        <div class="stat-card" title="Деньги компании">
+          <i class="fa-solid fa-sack-dollar icon-gold"></i>
+          <div>
+            <div class="stat-value" id="cash-val">$10,000</div>
+            <div class="stat-sub" id="cash-rate">+$0/мес</div>
+          </div>
+        </div>
+
+        <div class="stat-card" title="Очки фанатов и популярность">
+          <i class="fa-solid fa-heart icon-red"></i>
+          <div>
+            <div class="stat-value" id="fans-val">0</div>
+            <div class="stat-sub">Фанаты</div>
+          </div>
+        </div>
+
+        <div class="stat-card" title="Очки опыта и исследований">
+          <i class="fa-solid fa-flask icon-cyan"></i>
+          <div>
+            <div class="stat-value" id="research-val">0</div>
+            <div class="stat-sub">Очки RP</div>
+          </div>
+        </div>
+
+        <div class="stat-card date-card" title="Текущая дата">
+          <i class="fa-regular fa-calendar icon-purple"></i>
+          <div>
+            <div class="stat-value" id="date-val">Год 1, Мес 1</div>
+            <div class="time-controls">
+              <button id="btn-pause" title="Пауза"><i class="fa-solid fa-pause"></i></button>
+              <button id="btn-speed-1" class="active" title="Скорость 1x">1x</button>
+              <button id="btn-speed-2" title="Скорость 2x">2x</button>
+              <button id="btn-speed-3" title="Скорость 5x">5x</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Основной макет: Вкладки слева / Контент справа -->
+    <div class="main-layout">
+      <!-- Боковое меню -->
+      <aside class="sidebar">
+        <nav class="nav-menu">
+          <button class="nav-item active" data-tab="office-tab">
+            <i class="fa-solid fa-building"></i>
+            <span>Офис</span>
+          </button>
+          <button class="nav-item" data-tab="develop-tab" id="nav-btn-develop">
+            <i class="fa-solid fa-laptop-code"></i>
+            <span>Разработка</span>
+            <span class="pulsing-dot" id="dev-busy-indicator" style="display:none;"></span>
+          </button>
+          <button class="nav-item" data-tab="games-history-tab">
+            <i class="fa-solid fa-box-archive"></i>
+            <span>Портфолио игр</span>
+            <span class="badge" id="games-count-badge">0</span>
+          </button>
+          <button class="nav-item" data-tab="staff-tab">
+            <i class="fa-solid fa-users"></i>
+            <span>Команда</span>
+            <span class="badge" id="staff-count-badge">1/2</span>
+          </button>
+          <button class="nav-item" data-tab="research-tab">
+            <i class="fa-solid fa-microchip"></i>
+            <span>Исследования</span>
+          </button>
+          <button class="nav-item" data-tab="upgrades-tab">
+            <i class="fa-solid fa-arrow-trend-up"></i>
+            <span>Улучшения</span>
+          </button>
+          <button class="nav-item" data-tab="market-tab">
+            <i class="fa-solid fa-bullhorn"></i>
+            <span>Маркетинг</span>
+          </button>
+        </nav>
+
+        <div class="quick-action-box">
+          <button class="btn btn-action-primary" id="btn-start-dev-main">
+            <i class="fa-solid fa-plus-circle"></i> Создать игру
+          </button>
+          <button class="btn btn-action-secondary" id="btn-contract-work">
+            <i class="fa-solid fa-file-invoice-dollar"></i> Быстрый фриланс
+          </button>
+        </div>
+
+        <div class="audio-toggle-wrap">
+          <button id="btn-toggle-sound" class="btn-sound" title="Вкл/Выкл звуки">
+            <i class="fa-solid fa-volume-high"></i> Звуки: ВКЛ
+          </button>
+        </div>
+      </aside>
+
+      <!-- Основная панель содержимого -->
+      <main class="content-panel">
+        
+        <!-- Вкладка: ОФИС (Визуальная комната с персонажами, столами, анимацией работы) -->
+        <section id="office-tab" class="tab-pane active">
+          <div class="office-container">
+            <div class="office-header-info">
+              <div>
+                <h2 id="office-room-name">Гараж родителей</h2>
+                <p id="office-room-desc">Уютный уголок начинающего разработчика. Хватит на 2 человек.</p>
+              </div>
+              <div class="office-capacity-pill">
+                Рабочие места: <span id="staff-slots-val">1/2</span>
+              </div>
+            </div>
+
+            <!-- Изометрическая/2D Сцена офиса -->
+            <div class="office-room-stage" id="office-stage">
+              <div class="room-walls"></div>
+              <div class="room-floor"></div>
+              <!-- Персонажи и рабочие места динамически спавнятся здесь -->
+              <div class="desks-grid" id="desks-container"></div>
+              <!-- Область вылетающих частиц (+Код, +Дизайн, +Звук, +Баги) -->
+              <div id="bubbles-layer" class="bubbles-layer"></div>
+            </div>
+
+            <!-- Панель текущего прогресса разработки, если игра делается -->
+            <div class="active-dev-bar-widget" id="active-dev-bar-widget" style="display: none;">
+              <div class="dev-widget-header">
+                <div class="dev-widget-title">
+                  <i class="fa-solid fa-spinner fa-spin"></i> Разработка: <strong id="dev-active-title">Super Platformer</strong>
+                  <span class="badge" id="dev-active-phase">Фаза 1: Движок & Геймплей</span>
+                </div>
+                <div class="dev-stats-pills">
+                  <span class="pill-code"><i class="fa-solid fa-code"></i> Код: <b id="dev-pts-code">0</b></span>
+                  <span class="pill-design"><i class="fa-solid fa-palette"></i> Графика: <b id="dev-pts-design">0</b></span>
+                  <span class="pill-sound"><i class="fa-solid fa-music"></i> Звук: <b id="dev-pts-sound">0</b></span>
+                  <span class="pill-bugs"><i class="fa-solid fa-bug"></i> Баги: <b id="dev-pts-bugs">0</b></span>
+                </div>
+              </div>
+              <div class="progress-bar-wrap">
+                <div class="progress-bar-fill" id="dev-progress-fill" style="width: 0%"></div>
+              </div>
+              <div class="dev-actions-row">
+                <button class="btn btn-sm btn-outline" id="btn-fix-bugs-now"><i class="fa-solid fa-wrench"></i> Полировка багов</button>
+                <button class="btn btn-sm btn-primary" id="btn-finish-game-now"><i class="fa-solid fa-rocket"></i> Выпустить игру!</button>
+              </div>
+            </div>
+
+            <!-- Лента новостей / лог событий -->
+            <div class="office-feed-card">
+              <h3><i class="fa-solid fa-bell"></i> Новости индустрии и студии</h3>
+              <div class="feed-list" id="feed-list">
+                <div class="feed-item info">Добро пожаловать в мир разработки видеоигр! Нажмите «Создать игру», чтобы выпустить свой первый шедевр.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: РАЗРАБОТКА ИГРЫ (Мастер создания новой игры) -->
+        <section id="develop-tab" class="tab-pane">
+          <div class="wizard-container">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Конструктор новой игры</h2>
+            <p class="subtitle">Придумайте хит, выберите идеальную комбинацию жанра, платформы и распределите усилия!</p>
+
+            <div class="wizard-box" id="wizard-step-1">
+              <div class="form-group">
+                <label for="input-game-name"><i class="fa-solid fa-pen-nib"></i> Название игры:</label>
+                <div class="input-with-button">
+                  <input type="text" id="input-game-name" placeholder="Например: Cyber Dungeon 2088" maxlength="32">
+                  <button type="button" class="btn btn-secondary" id="btn-random-name"><i class="fa-solid fa-dice"></i> Случайное</button>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="select-game-genre"><i class="fa-solid fa-shapes"></i> Жанр:</label>
+                  <select id="select-game-genre"></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="select-game-theme"><i class="fa-solid fa-mask"></i> Тематика / Сеттинг:</label>
+                  <select id="select-game-theme"></select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="select-game-platform"><i class="fa-solid fa-display"></i> Целевая платформа:</label>
+                  <select id="select-game-platform"></select>
+                </div>
+
+                <div class="form-group">
+                  <label for="select-game-engine"><i class="fa-solid fa-gears"></i> Игровой движок:</label>
+                  <select id="select-game-engine"></select>
+                </div>
+              </div>
+
+              <div class="genre-synergy-preview" id="synergy-hint-box">
+                <i class="fa-solid fa-lightbulb"></i> <span id="synergy-hint-text">Сочетание жанра и темы влияет на оценки критиков!</span>
+              </div>
+
+              <div class="sliders-section">
+                <h3><i class="fa-solid fa-sliders"></i> Распределение приоритетов команды</h3>
+                <p class="section-desc">Балансируйте ползунки. Сумма должна быть равна 100%.</p>
+
+                <div class="slider-control">
+                  <div class="slider-info">
+                    <span><i class="fa-solid fa-code"></i> Геймплей и Код</span>
+                    <span id="slider-gameplay-val">40%</span>
+                  </div>
+                  <input type="range" id="slider-gameplay" min="10" max="80" value="40" step="5">
+                </div>
+
+                <div class="slider-control">
+                  <div class="slider-info">
+                    <span><i class="fa-solid fa-palette"></i> Графика и Арт</span>
+                    <span id="slider-graphics-val">30%</span>
+                  </div>
+                  <input type="range" id="slider-graphics" min="10" max="80" value="30" step="5">
+                </div>
+
+                <div class="slider-control">
+                  <div class="slider-info">
+                    <span><i class="fa-solid fa-music"></i> Музыка и Звук</span>
+                    <span id="slider-sound-val">30%</span>
+                  </div>
+                  <input type="range" id="slider-sound" min="10" max="80" value="30" step="5">
+                </div>
+
+                <div class="slider-total-bar">
+                  <span>Общий баланс: <strong id="slider-total-val">100%</strong></span>
+                  <span id="slider-total-status" class="status-valid">Идеально (100%)</span>
+                </div>
+              </div>
+
+              <!-- Маркетинговый бюджет перед стартом -->
+              <div class="form-group">
+                <label for="select-launch-marketing"><i class="fa-solid fa-bullhorn"></i> Предрелизная реклама:</label>
+                <select id="select-launch-marketing">
+                  <option value="none">Без рекламы ($0)</option>
+                  <option value="social">Посты в соцсетях и форумах ($1,000)</option>
+                  <option value="streamers">Ключи стримерам и блогерам ($4,000)</option>
+                  <option value="trailers">Кинематографичный трейлер и баннеры ($12,000)</option>
+                </select>
+              </div>
+
+              <div class="wizard-summary-box">
+                <div>Ориентировочная стоимость разработки: <strong id="est-dev-cost">$2,000</strong></div>
+                <button class="btn btn-action-primary btn-lg" id="btn-start-dev-confirm">
+                  <i class="fa-solid fa-play"></i> Начать разработку игры
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: ИСТОРИЯ ИГР (Портфолио, продажи, выручка) -->
+        <section id="games-history-tab" class="tab-pane">
+          <div class="tab-inner">
+            <div class="header-flex">
+              <h2><i class="fa-solid fa-trophy"></i> Выпущенные игры</h2>
+              <div class="history-summary">
+                Всего продано копий: <strong id="total-copies-sold">0</strong> | Валовый доход: <strong id="total-revenue-sum">$0</strong>
+              </div>
+            </div>
+
+            <div id="games-grid" class="games-grid">
+              <!-- Карточки игр заполняются динамически -->
+              <div class="empty-state">
+                <i class="fa-solid fa-ghost"></i>
+                <p>Вы пока не выпустили ни одной игры. Пора исправить это!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: СОТРУДНИКИ И КОМАНДА -->
+        <section id="staff-tab" class="tab-pane">
+          <div class="tab-inner">
+            <div class="header-flex">
+              <div>
+                <h2><i class="fa-solid fa-user-group"></i> Персонал компании</h2>
+                <p>Нанимайте программистов, художников и музыкантов. Тренируйте их навыки!</p>
+              </div>
+              <button class="btn btn-secondary" id="btn-open-hire-modal">
+                <i class="fa-solid fa-user-plus"></i> Найти кандидатов
+              </button>
+            </div>
+
+            <div class="staff-grid" id="staff-list-grid">
+              <!-- Карточки сотрудников -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: ИССЛЕДОВАНИЯ -->
+        <section id="research-tab" class="tab-pane">
+          <div class="tab-inner">
+            <div class="header-flex">
+              <div>
+                <h2><i class="fa-solid fa-flask-vial"></i> Лаборатория исследований</h2>
+                <p>Тратьте очки RP, накопленные при разработке, чтобы открыть новые жанры, темы и технологии!</p>
+              </div>
+              <div class="rp-indicator">
+                Баланс RP: <strong id="research-tab-rp-val">0</strong>
+              </div>
+            </div>
+
+            <div class="research-grid" id="research-tree-grid">
+              <!-- Технологии генерируются через JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: УЛУЧШЕНИЯ И ОФИСЫ -->
+        <section id="upgrades-tab" class="tab-pane">
+          <div class="tab-inner">
+            <h2><i class="fa-solid fa-city"></i> Недвижимость и апгрейды студии</h2>
+            <p>Переезжайте в большие офисы для расширения команды и покупайте первоклассное оборудование.</p>
+
+            <div class="upgrades-cards-grid" id="upgrades-list-grid">
+              <!-- Офисы и железо -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Вкладка: МАРКЕТИНГ И МИРОВЫЕ СОБЫТИЯ -->
+        <section id="market-tab" class="tab-pane">
+          <div class="tab-inner">
+            <h2><i class="fa-solid fa-chart-line"></i> Маркетинг и позиционирование</h2>
+            <p>Запускайте рекламные кампании на свои активные игры для резкого скачка продаж!</p>
+
+            <div class="marketing-actions-grid" id="marketing-actions-grid">
+              <!-- Доступные промо-кампании -->
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ОЦЕНКИ КРИТИКОВ И РЕЛИЗ -->
+    <div class="modal-backdrop" id="reviews-modal" style="display:none;">
+      <div class="modal-card review-modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-newspaper"></i> Пресса о релизе: <span id="rev-modal-game-title"></span></h2>
+        </div>
+        <div class="modal-body">
+          <div class="overall-score-display">
+            <div class="score-circle" id="rev-overall-score">8.5</div>
+            <div class="score-stars" id="rev-stars-box">★★★★☆</div>
+            <div class="score-verdict" id="rev-verdict-title">Отличная игра!</div>
+          </div>
+
+          <div class="reviews-magazines-grid" id="reviews-magazines-grid">
+            <!-- 4 журнала с оценками и комментариями -->
+          </div>
+
+          <div class="fan-gain-alert" id="rev-fans-gain-alert">
+            <i class="fa-solid fa-users"></i> +450 новых преданных фанатов!
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-action-primary btn-lg" id="btn-close-reviews">
+            <i class="fa-solid fa-check"></i> Начать продажи!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: НАЙМ СОТРУДНИКОВ -->
+    <div class="modal-backdrop" id="hire-modal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-user-plus"></i> Агентство найма талантов</h2>
+          <button class="modal-close-btn" id="btn-close-hire">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="candidates-grid" id="candidates-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ТРЕНИРОВКА СОТРУДНИКА -->
+    <div class="modal-backdrop" id="train-modal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-graduation-cap"></i> Обучение сотрудника: <span id="train-employee-name"></span></h2>
+          <button class="modal-close-btn" id="btn-close-train">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="trainings-list" id="trainings-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ФРИЛАНС КОНТРАКТЫ -->
+    <div class="modal-backdrop" id="contracts-modal" style="display:none;">
+      <div class="modal-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-briefcase"></i> Срочные контракты на фриланс</h2>
+          <button class="modal-close-btn" id="btn-close-contracts">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="subtitle">Нужны срочные деньги на зарплату или новую игру? Выполните заказ для сторонней компании!</p>
+          <div class="contracts-list" id="contracts-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: МИНИ-ИГРА ИНТЕРАКТИВНОГО ТЕСТИРОВАНИЯ БАГОВ -->
+    <div class="modal-backdrop" id="bug-hunt-modal" style="display:none;">
+      <div class="modal-card bug-hunt-card">
+        <div class="modal-header">
+          <h2><i class="fa-solid fa-crosshairs"></i> Охота на баги! Кликайте по жукам!</h2>
+          <span class="badge" id="bug-timer-badge">Осталось: 10 сек</span>
+        </div>
+        <div class="modal-body">
+          <p>Поймайте как можно больше багов до релиза, чтобы поднять оценку игры!</p>
+          <div class="bug-canvas-arena" id="bug-arena"></div>
+          <div class="bug-hunt-stats">
+            Уничтожено багов: <strong id="bugs-squashed-counter">0</strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" id="btn-finish-bug-hunt">Закончить охоту</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Всплывающие уведомления (Toasts) -->
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
