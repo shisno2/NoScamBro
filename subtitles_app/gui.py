@@ -10,9 +10,9 @@ from PySide6.QtCore import Qt, QThread, Signal, QMimeData, QUrl
 from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFont, QIcon, QColor
 
 try:
-    from transcriber import SubtitleEngine
+    from transcriber import SubtitleEngine, is_cuda_usable
 except ImportError:
-    from subtitles_app.transcriber import SubtitleEngine
+    from subtitles_app.transcriber import SubtitleEngine, is_cuda_usable
 
 SUPPORTED_EXTENSIONS = {
     ".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv", ".wmv", ".m4v",
@@ -347,17 +347,13 @@ class MainWindow(QMainWindow):
         header_layout.addStretch()
 
         # Check CUDA
-        cuda_status = "⚡ GPU CUDA доступен"
-        try:
-            import ctranslate2
-            if ctranslate2.get_cuda_device_count() > 0:
-                badge_color = "#38a169"
-            else:
-                cuda_status = "💻 Режим CPU"
-                badge_color = "#d69e2e"
-        except Exception:
-            cuda_status = "💻 Режим CPU"
-            badge_color = "#d69e2e"
+        cuda_functional = is_cuda_usable()
+        if cuda_functional:
+            cuda_status = "⚡ GPU CUDA доступен"
+            badge_color = "#38a169"
+        else:
+            cuda_status = "💻 Режим CPU (Оптимизирован)"
+            badge_color = "#3182ce"
 
         badge = QLabel(cuda_status)
         badge.setStyleSheet(f"background-color: {badge_color}; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;")
@@ -425,9 +421,14 @@ class MainWindow(QMainWindow):
         # Device
         lbl_dev = QLabel("Устройство:")
         self.combo_dev = QComboBox()
-        self.combo_dev.addItem("Авто (GPU если есть)", "auto")
-        self.combo_dev.addItem("GPU (NVIDIA CUDA)", "cuda")
-        self.combo_dev.addItem("CPU (Процессор)", "cpu")
+        if cuda_functional:
+            self.combo_dev.addItem("Авто (GPU CUDA)", "auto")
+            self.combo_dev.addItem("GPU (NVIDIA CUDA)", "cuda")
+            self.combo_dev.addItem("CPU (Процессор)", "cpu")
+        else:
+            self.combo_dev.addItem("CPU (Быстрый процессорный int8)", "cpu")
+            self.combo_dev.addItem("Авто", "auto")
+            self.combo_dev.addItem("GPU (NVIDIA CUDA)", "cuda")
         row2.addWidget(lbl_dev)
         row2.addWidget(self.combo_dev, stretch=1)
 

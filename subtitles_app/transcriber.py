@@ -57,6 +57,18 @@ def format_timestamp_ass(seconds: float) -> str:
         centis = 0
     return f"{hours}:{minutes:02d}:{secs:02d}.{centis:02d}"
 
+def is_cuda_usable() -> bool:
+    """Check if CUDA device and required cuBLAS libraries are actually functional."""
+    try:
+        import ctranslate2
+        if ctranslate2.get_cuda_device_count() == 0:
+            return False
+        import ctypes
+        ctypes.CDLL("cublas64_12.dll")
+        return True
+    except Exception:
+        return False
+
 class SubtitleEngine:
     def __init__(self, model_name: str = "small", device: str = "auto", compute_type: str = "default"):
         self.model_name = model_name
@@ -71,30 +83,52 @@ class SubtitleEngine:
         # Determine device
         device = self.device
         compute_type = self.compute_type
+        
+        cuda_ok = is_cuda_usable()
+
         if device == "auto":
-            try:
-                import ctranslate2
-                if ctranslate2.get_cuda_device_count() > 0:
-                    device = "cuda"
-                    compute_type = "float16"
-                else:
-                    device = "cpu"
-                    compute_type = "int8"
-            except Exception:
+            if cuda_ok:
+                device = "cuda"
+                compute_type = "float16"
+            else:
                 device = "cpu"
                 compute_type = "int8"
-        elif device == "cuda" and compute_type == "default":
-            compute_type = "float16"
+        elif device == "cuda":
+            if not cuda_ok:
+                if on_progress:
+                    on_progress("CUDA DLL (cublas64_12.dll) не найдены. Переключение на оптимизированный CPU режим...")
+                device = "cpu"
+                compute_type = "int8"
+            elif compute_type == "default":
+                compute_type = "float16"
         elif device == "cpu" and compute_type == "default":
             compute_type = "int8"
 
-        self.model = WhisperModel(
-            self.model_name,
-            device=device,
-            compute_type=compute_type
-        )
+        self.device = device
+        self.compute_type = compute_type
+
+        try:
+            self.model = WhisperModel(
+                self.model_name,
+                device=device,
+                compute_type=compute_type
+            )
+        except Exception as e:
+            if device == "cuda":
+                if on_progress:
+                    on_progress("Ошибка запуска CUDA, переключение на CPU режим...")
+                self.device = "cpu"
+                self.compute_type = "int8"
+                self.model = WhisperModel(
+                    self.model_name,
+                    device="cpu",
+                    compute_type="int8"
+                )
+            else:
+                raise e
+
         if on_progress:
-            on_progress(f"Модель готова ({device.upper()}, {compute_type}).")
+            on_progress(f"Модель готова ({self.device.upper()}, {self.compute_type}).")
 
     def transcribe(
         self,
@@ -113,50 +147,60 @@ class SubtitleEngine:
         if on_progress:
             on_progress(0.1, "Начало распознавания речи (слово в слово)...")
 
-        # Run transcription with word timestamps enabled
-        # vad_filter removes long silences and music-only hallucinations
-        segments_gen, info = self.model.transcribe(
-            media_path,
-            language=language if language and language != "auto" else None,
-            word_timestamps=True,
-            vad_filter=True,
-            vad_parameters=dict(min_silence_duration_ms=400)
-        )
+        def run_inference():
+            return self.model.transcribe(
+                media_path,
+                language=language if language and language != "auto" else None,
+                word_timestamps=True,
+                vad_filter=True,
+                vad_parameters=dict(min_silence_duration_ms=400)
+            )
 
-        total_duration = info.duration if info and info.duration > 0 else 1.0
-        results = []
+        try:
+            segments_gen, info = run_inference()
+            # Test getting first element or generator safely
+            total_duration = info.duration if info and info.duration > 0 else 1.0
+            results = []
 
-        for seg in segments_gen:
-            words_data = []
-            if seg.words:
-                for w in seg.words:
-                    words_data.append({
-                        "word": w.word.strip(),
-                        "start": w.start,
-                        "end": w.end,
-                        "probability": w.probability
-                    })
+            for seg in segments_gen:
+                words_data = []
+                if seg.words:
+                    for w in seg.words:
+                        words_data.append({
+                            "word": w.word.strip(),
+                            "start": w.start,
+                            "end": w.end,
+                            "probability": w.probability
+                        })
 
-            seg_data = {
-                "id": seg.id,
-                "start": seg.start,
-                "end": seg.end,
-                "text": seg.text.strip(),
-                "words": words_data
-            }
-            results.append(seg_data)
+                seg_data = {
+                    "id": seg.id,
+                    "start": seg.start,
+                    "end": seg.end,
+                    "text": seg.text.strip(),
+                    "words": words_data
+                }
+                results.append(seg_data)
 
-            if on_segment:
-                on_segment(seg_data)
+                if on_segment:
+                    on_segment(seg_data)
 
-            if on_progress and total_duration > 0:
-                progress = min(0.1 + 0.85 * (seg.end / total_duration), 0.95)
-                on_progress(progress, f"Распознано: {seg.end:.1f} сек / {total_duration:.1f} сек")
+                if on_progress and total_duration > 0:
+                    progress = min(0.1 + 0.85 * (seg.end / total_duration), 0.95)
+                    on_progress(progress, f"Распознано: {seg.end:.1f} сек / {total_duration:.1f} сек")
 
-        if on_progress:
-            on_progress(0.98, "Формирование файлов субтитров...")
+            return results
 
-        return results
+        except RuntimeError as e:
+            if ("cublas" in str(e).lower() or "cuda" in str(e).lower()) and self.device == "cuda":
+                if on_progress:
+                    on_progress(0.08, "CUDA недоступен. Автоматический перезапуск на CPU...")
+                self.device = "cpu"
+                self.compute_type = "int8"
+                self.model = WhisperModel(self.model_name, device="cpu", compute_type="int8")
+                return self.transcribe(media_path, language, on_segment, on_progress)
+            else:
+                raise e
 
     @staticmethod
     def export_srt_standard(segments: List[Dict[str, Any]], output_path: str):
