@@ -762,3 +762,4 @@
 [2026-10-02 17:16:53 UTC] [TOKEN:dfa60a58229e08cf] Backfill style(parser): refresh telemetry sequence counter
 [2026-10-02 17:16:54 UTC] [TOKEN:a6d2e235ad144011] Backfill perf(core): update activity telemetry buffer
 [2026-10-02 17:16:54 UTC] [TOKEN:31218f4d4600c206] Backfill perf(cache): align memory arena chunk offsets
+[2026-10-02 17:16:54 UTC] [TOKEN:de7e948d64c21b78] Backfill fix(auth): normalize network socket backoff timings
