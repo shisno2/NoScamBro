@@ -1,13 +1,15 @@
 import os
 import sys
 import subprocess
+import time
 from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QLabel, QPushButton, QComboBox, QCheckBox, QProgressBar,
-    QTextEdit, QFileDialog, QFrame, QMessageBox, QGroupBox, QSpinBox
+    QTextEdit, QFileDialog, QFrame, QMessageBox, QGroupBox, QSpinBox,
+    QTabWidget, QTableWidget, QTableWidgetItem, QHeaderView, QRadioButton, QButtonGroup
 )
-from PySide6.QtCore import Qt, QThread, Signal, QMimeData, QUrl
-from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFont, QIcon, QColor
+from PySide6.QtCore import Qt, QThread, Signal, QMimeData, QUrl, QTimer
+from PySide6.QtGui import QDragEnterEvent, QDropEvent, QFont, QColor, QPalette
 
 try:
     from transcriber import SubtitleEngine, is_cuda_usable
@@ -19,95 +21,129 @@ SUPPORTED_EXTENSIONS = {
     ".mp3", ".wav", ".ogg", ".flac", ".m4a", ".aac", ".wma", ".opus"
 }
 
-DARK_STYLE = """
+PREMIUM_STYLE = """
 QMainWindow {
-    background-color: #12141a;
+    background-color: #0b0f19;
 }
 QWidget {
-    color: #e2e8f0;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #e6edf3;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     font-size: 13px;
 }
 QGroupBox {
-    border: 1px solid #2d3748;
-    border-radius: 8px;
-    margin-top: 12px;
-    padding-top: 10px;
-    font-weight: bold;
-    color: #63b3ed;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    margin-top: 14px;
+    padding-top: 12px;
+    font-weight: 600;
+    color: #58a6ff;
+    background-color: #161b22;
 }
 QGroupBox::title {
     subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 5px;
+    left: 14px;
+    padding: 0 6px;
+    background-color: #161b22;
+    border-radius: 4px;
 }
 QComboBox, QSpinBox {
-    background-color: #1a202c;
-    border: 1px solid #4a5568;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
     border-radius: 6px;
-    padding: 6px 10px;
-    color: #edf2f7;
-    min-height: 24px;
+    padding: 6px 12px;
+    color: #f0f6fc;
+    min-height: 26px;
 }
 QComboBox:hover, QSpinBox:hover {
-    border: 1px solid #63b3ed;
+    border: 1px solid #58a6ff;
 }
-QComboBox::drop-down {
-    border: none;
+QComboBox QAbstractItemView {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    selection-background-color: #1f6feb;
+    selection-color: white;
 }
 QCheckBox {
     spacing: 8px;
+    font-weight: 500;
 }
 QCheckBox::indicator {
     width: 18px;
     height: 18px;
     border-radius: 4px;
-    border: 1px solid #4a5568;
-    background-color: #1a202c;
+    border: 1px solid #484f58;
+    background-color: #0d1117;
 }
 QCheckBox::indicator:checked {
-    background-color: #3182ce;
-    border-color: #63b3ed;
+    background-color: #238636;
+    border-color: #2ea043;
+}
+QRadioButton {
+    spacing: 8px;
+    font-weight: 600;
+    color: #c9d1d9;
+}
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 1px solid #484f58;
+    background-color: #0d1117;
+}
+QRadioButton::indicator:checked {
+    background-color: #58a6ff;
+    border-color: #58a6ff;
 }
 QProgressBar {
-    border: 1px solid #2d3748;
-    border-radius: 6px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
     text-align: center;
-    background-color: #1a202c;
-    color: #edf2f7;
+    background-color: #0d1117;
+    color: #f0f6fc;
     font-weight: bold;
-    height: 22px;
+    height: 24px;
 }
 QProgressBar::chunk {
-    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #3182ce, stop:1 #805ad5);
-    border-radius: 5px;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1f6feb, stop:0.5 #8a63d2, stop:1 #d29922);
+    border-radius: 7px;
 }
-QTextEdit {
-    background-color: #1a202c;
-    border: 1px solid #2d3748;
+QTextEdit, QTableWidget {
+    background-color: #0d1117;
+    border: 1px solid #30363d;
     border-radius: 8px;
-    color: #cbd5e0;
-    font-family: 'Consolas', 'Courier New', monospace;
-    font-size: 12px;
+    color: #c9d1d9;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
     padding: 8px;
 }
-QPushButton {
-    background-color: #2b6cb0;
-    color: white;
+QHeaderView::section {
+    background-color: #161b22;
+    color: #8b949e;
+    padding: 6px;
     border: none;
-    border-radius: 6px;
-    padding: 8px 16px;
+    border-bottom: 1px solid #30363d;
     font-weight: bold;
 }
+QPushButton {
+    background-color: #21262d;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 600;
+}
 QPushButton:hover {
-    background-color: #3182ce;
+    background-color: #30363d;
+    border-color: #8b949e;
+    color: white;
 }
 QPushButton:pressed {
-    background-color: #2c5282;
+    background-color: #161b22;
 }
 QPushButton:disabled {
-    background-color: #2d3748;
-    color: #718096;
+    background-color: #161b22;
+    color: #484f58;
+    border-color: #21262d;
 }
 """
 
@@ -118,21 +154,23 @@ class TranscriptionWorker(QThread):
     error_signal = Signal(str)
 
     def __init__(self, file_path: str, model_name: str, language: str, device: str, 
-                 mode: str, burn_video: bool, words_per_chunk: int):
+                 preset: str, vocal_boost: bool, mode: str, burn_video: bool, words_per_chunk: int):
         super().__init__()
         self.file_path = file_path
         self.model_name = model_name
         self.language = language
         self.device = device
+        self.preset = preset
+        self.vocal_boost = vocal_boost
         self.mode = mode
         self.burn_video = burn_video
         self.words_per_chunk = words_per_chunk
 
     def run(self):
         try:
-            self.progress_signal.emit(0.02, "Инициализация AI модели...")
+            self.progress_signal.emit(0.02, "Запуск движка искусственного интеллекта...")
             engine = SubtitleEngine(model_name=self.model_name, device=self.device)
-            
+
             def on_seg(seg):
                 self.segment_signal.emit(seg)
 
@@ -142,6 +180,8 @@ class TranscriptionWorker(QThread):
             segments = engine.transcribe(
                 self.file_path,
                 language=self.language,
+                preset=self.preset,
+                vocal_boost=self.vocal_boost,
                 on_segment=on_seg,
                 on_progress=on_prog
             )
@@ -151,47 +191,37 @@ class TranscriptionWorker(QThread):
             base_name = os.path.splitext(os.path.basename(self.file_path))[0]
             created_files = {}
 
-            # 1. Standard SRT
-            if self.mode in ("all", "srt_standard"):
-                srt_path = os.path.join(base_dir, f"{base_name}.srt")
-                engine.export_srt_standard(segments, srt_path)
-                created_files["srt"] = srt_path
+            # 1. Standard readable SRT
+            srt_path = os.path.join(base_dir, f"{base_name}_phrases.srt")
+            engine.export_srt_standard(segments, srt_path)
+            created_files["srt_standard"] = srt_path
 
-            # 2. Word-by-word SRT
-            if self.mode in ("all", "srt_words"):
-                word_srt_path = os.path.join(base_dir, f"{base_name}_words.srt")
-                engine.export_srt_word_by_word(segments, word_srt_path, words_per_chunk=self.words_per_chunk)
-                created_files["srt_words"] = word_srt_path
+            # 2. Word-by-word SRT (TikTok / Reels style)
+            word_srt_path = os.path.join(base_dir, f"{base_name}_words.srt")
+            engine.export_srt_word_by_word(segments, word_srt_path, words_per_chunk=self.words_per_chunk)
+            created_files["srt_words"] = word_srt_path
 
-            # 3. Karaoke ASS
-            if self.mode in ("all", "ass_karaoke"):
-                ass_path = os.path.join(base_dir, f"{base_name}_karaoke.ass")
-                engine.export_ass_karaoke(segments, ass_path, title=base_name)
-                created_files["ass"] = ass_path
+            # 3. Dynamic Glow TikTok/Karaoke ASS
+            ass_path = os.path.join(base_dir, f"{base_name}_tiktok_glow.ass")
+            engine.export_ass_tiktok_karaoke(segments, ass_path, title=base_name)
+            created_files["ass_karaoke"] = ass_path
 
-            # 4. Text and WebVTT
-            if self.mode == "all":
-                vtt_path = os.path.join(base_dir, f"{base_name}.vtt")
-                engine.export_vtt(segments, vtt_path)
-                created_files["vtt"] = vtt_path
+            # 4. Clean lyrics / text
+            txt_path = os.path.join(base_dir, f"{base_name}_lyrics.txt")
+            engine.export_txt(segments, txt_path)
+            created_files["txt"] = txt_path
 
-                txt_path = os.path.join(base_dir, f"{base_name}.txt")
-                engine.export_txt(segments, txt_path, include_timestamps=False)
-                created_files["txt"] = txt_path
-
-            # 5. Burn to video if requested and it is a video file
+            # 5. Burn subtitles directly onto video if requested
             ext = os.path.splitext(self.file_path)[1].lower()
             if self.burn_video and ext in {".mp4", ".mkv", ".avi", ".mov", ".webm", ".m4v"}:
-                self.progress_signal.emit(0.96, "Вшивание субтитров в видео (FFmpeg)...")
-                # Prefer ass if exists, else word_srt, else srt
-                sub_to_burn = created_files.get("ass") or created_files.get("srt_words") or created_files.get("srt")
-                if sub_to_burn:
-                    burned_video_path = os.path.join(base_dir, f"{base_name}_subtitled{ext}")
-                    ok = engine.burn_subtitles_to_video(self.file_path, sub_to_burn, burned_video_path)
-                    if ok:
-                        created_files["burned_video"] = burned_video_path
+                self.progress_signal.emit(0.96, "Вшивание стильных субтитров в видео (FFmpeg)...")
+                sub_to_burn = ass_path if os.path.exists(ass_path) else word_srt_path
+                burned_video_path = os.path.join(base_dir, f"{base_name}_with_subs{ext}")
+                ok = engine.burn_subtitles_to_video(self.file_path, sub_to_burn, burned_video_path)
+                if ok:
+                    created_files["burned_video"] = burned_video_path
 
-            self.progress_signal.emit(1.0, "Готово!")
+            self.progress_signal.emit(1.0, "Генерация завершена на 100%!")
             self.finished_signal.emit({
                 "segments": segments,
                 "created_files": created_files,
@@ -213,52 +243,56 @@ class DropZone(QFrame):
         self.setFrameShape(QFrame.StyledPanel)
         self.setStyleSheet("""
             QFrame {
-                border: 2px dashed #4a5568;
-                border-radius: 12px;
-                background-color: #171923;
+                border: 2px dashed #30363d;
+                border-radius: 14px;
+                background-color: #0d1117;
             }
             QFrame:hover {
-                border-color: #63b3ed;
-                background-color: #1a202c;
+                border-color: #58a6ff;
+                background-color: #161b22;
             }
         """)
         layout = QVBoxLayout(self)
-        layout.setContentsMargins(20, 25, 20, 25)
+        layout.setContentsMargins(25, 30, 25, 30)
         layout.setAlignment(Qt.AlignCenter)
 
-        self.icon_label = QLabel("📥")
+        self.icon_label = QLabel("🎵")
         self.icon_label.setAlignment(Qt.AlignCenter)
-        self.icon_label.setStyleSheet("font-size: 40px; background: transparent; border: none;")
+        self.icon_label.setStyleSheet("font-size: 48px; background: transparent; border: none;")
         layout.addWidget(self.icon_label)
 
-        self.text_label = QLabel("Перетащите видео или музыку сюда\nили нажмите кнопку для выбора")
+        self.text_label = QLabel("Перетащите любую песню, музыку или видео сюда")
         self.text_label.setAlignment(Qt.AlignCenter)
-        self.text_label.setStyleSheet("font-size: 15px; font-weight: bold; color: #edf2f7; background: transparent; border: none;")
+        self.text_label.setStyleSheet("font-size: 16px; font-weight: bold; color: #f0f6fc; background: transparent; border: none;")
         layout.addWidget(self.text_label)
 
-        self.sub_label = QLabel("Поддерживает MP4, MKV, MOV, MP3, WAV, FLAC, OGG, AAC и др.")
+        self.sub_label = QLabel("Сверхточное распознавание текста слово в слово | Поддерживает MP3, WAV, MP4, MKV, FLAC...")
         self.sub_label.setAlignment(Qt.AlignCenter)
-        self.sub_label.setStyleSheet("font-size: 11px; color: #a0aec0; background: transparent; border: none;")
+        self.sub_label.setStyleSheet("font-size: 12px; color: #8b949e; background: transparent; border: none; margin-top: 4px;")
         layout.addWidget(self.sub_label)
 
-        self.btn_browse = QPushButton("Выбрать файл на диске")
+        self.btn_browse = QPushButton("📁 Выбрать файл на компьютере")
         self.btn_browse.setStyleSheet("""
             QPushButton {
-                background-color: #3182ce;
-                padding: 6px 20px;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #1f6feb, stop:1 #388bfd);
+                color: white;
+                padding: 8px 24px;
                 font-size: 13px;
-                margin-top: 8px;
+                font-weight: bold;
+                border-radius: 8px;
+                margin-top: 12px;
+                border: none;
             }
             QPushButton:hover {
-                background-color: #4299e1;
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #388bfd, stop:1 #58a6ff);
             }
         """)
         self.btn_browse.clicked.connect(self.browse_file)
         layout.addWidget(self.btn_browse, alignment=Qt.AlignCenter)
 
     def browse_file(self):
-        filter_str = "Медиафайлы (*.mp4 *.mkv *.avi *.mov *.webm *.mp3 *.wav *.ogg *.flac *.m4a *.aac);;Все файлы (*.*)"
-        file_path, _ = QFileDialog.getOpenFileName(self, "Выберите видео или музыку", "", filter_str)
+        filter_str = "Медиа (*.mp3 *.wav *.flac *.m4a *.ogg *.mp4 *.mkv *.avi *.mov *.webm);;Все файлы (*.*)"
+        file_path, _ = QFileDialog.getOpenFileName(self, "Выберите файл", "", filter_str)
         if file_path:
             self.set_file(file_path)
 
@@ -266,29 +300,27 @@ class DropZone(QFrame):
         if event.mimeData().hasUrls():
             urls = event.mimeData().urls()
             if urls:
-                ext = os.path.splitext(urls[0].toLocalFile())[1].lower()
-                if ext in SUPPORTED_EXTENSIONS or ext == "":
-                    event.acceptProposedAction()
-                    self.setStyleSheet("""
-                        QFrame {
-                            border: 2px dashed #48bb78;
-                            border-radius: 12px;
-                            background-color: #1c4532;
-                        }
-                    """)
-                    return
+                event.acceptProposedAction()
+                self.setStyleSheet("""
+                    QFrame {
+                        border: 2px dashed #238636;
+                        border-radius: 14px;
+                        background-color: #04260f;
+                    }
+                """)
+                return
         event.ignore()
 
     def dragLeaveEvent(self, event):
         self.setStyleSheet("""
             QFrame {
-                border: 2px dashed #4a5568;
-                border-radius: 12px;
-                background-color: #171923;
+                border: 2px dashed #30363d;
+                border-radius: 14px;
+                background-color: #0d1117;
             }
             QFrame:hover {
-                border-color: #63b3ed;
-                background-color: #1a202c;
+                border-color: #58a6ff;
+                background-color: #161b22;
             }
         """)
 
@@ -310,16 +342,16 @@ class DropZone(QFrame):
         icon = "🎬" if is_video else "🎵"
         
         self.icon_label.setText(icon)
-        self.text_label.setText(f"Выбран: {base_name}")
-        self.sub_label.setText(f"Размер: {size_mb:.1f} МБ | Путь: {path}")
+        self.text_label.setText(f"Загружен: {base_name}")
+        self.sub_label.setText(f"Размер: {size_mb:.1f} МБ | Готов к идеальному распознаванию")
         self.file_selected.emit(path)
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("AI WordSync Subtitles — Субтитры слово в слово")
-        self.resize(850, 750)
-        self.setStyleSheet(DARK_STYLE)
+        self.setWindowTitle("🎯 WordSync AI — Сверхточные субтитры слово в слово")
+        self.resize(920, 800)
+        self.setStyleSheet(PREMIUM_STYLE)
 
         self.current_file = None
         self.created_folder = None
@@ -332,31 +364,31 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(main_widget)
         main_layout = QVBoxLayout(main_widget)
         main_layout.setSpacing(12)
-        main_layout.setContentsMargins(18, 18, 18, 18)
+        main_layout.setContentsMargins(20, 18, 20, 18)
 
         # Header
         header_layout = QHBoxLayout()
         title_box = QVBoxLayout()
-        title = QLabel("🎯 AI WordSync Subtitles")
-        title.setStyleSheet("font-size: 20px; font-weight: bold; color: #63b3ed;")
-        subtitle = QLabel("Высокоточное распознавание речи со словесными таймингами (слово в слово)")
-        subtitle.setStyleSheet("font-size: 12px; color: #a0aec0;")
+        title = QLabel("🎯 WordSync AI: Субтитры слово в слово")
+        title.setStyleSheet("font-size: 22px; font-weight: 800; color: #58a6ff;")
+        subtitle = QLabel("Профессиональное распознавание песен и видео | Без глюков, повторов и пропусков")
+        subtitle.setStyleSheet("font-size: 13px; color: #8b949e;")
         title_box.addWidget(title)
         title_box.addWidget(subtitle)
         header_layout.addLayout(title_box)
         header_layout.addStretch()
 
         # Check CUDA
-        cuda_functional = is_cuda_usable()
-        if cuda_functional:
+        cuda_ok = is_cuda_usable()
+        if cuda_ok:
             cuda_status = "⚡ GPU CUDA (NVIDIA RTX 3060 Ti) активен"
-            badge_color = "#38a169"
+            badge_color = "#238636"
         else:
-            cuda_status = "💻 Режим CPU (Оптимизирован)"
-            badge_color = "#3182ce"
+            cuda_status = "💻 Режим CPU (12 потоков Ryzen)"
+            badge_color = "#1f6feb"
 
         badge = QLabel(cuda_status)
-        badge.setStyleSheet(f"background-color: {badge_color}; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;")
+        badge.setStyleSheet(f"background-color: {badge_color}; color: white; padding: 6px 14px; border-radius: 12px; font-weight: bold; font-size: 12px;")
         header_layout.addWidget(badge)
         main_layout.addLayout(header_layout)
 
@@ -365,131 +397,151 @@ class MainWindow(QMainWindow):
         self.drop_zone.file_selected.connect(self.on_file_selected)
         main_layout.addWidget(self.drop_zone)
 
-        # Settings Group
-        settings_group = QGroupBox("⚙ Настройки генерации")
+        # Presets Bar
+        presets_group = QGroupBox("✨ Режим обработки (выберите подходящий сценарий)")
+        presets_layout = QHBoxLayout(presets_group)
+        presets_layout.setContentsMargins(16, 12, 16, 12)
+
+        self.rb_music = QRadioButton("🎵 Песня / Музыка (Усиление вокала + Караоке)")
+        self.rb_music.setChecked(True)
+        self.rb_reels = QRadioButton("📱 Reels / Shorts / TikTok (По 1-2 слова, динамично)")
+        self.rb_speech = QRadioButton("🎬 Разговор / Подкаст / Кино (Классические фразы)")
+
+        self.btn_group_preset = QButtonGroup(self)
+        self.btn_group_preset.addButton(self.rb_music, 1)
+        self.btn_group_preset.addButton(self.rb_reels, 2)
+        self.btn_group_preset.addButton(self.rb_speech, 3)
+
+        self.rb_music.toggled.connect(self.on_preset_changed)
+        self.rb_reels.toggled.connect(self.on_preset_changed)
+        self.rb_speech.toggled.connect(self.on_preset_changed)
+
+        presets_layout.addWidget(self.rb_music)
+        presets_layout.addWidget(self.rb_reels)
+        presets_layout.addWidget(self.rb_speech)
+        main_layout.addWidget(presets_group)
+
+        # Detailed Settings
+        settings_group = QGroupBox("⚙ Тонкие настройки качества")
         settings_layout = QVBoxLayout(settings_group)
         settings_layout.setSpacing(10)
 
         row1 = QHBoxLayout()
-        # Mode
-        lbl_mode = QLabel("Формат субтитров:")
-        self.combo_mode = QComboBox()
-        self.combo_mode.addItem("Все форматы сразу (SRT, Караоке ASS, TXT, VTT)", "all")
-        self.combo_mode.addItem("Слово в слово (по 1 слову, TikTok/Reels)", "srt_words")
-        self.combo_mode.addItem("Караоке ASS (подсветка произносимого слова)", "ass_karaoke")
-        self.combo_mode.addItem("Стандартные предложения (обычный SRT)", "srt_standard")
-        row1.addWidget(lbl_mode)
-        row1.addWidget(self.combo_mode, stretch=2)
+        # Model
+        lbl_model = QLabel("AI Модель:")
+        self.combo_model = QComboBox()
+        self.combo_model.addItem("medium (Высочайшая точность — рекомендуется для песен)", "medium")
+        self.combo_model.addItem("small (Быстро и качественно)", "small")
+        self.combo_model.addItem("large-v3-turbo (Максимальное качество)", "large-v3-turbo")
+        self.combo_model.addItem("base (Быстро для слабых ПК)", "base")
+        self.combo_model.addItem("tiny (Сверхбыстро)", "tiny")
+        row1.addWidget(lbl_model)
+        row1.addWidget(self.combo_model, stretch=2)
 
-        # Words per chunk (for word srt)
-        lbl_chunk = QLabel("Слов на строку:")
-        self.spin_chunk = QSpinBox()
-        self.spin_chunk.setRange(1, 10)
-        self.spin_chunk.setValue(1)
-        row1.addWidget(lbl_chunk)
-        row1.addWidget(self.spin_chunk)
-
-        settings_layout.addLayout(row1)
-
-        row2 = QHBoxLayout()
         # Language
-        lbl_lang = QLabel("Язык аудио:")
+        lbl_lang = QLabel("Язык:")
         self.combo_lang = QComboBox()
         self.combo_lang.addItem("Автоопределение (любой язык)", "auto")
         self.combo_lang.addItem("Русский (Russian)", "ru")
         self.combo_lang.addItem("Английский (English)", "en")
         self.combo_lang.addItem("Казахский (Kazakh)", "kk")
         self.combo_lang.addItem("Украинский (Ukrainian)", "uk")
-        self.combo_lang.addItem("Немецкий (German)", "de")
-        self.combo_lang.addItem("Испанский (Spanish)", "es")
-        self.combo_lang.addItem("Французский (French)", "fr")
-        self.combo_lang.addItem("Китайский (Chinese)", "zh")
-        row2.addWidget(lbl_lang)
-        row2.addWidget(self.combo_lang, stretch=1)
-
-        # Model
-        lbl_model = QLabel("AI Модель:")
-        self.combo_model = QComboBox()
-        self.combo_model.addItem("small (Рекомендуется — быстро и высокая точность)", "small")
-        self.combo_model.addItem("medium (Высшая точность, чуть дольше)", "medium")
-        self.combo_model.addItem("large-v3-turbo (Турбо-максимум)", "large-v3-turbo")
-        self.combo_model.addItem("base (Очень быстро)", "base")
-        self.combo_model.addItem("tiny (Сверхбыстро, для слабых ПК)", "tiny")
-        row2.addWidget(lbl_model)
-        row2.addWidget(self.combo_model, stretch=2)
+        row1.addWidget(lbl_lang)
+        row1.addWidget(self.combo_lang, stretch=1)
 
         # Device
         lbl_dev = QLabel("Устройство:")
         self.combo_dev = QComboBox()
-        if cuda_functional:
-            self.combo_dev.addItem("Авто (GPU CUDA)", "auto")
-            self.combo_dev.addItem("GPU (NVIDIA CUDA)", "cuda")
+        if cuda_ok:
+            self.combo_dev.addItem("GPU (NVIDIA RTX CUDA float16)", "cuda")
             self.combo_dev.addItem("CPU (Процессор)", "cpu")
         else:
-            self.combo_dev.addItem("CPU (Быстрый процессорный int8)", "cpu")
-            self.combo_dev.addItem("Авто", "auto")
+            self.combo_dev.addItem("CPU (Многопоточный процессор)", "cpu")
             self.combo_dev.addItem("GPU (NVIDIA CUDA)", "cuda")
-        row2.addWidget(lbl_dev)
-        row2.addWidget(self.combo_dev, stretch=1)
+        row1.addWidget(lbl_dev)
+        row1.addWidget(self.combo_dev, stretch=1)
+
+        settings_layout.addLayout(row1)
+
+        row2 = QHBoxLayout()
+        # Words per chunk
+        lbl_chunk = QLabel("Слов на строку (для Shorts/Reels):")
+        self.spin_chunk = QSpinBox()
+        self.spin_chunk.setRange(1, 10)
+        self.spin_chunk.setValue(1)
+        row2.addWidget(lbl_chunk)
+        row2.addWidget(self.spin_chunk)
+
+        # Vocal boost toggle
+        self.chk_vocal = QCheckBox("🎤 Vocal Booster: подавление громких битов и усиление голоса")
+        self.chk_vocal.setChecked(True)
+        row2.addWidget(self.chk_vocal, stretch=2)
+
+        # Hardsub checkbox
+        self.chk_burn = QCheckBox("🎬 Вшить субтитры прямо в видеофайл (MP4)")
+        self.chk_burn.setChecked(False)
+        row2.addWidget(self.chk_burn)
 
         settings_layout.addLayout(row2)
-
-        # Row 3 - Hardsub option
-        row3 = QHBoxLayout()
-        self.chk_burn = QCheckBox("Вшить субтитры прямо в видеопоток (Hardsub MP4 с помощью FFmpeg)")
-        self.chk_burn.setChecked(False)
-        row3.addWidget(self.chk_burn)
-        settings_layout.addLayout(row3)
-
         main_layout.addWidget(settings_group)
 
-        # Action Button & Progress
-        self.btn_start = QPushButton("⚡ Создать субтитры слово в слово")
+        # Start Button
+        self.btn_start = QPushButton("⚡ СОЗДАТЬ СУБТИТРЫ СЛОВО В СЛОВО")
         self.btn_start.setEnabled(False)
-        self.btn_start.setFixedHeight(45)
+        self.btn_start.setFixedHeight(48)
         self.btn_start.setStyleSheet("""
             QPushButton {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #3182ce, stop:1 #805ad5);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #238636, stop:1 #2ea043);
                 font-size: 15px;
-                font-weight: bold;
+                font-weight: 800;
+                color: white;
+                border: none;
                 border-radius: 8px;
             }
             QPushButton:hover {
-                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #4299e1, stop:1 #9f7aea);
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #2ea043, stop:1 #3fb950);
             }
             QPushButton:disabled {
-                background: #2d3748;
-                color: #718096;
+                background: #21262d;
+                color: #484f58;
             }
         """)
         self.btn_start.clicked.connect(self.start_transcription)
         main_layout.addWidget(self.btn_start)
 
+        # Progress bar & status
         self.progress_bar = QProgressBar()
         self.progress_bar.setValue(0)
         self.progress_bar.setVisible(False)
         main_layout.addWidget(self.progress_bar)
 
-        self.status_label = QLabel("Ожидание файла...")
-        self.status_label.setStyleSheet("color: #a0aec0; font-size: 12px;")
+        self.status_label = QLabel("Перетащите медиафайл для начала...")
+        self.status_label.setStyleSheet("color: #8b949e; font-size: 13px; font-weight: 500;")
         main_layout.addWidget(self.status_label)
 
-        # Results & Real-time preview
-        preview_group = QGroupBox("📝 Распознанный текст в реальном времени (со словесными таймингами)")
+        # Live Results Preview Table
+        preview_group = QGroupBox("📝 Распознанные слова в реальном времени с точнейшим таймингом")
         preview_layout = QVBoxLayout(preview_group)
-        self.text_preview = QTextEdit()
-        self.text_preview.setReadOnly(True)
-        self.text_preview.setPlaceholderText("Здесь будут в реальном времени отображаться распознанные слова с точным таймингом...")
-        preview_layout.addWidget(self.text_preview)
 
-        # Action buttons after completion
+        self.table_words = QTableWidget()
+        self.table_words.setColumnCount(4)
+        self.table_words.setHorizontalHeaderLabels(["Начало", "Конец", "Слово", "Точность"])
+        self.table_words.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
+        self.table_words.horizontalHeader().setSectionResizeMode(1, QHeaderView.ResizeToContents)
+        self.table_words.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+        self.table_words.horizontalHeader().setSectionResizeMode(3, QHeaderView.ResizeToContents)
+        self.table_words.verticalHeader().setVisible(False)
+        preview_layout.addWidget(self.table_words)
+
+        # Bottom buttons
         btns_row = QHBoxLayout()
-        self.btn_open_folder = QPushButton("📂 Открыть папку с результатом")
+        self.btn_open_folder = QPushButton("📂 Открыть папку с файлами субтитров")
         self.btn_open_folder.setEnabled(False)
+        self.btn_open_folder.setStyleSheet("padding: 8px 20px; font-weight: bold;")
         self.btn_open_folder.clicked.connect(self.open_result_folder)
         btns_row.addWidget(self.btn_open_folder)
 
-        self.btn_copy_text = QPushButton("📋 Скопировать весь текст")
+        self.btn_copy_text = QPushButton("📋 Скопировать весь текст (текст песни / субтитры)")
         self.btn_copy_text.setEnabled(False)
         self.btn_copy_text.clicked.connect(self.copy_transcription)
         btns_row.addWidget(self.btn_copy_text)
@@ -497,37 +549,53 @@ class MainWindow(QMainWindow):
         preview_layout.addLayout(btns_row)
         main_layout.addWidget(preview_group)
 
+    def on_preset_changed(self):
+        if self.rb_music.isChecked():
+            self.chk_vocal.setChecked(True)
+            self.spin_chunk.setValue(1)
+            self.combo_model.setCurrentIndex(0)  # medium
+        elif self.rb_reels.isChecked():
+            self.chk_vocal.setChecked(False)
+            self.spin_chunk.setValue(2)
+        elif self.rb_speech.isChecked():
+            self.chk_vocal.setChecked(False)
+            self.spin_chunk.setValue(5)
+
     def on_file_selected(self, path: str):
         self.current_file = path
         self.btn_start.setEnabled(True)
-        self.status_label.setText(f"Готов к обработке: {os.path.basename(path)}")
+        self.status_label.setText(f"Файл готов к обработке: {os.path.basename(path)}")
 
     def start_transcription(self):
         if not self.current_file or not os.path.exists(self.current_file):
-            QMessageBox.warning(self, "Ошибка", "Файл не выбран или не существует.")
+            QMessageBox.warning(self, "Ошибка", "Файл не выбран.")
             return
 
         self.btn_start.setEnabled(False)
         self.drop_zone.btn_browse.setEnabled(False)
         self.progress_bar.setVisible(True)
         self.progress_bar.setValue(0)
-        self.text_preview.clear()
+        self.table_words.setRowCount(0)
         self.btn_open_folder.setEnabled(False)
         self.btn_copy_text.setEnabled(False)
 
         model_name = self.combo_model.currentData()
         language = self.combo_lang.currentData()
         device = self.combo_dev.currentData()
-        mode = self.combo_mode.currentData()
-        burn_video = self.chk_burn.isChecked()
         words_per_chunk = self.spin_chunk.value()
+        vocal_boost = self.chk_vocal.isChecked()
+        burn_video = self.chk_burn.isChecked()
+        
+        preset = "music" if self.rb_music.isChecked() else ("reels" if self.rb_reels.isChecked() else "speech")
 
         self.worker = TranscriptionWorker(
             file_path=self.current_file,
             model_name=model_name,
             language=language,
             device=device,
-            mode=mode,
+            preset=preset,
+            vocal_boost=vocal_boost,
+            mode="all",
             burn_video=burn_video,
             words_per_chunk=words_per_chunk
         )
@@ -544,22 +612,36 @@ class MainWindow(QMainWindow):
         self.status_label.setText(f"{message} ({pct}%)")
 
     def on_worker_segment(self, seg: dict):
-        # Format words cleanly
         words = seg.get("words", [])
         if words:
-            lines = []
             for w in words:
-                start_s = f"{w['start']:.2f}s"
-                end_s = f"{w['end']:.2f}s"
-                lines.append(f"[{start_s} -> {end_s}] {w['word']}")
-            self.text_preview.append("\n".join(lines))
+                row = self.table_words.rowCount()
+                self.table_words.insertRow(row)
+
+                start_item = QTableWidgetItem(f"{w['start']:.2f} с")
+                end_item = QTableWidgetItem(f"{w['end']:.2f} с")
+                word_item = QTableWidgetItem(w["word"])
+                prob_item = QTableWidgetItem(f"{int(w['probability'] * 100)}%")
+
+                # Style
+                word_item.setForeground(QColor("#f0f6fc"))
+                font = word_item.font()
+                font.setBold(True)
+                word_item.setFont(font)
+
+                self.table_words.setItem(row, 0, start_item)
+                self.table_words.setItem(row, 1, end_item)
+                self.table_words.setItem(row, 2, word_item)
+                self.table_words.setItem(row, 3, prob_item)
         else:
-            self.text_preview.append(f"[{seg['start']:.2f}s -> {seg['end']:.2f}s] {seg['text']}")
-        
-        # Scroll to bottom
-        cursor = self.text_preview.textCursor()
-        cursor.movePosition(cursor.MoveOperation.End)
-        self.text_preview.setTextCursor(cursor)
+            row = self.table_words.rowCount()
+            self.table_words.insertRow(row)
+            self.table_words.setItem(row, 0, QTableWidgetItem(f"{seg['start']:.2f} с"))
+            self.table_words.setItem(row, 1, QTableWidgetItem(f"{seg['end']:.2f} с"))
+            self.table_words.setItem(row, 2, QTableWidgetItem(seg["text"]))
+            self.table_words.setItem(row, 3, QTableWidgetItem("-"))
+
+        self.table_words.scrollToBottom()
 
     def on_worker_finished(self, result: dict):
         self.btn_start.setEnabled(True)
@@ -569,18 +651,18 @@ class MainWindow(QMainWindow):
         self.created_folder = result["folder"]
 
         file_list_str = "\n".join([f"• {os.path.basename(p)}" for p in result["created_files"].values()])
-        self.status_label.setText("✔ Успешно завершено! Файлы сохранены рядом с исходником.")
+        self.status_label.setText("✔ Успешно завершено! Созданы все форматы субтитров.")
         QMessageBox.information(
             self,
             "Готово!",
-            f"Субтитры успешно созданы и сохранены!\n\nСозданные файлы:\n{file_list_str}"
+            f"Субтитры успешно созданы с высочайшей точностью!\n\nСохранённые файлы в папке с файлом:\n{file_list_str}"
         )
 
     def on_worker_error(self, err_msg: str):
         self.btn_start.setEnabled(True)
         self.drop_zone.btn_browse.setEnabled(True)
         self.status_label.setText(f"❌ Ошибка: {err_msg}")
-        QMessageBox.critical(self, "Ошибка выполнения", f"Произошла ошибка при обработке:\n{err_msg}")
+        QMessageBox.critical(self, "Ошибка выполнения", f"Произошла ошибка:\n{err_msg}")
 
     def open_result_folder(self):
         if self.created_folder and os.path.exists(self.created_folder):
@@ -592,10 +674,16 @@ class MainWindow(QMainWindow):
                 subprocess.Popen(["xdg-open", self.created_folder])
 
     def copy_transcription(self):
-        text = self.text_preview.toPlainText()
-        if text:
+        rows = self.table_words.rowCount()
+        words_list = []
+        for r in range(rows):
+            item = self.table_words.item(r, 2)
+            if item:
+                words_list.append(item.text())
+        full_text = " ".join(words_list)
+        if full_text:
             clipboard = QApplication.clipboard()
-            clipboard.setText(text)
+            clipboard.setText(full_text)
             self.status_label.setText("Текст скопирован в буфер обмена!")
 
 def main():

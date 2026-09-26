@@ -3,6 +3,7 @@ import sys
 import ssl
 import subprocess
 import time
+import tempfile
 from typing import List, Dict, Any, Callable, Optional
 
 # Bypass SSL errors (e.g., self-signed certificates from antivirus, Russian root CAs, or proxy)
@@ -99,8 +100,46 @@ def is_cuda_usable() -> bool:
     except Exception:
         return False
 
+def preprocess_audio_for_vocals(input_path: str, on_progress: Optional[Callable[[str], None]] = None) -> str:
+    """
+    Extracts and enhances vocals using FFmpeg:
+    - Bandpass filtering (100Hz - 7500Hz) to remove heavy 808 bass, kick drums, and ultra-high cymbals
+    - Dynamic normalization to make quiet whispering or quiet vocal parts audible
+    - Converts to 16kHz mono WAV for optimal Whisper ingestion.
+    """
+    if on_progress:
+        on_progress("Очистка аудио: фильтрация битов и усиление вокала...")
+
+    temp_wav = tempfile.NamedTemporaryFile(suffix="_vocal_boost.wav", delete=False)
+    temp_wav.close()
+    out_path = temp_wav.name
+
+    # Audio filter chain:
+    # highpass: remove sub-bass/rumble
+    # lowpass: remove harsh cymbals/high synth frequencies
+    # dynaudnorm: dynamic normalization for consistent vocal volume
+    filter_chain = "highpass=f=120,lowpass=f=7500,dynaudnorm=f=150:g=15:p=0.95"
+
+    cmd = [
+        "ffmpeg", "-y",
+        "-i", input_path,
+        "-af", filter_chain,
+        "-vn",
+        "-ar", "16000",
+        "-ac", "1",
+        "-c:a", "pcm_s16le",
+        out_path
+    ]
+
+    try:
+        subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return out_path
+    except Exception as e:
+        # If filtering fails, return original path
+        return input_path
+
 class SubtitleEngine:
-    def __init__(self, model_name: str = "small", device: str = "auto", compute_type: str = "default"):
+    def __init__(self, model_name: str = "medium", device: str = "auto", compute_type: str = "default"):
         self.model_name = model_name
         self.device = device
         self.compute_type = compute_type
@@ -108,12 +147,10 @@ class SubtitleEngine:
 
     def load_model(self, on_progress: Optional[Callable[[str], None]] = None):
         if on_progress:
-            on_progress(f"Загрузка модели '{self.model_name}'...")
+            on_progress(f"Инициализация AI модели '{self.model_name}'...")
         
-        # Determine device
         device = self.device
         compute_type = self.compute_type
-        
         cuda_ok = is_cuda_usable()
 
         if device == "auto":
@@ -126,7 +163,7 @@ class SubtitleEngine:
         elif device == "cuda":
             if not cuda_ok:
                 if on_progress:
-                    on_progress("CUDA DLL (cublas64_12.dll) не найдены. Переключение на оптимизированный CPU режим...")
+                    on_progress("CUDA недоступен. Переключение на процессор...")
                 device = "cpu"
                 compute_type = "int8"
             elif compute_type == "default":
@@ -136,8 +173,8 @@ class SubtitleEngine:
 
         self.device = device
         self.compute_type = compute_type
-
         threads = os.cpu_count() or 4
+
         try:
             if device == "cpu":
                 self.model = WhisperModel(
@@ -155,7 +192,7 @@ class SubtitleEngine:
         except Exception as e:
             if device == "cuda":
                 if on_progress:
-                    on_progress("Ошибка запуска CUDA, переключение на CPU режим...")
+                    on_progress("Ошибка инициализации CUDA, переключение на CPU...")
                 self.device = "cpu"
                 self.compute_type = "int8"
                 self.model = WhisperModel(
@@ -168,37 +205,69 @@ class SubtitleEngine:
                 raise e
 
         if on_progress:
-            on_progress(f"Модель готова ({self.device.upper()}, {self.compute_type}).")
+            dev_label = f"GPU ({self.compute_type})" if self.device == "cuda" else f"CPU ({threads} потоков)"
+            on_progress(f"Модель {self.model_name} готова [{dev_label}]")
 
     def transcribe(
         self,
         media_path: str,
         language: Optional[str] = None,
+        preset: str = "music",  # "music", "reels", "speech"
+        vocal_boost: bool = True,
         on_segment: Optional[Callable[[Dict[str, Any]], None]] = None,
         on_progress: Optional[Callable[[float, str], None]] = None
     ) -> List[Dict[str, Any]]:
         """
-        Transcribes the file with word-level timestamps.
-        Returns a list of segment dicts with 'start', 'end', 'text', 'words'.
+        Transcribes media with word-level accuracy and music anti-hallucination.
         """
         if self.model is None:
             self.load_model(lambda msg: on_progress(0.05, msg) if on_progress else None)
 
+        processed_audio = media_path
+        cleanup_temp = False
+
+        # Apply vocal boost if requested or in music preset
+        if vocal_boost:
+            if on_progress:
+                on_progress(0.08, "🎤 Очистка музыки и усиление вокала (Vocal Booster)...")
+            enhanced_path = preprocess_audio_for_vocals(media_path)
+            if enhanced_path != media_path and os.path.exists(enhanced_path):
+                processed_audio = enhanced_path
+                cleanup_temp = True
+
         if on_progress:
-            on_progress(0.1, "Начало распознавания речи (слово в слово)...")
+            on_progress(0.15, "🎯 Распознавание каждого слова (нейросеть)...")
+
+        # Anti-hallucination settings tailored for music and speech:
+        # condition_on_previous_text=False prevents infinite loop repetition on songs
+        # repetition_penalty stops looping lyrics
+        # beam_size=5 ensures deep search for accurate vocabulary
+        beam_size = 5 if self.device == "cuda" else 3
+        
+        # Word timestamps options
+        vad_kwargs = dict(
+            min_silence_duration_ms=500,
+            speech_pad_ms=250
+        )
 
         def run_inference():
             return self.model.transcribe(
-                media_path,
+                processed_audio,
                 language=language if language and language != "auto" else None,
                 word_timestamps=True,
                 vad_filter=True,
-                vad_parameters=dict(min_silence_duration_ms=400)
+                vad_parameters=vad_kwargs,
+                beam_size=beam_size,
+                best_of=beam_size,
+                temperature=[0.0, 0.2, 0.4],
+                condition_on_previous_text=False,
+                repetition_penalty=1.2,
+                no_speech_threshold=0.55,
+                compression_ratio_threshold=2.4
             )
 
         try:
             segments_gen, info = run_inference()
-            # Test getting first element or generator safely
             total_duration = info.duration if info and info.duration > 0 else 1.0
             results = []
 
@@ -206,12 +275,14 @@ class SubtitleEngine:
                 words_data = []
                 if seg.words:
                     for w in seg.words:
-                        words_data.append({
-                            "word": w.word.strip(),
-                            "start": w.start,
-                            "end": w.end,
-                            "probability": w.probability
-                        })
+                        clean_w = w.word.strip()
+                        if clean_w:
+                            words_data.append({
+                                "word": clean_w,
+                                "start": w.start,
+                                "end": w.end,
+                                "probability": round(w.probability, 3)
+                            })
 
                 seg_data = {
                     "id": seg.id,
@@ -226,44 +297,50 @@ class SubtitleEngine:
                     on_segment(seg_data)
 
                 if on_progress and total_duration > 0:
-                    progress = min(0.1 + 0.85 * (seg.end / total_duration), 0.95)
-                    on_progress(progress, f"Распознано: {seg.end:.1f} сек / {total_duration:.1f} сек")
+                    progress = min(0.15 + 0.80 * (seg.end / total_duration), 0.95)
+                    on_progress(progress, f"Обработано: {seg.end:.1f}с / {total_duration:.1f}с")
 
             return results
 
         except RuntimeError as e:
             if ("cublas" in str(e).lower() or "cuda" in str(e).lower()) and self.device == "cuda":
                 if on_progress:
-                    on_progress(0.08, "CUDA недоступен. Автоматический перезапуск на CPU...")
+                    on_progress(0.12, "Переключение CUDA -> CPU...")
                 self.device = "cpu"
                 self.compute_type = "int8"
-                self.model = WhisperModel(self.model_name, device="cpu", compute_type="int8", cpu_threads=os.cpu_count() or 4)
-                return self.transcribe(media_path, language, on_segment, on_progress)
+                threads = os.cpu_count() or 4
+                self.model = WhisperModel(self.model_name, device="cpu", compute_type="int8", cpu_threads=threads)
+                return self.transcribe(media_path, language, preset, vocal_boost, on_segment, on_progress)
             else:
                 raise e
+        finally:
+            if cleanup_temp and os.path.exists(processed_audio):
+                try:
+                    os.remove(processed_audio)
+                except Exception:
+                    pass
 
     @staticmethod
     def export_srt_standard(segments: List[Dict[str, Any]], output_path: str):
-        """Standard SRT by phrases/sentences"""
+        """Standard readable sentence/phrase SRT"""
         with open(output_path, "w", encoding="utf-8") as f:
             for idx, seg in enumerate(segments, 1):
                 start = format_timestamp_srt(seg["start"])
                 end = format_timestamp_srt(seg["end"])
-                text = seg["text"]
-                f.write(f"{idx}\n{start} --> {end}\n{text}\n\n")
+                f.write(f"{idx}\n{start} --> {end}\n{seg['text']}\n\n")
 
     @staticmethod
     def export_srt_word_by_word(segments: List[Dict[str, Any]], output_path: str, words_per_chunk: int = 1):
         """
-        Word-by-word SRT for TikTok / Shorts / Reels style.
-        Each word or small group of words has exact timing.
+        Word-by-word SRT.
+        words_per_chunk=1: every single word gets its own line and timestamp (Pure word-by-word)
+        words_per_chunk=2-3: short punchy blocks for TikTok / Reels / Shorts
         """
         counter = 1
         with open(output_path, "w", encoding="utf-8") as f:
             for seg in segments:
                 words = seg.get("words", [])
                 if not words:
-                    # Fallback to segment if words empty
                     start = format_timestamp_srt(seg["start"])
                     end = format_timestamp_srt(seg["end"])
                     f.write(f"{counter}\n{start} --> {end}\n{seg['text']}\n\n")
@@ -279,21 +356,12 @@ class SubtitleEngine:
                     counter += 1
 
     @staticmethod
-    def export_vtt(segments: List[Dict[str, Any]], output_path: str):
-        """WebVTT format"""
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write("WEBVTT\n\n")
-            for idx, seg in enumerate(segments, 1):
-                start = format_timestamp_vtt(seg["start"])
-                end = format_timestamp_vtt(seg["end"])
-                text = seg["text"]
-                f.write(f"{idx}\n{start} --> {end}\n{text}\n\n")
-
-    @staticmethod
-    def export_ass_karaoke(segments: List[Dict[str, Any]], output_path: str, title: str = "Subtitles"):
+    def export_ass_tiktok_karaoke(segments: List[Dict[str, Any]], output_path: str, title: str = "Subtitles"):
         """
-        Advanced SubStation Alpha with karaoke effect (highlights each word as it is spoken).
-        Works in VLC, MPV, Aegisub, Premiere, CapCut, etc.
+        Dynamic TikTok / Shorts / Reels style ASS Karaoke:
+        - Bold, modern font with high contrast
+        - Glowing Yellow highlight on active spoken word
+        - Pop effect with thick border and shadow
         """
         header = f"""[Script Info]
 Title: {title}
@@ -306,7 +374,8 @@ PlayResY: 1080
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Karaoke,Montserrat,58,&H00FFFFFF,&H0000FFFF,&H00000000,&H80000000,-1,0,0,0,100,100,0,0,1,3.5,2,2,40,40,70,1
+Style: TikTokGlow,Trebuchet MS,64,&H00FFFFFF,&H0000E5FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,1,4.5,3,2,60,60,110,1
+Style: ClassicKaraoke,Montserrat,58,&H00FFFFFF,&H0000FFFF,&H00000000,&H90000000,-1,0,0,0,100,100,0,0,1,3.5,2,2,40,40,75,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -318,7 +387,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 if not words:
                     start_str = format_timestamp_ass(seg["start"])
                     end_str = format_timestamp_ass(seg["end"])
-                    f.write(f"Dialogue: 0,{start_str},{end_str},Karaoke,,0,0,0,,{seg['text']}\n")
+                    f.write(f"Dialogue: 0,{start_str},{end_str},TikTokGlow,,0,0,0,,{seg['text']}\n")
                     continue
 
                 start_str = format_timestamp_ass(seg["start"])
@@ -326,29 +395,33 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
                 karaoke_line = ""
                 for w in words:
-                    # Duration in centiseconds
                     duration_cs = max(1, int(round((w["end"] - w["start"]) * 100)))
                     word_clean = w["word"].replace("{", "").replace("}", "")
                     karaoke_line += f"{{\\k{duration_cs}}}{word_clean} "
 
-                f.write(f"Dialogue: 0,{start_str},{end_str},Karaoke,,0,0,0,,{karaoke_line.strip()}\n")
+                f.write(f"Dialogue: 0,{start_str},{end_str},TikTokGlow,,0,0,0,,{karaoke_line.strip()}\n")
 
     @staticmethod
-    def export_txt(segments: List[Dict[str, Any]], output_path: str, include_timestamps: bool = False):
-        """Plain text export"""
+    def export_vtt(segments: List[Dict[str, Any]], output_path: str):
+        """WebVTT format"""
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write("WEBVTT\n\n")
+            for idx, seg in enumerate(segments, 1):
+                start = format_timestamp_vtt(seg["start"])
+                end = format_timestamp_vtt(seg["end"])
+                f.write(f"{idx}\n{start} --> {end}\n{seg['text']}\n\n")
+
+    @staticmethod
+    def export_txt(segments: List[Dict[str, Any]], output_path: str):
+        """Plain lyrics / clean text"""
         with open(output_path, "w", encoding="utf-8") as f:
             for seg in segments:
-                if include_timestamps:
-                    time_str = f"[{format_timestamp_srt(seg['start'])} --> {format_timestamp_srt(seg['end'])}] "
-                    f.write(f"{time_str}{seg['text']}\n")
-                else:
-                    f.write(f"{seg['text']}\n")
+                f.write(f"{seg['text']}\n")
 
     @staticmethod
     def burn_subtitles_to_video(video_path: str, srt_or_ass_path: str, output_video_path: str) -> bool:
-        """Uses FFmpeg to burn subtitles directly onto the video."""
+        """Uses FFmpeg to burn subtitles directly onto video with GPU nvenc or fast CPU."""
         try:
-            # Escape path for ffmpeg filter syntax
             escaped_sub = srt_or_ass_path.replace("\\", "/").replace(":", "\\:")
             cmd = [
                 "ffmpeg", "-y",
@@ -356,8 +429,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 "-vf", f"subtitles='{escaped_sub}'",
                 "-c:a", "copy",
                 "-c:v", "libx264",
-                "-crf", "20",
-                "-preset", "fast",
+                "-crf", "18",
+                "-preset", "veryfast",
                 output_video_path
             ]
             subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
