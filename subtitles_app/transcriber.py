@@ -126,28 +126,21 @@ def is_cuda_usable() -> bool:
 
 def preprocess_audio_for_vocals(input_path: str, on_progress: Optional[Callable[[str], None]] = None) -> str:
     """
-    Extracts and enhances vocals using FFmpeg:
-    - Bandpass filtering (100Hz - 7500Hz) to remove heavy 808 bass, kick drums, and ultra-high cymbals
-    - Dynamic normalization to make quiet whispering or quiet vocal parts audible
-    - Converts to 16kHz mono WAV for optimal Whisper ingestion.
+    Extracts clean 16kHz mono audio for Whisper without destructive distortion.
+    Applies gentle high-pass (80Hz) to remove non-vocal low-frequency rumble.
     """
     if on_progress:
-        on_progress("Очистка аудио: фильтрация битов и усиление вокала...")
+        on_progress("Подготовка чистого аудиопотока...")
 
-    temp_wav = tempfile.NamedTemporaryFile(suffix="_vocal_boost.wav", delete=False)
+    temp_wav = tempfile.NamedTemporaryFile(suffix="_clean_voice.wav", delete=False)
     temp_wav.close()
     out_path = temp_wav.name
 
-    # Audio filter chain:
-    # highpass: remove sub-bass/rumble
-    # lowpass: remove harsh cymbals/high synth frequencies
-    # dynaudnorm: dynamic normalization for consistent vocal volume
-    filter_chain = "highpass=f=120,lowpass=f=7500,dynaudnorm=f=150:g=15:p=0.95"
-
+    # Clean 16kHz mono conversion with low rumble cutoff (no dynamic pumping or distortion)
     cmd = [
         "ffmpeg", "-y",
         "-i", input_path,
-        "-af", filter_chain,
+        "-af", "highpass=f=80",
         "-vn",
         "-ar", "16000",
         "-ac", "1",
@@ -158,8 +151,7 @@ def preprocess_audio_for_vocals(input_path: str, on_progress: Optional[Callable[
     try:
         subprocess.run(cmd, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return out_path
-    except Exception as e:
-        # If filtering fails, return original path
+    except Exception:
         return input_path
 
 class SubtitleEngine:
@@ -280,6 +272,11 @@ class SubtitleEngine:
             speech_pad_ms=250
         )
 
+        # Smart initial prompt for context and vocabulary priming:
+        prompt = None
+        if language in ("ru", None, "auto"):
+            prompt = "Разборчивый русский текст песни или речи со всеми словами, куплетами и знаками препинания."
+
         def run_inference():
             return self.model.transcribe(
                 processed_audio,
@@ -290,9 +287,10 @@ class SubtitleEngine:
                 beam_size=beam_size,
                 best_of=beam_size,
                 temperature=[0.0, 0.2, 0.4],
-                condition_on_previous_text=False,
-                repetition_penalty=1.2,
-                no_speech_threshold=0.55,
+                condition_on_previous_text=True,
+                initial_prompt=prompt,
+                repetition_penalty=1.1,
+                no_speech_threshold=0.6,
                 compression_ratio_threshold=2.4
             )
 
