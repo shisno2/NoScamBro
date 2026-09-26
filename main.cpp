@@ -20,8 +20,8 @@
 using namespace Gdiplus;
 
 // --- КОНСТАНТЫ ОКНА ---
-const int WINDOW_WIDTH = 1240;
-const int WINDOW_HEIGHT = 820;
+const int WINDOW_WIDTH = 1320;
+const int WINDOW_HEIGHT = 840;
 
 enum TabIndex {
     TAB_OFFICE = 0,
@@ -79,6 +79,13 @@ int g_month = 1;
 int g_week = 1;
 int g_speed = 1; // 0 = pause, 1 = 1x, 2 = 2x, 5 = 5x
 int g_tickCounter = 0;
+
+// Новые параметры студии
+long long g_studioRating = 500; // Рейтинг студии
+bool g_bonus10MAwarded = false; // Флаг мгновенного начисления $10,000,000,000
+int g_hype = 25;               // Хайп студии (0-100%)
+int g_brandTrust = 90;         // Репутация и доверие аудитории (0-100%)
+int g_innovationIndex = 20;    // Индекс инноваций
 
 int g_currentOfficeIdx = 0;
 
@@ -138,6 +145,56 @@ const std::vector<std::wstring> g_randomTitles = {
 // Звуковые сигналы через Windows API
 void PlaySoundBeep(int freq, int duration) {
     Beep(freq, duration);
+}
+
+// Форматирование больших чисел в компактный вид ($10.5B, 12.4M, 150k)
+std::wstring FormatCompactMoney(long long val) {
+    if (std::abs(val) >= 1000000000LL) {
+        std::wstringstream ss;
+        ss << (val < 0 ? L"-$" : L"$") << std::fixed << std::setprecision(2) << (std::abs(val) / 1000000000.0) << L"B";
+        return ss.str();
+    } else if (std::abs(val) >= 1000000LL) {
+        std::wstringstream ss;
+        ss << (val < 0 ? L"-$" : L"$") << std::fixed << std::setprecision(2) << (std::abs(val) / 1000000.0) << L"M";
+        return ss.str();
+    } else if (std::abs(val) >= 100000LL) {
+        std::wstringstream ss;
+        ss << (val < 0 ? L"-$" : L"$") << (std::abs(val) / 1000) << L"k";
+        return ss.str();
+    }
+    std::wstringstream ss;
+    ss << (val < 0 ? L"-$" : L"$") << std::abs(val);
+    return ss.str();
+}
+
+std::wstring FormatCompactNumber(long long val) {
+    if (val >= 1000000000LL) {
+        std::wstringstream ss;
+        ss << std::fixed << std::setprecision(2) << (val / 1000000000.0) << L"B";
+        return ss.str();
+    } else if (val >= 1000000LL) {
+        std::wstringstream ss;
+        ss << std::fixed << std::setprecision(2) << (val / 1000000.0) << L"M";
+        return ss.str();
+    } else if (val >= 10000LL) {
+        std::wstringstream ss;
+        ss << (val / 1000) << L"k";
+        return ss.str();
+    }
+    return std::to_wstring(val);
+}
+
+// Проверка рейтинга студии и мгновенный супер-бонус
+void CheckStudioRating() {
+    if (!g_bonus10MAwarded && g_studioRating >= 10000000LL) {
+        g_bonus10MAwarded = true;
+        g_money += 10000000000LL; // Начисление 10 миллиардов $
+        g_feedLogs.insert(g_feedLogs.begin(), L"💎 МЕГА-ДЖЕКПОТ! Рейтинг студии превысил 10,000,000! Начислено: +$10,000,000,000!");
+        MessageBeep(MB_ICONASTERISK);
+        PlaySoundBeep(1400, 100);
+        PlaySoundBeep(1800, 150);
+        PlaySoundBeep(2200, 250);
+    }
 }
 
 // Инициализация базы данных
@@ -207,11 +264,12 @@ void InitDatabase() {
         {"hit", L"Признание критиков (8.0+)", L"Получите средний балл рецензий 8.0 или выше", 12000, 25, false},
         {"masterpiece", L"Шедевр поколения (9.5+)", L"Создайте безупречную игру с оценкой от 9.5 баллов", 35000, 45, false},
         {"millionaire", L"Финансовый магнат", L"Заработайте свыше $1,000,000 совокупной выручки", 75000, 60, false},
-        {"expansion", L"Расширение империи", L"Переедьте в Офис 2-го уровня или выше", 10000, 20, false}
+        {"expansion", L"Расширение империи", L"Переедьте в Офис 2-го уровня или выше", 10000, 20, false},
+        {"rating_10m", L"Легенда 10,000,000 Рейтинга", L"Наберите свыше 10,000,000 рейтинга студии", 100000000, 500, false}
     };
 
     g_feedLogs.push_back(L"🚀 Добро пожаловать в GameDev Studio Tycoon Pro (Native Edition)!");
-    g_feedLogs.push_back(L"💡 Совет: Начните с разработки небольшой Инди-игры во вкладке «Новая игра».");
+    g_feedLogs.push_back(L"💡 Совет: Наберите 10,000,000 рейтинга студии, чтобы мгновенно получить $10,000,000,000!");
 }
 
 void CheckAchievements() {
@@ -222,6 +280,7 @@ void CheckAchievements() {
         if (a.id == "hit" && std::any_of(g_games.begin(), g_games.end(), [](const ReleasedGame& g){ return g.score >= 8.0; })) sat = true;
         if (a.id == "masterpiece" && std::any_of(g_games.begin(), g_games.end(), [](const ReleasedGame& g){ return g.score >= 9.5; })) sat = true;
         if (a.id == "expansion" && g_currentOfficeIdx >= 1) sat = true;
+        if (a.id == "rating_10m" && g_studioRating >= 10000000LL) sat = true;
         if (a.id == "millionaire") {
             long long total = 0;
             for (auto& g : g_games) total += g.revenue;
@@ -232,6 +291,7 @@ void CheckAchievements() {
             a.unlocked = true;
             g_money += a.rewardCash;
             g_rp += a.rewardRp;
+            g_studioRating += 50000;
             g_feedLogs.insert(g_feedLogs.begin(), L"🏆 ДОСТИЖЕНИЕ: «" + a.title + L"» (+$" + std::to_wstring(a.rewardCash) + L", +" + std::to_wstring(a.rewardRp) + L" RP)!");
             MessageBeep(MB_ICONASTERISK);
         }
@@ -257,6 +317,8 @@ void StartDevelopment() {
     g_devPtsSound = 0;
     g_devPtsBugs = 0;
     g_isDevActive = true;
+
+    g_hype = (std::min)(100, g_hype + 15);
 
     g_feedLogs.insert(g_feedLogs.begin(), L"🔥 Начата разработка игры: «" + g_devTitle + L"» (" + g_genres[g_devGenreIdx].name + L")");
     currentTab = TAB_OFFICE;
@@ -295,7 +357,7 @@ void FinishDevelopment() {
     game.revenue = 0;
     game.weeksOnMarket = 0;
     game.price = price;
-    game.marketingMultiplier = 1.2;
+    game.marketingMultiplier = 1.2 + (g_hype / 100.0);
     game.dlcCount = 0;
     game.audiencePool = (long long)(30000 * g_platforms[g_devPlatformIdx].audienceShare * std::pow(finalScore / 3.8, 3));
 
@@ -317,10 +379,21 @@ void FinishDevelopment() {
     g_fans += fansGain;
     g_rp += (int)(finalScore * 4.0);
 
+    // Прирост рейтинга студии при релизе
+    long long ratingBoost = (long long)(std::pow(finalScore, 3.2) * 150 + fansGain * 6 + g_hype * 250);
+    g_studioRating += ratingBoost;
+
+    if (finalScore >= 8.0) {
+        g_brandTrust = (std::min)(100, g_brandTrust + 4);
+    } else if (finalScore < 6.0) {
+        g_brandTrust = (std::max)(20, g_brandTrust - 5);
+    }
+
     g_isDevActive = false;
     g_showReviewDialog = true;
     MessageBeep(MB_OK);
 
+    CheckStudioRating();
     CheckAchievements();
 }
 
@@ -413,6 +486,9 @@ void TickWeek() {
             game.copiesSold += sold;
             game.revenue += inc;
             g_money += inc;
+
+            // Каждую неделю продажи дают дополнительный рейтинг студии!
+            g_studioRating += (long long)(sold / 20 + 2);
         }
     }
 
@@ -423,10 +499,11 @@ void TickWeek() {
     g_stockPrice = (std::max)(5.0, g_stockPrice + delta);
     g_stockGrowth = delta;
 
+    CheckStudioRating();
     CheckAchievements();
 }
 
-// --- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ОТРИСОВКИ GDI+ (КРАСИВЫЙ UI) ---
+// --- ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ ОТРИСОВКИ GDI+ ---
 
 GraphicsPath* CreateRoundedRectPath(float x, float y, float w, float h, float r) {
     GraphicsPath* path = new GraphicsPath();
@@ -461,7 +538,7 @@ void FillGlassCard(Graphics& g, float x, float y, float w, float h, float r, Col
     DrawRoundedRect(g, &pen, x, y, w, h, r);
 }
 
-// Векторная отрисовка иконок (100% четкость без багов с шрифтами)
+// Векторная отрисовка иконок (100% четкость без шрифтовых проблем)
 void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Color col) {
     SolidBrush brush(col);
     Pen pen(col, (std::max)(1.5f, size * 0.1f));
@@ -472,7 +549,6 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
 
     switch (icon) {
         case ICON_OFFICE: {
-            // Современное здание студии
             g.FillRectangle(&brush, x + size * 0.15f, y + size * 0.15f, size * 0.7f, size * 0.75f);
             SolidBrush winBrush(Color(200, 10, 14, 23));
             for (int r = 0; r < 3; r++) {
@@ -483,20 +559,16 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_GAMEPAD: {
-            // Геймпад
             float r = size * 0.2f;
             FillRoundedRect(g, &brush, x + size * 0.05f, y + size * 0.25f, size * 0.9f, size * 0.5f, r);
             SolidBrush bDark(Color(255, 14, 18, 28));
-            // D-Pad
             g.FillRectangle(&bDark, x + size * 0.2f, y + size * 0.42f, size * 0.18f, size * 0.16f);
             g.FillRectangle(&bDark, x + size * 0.25f, y + size * 0.35f, size * 0.08f, size * 0.30f);
-            // Кнопки
-            g.FillEllipse(&bDark, x + size * 0.65f, y + size * 0.36f, size * 0.12f, size * 0.12f);
-            g.FillEllipse(&bDark, x + size * 0.75f, y + size * 0.48f, size * 0.12f, size * 0.12f);
+            g.FillEllipse(&bDark, (REAL)(x + size * 0.65f), (REAL)(y + size * 0.36f), (REAL)(size * 0.12f), (REAL)(size * 0.12f));
+            g.FillEllipse(&bDark, (REAL)(x + size * 0.75f), (REAL)(y + size * 0.48f), (REAL)(size * 0.12f), (REAL)(size * 0.12f));
             break;
         }
         case ICON_TROPHY: {
-            // Кубок
             PointF cupPts[4] = {
                 PointF(x + size * 0.22f, y + size * 0.15f),
                 PointF(x + size * 0.78f, y + size * 0.15f),
@@ -511,14 +583,12 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_USERS: {
-            // Персонал / Команда
-            g.FillEllipse(&brush, cx - size * 0.15f, y + size * 0.12f, size * 0.30f, size * 0.30f);
-            g.FillPie(&brush, cx - size * 0.35f, y + size * 0.45f, size * 0.70f, size * 0.50f, 180, 180);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.15f), (REAL)(y + size * 0.12f), (REAL)(size * 0.30f), (REAL)(size * 0.30f));
+            g.FillPie(&brush, (REAL)(cx - size * 0.35f), (REAL)(y + size * 0.45f), (REAL)(size * 0.70f), (REAL)(size * 0.50f), 180, 180);
             break;
         }
         case ICON_GEAR: {
-            // Шестеренка / Движок
-            g.FillEllipse(&brush, cx - size * 0.32f, cy - size * 0.32f, size * 0.64f, size * 0.64f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.32f), (REAL)(cy - size * 0.32f), (REAL)(size * 0.64f), (REAL)(size * 0.64f));
             for (int i = 0; i < 4; i++) {
                 float angle = i * 45.0f * 3.14159f / 180.0f;
                 float tx = cx + cos(angle) * size * 0.38f;
@@ -526,11 +596,10 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
                 g.FillRectangle(&brush, tx - size * 0.08f, ty - size * 0.08f, size * 0.16f, size * 0.16f);
             }
             SolidBrush bHole(Color(255, 18, 23, 35));
-            g.FillEllipse(&bHole, cx - size * 0.14f, cy - size * 0.14f, size * 0.28f, size * 0.28f);
+            g.FillEllipse(&bHole, (REAL)(cx - size * 0.14f), (REAL)(cy - size * 0.14f), (REAL)(size * 0.28f), (REAL)(size * 0.28f));
             break;
         }
         case ICON_RESEARCH: {
-            // Колба / Лаборатория
             PointF flaskPts[6] = {
                 PointF(cx - size * 0.10f, y + size * 0.15f),
                 PointF(cx + size * 0.10f, y + size * 0.15f),
@@ -543,7 +612,6 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_UPGRADE: {
-            // Стрелка роста / Апгрейд
             PointF arrPts[7] = {
                 PointF(cx, y + size * 0.12f),
                 PointF(x + size * 0.80f, y + size * 0.48f),
@@ -557,16 +625,14 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_ACHIEVEMENT: {
-            // Мишень / Достижения
-            g.FillEllipse(&brush, cx - size * 0.42f, cy - size * 0.42f, size * 0.84f, size * 0.84f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.42f), (REAL)(cy - size * 0.42f), (REAL)(size * 0.84f), (REAL)(size * 0.84f));
             SolidBrush bRing1(Color(255, 18, 23, 35));
-            g.FillEllipse(&bRing1, cx - size * 0.28f, cy - size * 0.28f, size * 0.56f, size * 0.56f);
-            g.FillEllipse(&brush, cx - size * 0.14f, cy - size * 0.14f, size * 0.28f, size * 0.28f);
+            g.FillEllipse(&bRing1, (REAL)(cx - size * 0.28f), (REAL)(cy - size * 0.28f), (REAL)(size * 0.56f), (REAL)(size * 0.56f));
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.14f), (REAL)(cy - size * 0.14f), (REAL)(size * 0.28f), (REAL)(size * 0.28f));
             break;
         }
         case ICON_DOLLAR: {
-            // Знак доллара
-            g.FillEllipse(&brush, cx - size * 0.42f, cy - size * 0.42f, size * 0.84f, size * 0.84f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.42f), (REAL)(cy - size * 0.42f), (REAL)(size * 0.84f), (REAL)(size * 0.84f));
             SolidBrush bText(Color(255, 12, 16, 26));
             Font font(&FontFamily(L"Segoe UI"), size * 0.52f, FontStyleBold, UnitPixel);
             StringFormat sf;
@@ -577,9 +643,8 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_HEART: {
-            // Сердце / Фанаты
-            g.FillEllipse(&brush, cx - size * 0.38f, cy - size * 0.32f, size * 0.40f, size * 0.40f);
-            g.FillEllipse(&brush, cx - size * 0.02f, cy - size * 0.32f, size * 0.40f, size * 0.40f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.38f), (REAL)(cy - size * 0.32f), (REAL)(size * 0.40f), (REAL)(size * 0.40f));
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.02f), (REAL)(cy - size * 0.32f), (REAL)(size * 0.40f), (REAL)(size * 0.40f));
             PointF tri[3] = {
                 PointF(cx - size * 0.38f, cy - size * 0.08f),
                 PointF(cx + size * 0.38f, cy - size * 0.08f),
@@ -589,7 +654,6 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_RP: {
-            // Кристалл / Очки науки
             PointF gem[4] = {
                 PointF(cx, y + size * 0.10f),
                 PointF(x + size * 0.82f, cy),
@@ -600,7 +664,6 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_STOCK: {
-            // График акций
             PointF chart[4] = {
                 PointF(x + size * 0.15f, y + size * 0.75f),
                 PointF(x + size * 0.40f, y + size * 0.50f),
@@ -608,11 +671,10 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
                 PointF(x + size * 0.85f, y + size * 0.20f)
             };
             g.DrawLines(&pen, chart, 4);
-            g.FillEllipse(&brush, x + size * 0.80f, y + size * 0.15f, size * 0.18f, size * 0.18f);
+            g.FillEllipse(&brush, (REAL)(x + size * 0.80f), (REAL)(y + size * 0.15f), (REAL)(size * 0.18f), (REAL)(size * 0.18f));
             break;
         }
         case ICON_CALENDAR: {
-            // Календарь
             FillRoundedRect(g, &brush, x + size * 0.15f, y + size * 0.20f, size * 0.70f, size * 0.65f, size * 0.10f);
             SolidBrush bHole(Color(255, 18, 23, 35));
             g.FillRectangle(&bHole, x + size * 0.22f, y + size * 0.42f, size * 0.56f, size * 0.36f);
@@ -621,8 +683,7 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_BUG: {
-            // Баг / Жук
-            g.FillEllipse(&brush, cx - size * 0.25f, cy - size * 0.30f, size * 0.50f, size * 0.60f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.25f), (REAL)(cy - size * 0.30f), (REAL)(size * 0.50f), (REAL)(size * 0.60f));
             g.DrawLine(&pen, cx - size * 0.35f, cy - size * 0.15f, cx + size * 0.35f, cy - size * 0.15f);
             g.DrawLine(&pen, cx - size * 0.38f, cy + size * 0.05f, cx + size * 0.38f, cy + size * 0.05f);
             g.DrawLine(&pen, cx - size * 0.35f, cy + size * 0.25f, cx + size * 0.35f, cy + size * 0.25f);
@@ -714,9 +775,9 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
             break;
         }
         case ICON_ART: {
-            g.FillEllipse(&brush, cx - size * 0.38f, cy - size * 0.38f, size * 0.76f, size * 0.76f);
+            g.FillEllipse(&brush, (REAL)(cx - size * 0.38f), (REAL)(cy - size * 0.38f), (REAL)(size * 0.76f), (REAL)(size * 0.76f));
             SolidBrush bHole(Color(255, 18, 23, 35));
-            g.FillEllipse(&bHole, cx + size * 0.10f, cy + size * 0.10f, size * 0.18f, size * 0.18f);
+            g.FillEllipse(&bHole, (REAL)(cx + size * 0.10f), (REAL)(cy + size * 0.10f), (REAL)(size * 0.18f), (REAL)(size * 0.18f));
             break;
         }
         case ICON_SOUND: {
@@ -728,9 +789,9 @@ void DrawVectorIcon(Graphics& g, IconType icon, float x, float y, float size, Co
         case ICON_DICE: {
             FillRoundedRect(g, &brush, x + size * 0.15f, y + size * 0.15f, size * 0.70f, size * 0.70f, size * 0.15f);
             SolidBrush bDot(Color(255, 18, 23, 35));
-            g.FillEllipse(&bDot, cx - size * 0.08f, cy - size * 0.08f, size * 0.16f, size * 0.16f);
-            g.FillEllipse(&bDot, x + size * 0.28f, y + size * 0.28f, size * 0.14f, size * 0.14f);
-            g.FillEllipse(&bDot, x + size * 0.58f, y + size * 0.58f, size * 0.14f, size * 0.14f);
+            g.FillEllipse(&bDot, (REAL)(cx - size * 0.08f), (REAL)(cy - size * 0.08f), (REAL)(size * 0.16f), (REAL)(size * 0.16f));
+            g.FillEllipse(&bDot, (REAL)(x + size * 0.28f), (REAL)(y + size * 0.28f), (REAL)(size * 0.14f), (REAL)(size * 0.14f));
+            g.FillEllipse(&bDot, (REAL)(x + size * 0.58f), (REAL)(y + size * 0.58f), (REAL)(size * 0.14f), (REAL)(size * 0.14f));
             break;
         }
     }
@@ -765,7 +826,7 @@ void DrawGame(HDC hdc, RECT rc) {
     g.SetSmoothingMode(SmoothingModeAntiAlias);
     g.SetTextRenderingHint(TextRenderingHintClearTypeGridFit);
 
-    // Задний фон окна (глубокий космический тёмно-синий)
+    // Задний фон окна
     LinearGradientBrush bgWindow(PointF(0, 0), PointF(0, (float)rc.bottom), Color(255, 11, 14, 22), Color(255, 15, 20, 31));
     g.FillRectangle(&bgWindow, 0, 0, rc.right, rc.bottom);
 
@@ -811,42 +872,50 @@ void DrawGame(HDC hdc, RECT rc) {
     DrawVectorIcon(g, ICON_GAMEPAD, 24, 22, 30, colWhite);
 
     g.DrawString(L"PIXEL FORGE STUDIOS", -1, &fontTitle, PointF(72, 16), &textWhite);
-    std::wstring tierStr = g_offices[g_currentOfficeIdx].name + L" • Офис Ур." + std::to_wstring(g_currentOfficeIdx + 1);
+    std::wstring tierStr = g_offices[g_currentOfficeIdx].name + L" • Ур." + std::to_wstring(g_currentOfficeIdx + 1);
     SolidBrush accentBrand(Color(255, 165, 180, 252));
     g.DrawString(tierStr.c_str(), -1, &fontSmall, PointF(72, 38), &accentBrand);
 
     // ЧИПЫ СТАТИСТИКИ (СПРАВА)
-    auto drawStatChip = [&](float x, float w, IconType icon, Color iconCol, const std::wstring& val, const std::wstring& label, Color valCol) {
-        FillGlassCard(g, x, 14, w, 46, 8, colCardTop, colCardBot, colCardBorder);
-        DrawVectorIcon(g, icon, x + 10, 24, 24, iconCol);
+    auto drawStatChip = [&](float x, float w, IconType icon, Color iconCol, const std::wstring& val, const std::wstring& label, Color valCol, bool isSpecial = false) {
+        if (isSpecial) {
+            FillGlassCard(g, x, 14, w, 46, 8, Color(255, 45, 36, 16), Color(255, 28, 22, 10), colAmber);
+        } else {
+            FillGlassCard(g, x, 14, w, 46, 8, colCardTop, colCardBot, colCardBorder);
+        }
+        DrawVectorIcon(g, icon, x + 8, 24, 24, iconCol);
         SolidBrush bVal(valCol);
-        g.DrawString(val.c_str(), -1, &fontBold, PointF(x + 38, 17), &bVal);
-        g.DrawString(label.c_str(), -1, &fontMicro, PointF(x + 38, 38), &textMuted);
+        g.DrawString(val.c_str(), -1, &fontBold, PointF(x + 36, 17), &bVal);
+        g.DrawString(label.c_str(), -1, &fontMicro, PointF(x + 36, 38), &textMuted);
     };
 
-    std::wstringstream ssMoney;
-    ssMoney << L"$" << g_money;
-    drawStatChip(340, 130, ICON_DOLLAR, colEmerald, ssMoney.str(), L"Баланс студии", g_money < 0 ? colRose : colEmerald);
+    // 1. Баланс студии
+    drawStatChip(280, 130, ICON_DOLLAR, colEmerald, FormatCompactMoney(g_money), L"Баланс студии", g_money < 0 ? colRose : colEmerald);
 
-    std::wstringstream ssFans;
-    ssFans << g_fans;
-    drawStatChip(478, 115, ICON_HEART, colRose, ssFans.str(), L"Поклонники", colRose);
+    // 2. РЕЙТИНГ СТУДИИ (Новый ключевой параметр с джекпотом на 10M)
+    bool isRatingHigh = (g_studioRating >= 10000000LL);
+    std::wstring ratingStr = FormatCompactNumber(g_studioRating);
+    drawStatChip(418, 135, ICON_STAR, isRatingHigh ? colAmber : colAmber, ratingStr, isRatingHigh ? L"★ ТОП-1 МИРА" : L"Рейтинг студии", isRatingHigh ? colEmerald : colAmber, isRatingHigh);
 
+    // 3. Поклонники (Фанаты)
+    drawStatChip(561, 115, ICON_HEART, colRose, FormatCompactNumber(g_fans), L"Поклонники", colRose);
+
+    // 4. Очки исследований (RP)
     std::wstringstream ssRp;
     ssRp << g_rp << L" RP";
-    drawStatChip(601, 115, ICON_RP, colCyan, ssRp.str(), L"Исследования", colCyan);
+    drawStatChip(684, 110, ICON_RP, colCyan, ssRp.str(), L"Наука (RP)", colCyan);
 
-    std::wstringstream ssStock;
-    ssStock << std::fixed << std::setprecision(2) << L"$" << g_stockPrice;
-    drawStatChip(724, 125, ICON_STOCK, colPurple, ssStock.str(), L"Акции студии", colPurple);
+    // 5. Акции студии
+    drawStatChip(802, 125, ICON_STOCK, colPurple, FormatCompactMoney((long long)g_stockPrice), L"Акции студии", colPurple);
 
+    // 6. Календарь
     std::wstringstream ssDate;
     ssDate << L"Г." << g_year << L" М." << g_month << L" Н." << g_week;
-    drawStatChip(857, 135, ICON_CALENDAR, colAmber, ssDate.str(), L"Календарь", colWhite);
+    drawStatChip(935, 125, ICON_CALENDAR, colAmber, ssDate.str(), L"Календарь", colWhite);
 
-    // Кнопки управления скоростью (интерактивные ⏸, 1x, 2x, 5x)
-    float spX = 1000.0f;
-    FillGlassCard(g, spX, 14, 215, 46, 8, colCardTop, colCardBot, colCardBorder);
+    // 7. Кнопки управления скоростью (⏸, 1x, 2x, 5x)
+    float spX = 1070.0f;
+    FillGlassCard(g, spX, 14, 230, 46, 8, colCardTop, colCardBot, colCardBorder);
 
     struct SpeedBtn { int spd; const wchar_t* txt; IconType ic; };
     SpeedBtn sbtns[4] = {
@@ -857,18 +926,18 @@ void DrawGame(HDC hdc, RECT rc) {
     };
 
     for (int i = 0; i < 4; i++) {
-        float bx = spX + 8 + i * 50;
+        float bx = spX + 8 + i * 53;
         bool isActive = (g_speed == sbtns[i].spd);
         if (isActive) {
-            FillGlassCard(g, bx, 20, 44, 34, 6, colIndigo, Color(255, 79, 70, 229), Color(255, 165, 180, 252));
+            FillGlassCard(g, bx, 20, 48, 34, 6, colIndigo, Color(255, 79, 70, 229), Color(255, 165, 180, 252));
         } else {
-            FillGlassCard(g, bx, 20, 44, 34, 6, Color(255, 25, 32, 48), Color(255, 20, 26, 38), colCardBorder);
+            FillGlassCard(g, bx, 20, 48, 34, 6, Color(255, 25, 32, 48), Color(255, 20, 26, 38), colCardBorder);
         }
         SolidBrush bTxt(isActive ? colWhite : colMuted);
         StringFormat sf;
         sf.SetAlignment(StringAlignmentCenter);
         sf.SetLineAlignment(StringAlignmentCenter);
-        g.DrawString(sbtns[i].txt, -1, &fontBold, RectF(bx, 20, 44, 34), &sf, &bTxt);
+        g.DrawString(sbtns[i].txt, -1, &fontBold, RectF(bx, 20, 48, 34), &sf, &bTxt);
     }
 
     // ==========================================
@@ -899,7 +968,6 @@ void DrawGame(HDC hdc, RECT rc) {
             FillGlassCard(g, 12, ny, sideW - 24, 38, 8, Color(255, 99, 102, 241), Color(255, 79, 70, 229), Color(255, 165, 180, 252));
             DrawVectorIcon(g, navItems[i].icon, 24, ny + 9, 20, colWhite);
             g.DrawString(navItems[i].title, -1, &fontBold, PointF(52, ny + 9), &textWhite);
-            // Индикатор активного элемента (неоновая точка)
             SolidBrush dotBrush(Color(255, 255, 255, 255));
             g.FillEllipse(&dotBrush, (REAL)(sideW - 28), (REAL)(ny + 15), 6.0f, 6.0f);
         } else {
@@ -929,17 +997,19 @@ void DrawGame(HDC hdc, RECT rc) {
 
     // --- ВКЛАДКА 0: ОФИС СТУДИИ ---
     if (currentTab == TAB_OFFICE) {
-        // Заголовок раздела
         g.DrawString(L"Главный офис разработки", -1, &fontBig, PointF(cx, cy), &textWhite);
-        std::wstring capStr = L"Рабочих мест: " + std::to_wstring(g_staff.size()) + L" / " + std::to_wstring(g_offices[g_currentOfficeIdx].capacity) + L" сотрудников";
-        g.DrawString(capStr.c_str(), -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
+        
+        std::wstringstream ssSubInfo;
+        ssSubInfo << L"Сотрудников: " << g_staff.size() << L" / " << g_offices[g_currentOfficeIdx].capacity 
+                  << L"   |   Рейтинг студии: " << g_studioRating << L" / 10,000,000"
+                  << L"   |   Хайп: " << g_hype << L"%   |   Доверие: " << g_brandTrust << L"%";
+        g.DrawString(ssSubInfo.str().c_str(), -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
 
         // Интерактивная зона столов сотрудников
         float roomY = cy + 52.0f;
         float roomH = 300.0f;
         FillGlassCard(g, cx, roomY, cw, roomH, 12, colCardTop, colCardBot, colCardBorder);
 
-        // Отрисовка карточек сотрудников
         int capacity = g_offices[g_currentOfficeIdx].capacity;
         float deskW = (cw - 50.0f) / 4.0f;
         float deskH = 126.0f;
@@ -949,35 +1019,28 @@ void DrawGame(HDC hdc, RECT rc) {
             float dy = roomY + 16.0f + (i / 4) * (deskH + 14.0f);
 
             if (i < g_staff.size()) {
-                // Карточка сотрудника
                 FillGlassCard(g, dx, dy, deskW, deskH, 10, Color(255, 26, 34, 52), Color(255, 19, 25, 39), Color(255, 50, 64, 95));
 
-                // Аватар / Иконка роли
                 Color avatarCols[4] = {colAmber, colCyan, colPurple, colEmerald};
                 Color avCol = avatarCols[g_staff[i].avatarColorIdx % 4];
                 FillRoundedRect(g, &SolidBrush(avCol), dx + 10, dy + 10, 32, 32, 6);
                 DrawVectorIcon(g, ICON_USERS, dx + 15, dy + 15, 22, Color(255, 15, 20, 30));
 
-                // Имя и роль
                 g.DrawString(g_staff[i].name.c_str(), -1, &fontBold, PointF(dx + 48, dy + 9), &textWhite);
                 SolidBrush bRole(avCol);
                 g.DrawString(g_staff[i].role.c_str(), -1, &fontMicro, PointF(dx + 48, dy + 27), &bRole);
 
-                // Полосы навыков (Код, Арт, Звук)
                 DrawSkillBar(g, L"Код", g_staff[i].code, 50, dx + 10, dy + 48, deskW - 20, colCyan, &fontSmall);
                 DrawSkillBar(g, L"Арт", g_staff[i].design, 50, dx + 10, dy + 66, deskW - 20, colPurple, &fontSmall);
                 DrawSkillBar(g, L"Звук", g_staff[i].sound, 50, dx + 10, dy + 84, deskW - 20, colAmber, &fontSmall);
 
-                // Зарплата внизу
                 std::wstring salStr = L"$" + std::to_wstring(g_staff[i].salary) + L"/мес";
                 SolidBrush bSal(colEmerald);
                 g.DrawString(salStr.c_str(), -1, &fontMicro, PointF(dx + 10, dy + 104), &bSal);
 
-                // Статус
                 SolidBrush bDot(colEmerald);
                 g.FillEllipse(&bDot, (REAL)(dx + deskW - 22), (REAL)(dy + 107), 6.0f, 6.0f);
             } else {
-                // Пустой стол (Свободный слот)
                 Pen dashed(Color(255, 45, 58, 85), 1.5f);
                 dashed.SetDashStyle(DashStyleDash);
                 DrawRoundedRect(g, &dashed, dx, dy, deskW, deskH, 10);
@@ -991,17 +1054,15 @@ void DrawGame(HDC hdc, RECT rc) {
             }
         }
 
-        // ПАНЕЛЬ ТЕКУЩЕЙ РАЗРАБОТКИ (ЕСЛИ ИДЕТ)
+        // ПАНЕЛЬ ТЕКУЩЕЙ РАЗРАБОТКИ
         float devY = roomY + roomH + 14.0f;
         if (g_isDevActive) {
             float devH = 120.0f;
             FillGlassCard(g, cx, devY, cw, devH, 12, Color(255, 28, 32, 54), Color(255, 18, 22, 38), Color(255, 99, 102, 241));
 
-            // Заголовок проекта
             std::wstring dTitle = L"РАЗРАБОТКА: «" + g_devTitle + L"» • " + g_genres[g_devGenreIdx].name;
             g.DrawString(dTitle.c_str(), -1, &fontBold, PointF(cx + 18, devY + 12), &textWhite);
 
-            // Очки качества
             auto drawPtBadge = [&](float bx, const wchar_t* lbl, int pts, Color col, IconType ic) {
                 FillGlassCard(g, bx, devY + 10, 110, 26, 6, Color(255, 20, 25, 40), Color(255, 15, 20, 32), col);
                 DrawVectorIcon(g, ic, bx + 6, devY + 15, 16, col);
@@ -1010,12 +1071,11 @@ void DrawGame(HDC hdc, RECT rc) {
                 g.DrawString(s.c_str(), -1, &fontSmall, PointF(bx + 26, devY + 14), &b);
             };
 
-            drawPtBadge(cx + 440, L"Код", g_devPtsCode, colCyan, ICON_CODE);
-            drawPtBadge(cx + 560, L"Арт", g_devPtsDesign, colPurple, ICON_ART);
-            drawPtBadge(cx + 680, L"Звук", g_devPtsSound, colAmber, ICON_SOUND);
-            drawPtBadge(cx + 800, L"Баги", g_devPtsBugs, g_devPtsBugs > 5 ? colRose : colEmerald, ICON_BUG);
+            drawPtBadge(cx + 460, L"Код", g_devPtsCode, colCyan, ICON_CODE);
+            drawPtBadge(cx + 580, L"Арт", g_devPtsDesign, colPurple, ICON_ART);
+            drawPtBadge(cx + 700, L"Звук", g_devPtsSound, colAmber, ICON_SOUND);
+            drawPtBadge(cx + 820, L"Баги", g_devPtsBugs, g_devPtsBugs > 5 ? colRose : colEmerald, ICON_BUG);
 
-            // Анимированная плавная полоса прогресса
             float progW = cw - 36.0f;
             FillRoundedRect(g, &SolidBrush(Color(255, 12, 16, 26)), cx + 18, devY + 44, progW, 16, 8);
 
@@ -1029,13 +1089,11 @@ void DrawGame(HDC hdc, RECT rc) {
             SolidBrush bProg(colWhite);
             g.DrawString(prgStr.c_str(), -1, &fontMicro, PointF(cx + 24, devY + 45), &bProg);
 
-            // Кнопки управления разработкой
-            // 1. Охота на баги
+            // Кнопки
             FillGlassCard(g, cx + 18, devY + 70, 180, 36, 8, Color(255, 220, 38, 38), Color(255, 185, 28, 28), Color(255, 248, 113, 113));
             DrawVectorIcon(g, ICON_BUG, cx + 28, devY + 78, 20, colWhite);
             g.DrawString(L"Охота на баги [B]", -1, &fontBold, PointF(cx + 54, devY + 78), &textWhite);
 
-            // 2. Кранч x2
             if (g_isCrunch) {
                 FillGlassCard(g, cx + 210, devY + 70, 170, 36, 8, Color(255, 234, 88, 12), Color(255, 194, 65, 12), Color(255, 251, 146, 60));
             } else {
@@ -1044,7 +1102,6 @@ void DrawGame(HDC hdc, RECT rc) {
             DrawVectorIcon(g, ICON_FIRE, cx + 220, devY + 78, 20, colWhite);
             g.DrawString(L"Кранч x2 [C]", -1, &fontBold, PointF(cx + 248, devY + 78), &textWhite);
 
-            // 3. Выпустить игру (Становится активной на 100%)
             bool canRelease = (g_devProgress >= 100.0);
             if (canRelease) {
                 FillGlassCard(g, cx + cw - 240, devY + 70, 222, 36, 8, colEmerald, Color(255, 5, 150, 105), Color(255, 110, 231, 183));
@@ -1055,7 +1112,7 @@ void DrawGame(HDC hdc, RECT rc) {
             g.DrawString(L"Выпустить игру! [R]", -1, &fontBold, PointF(cx + cw - 202, devY + 78), &textWhite);
         }
 
-        // ЛЕНТА СОБЫТИЙ И НОВОСТЕЙ СТУДИИ
+        // ЛЕНТА СОБЫТИЙ
         float logY = devY + (g_isDevActive ? 134.0f : 0.0f);
         float logH = (float)rc.bottom - logY - 16.0f;
         FillGlassCard(g, cx, logY, cw, logH, 12, colCardTop, colCardBot, colCardBorder);
@@ -1072,7 +1129,7 @@ void DrawGame(HDC hdc, RECT rc) {
         }
     }
 
-    // --- ВКЛАДКА 1: КОНСТРУКТОР НОВОЙ ИГРЫ (WIZARD) ---
+    // --- ВКЛАДКА 1: КОНСТРУКТОР НОВОЙ ИГРЫ ---
     else if (currentTab == TAB_DEV_WIZARD) {
         g.DrawString(L"Конструктор новой игры", -1, &fontBig, PointF(cx, cy), &textWhite);
         g.DrawString(L"Выберите комбинацию механик, целевую платформу и распределите фокус разработки", -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
@@ -1081,18 +1138,16 @@ void DrawGame(HDC hdc, RECT rc) {
         float formH = (float)rc.bottom - formY - 16.0f;
         FillGlassCard(g, cx, formY, cw, formH, 12, colCardTop, colCardBot, colCardBorder);
 
-        // 1. Поле названия игры
         g.DrawString(L"1. Название проекта:", -1, &fontBold, PointF(cx + 20, formY + 16), &textWhite);
         FillGlassCard(g, cx + 20, formY + 40, cw - 260, 42, 8, Color(255, 14, 18, 28), Color(255, 10, 14, 22), colCardBorder);
         SolidBrush bTitle(colAmber);
         g.DrawString(g_devTitle.c_str(), -1, &fontTitle, PointF(cx + 34, formY + 50), &bTitle);
 
-        // Кнопка рандомизации названия
         FillGlassCard(g, cx + cw - 225, formY + 40, 205, 42, 8, Color(255, 30, 38, 58), Color(255, 22, 28, 44), colIndigo);
         DrawVectorIcon(g, ICON_DICE, cx + cw - 215, formY + 49, 24, colWhite);
         g.DrawString(L"Случайное имя [Tab]", -1, &fontBold, PointF(cx + cw - 182, formY + 51), &textWhite);
 
-        // 2. Жанры игры
+        // Жанры
         g.DrawString(L"2. Жанр игры [Клавиши 1-6]:", -1, &fontBold, PointF(cx + 20, formY + 96), &textWhite);
         float gw = (cw - 60.0f) / 3.0f;
         for (size_t i = 0; i < g_genres.size(); i++) {
@@ -1108,7 +1163,7 @@ void DrawGame(HDC hdc, RECT rc) {
 
             DrawVectorIcon(g, ICON_GAMEPAD, gx + 10, gy + 14, 24, isSel ? colWhite : colIndigo);
             std::wstring gNum = L"[" + std::to_wstring(i + 1) + L"] " + g_genres[i].name;
-            SolidBrush bGName(isSel ? colWhite : colWhite);
+            SolidBrush bGName(colWhite);
             g.DrawString(gNum.c_str(), -1, &fontBold, PointF(gx + 40, gy + 8), &bGName);
 
             std::wstring cStr = L"Стоимость: $" + std::to_wstring(g_genres[i].cost);
@@ -1116,7 +1171,7 @@ void DrawGame(HDC hdc, RECT rc) {
             g.DrawString(cStr.c_str(), -1, &fontMicro, PointF(gx + 40, gy + 28), &bCost);
         }
 
-        // 3. Тематика / Сеттинг
+        // Сеттинг
         g.DrawString(L"3. Сеттинг / Тематика [Q, W, E, R, T, Y, U, I]:", -1, &fontBold, PointF(cx + 20, formY + 256), &textWhite);
         const wchar_t* thKeys[] = {L"[Q]", L"[W]", L"[E]", L"[R]", L"[T]", L"[Y]", L"[U]", L"[I]"};
         float tw = (cw - 70.0f) / 4.0f;
@@ -1136,7 +1191,7 @@ void DrawGame(HDC hdc, RECT rc) {
             g.DrawString(thStr.c_str(), -1, &fontSmall, PointF(tx + 10, ty + 9), &bTh);
         }
 
-        // 4. Платформы
+        // Платформы
         g.DrawString(L"4. Платформа [Z, X, C, V, B]:", -1, &fontBold, PointF(cx + 20, formY + 382), &textWhite);
         const wchar_t* plKeys[] = {L"[Z]", L"[X]", L"[C]", L"[V]", L"[B]"};
         float pw = (cw - 60.0f) / 5.0f;
@@ -1152,7 +1207,7 @@ void DrawGame(HDC hdc, RECT rc) {
             }
 
             std::wstring pStr = std::wstring(plKeys[i]) + L" " + g_platforms[i].name;
-            SolidBrush bP(isSel ? colWhite : colWhite);
+            SolidBrush bP(colWhite);
             g.DrawString(pStr.c_str(), -1, &fontSmall, PointF(px + 8, py + 8), &bP);
 
             std::wstring pCost = L"$" + std::to_wstring(g_platforms[i].cost) + L" (x" + std::to_wstring((int)(g_platforms[i].audienceShare * 100)) + L"%)";
@@ -1160,7 +1215,7 @@ void DrawGame(HDC hdc, RECT rc) {
             g.DrawString(pCost.c_str(), -1, &fontMicro, PointF(px + 8, py + 28), &bPCost);
         }
 
-        // КНОПКА ЗАПУСКА РАЗРАБОТКИ
+        // Кнопка старта
         float btnStartY = formH - 64.0f;
         int totalDevCost = g_genres[g_devGenreIdx].cost + g_platforms[g_devPlatformIdx].cost;
         if (g_devScale == 1) totalDevCost = (int)(totalDevCost * 1.5);
@@ -1190,23 +1245,19 @@ void DrawGame(HDC hdc, RECT rc) {
                 float gy = cy + 56.0f + i * 108.0f;
                 FillGlassCard(g, cx, gy, cw, 96, 10, colCardTop, colCardBot, colCardBorder);
 
-                // Бокс-арт превью
                 FillGlassCard(g, cx + 14, gy + 12, 72, 72, 8, colIndigo, Color(255, 79, 70, 229), colWhite);
                 DrawVectorIcon(g, ICON_GAMEPAD, cx + 30, gy + 28, 40, colWhite);
 
-                // Название и теги
                 g.DrawString(g_games[i].title.c_str(), -1, &fontBig, PointF(cx + 100, gy + 14), &textWhite);
                 std::wstring tags = g_games[i].genre + L" • " + g_games[i].theme + L" • " + g_games[i].platform + L" • " + g_games[i].engine;
                 SolidBrush bTags(colPurple);
                 g.DrawString(tags.c_str(), -1, &fontSmall, PointF(cx + 100, gy + 42), &bTags);
 
-                // Финансы
                 std::wstringstream ssSales;
                 ssSales << L"Продано копий: " << g_games[i].copiesSold << L" шт.   |   Выручка: +$" << g_games[i].revenue;
                 SolidBrush bSales(colEmerald);
                 g.DrawString(ssSales.str().c_str(), -1, &fontBold, PointF(cx + 100, gy + 66), &bSales);
 
-                // Оценка критиков (бейдж справа)
                 std::wstringstream ssSc;
                 ssSc << std::fixed << std::setprecision(1) << g_games[i].score;
                 Color scoreCol = g_games[i].score >= 8.5 ? colAmber : (g_games[i].score >= 7.0 ? colCyan : colMuted);
@@ -1219,13 +1270,12 @@ void DrawGame(HDC hdc, RECT rc) {
         }
     }
 
-    // --- ВКЛАДКА 3: ПЕРСОНАЛ И АГЕНТСТВО НАЙМА ---
+    // --- ВКЛАДКА 3: ПЕРСОНАЛ ---
     else if (currentTab == TAB_STAFF) {
         g.DrawString(L"Персонал студии и Агентство найма", -1, &fontBig, PointF(cx, cy), &textWhite);
         g.DrawString(L"Обучайте действующих разработчиков и нанимайте новых специалистов", -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
 
         float listY = cy + 56.0f;
-        // Текущий персонал
         g.DrawString(L"Команда в штате:", -1, &fontBold, PointF(cx, listY), &textWhite);
         for (size_t i = 0; i < g_staff.size(); i++) {
             float sy = listY + 26.0f + i * 86.0f;
@@ -1244,13 +1294,11 @@ void DrawGame(HDC hdc, RECT rc) {
             SolidBrush bSk(colWhite);
             g.DrawString(ssSk.str().c_str(), -1, &fontSmall, PointF(cx + 74, sy + 52), &bSk);
 
-            // Кнопка обучения
             FillGlassCard(g, cx + cw - 180, sy + 18, 164, 40, 6, Color(255, 30, 38, 58), Color(255, 22, 28, 44), colIndigo);
             DrawVectorIcon(g, ICON_RESEARCH, cx + cw - 172, sy + 26, 22, colWhite);
             g.DrawString(L"Обучить $1,500 [T]", -1, &fontBold, PointF(cx + cw - 144, sy + 28), &textWhite);
         }
 
-        // Кандидаты агентства
         float candY = listY + 30.0f + g_staff.size() * 86.0f + 14.0f;
         g.DrawString(L"Доступные кандидаты в агентстве:", -1, &fontBold, PointF(cx, candY), &textWhite);
 
@@ -1270,7 +1318,6 @@ void DrawGame(HDC hdc, RECT rc) {
             SolidBrush bSk(colWhite);
             g.DrawString(ssSk.str().c_str(), -1, &fontSmall, PointF(cx + 74, cyPos + 52), &bSk);
 
-            // Кнопка найма
             bool canHire = (g_staff.size() < (size_t)g_offices[g_currentOfficeIdx].capacity && g_money >= g_candidates[i].hireCost);
             if (canHire) {
                 FillGlassCard(g, cx + cw - 180, cyPos + 18, 164, 40, 6, colEmerald, Color(255, 5, 150, 105), colWhite);
@@ -1283,7 +1330,7 @@ void DrawGame(HDC hdc, RECT rc) {
         }
     }
 
-    // --- ВКЛАДКА 4: КОНСТРУКТОР ДВИЖКОВ ---
+    // --- ВКЛАДКА 4: ДВИЖКИ ---
     else if (currentTab == TAB_ENGINES) {
         g.DrawString(L"Конструктор Проприетарных Игровых Движков", -1, &fontBig, PointF(cx, cy), &textWhite);
         g.DrawString(L"Собственные технологии повышают множитель очков разработки и приносят роялти", -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
@@ -1315,14 +1362,13 @@ void DrawGame(HDC hdc, RECT rc) {
             }
         }
 
-        // Кнопка сборки нового некстген движка
         float btnEy = engY + g_engines.size() * 116.0f + 16.0f;
         FillGlassCard(g, cx, btnEy, cw, 56, 10, colIndigo, Color(255, 79, 70, 229), colWhite);
         DrawVectorIcon(g, ICON_GEAR, cx + 24, btnEy + 16, 26, colWhite);
         g.DrawString(L"Собрать Titan NextGen Engine ($15,000) [Нажмите E]", -1, &fontBig, PointF(cx + 62, btnEy + 16), &textWhite);
     }
 
-    // --- ВКЛАДКА 5: ИССЛЕДОВАНИЯ (RP TREE) ---
+    // --- ВКЛАДКА 5: ИССЛЕДОВАНИЯ ---
     else if (currentTab == TAB_RESEARCH) {
         g.DrawString(L"Лаборатория исследований и патентов (R&D)", -1, &fontBig, PointF(cx, cy), &textWhite);
         std::wstring rpSub = L"Доступный баланс очков науки: " + std::to_wstring(g_rp) + L" RP";
@@ -1356,7 +1402,7 @@ void DrawGame(HDC hdc, RECT rc) {
         }
     }
 
-    // --- ВКЛАДКА 6: УЛУЧШЕНИЯ ОФИСА (НЕДВИЖИМОСТЬ) ---
+    // --- ВКЛАДКА 6: УЛУЧШЕНИЯ ОФИСА ---
     else if (currentTab == TAB_UPGRADES) {
         g.DrawString(L"Недвижимость и Расширение студии", -1, &fontBig, PointF(cx, cy), &textWhite);
         g.DrawString(L"Переезжайте в более просторные офисы для найма дополнительных специалистов", -1, &fontSmall, PointF(cx, cy + 26), &textMuted);
@@ -1467,7 +1513,6 @@ void DrawGame(HDC hdc, RECT rc) {
             g.DrawString(ssSc.str().c_str(), -1, &fontBold, PointF(mx + mw - 120, ry + 12), &bS);
         }
 
-        // Кнопка подтверждения
         FillGlassCard(g, mx + 100, my + mh - 66, mw - 200, 48, 10, colEmerald, Color(255, 5, 150, 105), colWhite);
         g.DrawString(L"НАЧАТЬ ПРОДАЖИ! [ENTER / КЛИК]", -1, &fontBold, RectF(mx + 100, my + mh - 54, mw - 200, 30), &sf, &textWhite);
     }
@@ -1493,7 +1538,6 @@ void DrawGame(HDC hdc, RECT rc) {
         ssTimer << L"Таймер: " << g_bugHuntTimer << L"с   |   Уничтожено: " << g_bugsSquashed << L" багов";
         g.DrawString(ssTimer.str().c_str(), -1, &fontBold, PointF(mx + mw - 320, my + 28), &textWhite);
 
-        // Зона отлова
         FillGlassCard(g, mx + 30, my + 70, mw - 60, mh - 150, 12, Color(255, 14, 16, 24), Color(255, 10, 12, 18), colCardBorder);
 
         for (const auto& b : g_huntBugs) {
@@ -1505,7 +1549,6 @@ void DrawGame(HDC hdc, RECT rc) {
             }
         }
 
-        // Кнопка завершения
         FillGlassCard(g, mx + mw / 2 - 120, my + mh - 60, 240, 44, 8, Color(255, 30, 38, 58), Color(255, 22, 28, 44), colCardBorder);
         StringFormat sf;
         sf.SetAlignment(StringAlignmentCenter);
@@ -1513,7 +1556,7 @@ void DrawGame(HDC hdc, RECT rc) {
     }
 }
 
-// Обработка кликов мыши (Полная интерактивность)
+// Обработка кликов мыши
 void HandleMouseClick(int x, int y, HWND hwnd) {
     if (g_showReviewDialog) {
         float mw = 640.0f;
@@ -1534,7 +1577,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
         float mx = (WINDOW_WIDTH - mw) / 2.0f;
         float my = (WINDOW_HEIGHT - mh) / 2.0f;
 
-        // Проверка кликов по жукам
         for (auto& b : g_huntBugs) {
             if (b.alive) {
                 float bx = mx + 30 + b.x;
@@ -1550,7 +1592,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
             }
         }
 
-        // Кнопка завершения
         if (x >= mx + mw / 2 - 120 && x <= mx + mw / 2 + 120 && y >= my + mh - 60 && y <= my + mh - 16) {
             g_showBugHuntDialog = false;
             InvalidateRect(hwnd, NULL, FALSE);
@@ -1558,12 +1599,12 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
         return;
     }
 
-    // Кнопки скорости в топ-баре
+    // Кнопки скорости
     if (y >= 20 && y <= 54) {
-        float spX = 1000.0f;
+        float spX = 1070.0f;
         for (int i = 0; i < 4; i++) {
-            float bx = spX + 8 + i * 50;
-            if (x >= bx && x <= bx + 44) {
+            float bx = spX + 8 + i * 53;
+            if (x >= bx && x <= bx + 48) {
                 int spds[4] = {0, 1, 2, 5};
                 g_speed = spds[i];
                 PlaySoundBeep(700, 30);
@@ -1585,7 +1626,7 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
         return;
     }
 
-    // Быстрый дев [N] внизу сайдбара
+    // Быстрый дев [N]
     if (x >= 12 && x <= 203 && y >= WINDOW_HEIGHT - 105 && y <= WINDOW_HEIGHT - 63) {
         currentTab = TAB_DEV_WIZARD;
         PlaySoundBeep(700, 30);
@@ -1593,7 +1634,7 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
         return;
     }
 
-    // Быстрый фриланс [F] внизу сайдбара
+    // Быстрый фриланс [F]
     if (x >= 12 && x <= 203 && y >= WINDOW_HEIGHT - 55 && y <= WINDOW_HEIGHT - 15) {
         g_money += 3000;
         g_feedLogs.insert(g_feedLogs.begin(), L"💼 Выполнен контрактный фриланс: +$3,000 в кассу студии!");
@@ -1606,26 +1647,22 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
     float cx = sideW + 20.0f;
     float cw = (float)WINDOW_WIDTH - cx - 20.0f;
 
-    // Вкладка 0: Офис студии
+    // Вкладка 0: Офис
     if (currentTab == TAB_OFFICE) {
-        // Проверка кликов по кнопкам разработки
         if (g_isDevActive) {
             float roomY = topH + 16.0f + 52.0f;
             float devY = roomY + 300.0f + 14.0f;
-            // 1. Охота на баги
             if (x >= cx + 18 && x <= cx + 198 && y >= devY + 70 && y <= devY + 106) {
                 StartBugHunt();
                 InvalidateRect(hwnd, NULL, FALSE);
                 return;
             }
-            // 2. Кранч
             if (x >= cx + 210 && x <= cx + 380 && y >= devY + 70 && y <= devY + 106) {
                 g_isCrunch = !g_isCrunch;
                 PlaySoundBeep(g_isCrunch ? 1100 : 450, 40);
                 InvalidateRect(hwnd, NULL, FALSE);
                 return;
             }
-            // 3. Выпуск игры
             if (x >= cx + cw - 240 && x <= cx + cw - 18 && y >= devY + 70 && y <= devY + 106) {
                 if (g_devProgress >= 100.0) {
                     FinishDevelopment();
@@ -1639,7 +1676,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
     // Вкладка 1: Визард
     else if (currentTab == TAB_DEV_WIZARD) {
         float formY = topH + 16.0f + 52.0f;
-        // Рандомизация названия
         if (x >= cx + cw - 225 && x <= cx + cw - 20 && y >= formY + 40 && y <= formY + 82) {
             g_devTitle = g_randomTitles[rand() % g_randomTitles.size()];
             PlaySoundBeep(800, 30);
@@ -1647,7 +1683,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
             return;
         }
 
-        // Выбор жанра
         float gw = (cw - 60.0f) / 3.0f;
         for (size_t i = 0; i < g_genres.size(); i++) {
             float gx = cx + 20.0f + (i % 3) * (gw + 10.0f);
@@ -1660,7 +1695,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
             }
         }
 
-        // Выбор тематики
         float tw = (cw - 70.0f) / 4.0f;
         for (size_t i = 0; i < (std::min)((size_t)8, g_themes.size()); i++) {
             float tx = cx + 20.0f + (i % 4) * (tw + 10.0f);
@@ -1673,7 +1707,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
             }
         }
 
-        // Выбор платформы
         float pw = (cw - 60.0f) / 5.0f;
         for (size_t i = 0; i < (std::min)((size_t)5, g_platforms.size()); i++) {
             float px = cx + 20.0f + i * (pw + 10.0f);
@@ -1686,7 +1719,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
             }
         }
 
-        // Кнопка старта разработки
         float formH = (float)WINDOW_HEIGHT - formY - 16.0f;
         float btnStartY = formH - 64.0f;
         if (x >= cx + 20 && x <= cx + cw - 20 && y >= formY + btnStartY && y <= formY + btnStartY + 52) {
@@ -1699,7 +1731,6 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
     // Вкладка 3: Персонал
     else if (currentTab == TAB_STAFF) {
         float listY = topH + 16.0f + 56.0f;
-        // Кнопки обучения
         for (size_t i = 0; i < g_staff.size(); i++) {
             float sy = listY + 26.0f + i * 86.0f;
             if (x >= cx + cw - 180 && x <= cx + cw - 16 && y >= sy + 18 && y <= sy + 58) {
@@ -1708,15 +1739,16 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
                     g_staff[i].code += 4;
                     g_staff[i].design += 4;
                     g_staff[i].sound += 3;
-                    g_feedLogs.insert(g_feedLogs.begin(), L"🎓 " + g_staff[i].name + L" завершил курсы повышения квалификации (+4 Код, +4 Арт, +3 Звук)!");
+                    g_studioRating += 2000;
+                    g_feedLogs.insert(g_feedLogs.begin(), L"🎓 " + g_staff[i].name + L" завершил обучение (+4 Код, +4 Арт, +3 Звук)!");
                     PlaySoundBeep(1000, 50);
+                    CheckStudioRating();
                     InvalidateRect(hwnd, NULL, FALSE);
                     return;
                 }
             }
         }
 
-        // Кнопки найма кандидатов
         float candY = listY + 30.0f + g_staff.size() * 86.0f + 14.0f;
         for (size_t i = 0; i < (std::min)((size_t)3, g_candidates.size()); i++) {
             float cyPos = candY + 26.0f + i * 86.0f;
@@ -1735,9 +1767,11 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
                         g_candidates[i].avatarColorIdx
                     };
                     g_staff.push_back(emp);
+                    g_studioRating += 10000;
                     g_feedLogs.insert(g_feedLogs.begin(), L"🎉 В команду нанят новый специалист: " + emp.name + L" (" + emp.role + L")!");
                     g_candidates.erase(g_candidates.begin() + i);
                     PlaySoundBeep(1100, 60);
+                    CheckStudioRating();
                     InvalidateRect(hwnd, NULL, FALSE);
                     return;
                 }
@@ -1759,8 +1793,11 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
                 eng.modules = {L"Рэйтрейсинг v2", L"PhysX 5", L"DLSS 4", L"Пространственный звук"};
                 eng.isProprietary = true;
                 g_engines.push_back(eng);
-                g_feedLogs.insert(g_feedLogs.begin(), L"⚙️ Собран и запатентован флагманский движок Titan RTX! Множитель x1.95!");
+                g_studioRating += 75000;
+                g_innovationIndex += 25;
+                g_feedLogs.insert(g_feedLogs.begin(), L"⚙️ Собран и запатентован флагманский движок Titan RTX! Рейтинг +75,000!");
                 PlaySoundBeep(1200, 70);
+                CheckStudioRating();
                 InvalidateRect(hwnd, NULL, FALSE);
                 return;
             }
@@ -1776,8 +1813,11 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
                 if (g_rp >= g_researches[i].rpCost) {
                     g_rp -= g_researches[i].rpCost;
                     g_researches[i].unlocked = true;
-                    g_feedLogs.insert(g_feedLogs.begin(), L"🔬 Завершено исследование: «" + g_researches[i].title + L"»!");
+                    g_studioRating += 25000;
+                    g_innovationIndex += 15;
+                    g_feedLogs.insert(g_feedLogs.begin(), L"🔬 Завершено исследование: «" + g_researches[i].title + L"»! Рейтинг +25,000!");
                     PlaySoundBeep(1050, 60);
+                    CheckStudioRating();
                     InvalidateRect(hwnd, NULL, FALSE);
                     return;
                 }
@@ -1794,8 +1834,10 @@ void HandleMouseClick(int x, int y, HWND hwnd) {
                 if (g_money >= g_offices[i].price) {
                     g_money -= g_offices[i].price;
                     g_currentOfficeIdx = (int)i;
-                    g_feedLogs.insert(g_feedLogs.begin(), L"🏢 Студия переехала в новый офис: «" + g_offices[i].name + L"»!");
+                    g_studioRating += 150000;
+                    g_feedLogs.insert(g_feedLogs.begin(), L"🏢 Студия переехала в новый офис: «" + g_offices[i].name + L"»! Рейтинг +150,000!");
                     PlaySoundBeep(1200, 80);
+                    CheckStudioRating();
                     CheckAchievements();
                     InvalidateRect(hwnd, NULL, FALSE);
                     return;
@@ -1851,8 +1893,11 @@ void HandleKeyDown(WPARAM wParam, HWND hwnd) {
                     eng.modules = {L"Рэйтрейсинг v2", L"PhysX 5", L"DLSS 4", L"Пространственный звук"};
                     eng.isProprietary = true;
                     g_engines.push_back(eng);
-                    g_feedLogs.insert(g_feedLogs.begin(), L"⚙️ Собран и запатентован флагманский движок Titan RTX! Множитель x1.95!");
+                    g_studioRating += 75000;
+                    g_innovationIndex += 25;
+                    g_feedLogs.insert(g_feedLogs.begin(), L"⚙️ Собран и запатентован флагманский движок Titan RTX! Рейтинг +75,000!");
                     PlaySoundBeep(1200, 70);
+                    CheckStudioRating();
                 }
             } else {
                 g_devThemeIdx = 2;
@@ -1868,8 +1913,10 @@ void HandleKeyDown(WPARAM wParam, HWND hwnd) {
                     g_staff[0].code += 4;
                     g_staff[0].design += 4;
                     g_staff[0].sound += 3;
+                    g_studioRating += 2000;
                     g_feedLogs.insert(g_feedLogs.begin(), L"🎓 " + g_staff[0].name + L" прошел курс обучения (+4 Код, +4 Арт, +3 Звук)!");
                     PlaySoundBeep(1000, 50);
+                    CheckStudioRating();
                 }
             } else {
                 g_devThemeIdx = 4;
@@ -1940,7 +1987,6 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             RECT rc;
             GetClientRect(hwnd, &rc);
 
-            // Двойная буферизация для абсолютной плавности
             HDC memDC = CreateCompatibleDC(hdc);
             HBITMAP memBitmap = CreateCompatibleBitmap(hdc, rc.right, rc.bottom);
             HBITMAP oldBitmap = (HBITMAP)SelectObject(memDC, memBitmap);
@@ -1957,7 +2003,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             break;
         }
         case WM_ERASEBKGND:
-            return 1; // Предотвращает мерцание экрана
+            return 1;
         case WM_LBUTTONDOWN: {
             int x = LOWORD(lParam);
             int y = HIWORD(lParam);
