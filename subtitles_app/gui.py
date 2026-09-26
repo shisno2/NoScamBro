@@ -349,7 +349,7 @@ class MainWindow(QMainWindow):
         # Check CUDA
         cuda_functional = is_cuda_usable()
         if cuda_functional:
-            cuda_status = "⚡ GPU CUDA доступен"
+            cuda_status = "⚡ GPU CUDA (NVIDIA RTX 3060 Ti) активен"
             badge_color = "#38a169"
         else:
             cuda_status = "💻 Режим CPU (Оптимизирован)"

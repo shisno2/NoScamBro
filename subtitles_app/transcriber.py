@@ -22,6 +22,36 @@ try:
 except Exception:
     pass
 
+def setup_cuda_paths():
+    """Ensure NVIDIA pip wheel DLLs (cublas, cudnn) are registered in Windows DLL search path."""
+    import site
+    site_dirs = []
+    try:
+        site_dirs.extend(site.getsitepackages())
+    except Exception:
+        pass
+    try:
+        if site.getusersitepackages():
+            site_dirs.append(site.getusersitepackages())
+    except Exception:
+        pass
+
+    for base in site_dirs:
+        nvidia_path = os.path.join(base, "nvidia")
+        if os.path.isdir(nvidia_path):
+            for item in os.listdir(nvidia_path):
+                bin_path = os.path.join(nvidia_path, item, "bin")
+                if os.path.isdir(bin_path):
+                    if bin_path not in os.environ["PATH"]:
+                        os.environ["PATH"] = bin_path + os.pathsep + os.environ["PATH"]
+                    if hasattr(os, "add_dll_directory"):
+                        try:
+                            os.add_dll_directory(bin_path)
+                        except Exception:
+                            pass
+
+setup_cuda_paths()
+
 from faster_whisper import WhisperModel
 
 def format_timestamp_srt(seconds: float) -> str:
@@ -107,12 +137,21 @@ class SubtitleEngine:
         self.device = device
         self.compute_type = compute_type
 
+        threads = os.cpu_count() or 4
         try:
-            self.model = WhisperModel(
-                self.model_name,
-                device=device,
-                compute_type=compute_type
-            )
+            if device == "cpu":
+                self.model = WhisperModel(
+                    self.model_name,
+                    device="cpu",
+                    compute_type="int8",
+                    cpu_threads=threads
+                )
+            else:
+                self.model = WhisperModel(
+                    self.model_name,
+                    device="cuda",
+                    compute_type=compute_type
+                )
         except Exception as e:
             if device == "cuda":
                 if on_progress:
@@ -122,7 +161,8 @@ class SubtitleEngine:
                 self.model = WhisperModel(
                     self.model_name,
                     device="cpu",
-                    compute_type="int8"
+                    compute_type="int8",
+                    cpu_threads=threads
                 )
             else:
                 raise e
@@ -197,7 +237,7 @@ class SubtitleEngine:
                     on_progress(0.08, "CUDA недоступен. Автоматический перезапуск на CPU...")
                 self.device = "cpu"
                 self.compute_type = "int8"
-                self.model = WhisperModel(self.model_name, device="cpu", compute_type="int8")
+                self.model = WhisperModel(self.model_name, device="cpu", compute_type="int8", cpu_threads=os.cpu_count() or 4)
                 return self.transcribe(media_path, language, on_segment, on_progress)
             else:
                 raise e
