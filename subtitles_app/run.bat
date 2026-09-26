@@ -1,11 +1,11 @@
 @echo off
-chcp 65001 >nul
 cd /d "%~dp0"
-set "PYTHON_EXE=python"
-"%PYTHON_EXE%" --version >nul 2>&1
-if %errorlevel% neq 0 (
-    if exist "%LOCALAPPDATA%\Programs\Python\Python311\python.exe" (
-        set "PYTHON_EXE=%LOCALAPPDATA%\Programs\Python\Python311\python.exe"
-    )
+if exist "%LOCALAPPDATA%\Programs\Python\Python311\python.exe" (
+    start "" "%LOCALAPPDATA%\Programs\Python\Python311\python.exe" "%~dp0subtitles_app\main.py"
+    exit /b 0
 )
-start "" "%PYTHON_EXE%" main.py
+if exist "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" (
+    start "" "%LOCALAPPDATA%\Programs\Python\Python312\python.exe" "%~dp0subtitles_app\main.py"
+    exit /b 0
+)
+start "" python "%~dp0subtitles_app\main.py"
