@@ -1,8 +1,27 @@
 import os
 import sys
+import ssl
 import subprocess
 import time
 from typing import List, Dict, Any, Callable, Optional
+
+# Bypass SSL errors (e.g., self-signed certificates from antivirus, Russian root CAs, or proxy)
+try:
+    ssl._create_default_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
+
+os.environ["PYTHONHTTPSVERIFY"] = "0"
+os.environ["CURL_CA_BUNDLE"] = ""
+os.environ["REQUESTS_CA_BUNDLE"] = ""
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+
+try:
+    import urllib3
+    urllib3.disable_warnings()
+except Exception:
+    pass
+
 from faster_whisper import WhisperModel
 
 def format_timestamp_srt(seconds: float) -> str:
