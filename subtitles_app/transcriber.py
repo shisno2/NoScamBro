@@ -6,6 +6,10 @@ import time
 import tempfile
 from typing import List, Dict, Any, Callable, Optional
 
+# Set Hugging Face cache to D: drive if available to preserve C: drive space
+if os.path.exists("D:\\"):
+    os.environ["HF_HOME"] = "D:\\huggingface_cache"
+
 # Bypass SSL errors (e.g., self-signed certificates from antivirus, Russian root CAs, or proxy)
 try:
     ssl._create_default_https_context = ssl._create_unverified_context
@@ -20,6 +24,26 @@ os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
 try:
     import urllib3
     urllib3.disable_warnings()
+except Exception:
+    pass
+
+try:
+    import httpx
+    _orig_httpx = httpx.Client.__init__
+    def _patched_httpx(self, *args, **kwargs):
+        kwargs["verify"] = False
+        return _orig_httpx(self, *args, **kwargs)
+    httpx.Client.__init__ = _patched_httpx
+except Exception:
+    pass
+
+try:
+    import requests
+    _orig_req = requests.Session.__init__
+    def _patched_req(self, *args, **kwargs):
+        _orig_req(self, *args, **kwargs)
+        self.verify = False
+    requests.Session.__init__ = _patched_req
 except Exception:
     pass
 
@@ -175,33 +199,39 @@ class SubtitleEngine:
         self.compute_type = compute_type
         threads = os.cpu_count() or 4
 
-        try:
-            if device == "cpu":
-                self.model = WhisperModel(
-                    self.model_name,
-                    device="cpu",
-                    compute_type="int8",
-                    cpu_threads=threads
-                )
+        def try_init(model_name, dev, comp):
+            if dev == "cpu":
+                return WhisperModel(model_name, device="cpu", compute_type="int8", cpu_threads=threads)
             else:
-                self.model = WhisperModel(
-                    self.model_name,
-                    device="cuda",
-                    compute_type=compute_type
-                )
+                return WhisperModel(model_name, device="cuda", compute_type=comp)
+
+        try:
+            self.model = try_init(self.model_name, device, compute_type)
         except Exception as e:
-            if device == "cuda":
+            err_str = str(e).lower()
+            # If CUDA fails, fallback to CPU
+            if device == "cuda" and ("cublas" in err_str or "cuda" in err_str):
                 if on_progress:
-                    on_progress("Ошибка инициализации CUDA, переключение на CPU...")
+                    on_progress("Переключение на CPU режим...")
                 self.device = "cpu"
                 self.compute_type = "int8"
-                self.model = WhisperModel(
-                    self.model_name,
-                    device="cpu",
-                    compute_type="int8",
-                    cpu_threads=threads
-                )
-            else:
+                try:
+                    self.model = try_init(self.model_name, "cpu", "int8")
+                except Exception:
+                    pass
+
+            # If model files are incomplete or network failed, fallback to local small model
+            if self.model is None and self.model_name != "small":
+                if on_progress:
+                    on_progress(f"Модель '{self.model_name}' не готова локально. Загрузка готовой локальной модели 'small'...")
+                self.model_name = "small"
+                try:
+                    self.model = try_init("small", self.device, self.compute_type)
+                except Exception:
+                    self.device = "cpu"
+                    self.compute_type = "int8"
+                    self.model = try_init("small", "cpu", "int8")
+            elif self.model is None:
                 raise e
 
         if on_progress:

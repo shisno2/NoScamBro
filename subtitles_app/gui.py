@@ -430,8 +430,8 @@ class MainWindow(QMainWindow):
         # Model
         lbl_model = QLabel("AI Модель:")
         self.combo_model = QComboBox()
-        self.combo_model.addItem("medium (Высочайшая точность — рекомендуется для песен)", "medium")
-        self.combo_model.addItem("small (Быстро и качественно)", "small")
+        self.combo_model.addItem("small (Рекомендуется — готова на диске, высокая точность)", "small")
+        self.combo_model.addItem("medium (Высочайшая точность)", "medium")
         self.combo_model.addItem("large-v3-turbo (Максимальное качество)", "large-v3-turbo")
         self.combo_model.addItem("base (Быстро для слабых ПК)", "base")
         self.combo_model.addItem("tiny (Сверхбыстро)", "tiny")
@@ -553,7 +553,6 @@ class MainWindow(QMainWindow):
         if self.rb_music.isChecked():
             self.chk_vocal.setChecked(True)
             self.spin_chunk.setValue(1)
-            self.combo_model.setCurrentIndex(0)  # medium
         elif self.rb_reels.isChecked():
             self.chk_vocal.setChecked(False)
             self.spin_chunk.setValue(2)
