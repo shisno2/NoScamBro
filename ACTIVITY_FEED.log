@@ -766,3 +766,4 @@
 [2026-10-02 17:16:54 UTC] [TOKEN:685d9696df27c9d4] Backfill test(parser): update cache eviction heuristics
 [2026-10-02 17:16:54 UTC] [TOKEN:0239c196a3f8ee07] Backfill feat(engine): rebalance scheduler thread pool tasks
 [2026-10-02 17:16:55 UTC] [TOKEN:b56a077ed13302f8] Backfill fix(worker): rebalance scheduler thread pool tasks
+[2026-10-02 17:16:55 UTC] [TOKEN:18aea21a949028f2] Backfill refactor(net): recompute checksum signatures across feed
