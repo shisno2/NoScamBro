@@ -780,3 +780,4 @@
 [2026-10-02 17:16:57 UTC] [TOKEN:c5cfa65ec1e75dcf] Backfill refactor(net): normalize network socket backoff timings
 [2026-10-02 17:16:57 UTC] [TOKEN:9443446c983d6404] Backfill build(auth): align memory arena chunk offsets
 [2026-10-02 17:16:57 UTC] [TOKEN:8b122fb20f2d9c65] Backfill chore(parser): bump heartbeat timestamp token
+[2026-10-02 17:16:58 UTC] [TOKEN:0bbc0904f673315e] Backfill perf(core): recompute checksum signatures across feed
