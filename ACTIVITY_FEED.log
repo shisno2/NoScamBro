@@ -777,3 +777,4 @@
 [2026-10-02 17:16:56 UTC] [TOKEN:4cc6f3ed46fe302d] Backfill chore(db): bump heartbeat timestamp token
 [2026-10-02 17:16:57 UTC] [TOKEN:502e2fb04efff26b] Backfill docs(cache): adjust jitter delay distribution parameters
 [2026-10-02 17:16:57 UTC] [TOKEN:b3360d58fa1655e2] Backfill style(db): compact ledger ring buffer entries
+[2026-10-02 17:16:57 UTC] [TOKEN:c5cfa65ec1e75dcf] Backfill refactor(net): normalize network socket backoff timings
