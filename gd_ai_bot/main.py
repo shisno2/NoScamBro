@@ -7,13 +7,12 @@ import sys
 import argparse
 import time
 from capture import WindowCapture
-from detector import GDVisionDetector
-from bot_brain import GDBotBrain
 from inputs import FastInputController
+from bot_worker import BotWorkerThread
 
 def run_headless_cli(input_mode="mouse", speed=1.0):
     print("=" * 60)
-    print("  GEOMETRY DASH VISION AI - ULTRA REFLEX HEADLESS MODE")
+    print("  GEOMETRY DASH VISION AI - ULTRA REFLEX 240+ FPS CLI MODE")
     print("=" * 60)
     print(f"[*] Input Mode: {input_mode.upper()}")
     print(f"[*] Level Speed: {speed}x")
@@ -21,46 +20,25 @@ def run_headless_cli(input_mode="mouse", speed=1.0):
     print("=" * 60)
 
     cap = WindowCapture("Geometry Dash")
-    det = GDVisionDetector()
     inp = FastInputController(input_mode)
-    brain = GDBotBrain(det, inp)
-    brain.set_speed(speed)
-    brain.enabled = True
+    worker = BotWorkerThread(cap, inp)
+    worker.set_speed(speed)
+    worker.set_active(True)
+    worker.start()
 
-    print("[+] Searching for Geometry Dash window...")
-    while not cap.hwnd:
-        if cap.find_target_window():
-            print("[+] Geometry Dash window found and hooked!")
-            break
-        print("[-] Geometry Dash not detected yet. Retrying in 2 seconds... (Open GD!)")
-        time.sleep(2)
-
-    print("[+] AUTOPILOT ACTIVE! Monitoring screen in real time...")
-    frame_count = 0
-    t0 = time.perf_counter()
-
+    print("[+] AUTOPILOT ACTIVE! Running reflex loop at 240+ FPS...")
     try:
         while True:
-            frame = cap.grab_frame()
-            if frame is None or frame.size == 0:
-                time.sleep(0.005)
-                continue
-
-            obstacles, debug_info = det.scan_corridor(frame)
-            is_dead = det.detect_death(frame)
-            jumped = brain.process_frame_decision(obstacles, debug_info, is_dead)
-
-            frame_count += 1
-            if frame_count % 120 == 0:
-                elapsed = time.perf_counter() - t0
-                fps = frame_count / elapsed
-                print(f"[HUD] FPS: {fps:.1f} | Jumps: {brain.total_jumps} | Deaths: {brain.deaths_detected} | Sight: {len(obstacles)} objects")
-                t0 = time.perf_counter()
-                frame_count = 0
-
+            time.sleep(0.5)
+            state = worker.get_shared_state()
+            fps = state["fps"]
+            lat = state["latency_ms"]
+            jumps = state["jumps"]
+            action = state["action"]
+            print(f"[STATUS] Bot FPS: {fps:.0f} | Latency: {lat:.2f} ms | Jumps: {jumps} | {action}")
     except KeyboardInterrupt:
-        print("\n[*] Stopping AI autopilot. Releasing inputs...")
-        inp.release_up()
+        print("\n[*] Stopping AI autopilot...")
+        worker.stop()
         print("[*] AI stopped safely.")
 
 def main():

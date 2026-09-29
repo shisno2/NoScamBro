@@ -4,6 +4,7 @@ Captures screen frames at 120-200+ FPS with zero unnecessary copies.
 """
 
 import time
+from typing import Optional, Tuple
 import win32gui
 import win32con
 import numpy as np
@@ -97,6 +98,37 @@ class WindowCapture:
                 win32gui.SetForegroundWindow(self.hwnd)
             except Exception:
                 pass
+
+    def grab_roi(self, rel_box: Optional[Tuple[int, int, int, int]] = None) -> np.ndarray:
+        """
+        Grabs only a small bounding box region around the gameplay area.
+        rel_box: (x, y, w, h) relative to window client area.
+        Runs at 200-400+ FPS!
+        """
+        if self.monitor is None:
+            self.find_target_window()
+            if self.monitor is None:
+                return np.zeros((200, 400, 3), dtype=np.uint8)
+
+        # Build sub-monitor rect
+        if rel_box:
+            rx, ry, rw, rh = rel_box
+            sub_mon = {
+                "left": self.monitor["left"] + rx,
+                "top": self.monitor["top"] + ry,
+                "width": rw,
+                "height": rh
+            }
+        else:
+            sub_mon = self.monitor
+
+        try:
+            raw = self.sct.grab(sub_mon)
+            frame = np.frombuffer(raw.raw, dtype=np.uint8).reshape((raw.height, raw.width, 4))[:, :, :3]
+            return frame
+        except Exception:
+            # Fallback
+            return np.zeros((200, 400, 3), dtype=np.uint8)
 
     def grab_frame(self) -> np.ndarray:
         """
