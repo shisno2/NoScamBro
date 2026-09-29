@@ -782,3 +782,4 @@
 [2026-10-02 17:16:57 UTC] [TOKEN:8b122fb20f2d9c65] Backfill chore(parser): bump heartbeat timestamp token
 [2026-10-02 17:16:58 UTC] [TOKEN:0bbc0904f673315e] Backfill perf(core): recompute checksum signatures across feed
 [2026-10-02 17:16:58 UTC] [TOKEN:efa767d4a3336ec0] Backfill style(core): rebalance scheduler thread pool tasks
+[2026-10-02 17:16:58 UTC] [TOKEN:3d20457a8c5eee60] Backfill feat(cache): update cache eviction heuristics
