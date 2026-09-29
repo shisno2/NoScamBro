@@ -26,13 +26,14 @@ from simulator import GDSimulator
 class HotkeySignaler(QObject):
     toggle_signal = Signal()
     stop_signal = Signal()
+    calib_signal = Signal()
 
 class GDMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Geometry Dash Real-Time Vision AI Bot v2.0")
-        self.resize(1180, 740)
-        self.setMinimumSize(960, 640)
+        self.setWindowTitle("Geometry Dash Real-Time Vision AI Pro v2.2")
+        self.resize(1200, 760)
+        self.setMinimumSize(980, 660)
 
         # Core Components
         self.capture = WindowCapture("Geometry Dash")
@@ -48,14 +49,16 @@ class GDMainWindow(QMainWindow):
         self.fps = 0.0
         self.last_frame_time = time.perf_counter()
         
-        # Setup Hotkeys (F6 start/toggle, F7 stop)
+        # Setup Hotkeys (F6 start/toggle, F7 stop, F8 calibrate)
         self.hotkeys = HotkeySignaler()
         self.hotkeys.toggle_signal.connect(self.toggle_ai)
         self.hotkeys.stop_signal.connect(self.stop_ai)
+        self.hotkeys.calib_signal.connect(self.run_auto_calibration)
         
         try:
             keyboard.add_hotkey("F6", lambda: self.hotkeys.toggle_signal.emit())
             keyboard.add_hotkey("F7", lambda: self.hotkeys.stop_signal.emit())
+            keyboard.add_hotkey("F8", lambda: self.hotkeys.calib_signal.emit())
         except Exception as e:
             print("Hotkey hook notice:", e)
 
@@ -66,13 +69,13 @@ class GDMainWindow(QMainWindow):
         # Frame Processing Timer (60-120 FPS target)
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.process_frame)
-        self.timer.start(8) # ~120 Hz timer
+        self.timer.start(7) # ~140 Hz timer
 
     def _init_theme(self):
         """Applies dark cyberpunk neon style."""
         self.setStyleSheet("""
             QMainWindow {
-                background-color: #0F1016;
+                background-color: #0B0C12;
             }
             QWidget {
                 color: #ECEFF4;
@@ -80,7 +83,7 @@ class GDMainWindow(QMainWindow):
                 font-size: 13px;
             }
             QGroupBox {
-                background-color: #171822;
+                background-color: #141520;
                 border: 1px solid #2B2D3C;
                 border-radius: 8px;
                 margin-top: 12px;
@@ -128,8 +131,17 @@ class GDMainWindow(QMainWindow):
             QPushButton#btnStop:hover {
                 background: #FF1744;
             }
+            QPushButton#btnCalib {
+                background: qlineargradient(x1:0, y1:0, x2:1, y2:0, stop:0 #7A1FA2, stop:1 #BA68C8);
+                color: #FFFFFF;
+                border: none;
+            }
+            QPushButton#btnCalib:hover {
+                background: #CE93D8;
+                color: #000000;
+            }
             QComboBox {
-                background-color: #1E202F;
+                background-color: #1A1C29;
                 border: 1px solid #3B4261;
                 border-radius: 5px;
                 padding: 5px 10px;
@@ -177,7 +189,7 @@ class GDMainWindow(QMainWindow):
         left_layout = QVBoxLayout()
         
         preview_header = QHBoxLayout()
-        self.lbl_title = QLabel("LIVE GAME MONITOR & COMPUTER VISION HUD")
+        self.lbl_title = QLabel("AI VISION HUD & TRAJECTORY SIMULATOR")
         self.lbl_title.setStyleSheet("font-size: 14px; font-weight: bold; color: #00F0FF;")
         self.lbl_hud_stats = QLabel("FPS: 0.0 | Latency: 0.0 ms")
         self.lbl_hud_stats.setStyleSheet("color: #7AA2F7; font-weight: bold;")
@@ -188,8 +200,8 @@ class GDMainWindow(QMainWindow):
 
         # Video Frame Container
         self.video_label = QLabel()
-        self.video_label.setMinimumSize(640, 360)
-        self.video_label.setStyleSheet("background-color: #08090C; border: 2px solid #1E2235; border-radius: 8px;")
+        self.video_label.setMinimumSize(660, 380)
+        self.video_label.setStyleSheet("background-color: #06070A; border: 2px solid #1E2235; border-radius: 8px;")
         self.video_label.setAlignment(Qt.AlignCenter)
         left_layout.addWidget(self.video_label, stretch=1)
 
@@ -208,23 +220,30 @@ class GDMainWindow(QMainWindow):
 
         # Right Column: Controls & Tuning Dashboard
         right_panel = QVBoxLayout()
-        right_panel.setSpacing(12)
+        right_panel.setSpacing(10)
 
         # 1. Main Action Buttons
         btn_layout = QHBoxLayout()
         self.btn_start = QPushButton("▶ START AI (F6)")
         self.btn_start.setObjectName("btnStart")
-        self.btn_start.setFixedHeight(45)
+        self.btn_start.setFixedHeight(44)
         self.btn_start.clicked.connect(self.start_ai)
 
         self.btn_stop = QPushButton("⏹ STOP (F7)")
         self.btn_stop.setObjectName("btnStop")
-        self.btn_stop.setFixedHeight(45)
+        self.btn_stop.setFixedHeight(44)
         self.btn_stop.clicked.connect(self.stop_ai)
 
         btn_layout.addWidget(self.btn_start)
         btn_layout.addWidget(self.btn_stop)
         right_panel.addLayout(btn_layout)
+
+        # Auto-Calibrate button
+        self.btn_calib = QPushButton("🎯 Auto-Calibrate Screen & Floor (F8)")
+        self.btn_calib.setObjectName("btnCalib")
+        self.btn_calib.setFixedHeight(34)
+        self.btn_calib.clicked.connect(self.run_auto_calibration)
+        right_panel.addWidget(self.btn_calib)
 
         # 2. Source & Target Selection Group
         grp_source = QGroupBox("Capture Target")
@@ -232,7 +251,7 @@ class GDMainWindow(QMainWindow):
         
         self.cmb_source = QComboBox()
         self.cmb_source.addItem("Auto-Detect: Geometry Dash Window")
-        self.cmb_source.addItem("Built-in GD Simulator (Demo / Offline Test)")
+        self.cmb_source.addItem("Built-in GD Simulator (Offline Demo / Test)")
         self.cmb_source.currentIndexChanged.connect(self._on_source_changed)
         src_layout.addWidget(self.cmb_source)
 
@@ -242,7 +261,7 @@ class GDMainWindow(QMainWindow):
         right_panel.addWidget(grp_source)
 
         # 3. Mode & Controls Group
-        grp_mode = QGroupBox("Game Mode & Input")
+        grp_mode = QGroupBox("Game Mode & Precision")
         mode_layout = QGridLayout(grp_mode)
 
         mode_layout.addWidget(QLabel("Mode:"), 0, 0)
@@ -265,7 +284,7 @@ class GDMainWindow(QMainWindow):
         right_panel.addWidget(grp_mode)
 
         # 4. Computer Vision Tuning Sliders
-        grp_tuning = QGroupBox("Vision & Reflex Calibration")
+        grp_tuning = QGroupBox("Vision & Timing Fine-Tuning")
         tune_layout = QVBoxLayout(grp_tuning)
 
         # Trigger Distance
@@ -280,7 +299,7 @@ class GDMainWindow(QMainWindow):
         # Lookahead Distance
         self.lbl_lookahead_val = QLabel(f"Lookahead Scan Distance: {self.detector.lookahead_px} px")
         self.slider_lookahead = QSlider(Qt.Horizontal)
-        self.slider_lookahead.setRange(100, 500)
+        self.slider_lookahead.setRange(120, 550)
         self.slider_lookahead.setValue(self.detector.lookahead_px)
         self.slider_lookahead.valueChanged.connect(self._on_lookahead_slider)
         tune_layout.addWidget(self.lbl_lookahead_val)
@@ -295,17 +314,8 @@ class GDMainWindow(QMainWindow):
         tune_layout.addWidget(self.lbl_floor_val)
         tune_layout.addWidget(self.slider_floor)
 
-        # Player X Position
-        self.lbl_player_x_val = QLabel(f"Player X Position: {int(self.detector.player_x_ratio * 100)}%")
-        self.slider_player_x = QSlider(Qt.Horizontal)
-        self.slider_player_x.setRange(10, 45)
-        self.slider_player_x.setValue(int(self.detector.player_x_ratio * 100))
-        self.slider_player_x.valueChanged.connect(self._on_player_x_slider)
-        tune_layout.addWidget(self.lbl_player_x_val)
-        tune_layout.addWidget(self.slider_player_x)
-
         # Debug Overlay Checkbox
-        self.chk_overlay = QCheckBox("Show AI Vision Overlay (Rays, Boxes, Triggers)")
+        self.chk_overlay = QCheckBox("Show Trajectory Arc & Detection Hitboxes")
         self.chk_overlay.setChecked(True)
         self.chk_overlay.toggled.connect(lambda v: setattr(self, "show_debug_overlay", v))
         tune_layout.addWidget(self.chk_overlay)
@@ -313,7 +323,7 @@ class GDMainWindow(QMainWindow):
         right_panel.addWidget(grp_tuning)
 
         # Statistics Label
-        self.lbl_stats = QLabel("Total Jumps: 0 | Deaths: 0")
+        self.lbl_stats = QLabel("Total Jumps: 0 | Deaths: 0 | Offset: 0px")
         self.lbl_stats.setStyleSheet("color: #7AA2F7; padding: 4px;")
         right_panel.addWidget(self.lbl_stats)
 
@@ -322,6 +332,17 @@ class GDMainWindow(QMainWindow):
 
         self.setCentralWidget(main_widget)
         self._refresh_windows()
+
+    @Slot()
+    def run_auto_calibration(self):
+        """Forces immediate re-calibration on current frame."""
+        frame = self.capture.grab_frame() if not self.use_simulator else self.simulator.update()
+        if frame is not None and frame.size > 0:
+            self.detector.auto_calibrate(frame)
+            self.slider_floor.setValue(int(self.detector.ground_y_ratio * 100))
+            self.slider_trigger.setValue(self.detector.jump_trigger_dist)
+            self.lbl_status.setText("● STATUS: Screen auto-calibrated successfully!")
+            self.lbl_status.setStyleSheet("color: #BA68C8; font-weight: bold;")
 
     def _refresh_windows(self):
         found = self.capture.find_target_window()
@@ -362,12 +383,7 @@ class GDMainWindow(QMainWindow):
     def _on_floor_slider(self, val):
         self.detector.ground_y_ratio = val / 100.0
         self.lbl_floor_val.setText(f"Ground Level: {val}%")
-        self.detector.last_player_box = None # force re-calibration
-
-    def _on_player_x_slider(self, val):
-        self.detector.player_x_ratio = val / 100.0
-        self.lbl_player_x_val.setText(f"Player X Position: {val}%")
-        self.detector.last_player_box = None
+        self.detector.ground_y = int(val / 100.0 * (self.capture.monitor["height"] if self.capture.monitor else 540))
 
     @Slot()
     def toggle_ai(self):
@@ -382,7 +398,6 @@ class GDMainWindow(QMainWindow):
         self.brain.enabled = True
         self.lbl_status.setText("● STATUS: AI ACTIVE - Real-Time Autopilot ENGAGED!")
         self.lbl_status.setStyleSheet("color: #00FF88; font-weight: bold;")
-        # Focus game window if available
         if not self.use_simulator:
             self.capture.bring_to_front()
 
@@ -406,18 +421,17 @@ class GDMainWindow(QMainWindow):
             try:
                 frame = self.capture.grab_frame()
             except Exception:
-                # If capture fails (e.g. window minimized or display access error), fallback to simulator
                 frame = self.simulator.update()
 
         if frame is None or frame.size == 0:
             return
 
         # 2. Vision Processing
-        obstacles, debug_info = self.detector.scan_corridor(frame)
+        hitboxes, debug_info = self.detector.scan_corridor(frame)
         is_dead = self.detector.detect_death(frame)
 
         # 3. Decision & Input Dispatch
-        jumped = self.brain.process_frame_decision(obstacles, debug_info, is_dead)
+        jumped = self.brain.process_frame_decision(hitboxes, debug_info, is_dead)
         if jumped and self.use_simulator:
             self.simulator.trigger_jump()
 
@@ -432,7 +446,10 @@ class GDMainWindow(QMainWindow):
 
         # 4. Render Annotations if enabled
         if self.show_debug_overlay:
-            display_frame = self.detector.annotate_frame(frame, obstacles, debug_info, jumped, self.fps)
+            display_frame = self.detector.annotate_frame(
+                frame, hitboxes, debug_info, jumped, self.fps,
+                trajectory_pts=self.brain.current_trajectory
+            )
         else:
             display_frame = frame
 
@@ -442,10 +459,12 @@ class GDMainWindow(QMainWindow):
             self.lbl_action.setText("ACTION: 🔥 JUMP EXECUTED!")
             self.lbl_action.setStyleSheet("color: #FF1744; font-weight: bold;")
         else:
-            self.lbl_action.setText("ACTION: SCANNING...")
+            self.lbl_action.setText("ACTION: AUTOPILOT SCANNING...")
             self.lbl_action.setStyleSheet("color: #00E676; font-weight: bold;")
 
-        self.lbl_stats.setText(f"Total Jumps: {self.brain.total_jumps} | Deaths: {self.brain.deaths_detected}")
+        self.lbl_stats.setText(
+            f"Jumps: {self.brain.total_jumps} | Deaths: {self.brain.deaths_detected} | Offset: {self.brain.timing_offset_px:.0f}px"
+        )
 
         # Convert OpenCV BGR image to QPixmap for display
         rgb_frame = cv2.cvtColor(display_frame, cv2.COLOR_BGR2RGB)
