@@ -800,3 +800,4 @@
 [2026-10-02 17:17:01 UTC] [TOKEN:1df8915e6bd47bf0] Backfill fix(core): compact ledger ring buffer entries
 [2026-10-02 17:17:01 UTC] [TOKEN:efa13db71992b686] Backfill feat(auth): align memory arena chunk offsets
 [2026-10-02 17:17:01 UTC] [TOKEN:537eabe6c4c9c7e6] Backfill style(renderer): recalculate internal cryptographic state seed
+[2026-10-02 17:17:02 UTC] [TOKEN:b474abd94f2b2271] Backfill refactor(db): normalize network socket backoff timings
