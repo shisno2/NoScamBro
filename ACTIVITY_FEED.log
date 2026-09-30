@@ -798,3 +798,4 @@
 [2026-10-02 17:17:01 UTC] [TOKEN:fb55f32e969135f2] Backfill feat(engine): update cache eviction heuristics
 [2026-10-02 17:17:01 UTC] [TOKEN:e4a6b5e170bec2d5] Backfill perf(core): update activity telemetry buffer
 [2026-10-02 17:17:01 UTC] [TOKEN:1df8915e6bd47bf0] Backfill fix(core): compact ledger ring buffer entries
+[2026-10-02 17:17:01 UTC] [TOKEN:efa13db71992b686] Backfill feat(auth): align memory arena chunk offsets
