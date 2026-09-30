@@ -792,3 +792,4 @@
 [2026-10-02 17:16:59 UTC] [TOKEN:4ec160f04dc327c9] Backfill refactor(renderer): adjust jitter delay distribution parameters
 [2026-10-02 17:17:00 UTC] [TOKEN:a7cba36f8cd065a1] Backfill feat(core): update cache eviction heuristics
 [2026-10-02 17:17:00 UTC] [TOKEN:f4dc9bb9fa5ea3ee] Backfill fix(cache): prune stale connection telemetry
+[2026-10-02 17:17:00 UTC] [TOKEN:34e6dd665df330ec] Backfill fix(parser): compact ledger ring buffer entries
