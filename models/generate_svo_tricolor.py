@@ -2,13 +2,10 @@ import bpy
 import math
 import mathutils
 
-def create_svo_tricolor_scene(subdivision_levels=6):
+def create_svo_tricolor_scene(subdivision_levels=6, use_gpu=True):
     """
-    Creates 3D 'SVO' text with Russian Flag (tricolor) shader and ultra-high density subdivision.
-    - subdivision_levels=5 -> ~5,011,968 polygons (~4 GB RAM)
-    - subdivision_levels=6 -> ~20,047,872 polygons (~16 GB RAM)
-    - Theoretical 167M+ polygons requires ~138 GB RAM in uncompressed BMesh or
-      Cycles Camera-Space Micropolygon Adaptive Subdivision (dicing).
+    Generates 3D 'SVO' text with the Russian Flag (White, Blue, Red) procedural material
+    and ultra-dense subdivision (20M+ polygons) rendered via Cycles OptiX GPU.
     """
     # 1. Clear existing objects
     for obj in list(bpy.data.objects):
@@ -40,10 +37,12 @@ def create_svo_tricolor_scene(subdivision_levels=6):
         subsurf.subdivision_type = 'SIMPLE'
         subsurf.levels = subdivision_levels
         subsurf.render_levels = subdivision_levels
-        # Note: applying Level 6 yields 20,047,872 polygons directly into mesh data
+        # Level 6 produces 20,047,872 polygons directly in the mesh data
         bpy.ops.object.modifier_apply(modifier="Subsurf")
 
-    # 4. Russian Flag Procedural Shader (Top: White, Middle: Blue, Bottom: Red)
+    text_obj.select_set(False)
+
+    # 4. Russian Flag Procedural Shader (White top, Blue middle, Red bottom)
     mat = bpy.data.materials.new(name="Russian_Flag_Material")
     mat.use_nodes = True
     nodes = mat.node_tree.nodes
@@ -60,19 +59,19 @@ def create_svo_tricolor_scene(subdivision_levels=6):
     ramp_node.location = (50, 0)
     ramp_node.color_ramp.interpolation = 'CONSTANT'
 
-    # Russian Flag colors:
+    # Color mapping:
     # 0.0 - 0.3333: Red (Bottom)
     # 0.3333 - 0.6667: Blue (Middle)
     # 0.6667 - 1.0: White (Top)
     elements = ramp_node.color_ramp.elements
     elements[0].position = 0.0
-    elements[0].color = (0.85, 0.03, 0.05, 1.0) # Russian Red
-
-    elements[1].position = 0.6667
-    elements[1].color = (1.0, 1.0, 1.0, 1.0)    # White
+    elements[0].color = (0.82, 0.02, 0.04, 1.0) # Red
 
     blue_elem = ramp_node.color_ramp.elements.new(0.3333)
-    blue_elem.color = (0.0, 0.22, 0.85, 1.0)   # Russian Blue
+    blue_elem.color = (0.00, 0.12, 0.65, 1.0)   # Blue
+
+    elements[2].position = 0.6667
+    elements[2].color = (0.98, 0.98, 0.99, 1.0) # White
 
     sep_node = nodes.new(type="ShaderNodeSeparateXYZ")
     sep_node.location = (-150, 0)
@@ -96,54 +95,61 @@ def create_svo_tricolor_scene(subdivision_levels=6):
     text_obj.data.materials.append(mat)
 
     # 5. Studio Lighting Setup
-    # Key Light
-    key_light_data = bpy.data.lights.new(name="Key_Light", type='AREA')
-    key_light_data.energy = 600
-    key_light_data.size = 3
-    key_light = bpy.data.objects.new(name="Key_Light", object_data=key_light_data)
-    bpy.context.collection.objects.link(key_light)
-    key_light.location = (3, -4, 4)
-    key_light.rotation_euler = (math.radians(45), 0, math.radians(35))
-
-    # Fill Light
-    fill_light_data = bpy.data.lights.new(name="Fill_Light", type='AREA')
-    fill_light_data.energy = 300
-    fill_light_data.size = 4
-    fill_light_data.color = (0.85, 0.9, 1.0)
-    fill_light = bpy.data.objects.new(name="Fill_Light", object_data=fill_light_data)
-    bpy.context.collection.objects.link(fill_light)
-    fill_light.location = (-4, -3, 2)
-    fill_light.rotation_euler = (math.radians(45), 0, math.radians(-45))
-
-    # Rim Light
-    rim_light_data = bpy.data.lights.new(name="Rim_Light", type='AREA')
-    rim_light_data.energy = 800
-    rim_light_data.size = 5
-    rim_light_data.color = (1.0, 0.98, 0.95)
-    rim_light = bpy.data.objects.new(name="Rim_Light", object_data=rim_light_data)
-    bpy.context.collection.objects.link(rim_light)
-    rim_light.location = (0, 3.5, 3)
-    rim_light.rotation_euler = (math.radians(-45), 0, 0)
+    lights = [
+        ("Key_Light", 900.0, 3.0, (3, -4, 4), (math.radians(45), 0, math.radians(35))),
+        ("Fill_Light", 450.0, 4.0, (-4, -3, 2), (math.radians(45), 0, math.radians(-45))),
+        ("Rim_Light", 1400.0, 5.0, (0, 3.5, 3), (math.radians(-45), 0, 0))
+    ]
+    for name, energy, size, loc, rot in lights:
+        light_data = bpy.data.lights.new(name=name, type='AREA')
+        light_data.energy = energy
+        light_data.size = size
+        light_obj = bpy.data.objects.new(name=name, object_data=light_data)
+        bpy.context.collection.objects.link(light_obj)
+        light_obj.location = loc
+        light_obj.rotation_euler = rot
 
     # 6. Camera Setup
     cam_data = bpy.data.cameras.new(name="Camera")
     cam = bpy.data.objects.new(name="Camera", object_data=cam_data)
     bpy.context.collection.objects.link(cam)
     bpy.context.scene.camera = cam
-    cam.location = (0.0, -4.6, 0.05)
-    direction = (text_obj.location + mathutils.Vector((0, 0, 0.35))) - cam.location
+    cam.location = (0.0, -6.2, 0.15)
+    direction = (text_obj.location + mathutils.Vector((0, 0, 0.2))) - cam.location
     cam.rotation_euler = direction.to_track_quat('-Z', 'Y').to_euler()
 
-    # Dark studio background
+    # Dark studio world background
     world = bpy.context.scene.world
     if world and world.use_nodes:
         bg_node = next((n for n in world.node_tree.nodes if n.type == "BACKGROUND"), None)
         if bg_node:
-            bg_node.inputs[0].default_value = (0.04, 0.04, 0.06, 1.0)
+            bg_node.inputs[0].default_value = (0.05, 0.05, 0.07, 1.0)
             bg_node.inputs[1].default_value = 1.0
 
-    print(f"Total evaluated polygons: {len(text_obj.data.polygons):,}")
-    print(f"Total evaluated vertices: {len(text_obj.data.vertices):,}")
+    # 7. Cycles GPU OptiX Configuration
+    if use_gpu:
+        bpy.context.scene.render.engine = 'CYCLES'
+        bpy.context.scene.cycles.device = 'GPU'
+        bpy.context.scene.cycles.use_denoising = True
+        try:
+            bpy.context.scene.cycles.denoiser = 'OPTIX'
+        except Exception:
+            pass
+
+        cycles_pref = bpy.context.preferences.addons.get('cycles')
+        if cycles_pref:
+            cpref = cycles_pref.preferences
+            try:
+                cpref.compute_device_type = 'OPTIX'
+            except Exception:
+                cpref.compute_device_type = 'CUDA'
+            cpref.get_devices()
+            for d in cpref.devices:
+                if d.type in ('OPTIX', 'CUDA'):
+                    d.use = True
+
+    print(f"Mesh polygons: {len(text_obj.data.polygons):,}")
+    print(f"Mesh vertices: {len(text_obj.data.vertices):,}")
 
 if __name__ == "__main__":
     create_svo_tricolor_scene()
