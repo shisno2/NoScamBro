@@ -1,0 +1,29 @@
+name: 24/7 GitHub Activity Farmer
+
+on:
+  schedule:
+    # Runs every 2 hours throughout the day and night
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  farm-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Farm Activity Tick
+        run: |
+          python activity_farmer.py --name "${{ github.actor }}" --email "${{ github.actor }}@users.noreply.github.com" tick
