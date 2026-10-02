@@ -1,10 +1,10 @@
 <div align="center">
 
 <!-- Animated Header Banner -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,17,23&height=220&section=header&text=Kolyancat12888888&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20Low-Level%20%26%20Systems%20Developer&descAlignY=62&descSize=20" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=1,11,17,23&height=220&section=header&text=shisno2&fontSize=54&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Software%20Engineer%20%7C%20Low-Level%20%26%20Systems%20Developer&descAlignY=62&descSize=20" width="100%" />
 
 <!-- Typing Animation Subtitle -->
-<a href="https://github.com/Kolyancat12888888">
+<a href="https://github.com/shisno2">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&duration=3000&pause=1000&color=00F0FF&center=true&vCenter=true&width=600&lines=Low-Level+%26+Systems+Engineering;C%2B%2B+%2F+Win32+Native+Development;Reverse+Engineering+%26+Binary+Analysis;High-Performance+Computing" alt="Typing SVG" />
 </a>
 
@@ -41,16 +41,16 @@
 ### 📊 GitHub Analytics & Trophies
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Kolyancat12888888&theme=tokyonight&no-frame=true&margin-w=4" alt="Trophies" />
+  <img src="https://github-profile-trophy.vercel.app/?username=shisno2&theme=tokyonight&no-frame=true&margin-w=4" alt="Trophies" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Kolyancat12888888&theme=tokyonight&hide_border=true&border_radius=8" alt="GitHub Streak" width="49%" />
-  <img src="https://github-readme-stats.vercel.app/api?username=Kolyancat12888888&show_icons=true&theme=tokyonight&hide_border=true&border_radius=8&count_private=true" alt="GitHub Stats" width="49%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=shisno2&theme=tokyonight&hide_border=true&border_radius=8" alt="GitHub Streak" width="49%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=shisno2&show_icons=true&theme=tokyonight&hide_border=true&border_radius=8&count_private=true" alt="GitHub Stats" width="49%" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Kolyancat12888888&layout=compact&theme=tokyonight&hide_border=true&border_radius=8" alt="Top Languages" width="60%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=shisno2&layout=compact&theme=tokyonight&hide_border=true&border_radius=8" alt="Top Languages" width="60%" />
 </p>
 
 ---

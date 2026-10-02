@@ -27,6 +27,6 @@ jobs:
       - name: Farm Activity Ultra Batch
         run: |
           for i in {1..5}; do
-            python activity_farmer.py --name "Kolyancat12888888" --email "shisno21@gmail.com" --no-push tick
+            python activity_farmer.py --name "shisno2" --email "shisno21@gmail.com" --no-push tick
           done
           git push origin main
