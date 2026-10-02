@@ -1966,3 +1966,4 @@
 [2026-10-02 20:31:20 UTC] [TOKEN:ef8b288293757f7d] ci(core): adjust jitter delay distribution parameters
 [2026-10-02 20:31:20 UTC] [TOKEN:a4920990b6c31eac] feat(auth): compact ledger ring buffer entries
 [2026-10-02 20:31:20 UTC] [TOKEN:d7334cc717725dee] fix(renderer): update activity telemetry buffer
+[2026-10-02 20:31:20 UTC] [TOKEN:9e8a6c32d2e1d17e] fix(net): recompute checksum signatures across feed
