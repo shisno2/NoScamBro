@@ -2,8 +2,8 @@ name: 24/7 GitHub Activity Farmer
 
 on:
   schedule:
-    # Runs every 2 hours throughout the day and night
-    - cron: '17 */2 * * *'
+    # Ultra mode: runs every hour throughout day and night
+    - cron: '23 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Farm Activity Tick
+      - name: Farm Activity Ultra Batch
         run: |
-          python activity_farmer.py --name "${{ github.actor }}" --email "${{ github.actor }}@users.noreply.github.com" tick
+          for i in {1..5}; do
+            python activity_farmer.py --name "Kolyancat12888888" --email "shisno21@gmail.com" --no-push tick
+          done
+          git push origin main
