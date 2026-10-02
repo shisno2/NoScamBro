@@ -150,16 +150,25 @@ def mode_continuous(args):
 
 def mode_backfill(args):
     print(f"[*] Starting Historical Contribution Grid Backfill...")
-    print(f"[*] Days to backfill: {args.days}")
     print(f"[*] Daily commits range: {args.commits_min} - {args.commits_max}")
     
-    today = datetime.datetime.now()
-    total_commits = 0
+    if getattr(args, "start_date", None) and getattr(args, "end_date", None):
+        start = datetime.datetime.strptime(args.start_date, "%Y-%m-%d").date()
+        end = datetime.datetime.strptime(args.end_date, "%Y-%m-%d").date()
+        target_days = []
+        cur = start
+        while cur <= end:
+            target_days.append(datetime.datetime(cur.year, cur.month, cur.day))
+            cur += datetime.timedelta(days=1)
+        print(f"[*] Date range: {args.start_date} -> {args.end_date} ({len(target_days)} days)", flush=True)
+    else:
+        today = datetime.datetime.now()
+        target_days = [today - datetime.timedelta(days=d) for d in range(args.days, 0, -1)]
+        print(f"[*] Days to backfill: {args.days}", flush=True)
     
-    for day_offset in range(args.days, 0, -1):
-        target_day = today - datetime.timedelta(days=day_offset)
+    total_commits = 0
+    for target_day in target_days:
         n_commits = random.randint(args.commits_min, args.commits_max)
-        
         for _ in range(n_commits):
             hour = random.randint(8, 23)
             minute = random.randint(0, 59)
@@ -178,14 +187,14 @@ def mode_backfill(args):
             )
             total_commits += 1
             
-        print(f"[+] Day {target_day.strftime('%Y-%m-%d')}: {n_commits} commits generated.")
+        print(f"[+] Day {target_day.strftime('%Y-%m-%d')}: {n_commits} commits generated.", flush=True)
         
     if not args.no_push:
-        print(f"[*] Pushing all {total_commits} backfilled commits to {args.remote}/{args.branch}...")
+        print(f"[*] Pushing all {total_commits} backfilled commits to {args.remote}/{args.branch}...", flush=True)
         run_git(["push", args.remote, args.branch], cwd=args.repo)
-        print(f"[+] Backfill pushed successfully.")
+        print(f"[+] Backfill pushed successfully.", flush=True)
         
-    print(f"[+] Completed backfilling {total_commits} commits across {args.days} days.")
+    print(f"[+] Completed backfilling {total_commits} commits across {len(target_days)} days.", flush=True)
 
 def main():
     parser = argparse.ArgumentParser(description="24/7 GitHub Activity & Contribution Matrix Farmer")
@@ -208,6 +217,8 @@ def main():
     # Backfill historical mode
     parser_backfill = subparsers.add_parser("backfill", help="Backfill historical commits to light up github grid")
     parser_backfill.add_argument("--days", type=int, default=30, help="Number of past days to populate (default: 30)")
+    parser_backfill.add_argument("--start-date", default=None, help="Start date in YYYY-MM-DD format")
+    parser_backfill.add_argument("--end-date", default=None, help="End date in YYYY-MM-DD format")
     parser_backfill.add_argument("--commits-min", type=int, default=2, help="Min commits per day (default: 2)")
     parser_backfill.add_argument("--commits-max", type=int, default=8, help="Max commits per day (default: 8)")
     
