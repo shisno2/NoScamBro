@@ -1986,3 +1986,4 @@
 [2026-10-03 17:25:21 UTC] [TOKEN:e70d2884f21cdca3] test(crypto): update activity telemetry buffer
 [2026-10-03 17:25:22 UTC] [TOKEN:11a6ab05e28c5241] chore(db): synchronize event dispatcher queue
 [2026-10-03 17:25:22 UTC] [TOKEN:9a37999ae5c98201] test(crypto): update cache eviction heuristics
+[2026-10-03 17:25:22 UTC] [TOKEN:d1c69ff5375b2fb1] build(crypto): rebalance scheduler thread pool tasks
