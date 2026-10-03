@@ -1979,3 +1979,4 @@
 [2026-10-03 06:37:11 UTC] [TOKEN:eb972f7fda272112] build(renderer): optimize worker loop iteration cycle
 [2026-10-03 06:37:11 UTC] [TOKEN:00830cb07b09651c] perf(cache): prune stale connection telemetry
 [2026-10-03 12:37:12 UTC] [TOKEN:e516978c7bb55d39] feat(cache): compact ledger ring buffer entries
+[2026-10-03 12:37:12 UTC] [TOKEN:16e734d139ad4773] perf(cache): recompute checksum signatures across feed
