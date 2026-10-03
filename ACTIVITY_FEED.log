@@ -1991,3 +1991,4 @@
 [2026-10-03 21:25:50 UTC] [TOKEN:ee7e517573451bbd] docs(api): refresh telemetry sequence counter
 [2026-10-03 21:25:50 UTC] [TOKEN:343bb73ddc21bd53] feat(api): synchronize event dispatcher queue
 [2026-10-03 21:25:50 UTC] [TOKEN:708797dbd1f0761a] perf(engine): refactor pipeline state machine transitions
+[2026-10-03 21:25:50 UTC] [TOKEN:fef683cd89d27f65] style(renderer): normalize network socket backoff timings
