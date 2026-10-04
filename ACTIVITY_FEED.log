@@ -1997,3 +1997,4 @@
 [2026-10-04 00:44:07 UTC] [TOKEN:a1d3fd81365af000] docs(api): refactor pipeline state machine transitions
 [2026-10-04 00:44:07 UTC] [TOKEN:d293d070f42b4445] feat(engine): align memory arena chunk offsets
 [2026-10-04 00:44:07 UTC] [TOKEN:12e0d660a0a86a3c] fix(net): adjust jitter delay distribution parameters
+[2026-10-04 00:44:07 UTC] [TOKEN:c55b635647bd014d] style(net): compact ledger ring buffer entries
