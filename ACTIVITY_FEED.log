@@ -2014,3 +2014,4 @@
 [2026-10-04 17:38:34 UTC] [TOKEN:959d15927f1a6e9e] test(crypto): refresh telemetry sequence counter
 [2026-10-04 17:38:34 UTC] [TOKEN:3c00f9d20a204f83] fix(cache): adjust jitter delay distribution parameters
 [2026-10-04 21:37:05 UTC] [TOKEN:9c1063463286ec1c] docs(crypto): bump heartbeat timestamp token
+[2026-10-04 21:37:05 UTC] [TOKEN:732e5e9cc102ee90] refactor(cache): normalize network socket backoff timings
