@@ -2005,3 +2005,4 @@
 [2026-10-04 07:00:51 UTC] [TOKEN:cdba7a78845f03c5] feat(worker): prune stale connection telemetry
 [2026-10-04 13:17:13 UTC] [TOKEN:87c12e103ec93a86] perf(engine): compact ledger ring buffer entries
 [2026-10-04 13:17:13 UTC] [TOKEN:be5ccd0c9ec3793f] refactor(worker): bump heartbeat timestamp token
+[2026-10-04 13:17:13 UTC] [TOKEN:164375aee8a18f51] test(worker): update activity telemetry buffer
