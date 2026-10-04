@@ -2003,3 +2003,4 @@
 [2026-10-04 07:00:51 UTC] [TOKEN:ae2a0517f8840238] feat(auth): recalculate internal cryptographic state seed
 [2026-10-04 07:00:51 UTC] [TOKEN:4e093bf7362adfbe] fix(parser): recalculate internal cryptographic state seed
 [2026-10-04 07:00:51 UTC] [TOKEN:cdba7a78845f03c5] feat(worker): prune stale connection telemetry
+[2026-10-04 13:17:13 UTC] [TOKEN:87c12e103ec93a86] perf(engine): compact ledger ring buffer entries
