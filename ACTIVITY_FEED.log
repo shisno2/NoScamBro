@@ -2010,3 +2010,4 @@
 [2026-10-04 13:17:13 UTC] [TOKEN:dbd9219782ad905e] style(cache): optimize worker loop iteration cycle
 [2026-10-04 17:38:34 UTC] [TOKEN:545cd8b42a0e6e5f] build(worker): adjust jitter delay distribution parameters
 [2026-10-04 17:38:34 UTC] [TOKEN:f92566df4194a941] fix(renderer): synchronize event dispatcher queue
+[2026-10-04 17:38:34 UTC] [TOKEN:a2b70b9ed6978e82] perf(core): align memory arena chunk offsets
