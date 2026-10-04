@@ -1995,3 +1995,4 @@
 [2026-10-03 21:25:50 UTC] [TOKEN:4accdaa8a9333c88] ci(auth): normalize network socket backoff timings
 [2026-10-04 00:44:06 UTC] [TOKEN:95b9a7a726669820] build(core): prune stale connection telemetry
 [2026-10-04 00:44:07 UTC] [TOKEN:a1d3fd81365af000] docs(api): refactor pipeline state machine transitions
+[2026-10-04 00:44:07 UTC] [TOKEN:d293d070f42b4445] feat(engine): align memory arena chunk offsets
