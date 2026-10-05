@@ -2025,3 +2025,4 @@
 [2026-10-05 01:01:47 UTC] [TOKEN:8bb0763eb6fb67f7] ci(core): prune stale connection telemetry
 [2026-10-05 07:10:42 UTC] [TOKEN:100c95194ba83708] perf(api): update cache eviction heuristics
 [2026-10-05 07:10:42 UTC] [TOKEN:15849ce8d9d5cee7] perf(engine): adjust jitter delay distribution parameters
+[2026-10-05 07:10:43 UTC] [TOKEN:bb2c644d2334303e] docs(crypto): align memory arena chunk offsets
