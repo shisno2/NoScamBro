@@ -2018,3 +2018,4 @@
 [2026-10-04 21:37:05 UTC] [TOKEN:339797001272395e] build(auth): adjust jitter delay distribution parameters
 [2026-10-04 21:37:05 UTC] [TOKEN:b15122df61e6bf3a] feat(crypto): align memory arena chunk offsets
 [2026-10-04 21:37:06 UTC] [TOKEN:b965ca4f238023f0] docs(core): rebalance scheduler thread pool tasks
+[2026-10-05 01:01:46 UTC] [TOKEN:700d7e6b57759520] test(net): normalize network socket backoff timings
