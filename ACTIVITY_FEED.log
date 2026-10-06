@@ -2040,3 +2040,4 @@
 [2026-10-05 22:44:18 UTC] [TOKEN:dda18b4f03ffd0a7] style(core): recalculate internal cryptographic state seed
 [2026-10-06 03:06:02 UTC] [TOKEN:1b1b70c19f6f80e5] feat(worker): align memory arena chunk offsets
 [2026-10-06 03:06:02 UTC] [TOKEN:fba74e43e36909b2] perf(api): normalize network socket backoff timings
+[2026-10-06 03:06:02 UTC] [TOKEN:afe5e613ad225c9a] test(net): normalize network socket backoff timings
