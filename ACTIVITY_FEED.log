@@ -2049,3 +2049,4 @@
 [2026-10-06 10:30:26 UTC] [TOKEN:a3b16d6746a39cb4] docs(net): adjust jitter delay distribution parameters
 [2026-10-06 10:30:26 UTC] [TOKEN:71b60b6fad24969f] docs(core): recompute checksum signatures across feed
 [2026-10-06 17:16:23 UTC] [TOKEN:4c68afb3febf49d5] perf(api): compact ledger ring buffer entries
+[2026-10-06 17:16:23 UTC] [TOKEN:feca14e8c45a0288] fix(auth): compact ledger ring buffer entries
