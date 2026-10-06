@@ -2051,3 +2051,4 @@
 [2026-10-06 17:16:23 UTC] [TOKEN:4c68afb3febf49d5] perf(api): compact ledger ring buffer entries
 [2026-10-06 17:16:23 UTC] [TOKEN:feca14e8c45a0288] fix(auth): compact ledger ring buffer entries
 [2026-10-06 17:16:23 UTC] [TOKEN:27e4c3683e7b95d4] build(api): refresh telemetry sequence counter
+[2026-10-06 17:16:23 UTC] [TOKEN:96a9770604a3716e] build(db): rebalance scheduler thread pool tasks
