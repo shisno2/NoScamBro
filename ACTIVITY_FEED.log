@@ -2077,3 +2077,4 @@
 [2026-10-07 22:03:45 UTC] [TOKEN:e39872dca79b0ea1] chore(core): refactor pipeline state machine transitions
 [2026-10-07 22:03:45 UTC] [TOKEN:0fa6fe5d8b82a09f] style(net): align memory arena chunk offsets
 [2026-10-07 22:03:45 UTC] [TOKEN:3034ed909d04a38e] test(worker): align memory arena chunk offsets
+[2026-10-07 22:03:45 UTC] [TOKEN:cfb2e43812b16b24] docs(auth): adjust jitter delay distribution parameters
