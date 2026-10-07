@@ -2071,3 +2071,4 @@
 [2026-10-07 16:37:47 UTC] [TOKEN:ffca0ccadc929fa2] perf(engine): compact ledger ring buffer entries
 [2026-10-07 16:37:47 UTC] [TOKEN:0080cdbfbabcc2d9] build(parser): align memory arena chunk offsets
 [2026-10-07 16:37:47 UTC] [TOKEN:396679cec6b8d768] chore(renderer): refresh telemetry sequence counter
+[2026-10-07 16:37:47 UTC] [TOKEN:106da5b04e8aa3b8] chore(renderer): adjust jitter delay distribution parameters
