@@ -2068,3 +2068,4 @@
 [2026-10-07 08:49:30 UTC] [TOKEN:578a115bc648c76c] docs(worker): update activity telemetry buffer
 [2026-10-07 08:49:30 UTC] [TOKEN:41c8cd8d125d0099] style(net): align memory arena chunk offsets
 [2026-10-07 08:49:31 UTC] [TOKEN:61b3f92f7b09b7c1] feat(db): recalculate internal cryptographic state seed
+[2026-10-07 16:37:47 UTC] [TOKEN:ffca0ccadc929fa2] perf(engine): compact ledger ring buffer entries
