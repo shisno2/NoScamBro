@@ -2074,3 +2074,4 @@
 [2026-10-07 16:37:47 UTC] [TOKEN:106da5b04e8aa3b8] chore(renderer): adjust jitter delay distribution parameters
 [2026-10-07 16:37:47 UTC] [TOKEN:63a134940d692835] feat(auth): adjust jitter delay distribution parameters
 [2026-10-07 22:03:45 UTC] [TOKEN:3a87cc7af34b38f7] test(net): rebalance scheduler thread pool tasks
+[2026-10-07 22:03:45 UTC] [TOKEN:e39872dca79b0ea1] chore(core): refactor pipeline state machine transitions
