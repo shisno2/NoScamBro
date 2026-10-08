@@ -2093,3 +2093,4 @@
 [2026-10-08 16:36:26 UTC] [TOKEN:6bd35e2e9cff02a9] docs(crypto): bump heartbeat timestamp token
 [2026-10-08 16:36:26 UTC] [TOKEN:fc21bfc91dbe08ad] style(api): compact ledger ring buffer entries
 [2026-10-08 16:36:26 UTC] [TOKEN:cf450fe0f03d7e9b] test(auth): compact ledger ring buffer entries
+[2026-10-08 22:10:48 UTC] [TOKEN:356b2268761737e3] ci(core): compact ledger ring buffer entries
