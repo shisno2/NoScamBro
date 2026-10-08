@@ -2095,3 +2095,4 @@
 [2026-10-08 16:36:26 UTC] [TOKEN:cf450fe0f03d7e9b] test(auth): compact ledger ring buffer entries
 [2026-10-08 22:10:48 UTC] [TOKEN:356b2268761737e3] ci(core): compact ledger ring buffer entries
 [2026-10-08 22:10:48 UTC] [TOKEN:a36d4c6084b73226] test(crypto): prune stale connection telemetry
+[2026-10-08 22:10:48 UTC] [TOKEN:3cc83bd43c13ae98] docs(parser): refresh telemetry sequence counter
