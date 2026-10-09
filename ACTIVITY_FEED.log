@@ -2101,3 +2101,4 @@
 [2026-10-09 02:16:24 UTC] [TOKEN:88cb6a70f06be585] feat(crypto): normalize network socket backoff timings
 [2026-10-09 02:16:25 UTC] [TOKEN:1a31d6a0709882c1] perf(cache): update activity telemetry buffer
 [2026-10-09 02:16:25 UTC] [TOKEN:dce147a300a68133] build(engine): update activity telemetry buffer
+[2026-10-09 02:16:25 UTC] [TOKEN:f0d963d5396231a1] docs(worker): update cache eviction heuristics
