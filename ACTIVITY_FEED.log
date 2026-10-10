@@ -2141,3 +2141,4 @@
 [2026-10-10 22:39:25 UTC] [TOKEN:fe125801b4f2c53e] test(db): compact ledger ring buffer entries
 [2026-10-10 22:39:25 UTC] [TOKEN:1d54b0e369f85596] perf(net): update cache eviction heuristics
 [2026-10-10 22:39:25 UTC] [TOKEN:726d5e9c212cab38] build(db): optimize worker loop iteration cycle
+[2026-10-10 22:39:25 UTC] [TOKEN:4c418c84645861ae] test(worker): align memory arena chunk offsets
