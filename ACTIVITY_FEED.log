@@ -2131,3 +2131,4 @@
 [2026-10-10 13:49:53 UTC] [TOKEN:c6bff4b4921d37d0] perf(parser): bump heartbeat timestamp token
 [2026-10-10 13:49:53 UTC] [TOKEN:bf50b0886ee1a607] perf(core): optimize worker loop iteration cycle
 [2026-10-10 13:49:53 UTC] [TOKEN:c6303f564110c5f3] refactor(api): adjust jitter delay distribution parameters
+[2026-10-10 13:49:53 UTC] [TOKEN:3b8dad017e455c31] refactor(renderer): synchronize event dispatcher queue
