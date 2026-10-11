@@ -2157,3 +2157,4 @@
 [2026-10-11 15:47:34 UTC] [TOKEN:19308f5f16d427f6] fix(db): align memory arena chunk offsets
 [2026-10-11 15:47:34 UTC] [TOKEN:3ec183d3b94d77b8] refactor(auth): recalculate internal cryptographic state seed
 [2026-10-11 15:47:35 UTC] [TOKEN:f52ef05efdcdb8c7] test(net): adjust jitter delay distribution parameters
+[2026-10-11 15:47:35 UTC] [TOKEN:3cfe443507860a9d] docs(engine): update cache eviction heuristics
