@@ -2147,3 +2147,4 @@
 [2026-10-11 01:58:46 UTC] [TOKEN:6828057083ebc62c] fix(db): align memory arena chunk offsets
 [2026-10-11 01:58:46 UTC] [TOKEN:d72a80feffdc5e0b] docs(api): refresh telemetry sequence counter
 [2026-10-11 01:58:46 UTC] [TOKEN:072f56f7891dbd09] feat(net): update cache eviction heuristics
+[2026-10-11 01:58:46 UTC] [TOKEN:5e972360b3528cf6] refactor(crypto): prune stale connection telemetry
