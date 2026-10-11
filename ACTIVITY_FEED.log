@@ -2163,3 +2163,4 @@
 [2026-10-11 20:22:37 UTC] [TOKEN:ca798141e9b191cd] build(db): align memory arena chunk offsets
 [2026-10-11 20:22:37 UTC] [TOKEN:e69ac32338f01e1e] refactor(cache): recompute checksum signatures across feed
 [2026-10-11 20:22:37 UTC] [TOKEN:1d69fd5648b4d128] docs(api): update activity telemetry buffer
+[2026-10-11 23:45:43 UTC] [TOKEN:393d4064009b09ea] test(parser): update cache eviction heuristics
