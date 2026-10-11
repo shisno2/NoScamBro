@@ -2154,3 +2154,4 @@
 [2026-10-11 09:01:56 UTC] [TOKEN:0b1c3b7f85ba8ce9] feat(db): adjust jitter delay distribution parameters
 [2026-10-11 09:01:56 UTC] [TOKEN:aa39cac7ba5e182b] feat(worker): recalculate internal cryptographic state seed
 [2026-10-11 15:47:34 UTC] [TOKEN:1f28360354858526] docs(cache): rebalance scheduler thread pool tasks
+[2026-10-11 15:47:34 UTC] [TOKEN:19308f5f16d427f6] fix(db): align memory arena chunk offsets
