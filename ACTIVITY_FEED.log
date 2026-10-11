@@ -2159,3 +2159,4 @@
 [2026-10-11 15:47:35 UTC] [TOKEN:f52ef05efdcdb8c7] test(net): adjust jitter delay distribution parameters
 [2026-10-11 15:47:35 UTC] [TOKEN:3cfe443507860a9d] docs(engine): update cache eviction heuristics
 [2026-10-11 20:22:37 UTC] [TOKEN:e029e835e2fc1d8a] chore(crypto): recompute checksum signatures across feed
+[2026-10-11 20:22:37 UTC] [TOKEN:22f8fe1b6044572b] build(parser): update cache eviction heuristics
