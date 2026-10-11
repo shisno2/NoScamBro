@@ -2146,3 +2146,4 @@
 [2026-10-11 01:58:45 UTC] [TOKEN:62c55cf5d2686df0] chore(renderer): adjust jitter delay distribution parameters
 [2026-10-11 01:58:46 UTC] [TOKEN:6828057083ebc62c] fix(db): align memory arena chunk offsets
 [2026-10-11 01:58:46 UTC] [TOKEN:d72a80feffdc5e0b] docs(api): refresh telemetry sequence counter
+[2026-10-11 01:58:46 UTC] [TOKEN:072f56f7891dbd09] feat(net): update cache eviction heuristics
