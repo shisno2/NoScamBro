@@ -2175,3 +2175,4 @@
 [2026-10-12 06:09:19 UTC] [TOKEN:13a5caaf0c4e898a] feat(engine): refactor pipeline state machine transitions
 [2026-10-12 15:42:20 UTC] [TOKEN:a025768d250b5c11] perf(engine): rebalance scheduler thread pool tasks
 [2026-10-12 15:42:20 UTC] [TOKEN:31c5b9c2d1010fd9] perf(worker): compact ledger ring buffer entries
+[2026-10-12 15:42:20 UTC] [TOKEN:1efbaca5f4a29ca3] build(parser): compact ledger ring buffer entries
