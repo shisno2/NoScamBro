@@ -2180,3 +2180,4 @@
 [2026-10-12 15:42:20 UTC] [TOKEN:e6e7136a79623c0f] ci(db): prune stale connection telemetry
 [2026-10-12 23:03:26 UTC] [TOKEN:ce09228b8023812c] refactor(db): update cache eviction heuristics
 [2026-10-12 23:03:26 UTC] [TOKEN:ca21b1800d317c25] fix(net): update activity telemetry buffer
+[2026-10-12 23:03:26 UTC] [TOKEN:119db2d2001e57f9] chore(api): refactor pipeline state machine transitions
