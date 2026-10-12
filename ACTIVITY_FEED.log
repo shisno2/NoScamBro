@@ -2170,3 +2170,4 @@
 [2026-10-11 23:45:44 UTC] [TOKEN:73bc530bd4ecadca] chore(engine): compact ledger ring buffer entries
 [2026-10-12 06:09:18 UTC] [TOKEN:5d142e28b74aa0ec] ci(cache): recalculate internal cryptographic state seed
 [2026-10-12 06:09:18 UTC] [TOKEN:f82979aa7b281195] refactor(auth): recalculate internal cryptographic state seed
+[2026-10-12 06:09:19 UTC] [TOKEN:82d874619fa94e37] fix(auth): update cache eviction heuristics
