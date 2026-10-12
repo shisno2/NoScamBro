@@ -2182,3 +2182,4 @@
 [2026-10-12 23:03:26 UTC] [TOKEN:ca21b1800d317c25] fix(net): update activity telemetry buffer
 [2026-10-12 23:03:26 UTC] [TOKEN:119db2d2001e57f9] chore(api): refactor pipeline state machine transitions
 [2026-10-12 23:03:26 UTC] [TOKEN:2a6310d23ce3daf0] feat(api): compact ledger ring buffer entries
+[2026-10-12 23:03:26 UTC] [TOKEN:3d860c4202b12427] style(worker): align memory arena chunk offsets
