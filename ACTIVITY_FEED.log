@@ -2178,3 +2178,4 @@
 [2026-10-12 15:42:20 UTC] [TOKEN:1efbaca5f4a29ca3] build(parser): compact ledger ring buffer entries
 [2026-10-12 15:42:20 UTC] [TOKEN:ea60c4f43a0a040a] refactor(cache): recompute checksum signatures across feed
 [2026-10-12 15:42:20 UTC] [TOKEN:e6e7136a79623c0f] ci(db): prune stale connection telemetry
+[2026-10-12 23:03:26 UTC] [TOKEN:ce09228b8023812c] refactor(db): update cache eviction heuristics
