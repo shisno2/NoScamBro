@@ -2197,3 +2197,4 @@
 [2026-10-13 19:21:18 UTC] [TOKEN:fa99cff0ae5e24fb] style(worker): update cache eviction heuristics
 [2026-10-13 19:21:18 UTC] [TOKEN:318799e56efe906e] fix(api): update cache eviction heuristics
 [2026-10-13 19:21:18 UTC] [TOKEN:069d035fcd53bcf1] ci(renderer): prune stale connection telemetry
+[2026-10-13 19:21:18 UTC] [TOKEN:8103160fc032e6b4] ci(api): compact ledger ring buffer entries
