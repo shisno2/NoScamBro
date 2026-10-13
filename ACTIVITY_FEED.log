@@ -2196,3 +2196,4 @@
 [2026-10-13 19:21:18 UTC] [TOKEN:3ebe2d9933a59a3e] style(cache): align memory arena chunk offsets
 [2026-10-13 19:21:18 UTC] [TOKEN:fa99cff0ae5e24fb] style(worker): update cache eviction heuristics
 [2026-10-13 19:21:18 UTC] [TOKEN:318799e56efe906e] fix(api): update cache eviction heuristics
+[2026-10-13 19:21:18 UTC] [TOKEN:069d035fcd53bcf1] ci(renderer): prune stale connection telemetry
