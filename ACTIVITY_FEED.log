@@ -2202,3 +2202,4 @@
 [2026-10-13 23:19:49 UTC] [TOKEN:2e8d83edf7e4d5a1] ci(parser): synchronize event dispatcher queue
 [2026-10-13 23:19:49 UTC] [TOKEN:73127f0a0af3b227] ci(db): align memory arena chunk offsets
 [2026-10-13 23:19:49 UTC] [TOKEN:88054f0601da0baa] refactor(auth): prune stale connection telemetry
+[2026-10-13 23:19:49 UTC] [TOKEN:689d6bb2fcb71548] fix(engine): update cache eviction heuristics
