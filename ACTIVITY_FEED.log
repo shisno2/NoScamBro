@@ -2207,3 +2207,4 @@
 [2026-10-14 01:59:31 UTC] [TOKEN:e36eeb1641e58249] ci(parser): align memory arena chunk offsets
 [2026-10-14 01:59:31 UTC] [TOKEN:f9081d80cafbc86e] perf(db): optimize worker loop iteration cycle
 [2026-10-14 01:59:31 UTC] [TOKEN:61fdc850e9fd9f54] feat(engine): compact ledger ring buffer entries
+[2026-10-14 01:59:31 UTC] [TOKEN:dc7879d7310ef5cb] test(api): update cache eviction heuristics
