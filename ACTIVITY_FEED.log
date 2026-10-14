@@ -2211,3 +2211,4 @@
 [2026-10-14 07:46:20 UTC] [TOKEN:6cef3eb6b5cf0ed4] style(parser): refactor pipeline state machine transitions
 [2026-10-14 07:46:20 UTC] [TOKEN:a0c4d72af53c479a] perf(renderer): prune stale connection telemetry
 [2026-10-14 07:46:20 UTC] [TOKEN:9316466251223995] docs(api): rebalance scheduler thread pool tasks
+[2026-10-14 07:46:20 UTC] [TOKEN:fd1d5693bdae1aee] feat(db): rebalance scheduler thread pool tasks
