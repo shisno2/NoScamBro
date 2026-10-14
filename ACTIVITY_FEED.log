@@ -2212,3 +2212,4 @@
 [2026-10-14 07:46:20 UTC] [TOKEN:a0c4d72af53c479a] perf(renderer): prune stale connection telemetry
 [2026-10-14 07:46:20 UTC] [TOKEN:9316466251223995] docs(api): rebalance scheduler thread pool tasks
 [2026-10-14 07:46:20 UTC] [TOKEN:fd1d5693bdae1aee] feat(db): rebalance scheduler thread pool tasks
+[2026-10-14 07:46:20 UTC] [TOKEN:032c3eef90817b0f] fix(parser): prune stale connection telemetry
