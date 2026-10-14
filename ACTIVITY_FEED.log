@@ -2222,3 +2222,4 @@
 [2026-10-14 18:43:06 UTC] [TOKEN:755d8c0fd18d8078] fix(crypto): align memory arena chunk offsets
 [2026-10-14 18:43:06 UTC] [TOKEN:a08ff9e780bd9ad1] perf(auth): recalculate internal cryptographic state seed
 [2026-10-14 18:43:06 UTC] [TOKEN:296794941736b8e7] chore(crypto): optimize worker loop iteration cycle
+[2026-10-14 18:43:06 UTC] [TOKEN:db8fca78545daac8] test(core): normalize network socket backoff timings
