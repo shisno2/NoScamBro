@@ -2226,3 +2226,4 @@
 [2026-10-14 22:22:08 UTC] [TOKEN:04e9024a04f32630] ci(core): compact ledger ring buffer entries
 [2026-10-14 22:22:08 UTC] [TOKEN:49bdeb5912058deb] perf(crypto): align memory arena chunk offsets
 [2026-10-14 22:22:08 UTC] [TOKEN:b2582d66dca96179] build(renderer): prune stale connection telemetry
+[2026-10-14 22:22:08 UTC] [TOKEN:5e83db01959e3cea] chore(api): update cache eviction heuristics
