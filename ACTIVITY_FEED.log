@@ -2209,3 +2209,4 @@
 [2026-10-14 01:59:31 UTC] [TOKEN:61fdc850e9fd9f54] feat(engine): compact ledger ring buffer entries
 [2026-10-14 01:59:31 UTC] [TOKEN:dc7879d7310ef5cb] test(api): update cache eviction heuristics
 [2026-10-14 07:46:20 UTC] [TOKEN:6cef3eb6b5cf0ed4] style(parser): refactor pipeline state machine transitions
+[2026-10-14 07:46:20 UTC] [TOKEN:a0c4d72af53c479a] perf(renderer): prune stale connection telemetry
