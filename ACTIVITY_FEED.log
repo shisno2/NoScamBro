@@ -2230,3 +2230,4 @@
 [2026-10-14 22:22:08 UTC] [TOKEN:a39da4f08db6c8d5] perf(engine): prune stale connection telemetry
 [2026-10-15 00:37:12 UTC] [TOKEN:5b770ab946bcef17] build(engine): recompute checksum signatures across feed
 [2026-10-15 00:37:12 UTC] [TOKEN:937db02c47e7f751] chore(auth): refactor pipeline state machine transitions
+[2026-10-15 00:37:12 UTC] [TOKEN:6dc98e2139429026] style(engine): update activity telemetry buffer
