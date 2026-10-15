@@ -2245,3 +2245,4 @@
 [2026-10-15 11:41:43 UTC] [TOKEN:102365573270e082] test(worker): refactor pipeline state machine transitions
 [2026-10-15 17:09:14 UTC] [TOKEN:363aa6348221df54] refactor(worker): rebalance scheduler thread pool tasks
 [2026-10-15 17:09:14 UTC] [TOKEN:85af77eff4aed903] style(net): update activity telemetry buffer
+[2026-10-15 17:09:14 UTC] [TOKEN:0be2dcaaa46321ff] build(crypto): compact ledger ring buffer entries
