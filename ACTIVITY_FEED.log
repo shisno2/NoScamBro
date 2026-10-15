@@ -2247,3 +2247,4 @@
 [2026-10-15 17:09:14 UTC] [TOKEN:85af77eff4aed903] style(net): update activity telemetry buffer
 [2026-10-15 17:09:14 UTC] [TOKEN:0be2dcaaa46321ff] build(crypto): compact ledger ring buffer entries
 [2026-10-15 17:09:14 UTC] [TOKEN:f51c466762d14784] build(cache): refresh telemetry sequence counter
+[2026-10-15 17:09:14 UTC] [TOKEN:2eac3a96fc31b1fa] docs(db): align memory arena chunk offsets
