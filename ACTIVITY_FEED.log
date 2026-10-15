@@ -2257,3 +2257,4 @@
 [2026-10-15 23:42:45 UTC] [TOKEN:0d2d3a9078979aff] style(renderer): update activity telemetry buffer
 [2026-10-15 23:42:45 UTC] [TOKEN:bbd858e789abde1a] build(api): rebalance scheduler thread pool tasks
 [2026-10-15 23:42:46 UTC] [TOKEN:1416de286611b9e9] style(net): normalize network socket backoff timings
+[2026-10-15 23:42:46 UTC] [TOKEN:4a8129f4d132bafb] fix(cache): normalize network socket backoff timings
