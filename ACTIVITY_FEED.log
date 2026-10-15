@@ -2228,3 +2228,4 @@
 [2026-10-14 22:22:08 UTC] [TOKEN:b2582d66dca96179] build(renderer): prune stale connection telemetry
 [2026-10-14 22:22:08 UTC] [TOKEN:5e83db01959e3cea] chore(api): update cache eviction heuristics
 [2026-10-14 22:22:08 UTC] [TOKEN:a39da4f08db6c8d5] perf(engine): prune stale connection telemetry
+[2026-10-15 00:37:12 UTC] [TOKEN:5b770ab946bcef17] build(engine): recompute checksum signatures across feed
