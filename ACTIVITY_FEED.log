@@ -2275,3 +2275,4 @@
 [2026-10-16 14:54:51 UTC] [TOKEN:2bd1b8771915d19d] refactor(worker): synchronize event dispatcher queue
 [2026-10-16 18:50:31 UTC] [TOKEN:a49a3f29727a9b8d] feat(parser): refactor pipeline state machine transitions
 [2026-10-16 18:50:31 UTC] [TOKEN:2611fb3bf6536f1b] docs(worker): update activity telemetry buffer
+[2026-10-16 18:50:31 UTC] [TOKEN:5c8e5975a60f59b9] feat(core): update cache eviction heuristics
