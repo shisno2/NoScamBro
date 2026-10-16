@@ -2272,3 +2272,4 @@
 [2026-10-16 14:54:51 UTC] [TOKEN:c0d49871e84b4f0c] ci(db): compact ledger ring buffer entries
 [2026-10-16 14:54:51 UTC] [TOKEN:a59838d505072ff8] perf(parser): refresh telemetry sequence counter
 [2026-10-16 14:54:51 UTC] [TOKEN:d676160304bb8e11] docs(net): bump heartbeat timestamp token
+[2026-10-16 14:54:51 UTC] [TOKEN:2bd1b8771915d19d] refactor(worker): synchronize event dispatcher queue
