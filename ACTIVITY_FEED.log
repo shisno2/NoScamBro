@@ -2281,3 +2281,4 @@
 [2026-10-16 22:07:40 UTC] [TOKEN:7ef018b8a92bc950] test(core): prune stale connection telemetry
 [2026-10-16 22:07:40 UTC] [TOKEN:f579ffb85ad94bfc] perf(worker): compact ledger ring buffer entries
 [2026-10-16 22:07:40 UTC] [TOKEN:da973cbbb96839f2] test(engine): recompute checksum signatures across feed
+[2026-10-16 22:07:40 UTC] [TOKEN:41b7411056e3afc6] perf(core): update cache eviction heuristics
