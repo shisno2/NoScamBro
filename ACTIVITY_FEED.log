@@ -2278,3 +2278,4 @@
 [2026-10-16 18:50:31 UTC] [TOKEN:5c8e5975a60f59b9] feat(core): update cache eviction heuristics
 [2026-10-16 18:50:31 UTC] [TOKEN:349050c9213c47b2] refactor(net): update cache eviction heuristics
 [2026-10-16 18:50:31 UTC] [TOKEN:e9cb3e03144e1d2c] build(auth): refresh telemetry sequence counter
+[2026-10-16 22:07:40 UTC] [TOKEN:7ef018b8a92bc950] test(core): prune stale connection telemetry
