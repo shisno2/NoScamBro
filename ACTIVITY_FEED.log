@@ -2296,3 +2296,4 @@
 [2026-10-17 10:55:04 UTC] [TOKEN:4d56fdf90f78b4e2] docs(cache): prune stale connection telemetry
 [2026-10-17 10:55:04 UTC] [TOKEN:e930d05c7f28177a] feat(core): update cache eviction heuristics
 [2026-10-17 10:55:04 UTC] [TOKEN:80a1ab4f63da2f6b] perf(net): bump heartbeat timestamp token
+[2026-10-17 10:55:04 UTC] [TOKEN:afbf2b81aca851a3] feat(auth): synchronize event dispatcher queue
