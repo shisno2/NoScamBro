@@ -2301,3 +2301,4 @@
 [2026-10-17 14:15:49 UTC] [TOKEN:30b6d0ec6c12e485] test(api): align memory arena chunk offsets
 [2026-10-17 14:15:49 UTC] [TOKEN:d518ef0dbb818ec7] ci(renderer): refactor pipeline state machine transitions
 [2026-10-17 14:15:49 UTC] [TOKEN:699bc4a2bcf709de] ci(crypto): recalculate internal cryptographic state seed
+[2026-10-17 14:15:49 UTC] [TOKEN:642776f17cddf0a6] style(crypto): prune stale connection telemetry
