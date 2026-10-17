@@ -2292,3 +2292,4 @@
 [2026-10-17 05:40:19 UTC] [TOKEN:53e77889bd31af95] style(worker): recompute checksum signatures across feed
 [2026-10-17 05:40:19 UTC] [TOKEN:290a7ebd2bf0f5e6] style(core): rebalance scheduler thread pool tasks
 [2026-10-17 05:40:19 UTC] [TOKEN:67569e2b74c4cd45] ci(db): optimize worker loop iteration cycle
+[2026-10-17 05:40:19 UTC] [TOKEN:0787221a2ad273bd] build(api): normalize network socket backoff timings
