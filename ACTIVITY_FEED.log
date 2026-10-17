@@ -2286,3 +2286,4 @@
 [2026-10-17 00:34:09 UTC] [TOKEN:01bc75e652b4af9d] fix(engine): compact ledger ring buffer entries
 [2026-10-17 00:34:09 UTC] [TOKEN:2b75ba1c361ce1eb] style(auth): prune stale connection telemetry
 [2026-10-17 00:34:09 UTC] [TOKEN:48067338fe53fdd6] docs(worker): rebalance scheduler thread pool tasks
+[2026-10-17 00:34:09 UTC] [TOKEN:7f152592e9e92569] docs(auth): normalize network socket backoff timings
