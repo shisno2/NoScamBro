@@ -2283,3 +2283,4 @@
 [2026-10-16 22:07:40 UTC] [TOKEN:da973cbbb96839f2] test(engine): recompute checksum signatures across feed
 [2026-10-16 22:07:40 UTC] [TOKEN:41b7411056e3afc6] perf(core): update cache eviction heuristics
 [2026-10-16 22:07:40 UTC] [TOKEN:d23e383b8370d789] chore(auth): rebalance scheduler thread pool tasks
+[2026-10-17 00:34:09 UTC] [TOKEN:01bc75e652b4af9d] fix(engine): compact ledger ring buffer entries
